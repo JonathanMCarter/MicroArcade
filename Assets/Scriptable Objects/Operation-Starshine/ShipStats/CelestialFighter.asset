@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42fe59a2aaf36c24bb9c6ec9ecad8bd6, type: 3}
+  m_Name: CelestialFighter
+  m_EditorClassIdentifier: 
+  Health: c8000000f401000020030000
+  Shield: 64000000c80000002c010000
+  MainWeapon: {fileID: 11400000, guid: f7b94a770d428b94689635735c9a2d40, type: 2}
+  MainWeaponPrefab: {fileID: 3946963134477888548, guid: d956e57798f94d14dbb65c6a89a84d61,
+    type: 3}
+  AltWeapon: {fileID: 11400000, guid: 74c34e3d647a00f43b947e356915c986, type: 2}
+  AltWeaponPrefab: {fileID: 4605732298714224688, guid: c3b3f74bf1af6aa4d813f1ae9192b16f,
+    type: 3}
+  HealthBarFillColour:
+    serializedVersion: 2
+    rgba: 4294928640
+  ShipSpd: 0
+  ShipPrefab: {fileID: 0}
+  Explosion: {fileID: 2339951329275590532, guid: 5b68028733175ea4f9a1409d89257278,
+    type: 3}

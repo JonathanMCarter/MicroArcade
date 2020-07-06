@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42fe59a2aaf36c24bb9c6ec9ecad8bd6, type: 3}
+  m_Name: AetherAlpha
+  m_EditorClassIdentifier: 
+  Health: 2c0100005802000084030000
+  Shield: 64000000c80000002c010000
+  MainWeapon: {fileID: 11400000, guid: 19b567842b4f21d409a20b19126660cf, type: 2}
+  MainWeaponPrefab: {fileID: 3946963134477888548, guid: 443212e46bf6b6d43972cc5f62dc1721,
+    type: 3}
+  AltWeapon: {fileID: 11400000, guid: d69c14615e8e3f142bae8613baaff499, type: 2}
+  AltWeaponPrefab: {fileID: 7095017615076584532, guid: 7c21fea8f79d8a34d97897d9e92895a6,
+    type: 3}
+  HealthBarFillColour:
+    serializedVersion: 2
+    rgba: 4278237695
+  ShipSpd: 1500
+  ShipPrefab: {fileID: 0}
+  Explosion: {fileID: 2339951329275590532, guid: 5b68028733175ea4f9a1409d89257278,
+    type: 3}

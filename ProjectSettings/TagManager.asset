@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - WorldSpaceCanvas
+  - HealthBarFill
+  - WhitePlayer
+  - BlackPlayer
+  - MainPoint
+  - AltPoint
+  - Shield
+  - MenuItem
+  - Waterie
+  - Gimme
+  - Lockie
+  - Speedie
+  - Deadie
+  - SettingPanel
+  - SettingOption
+  - MenuFade
+  - AudioManager
+  - OP:SS:Harmful
+  - MusicPlayer
+  - PinballMusicPlayer
+  - StarshineMusicPlayer
+  - StarshineEnemyWeapons
+  - Explodie
+  - Paintie
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - OP:SS:Bullet
+  - OP:SS:EM:Bullet
+  - OP:SS:Player
+  - OP:SS:EM
+  - OP:SS:Explosive
+  - OP:SS:EM:Explosive
+  - OP:SS:EM:Detection
+  - OP:SS:ReviveMe
+  - Post
+  - Quacking:Ground
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: UnderLayer
+    uniqueID: 3680197241
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: OverLayer
+    uniqueID: 2745137409
+    locked: 0
