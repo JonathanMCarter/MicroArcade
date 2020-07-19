@@ -1,8 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using CarterGames.Arcade.UserInput;
 
-namespace Arcade.Saving
+/*
+*  Copyright (c) Jonathan Carter
+*  E: jonathan@carter.games
+*  W: https://jonathan.carter.games/
+*/
+
+namespace CarterGames.Arcade.Saving
 {
     [System.Serializable]
     public class ArcadeData

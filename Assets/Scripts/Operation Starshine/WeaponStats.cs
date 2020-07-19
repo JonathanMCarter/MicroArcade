@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Starshine
+namespace CarterGames.Starshine
 {
     [CreateAssetMenu(fileName = "Weapon Stats SO", menuName = "Arcade/Starshine/Weapon Stats")]
     public class WeaponStats : ScriptableObject

@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Arcade;
+using CarterGames.Arcade.UserInput;
 
-namespace Pinball
+namespace CarterGames.UltimatePinball
 {
     public class PlayerCtrl : InputSettings
     {

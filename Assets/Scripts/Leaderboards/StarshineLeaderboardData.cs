@@ -1,4 +1,4 @@
-﻿namespace Arcade.Leaderboard
+﻿namespace CarterGames.Arcade.Leaderboard
 {
     [System.Serializable]
     public class StarshineLeaderboardData

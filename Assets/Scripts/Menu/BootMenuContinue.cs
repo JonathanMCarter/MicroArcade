@@ -1,8 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using CarterGames.Arcade.UserInput;
 
-namespace Arcade.Menu
+/*
+*  Copyright (c) Jonathan Carter
+*  E: jonathan@carter.games
+*  W: https://jonathan.carter.games/
+*/
+
+namespace CarterGames.Arcade.Menu
 {
     public class BootMenuContinue : InputSettings
     {

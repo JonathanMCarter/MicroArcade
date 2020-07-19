@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-namespace Pinball
+namespace CarterGames.UltimatePinball
 {
     [CustomEditor(typeof(GameManager))]
     public class GM_Editor : Editor

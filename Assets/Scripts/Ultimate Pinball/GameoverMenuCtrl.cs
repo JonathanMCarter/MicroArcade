@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using Arcade;
-using Arcade.Menu;
-using Arcade.Saving;
+using CarterGames.Arcade.UserInput;
+using CarterGames.Arcade.Menu;
+using CarterGames.Arcade.Saving;
 
-namespace Pinball
+namespace CarterGames.UltimatePinball
 {
     public class GameoverMenuCtrl : MenuSystem
     {

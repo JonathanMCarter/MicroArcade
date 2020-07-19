@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using Arcade;   
+using CarterGames.Arcade.UserInput;   
 
-namespace Quacking
+namespace CarterGames.QuackingTime
 {
     public class MenuButtonController : InputSettings
     {

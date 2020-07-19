@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using System.Net;
+using CarterGames.Assets.AudioManager;
 
-namespace Quacking
+namespace CarterGames.QuackingTime
 {
     public class SceneChanger : MonoBehaviour
     {

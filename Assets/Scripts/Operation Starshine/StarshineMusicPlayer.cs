@@ -4,10 +4,10 @@
 *  W: https://jonathan.carter.games/
 */
 
-using Arcade.Menu;
+using CarterGames.Arcade.Menu;
 using UnityEngine;
 
-namespace Starshine
+namespace CarterGames.Starshine
 {
     public class StarshineMusicPlayer : MusicPlayerScript
     {

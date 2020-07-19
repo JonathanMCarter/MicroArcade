@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Quacking
+namespace CarterGames.QuackingTime
 {
     public class Pickupspawning : MonoBehaviour
     {

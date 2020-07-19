@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using CarterGames.Assets.AudioManager;
 
-namespace Starshine
+namespace CarterGames.Starshine
 {
     public class PickupObject : MonoBehaviour
     {

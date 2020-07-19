@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using CarterGames.Arcade.UserInput;
 
-namespace Pinball.BallCtrl
+namespace CarterGames.UltimatePinball.BallCtrl
 {
     public class LightCircleLight : MonoBehaviour
     {
@@ -42,10 +43,10 @@ namespace Pinball.BallCtrl
             {
                 switch (collision.gameObject.GetComponent<BallMoveScript>().LastHit)
                 {
-                    case Arcade.Joysticks.White:
+                    case Joysticks.White:
                         GM.Player1Stats.Score += 25;
                         break;
-                    case Arcade.Joysticks.Black:
+                    case Joysticks.Black:
                         GM.Player2Stats.Score += 25;
                         break;
                     default:

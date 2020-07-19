@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Starshine
+namespace CarterGames.Starshine
 {
     [CreateAssetMenu(fileName = "Shield Colours", menuName = "Arcade/Starshine/Shield Colours")]
     public class ShieldColours : ScriptableObject

@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using Arcade.Leaderboard;
+using CarterGames.Arcade.Leaderboard;
+using CarterGames.Arcade.UserInput;
+using CarterGames.UltimatePinball;
 
-namespace Arcade.Saving
+namespace CarterGames.Arcade.Saving
 {
     public static class SaveManager
     {
@@ -263,7 +265,7 @@ namespace Arcade.Saving
         /// </summary>
         /// <param name="Player1Stats">Stats for Player 1</param>
         /// <param name="Player2Stats">Stats for Player 2</param>
-        public static void SaveUltimatePinballSession(Pinball.GameManager.BG_PlayerStats Player1Stats, Pinball.GameManager.BG_PlayerStats Player2Stats)
+        public static void SaveUltimatePinballSession(GameManager.BG_PlayerStats Player1Stats, GameManager.BG_PlayerStats Player2Stats)
         {
             BinaryFormatter Formatter = new BinaryFormatter();
             string SavePath = Application.persistentDataPath + "/ultimatepinballsession.masf";

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading;
 using UnityEngine;
 
-namespace Pinball.BallCtrl
+namespace CarterGames.UltimatePinball.BallCtrl
 {
     public class LightBarrierCtrl : MonoBehaviour
     {

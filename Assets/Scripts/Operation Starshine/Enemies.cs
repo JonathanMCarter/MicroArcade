@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Arcade;
+using CarterGames.Arcade.UserInput;
 using System.Linq;
 
-namespace Starshine
+namespace CarterGames.Starshine
 {
     [RequireComponent(typeof(Combat))]
     public class Enemies : ShipManagement

@@ -7,7 +7,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Arcade.Menu
+namespace CarterGames.Arcade.Menu
 {
     public class SettingsBuildVersion : MonoBehaviour
     {

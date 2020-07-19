@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-namespace Starshine
+namespace CarterGames.Starshine
 {
     public class Loading : MonoBehaviour
     {

@@ -7,7 +7,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Quacking
+namespace CarterGames.QuackingTime
 {
     public class DespawnPickup : MonoBehaviour
     {

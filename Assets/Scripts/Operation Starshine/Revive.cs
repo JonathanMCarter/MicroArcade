@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Starshine
+namespace CarterGames.Starshine
 {
     [RequireComponent(typeof(PlayerController))]
     public class Revive : MonoBehaviour

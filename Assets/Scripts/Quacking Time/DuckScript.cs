@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Arcade;
-using Arcade.Saving;
+using CarterGames.Arcade.UserInput;
+using CarterGames.Arcade.Saving;
+using CarterGames.Assets.AudioManager;
 
 public enum DuckPlayers
 {
@@ -32,7 +33,7 @@ public enum DuckHats
     Viking,
 }
 
-namespace Quacking
+namespace CarterGames.QuackingTime
 {
     public class DuckScript : InputSettings
     {

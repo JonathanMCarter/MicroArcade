@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using CarterGames.Assets.AudioManager;
+using CarterGames.Arcade.UserInput;
 
-namespace Pinball.BallCtrl
+namespace CarterGames.UltimatePinball.BallCtrl
 {
     public class LightBarrierOBJ : MonoBehaviour
     {
@@ -46,13 +48,13 @@ namespace Pinball.BallCtrl
 
                     switch (Script.LastHit)
                     {
-                        case Arcade.Joysticks.White:
+                        case Joysticks.White:
                             GM.Player1Stats.Score += 100;
                             break;
-                        case Arcade.Joysticks.Black:
+                        case Joysticks.Black:
                             GM.Player2Stats.Score += 100;
                             break;
-                        case Arcade.Joysticks.None:
+                        case Joysticks.None:
                             break;
                         default:
                             break;
@@ -65,13 +67,13 @@ namespace Pinball.BallCtrl
 
                     switch (Script.LastHit)
                     {
-                        case Arcade.Joysticks.White:
+                        case Joysticks.White:
                             GM.Player1Stats.Score += 250;
                             break;
-                        case Arcade.Joysticks.Black:
+                        case Joysticks.Black:
                             GM.Player2Stats.Score += 250;
                             break;
-                        case Arcade.Joysticks.None:
+                        case Joysticks.None:
                             break;
                         default:
                             break;
@@ -84,13 +86,13 @@ namespace Pinball.BallCtrl
 
                     switch (Script.LastHit)
                     {
-                        case Arcade.Joysticks.White:
+                        case Joysticks.White:
                             GM.Player1Stats.Score += 500;
                             break;
-                        case Arcade.Joysticks.Black:
+                        case Joysticks.Black:
                             GM.Player2Stats.Score += 500;
                             break;
-                        case Arcade.Joysticks.None:
+                        case Joysticks.None:
                             break;
                         default:
                             break;
@@ -103,13 +105,13 @@ namespace Pinball.BallCtrl
 
                     switch (Script.LastHit)
                     {
-                        case Arcade.Joysticks.White:
+                        case Joysticks.White:
                             GM.Player1Stats.Score += 1000;
                             break;
-                        case Arcade.Joysticks.Black:
+                        case Joysticks.Black:
                             GM.Player2Stats.Score += 1000;
                             break;
-                        case Arcade.Joysticks.None:
+                        case Joysticks.None:
                             break;
                         default:
                             break;
@@ -122,13 +124,13 @@ namespace Pinball.BallCtrl
 
                     switch (Script.LastHit)
                     {
-                        case Arcade.Joysticks.White:
+                        case Joysticks.White:
                             GM.Player1Stats.Score += 5000;
                             break;
-                        case Arcade.Joysticks.Black:
+                        case Joysticks.Black:
                             GM.Player2Stats.Score += 5000;
                             break;
-                        case Arcade.Joysticks.None:
+                        case Joysticks.None:
                             break;
                         default:
                             break;

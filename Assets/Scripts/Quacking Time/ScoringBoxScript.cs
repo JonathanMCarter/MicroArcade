@@ -6,7 +6,7 @@
 
 using UnityEngine;
 
-namespace Quacking
+namespace CarterGames.QuackingTime
 {
     public class ScoringBoxScript : MonoBehaviour
     {

@@ -4,8 +4,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using CarterGames.Assets.AudioManager;
+using CarterGames.Arcade.UserInput;
 
-namespace Arcade.Menu
+/*
+*  Copyright (c) Jonathan Carter
+*  E: jonathan@carter.games
+*  W: https://jonathan.carter.games/
+*/
+
+namespace CarterGames.Arcade.Menu
 {
     public class OperationStarshineMenuScreen : InputSettings
     {

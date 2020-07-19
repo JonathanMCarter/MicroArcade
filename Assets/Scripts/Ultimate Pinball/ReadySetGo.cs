@@ -4,12 +4,12 @@
 *  W: https://jonathan.carter.games/
 */
 
-using Pinball.BallCtrl;
+using CarterGames.UltimatePinball.BallCtrl;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Pinball
+namespace CarterGames.UltimatePinball
 {
     public class ReadySetGo : MonoBehaviour
     {

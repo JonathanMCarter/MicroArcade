@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Pinball
+namespace CarterGames.UltimatePinball
 {
     public class AnimationDelay : MonoBehaviour
     {

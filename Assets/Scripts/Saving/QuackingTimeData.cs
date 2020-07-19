@@ -5,7 +5,7 @@
 */
 
 
-namespace Arcade.Saving
+namespace CarterGames.Arcade.Saving
 {
     [System.Serializable]
     public class QuackingTimeData

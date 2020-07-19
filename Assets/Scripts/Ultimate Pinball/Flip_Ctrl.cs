@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Arcade;
-using Pinball.BallCtrl;
+using CarterGames.Arcade.UserInput;
+using CarterGames.UltimatePinball.BallCtrl;
+using CarterGames.Assets.AudioManager;
 
-namespace Pinball
+namespace CarterGames.UltimatePinball
 {
     public class Flip_Ctrl : InputSettings
     {

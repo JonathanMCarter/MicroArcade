@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Arcade.Leaderboard;
+using CarterGames.Arcade.Leaderboard;
 using System;
 
-namespace Arcade.Saving
+namespace CarterGames.Arcade.Saving
 {
     [System.Serializable]
     public struct PlayerStats

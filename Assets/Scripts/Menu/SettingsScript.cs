@@ -1,13 +1,13 @@
-﻿using Arcade.Saving;
+﻿using CarterGames.Arcade.Saving;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Assertions.Must;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using CarterGames.Arcade.UserInput;
 
-namespace Arcade.Menu
+namespace CarterGames.Arcade.Menu
 {
     public class SettingsScript : MenuSystem
     {

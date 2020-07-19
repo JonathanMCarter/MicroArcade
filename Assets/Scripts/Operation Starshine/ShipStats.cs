@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Starshine
+namespace CarterGames.Starshine
 {
     [CreateAssetMenu(fileName = "Ship Stats SO", menuName = "Arcade/Starshine/Ship Stats")]
     public class ShipStats : ScriptableObject

@@ -1,6 +1,12 @@
 ﻿using UnityEngine;
 
-namespace Arcade
+/*
+*  Copyright (c) Jonathan Carter
+*  E: jonathan@carter.games
+*  W: https://jonathan.carter.games/
+*/
+
+namespace CarterGames.Arcade.UserInput
 {
     public enum Players
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Arcade.Menu
+namespace CarterGames.Arcade.Menu
 {
     public class CreditsCtrl : MenuSystem
     {

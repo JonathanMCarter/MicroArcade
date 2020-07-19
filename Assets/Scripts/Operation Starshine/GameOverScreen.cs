@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Arcade.Menu;
+using CarterGames.Arcade.Menu;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+using CarterGames.Assets.AudioManager;
 
-namespace Starshine
+namespace CarterGames.Starshine
 {
     public class GameOverScreen : MenuSystem
     {
@@ -26,7 +26,7 @@ namespace Starshine
         }
 
 
-        protected override void Update()
+        protected void Update()
         {
             base.Update();
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Starshine
+namespace CarterGames.Starshine
 {
     public class BossCombat : Combat
     {

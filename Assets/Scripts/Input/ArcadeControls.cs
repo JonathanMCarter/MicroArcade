@@ -3,7 +3,7 @@
 /// <summary>
 /// Helper Namespace, this is purely to save writig "input.get....." a million times.
 /// </summary>
-namespace Arcade
+namespace CarterGames.Arcade.UserInput
 {
     /// <summary>
     /// Enum for the controllers, both white (P1) and black (P2)

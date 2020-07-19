@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Arcade.Saving;
+using CarterGames.Arcade.Saving;
 using UnityEngine.SceneManagement;
-using Pinball.BallCtrl;
+using CarterGames.UltimatePinball.BallCtrl;
 
-namespace Pinball
+namespace CarterGames.UltimatePinball
 {
     public class GameManager : MonoBehaviour
     {

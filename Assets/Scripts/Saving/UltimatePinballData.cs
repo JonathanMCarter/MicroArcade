@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace Arcade.Saving
+﻿namespace CarterGames.Arcade.Saving
 {
     [System.Serializable]
     public class UltimatePinballData
@@ -24,7 +20,7 @@ namespace Arcade.Saving
         public int Player2Health = 0;
 
 
-        public UltimatePinballSessionData(Pinball.GameManager.BG_PlayerStats Player1Stats, Pinball.GameManager.BG_PlayerStats Player2Stats)
+        public UltimatePinballSessionData(UltimatePinball.GameManager.BG_PlayerStats Player1Stats, UltimatePinball.GameManager.BG_PlayerStats Player2Stats)
         {
             Player1Name = Player1Stats.Name;
             Player1Score = Player1Stats.Score;

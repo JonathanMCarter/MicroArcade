@@ -1,7 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using CarterGames.Arcade.UserInput;
 
-namespace Arcade.Leaderboard
+/*
+*  Copyright (c) Jonathan Carter
+*  E: jonathan@carter.games
+*  W: https://jonathan.carter.games/
+*/
+
+namespace CarterGames.Arcade.Leaderboard
 {
     public class LeaderboardNavigation : InputSettings
     {

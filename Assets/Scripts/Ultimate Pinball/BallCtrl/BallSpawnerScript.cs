@@ -1,11 +1,16 @@
-﻿using Arcade;
-using Arcade.Saving;
+﻿using CarterGames.Arcade.UserInput;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using CarterGames.Assets.AudioManager;
 
-namespace Pinball.BallCtrl
+/*
+*  Copyright (c) Jonathan Carter
+*  E: jonathan@carter.games
+*  W: https://jonathan.carter.games/
+*/
+
+namespace CarterGames.UltimatePinball.BallCtrl
 {
     public class BallSpawnerScript : MonoBehaviour
     {
@@ -186,7 +191,7 @@ namespace Pinball.BallCtrl
         }
 
 
-        public void SpawnBallCall(Vector3 Pos, Arcade.Joysticks Side)
+        public void SpawnBallCall(Vector3 Pos, Joysticks Side)
         {
             for (int i = 0; i < BallObjectPoolAmount; i++)
             {
@@ -194,11 +199,11 @@ namespace Pinball.BallCtrl
                 {
                     switch (Side)
                     {
-                        case Arcade.Joysticks.White:
+                        case Joysticks.White:
                             BallObjectPool[i].GetComponent<Rigidbody2D>().gravityScale = 1;
                             Debug.LogWarning("1");
                             break;
-                        case Arcade.Joysticks.Black:
+                        case Joysticks.Black:
                             BallObjectPool[i].GetComponent<Rigidbody2D>().gravityScale = -1;
                             Debug.LogWarning("-----1");
                             break;

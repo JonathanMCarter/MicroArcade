@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Arcade;
+using CarterGames.Arcade.UserInput;
+using CarterGames.Assets.AudioManager;
 
-namespace Quacking
+namespace CarterGames.QuackingTime
 {
     public class RoundSelectControl : InputSettings
     {

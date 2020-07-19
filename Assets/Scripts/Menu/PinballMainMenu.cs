@@ -4,9 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
-using Arcade;
+using CarterGames.Arcade.UserInput;
+using CarterGames.Assets.AudioManager;
 
-namespace Arcade.Menu
+namespace CarterGames.Arcade.Menu
 {
     public class PinballMainMenu : InputSettings
     {

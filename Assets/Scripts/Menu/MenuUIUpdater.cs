@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+using CarterGames.Arcade.UserInput;
 
-namespace Arcade.Menu
+namespace CarterGames.Arcade.Menu
 {
     public class MenuUIUpdater : MonoBehaviour
     {

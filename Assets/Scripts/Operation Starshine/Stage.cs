@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Starshine
+namespace CarterGames.Starshine
 {
     [CreateAssetMenu(fileName = "Stage SO", menuName = "Arcade/Starshine/GameStage")]
     public class Stage : ScriptableObject

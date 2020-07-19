@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Arcade;
-using Arcade.Saving;
-using Arcade.Menu;
+using CarterGames.Arcade.UserInput;
+using CarterGames.Arcade.Saving;
+using CarterGames.Arcade.Menu;
 using UnityEngine.UI;
+using CarterGames.Assets.AudioManager;
 
-namespace Starshine
+namespace CarterGames.Starshine
 {
     public class ShipSelection : InputSettings
     {

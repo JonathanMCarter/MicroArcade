@@ -7,7 +7,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-namespace Starshine
+namespace CarterGames.Starshine
 {
     public class EnemyWeapons : MonoBehaviour
     {

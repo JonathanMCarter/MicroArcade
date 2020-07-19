@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using CarterGames.Assets.AudioManager;
 
-namespace Pinball.BallCtrl
+namespace CarterGames.UltimatePinball.BallCtrl
 {
     public class GateScript : MonoBehaviour
     {

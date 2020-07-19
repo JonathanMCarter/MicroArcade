@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Starshine;
+using CarterGames.Starshine;
 
-namespace Arcade.Leaderboard
+namespace CarterGames.Arcade.Leaderboard
 {
     public class LeaderboardUIStarshine : MonoBehaviour
     {

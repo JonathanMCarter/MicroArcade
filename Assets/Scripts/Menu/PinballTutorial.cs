@@ -6,8 +6,9 @@
 
 using UnityEngine;
 using UnityEngine.UI;
+using CarterGames.Assets.AudioManager;
 
-namespace Arcade.Menu
+namespace CarterGames.Arcade.Menu
 {
     public class PinballTutorial : MenuSystem
     {

@@ -87,28 +87,6 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   mosaicSpriteImportData: []
   rigSpriteImportData:
-  - name: Turret-Middle
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 453
-      y: 715
-      width: 193
-      height: 732
-    spriteID: 81920198971287743a2c541d6074e500
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 37, y: 534}
   - name: Turret-Rocket-Right
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -153,6 +131,28 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: -24, y: 534}
+  - name: Turret-Middle
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 453
+      y: 715
+      width: 703
+      height: 703
+    spriteID: 01eccf514968ba145a1e52993ca03a40
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 37, y: 534}
   - name: Body
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -164,7 +164,7 @@ ScriptedImporter:
       y: 4
       width: 703
       height: 703
-    spriteID: 01eccf514968ba145a1e52993ca03a40
+    spriteID: 3c9e86bd2d1c8b54189c4fbc5b8263d5
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -191,8 +191,8 @@ ScriptedImporter:
   documentPivot: {x: 0, y: 0}
   documentAlignment: 7
   importHiddenLayers: 0
-  importedTextureWidth: 1024
-  importedTextureHeight: 2048
+  importedTextureWidth: 128
+  importedTextureHeight: 256
   documentSize: {x: 1024, y: 1024}
   paperDollMode: 0
   keepDupilcateSpriteName: 0
@@ -209,8 +209,8 @@ ScriptedImporter:
     spriteName: Turret-Middle
     isGroup: 0
     parentIndex: -1
-    spriteID: 81920198971287743a2c541d6074e500
-    layerID: 1519434562
+    spriteID: 01eccf514968ba145a1e52993ca03a40
+    layerID: 0
     mosaicPosition: {x: 453, y: 715}
   - name: Turret-Rocket-Right
     spriteName: Turret-Rocket-Right
@@ -230,8 +230,8 @@ ScriptedImporter:
     spriteName: Body
     isGroup: 0
     parentIndex: -1
-    spriteID: 01eccf514968ba145a1e52993ca03a40
-    layerID: 0
+    spriteID: 3c9e86bd2d1c8b54189c4fbc5b8263d5
+    layerID: -911352830
     mosaicPosition: {x: 4, y: 4}
   characterData:
     bones: []

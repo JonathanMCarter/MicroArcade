@@ -1,13 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Arcade.Saving;
-using Arcade.Leaderboard;
-using Arcade;
-using Arcade.UserInput;
+using CarterGames.Arcade.Saving;
+using CarterGames.Arcade.Leaderboard;
+using CarterGames.Arcade.UserInput;
 using UnityEngine.UI;
 
-namespace Pinball.Leaderboard
+namespace CarterGames.UltimatePinball.Leaderboard
 {
     public class UltimatePinballLeaderboardSend : InputSettings
     {

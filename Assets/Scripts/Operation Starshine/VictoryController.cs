@@ -6,13 +6,13 @@
 
 using UnityEngine;
 using UnityEngine.UI;
-using Arcade.Menu;
-using Arcade.Leaderboard;
-using Arcade.Saving;
-using Arcade;
-using Arcade.UserInput;
+using CarterGames.Arcade.Menu;
+using CarterGames.Arcade.Leaderboard;
+using CarterGames.Arcade.Saving;
+using CarterGames.Arcade.UserInput;
+using CarterGames.Assets.AudioManager;
 
-namespace Starshine
+namespace CarterGames.Starshine
 {
     public class VictoryController : MenuSystem
     {

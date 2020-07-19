@@ -4,13 +4,14 @@
 *  W: https://jonathan.carter.games/
 */
 
-using Arcade.Menu;
+using CarterGames.Arcade.Menu;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using CarterGames.Assets.AudioManager;
 
-namespace Arcade
+namespace CarterGames.Arcade.UserInput
 {
     public class PauseScript : MenuSystem
     {

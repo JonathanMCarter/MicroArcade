@@ -6,10 +6,9 @@
 
 using UnityEngine;
 using UnityEngine.UI;
-using Arcade;
 
 
-namespace Arcade.UserInput
+namespace CarterGames.Arcade.UserInput
 {
     public class OnScreenKeyboardHelpText : MonoBehaviour
     {

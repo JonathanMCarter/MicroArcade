@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Arcade.Saving;
-using Arcade.UserInput;
+using CarterGames.Arcade.Saving;
+using CarterGames.Arcade.UserInput;
 
-namespace Pinball
+namespace CarterGames.UltimatePinball
 {
     public class UIUpdater : MonoBehaviour
     {

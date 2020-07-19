@@ -1,13 +1,14 @@
-﻿/*
+﻿using System.Collections;
+using UnityEngine;
+using CarterGames.Arcade.UserInput;
+
+/*
 *  Copyright (c) Jonathan Carter
 *  E: jonathan@carter.games
 *  W: https://jonathan.carter.games/
 */
 
-using System.Collections;
-using UnityEngine;
-
-namespace Pinball.BallCtrl
+namespace CarterGames.UltimatePinball.BallCtrl
 {
     public class CurveTriggerPoint : MonoBehaviour
     {
@@ -29,13 +30,13 @@ namespace Pinball.BallCtrl
         {
             switch (script.LastHit)
             {
-                case Arcade.Joysticks.White:
+                case Joysticks.White:
                     gameManager.Player1Stats.Score += 250;
                     break;
-                case Arcade.Joysticks.Black:
+                case Joysticks.Black:
                     gameManager.Player2Stats.Score += 250;
                     break;
-                case Arcade.Joysticks.None:
+                case Joysticks.None:
                     break;
                 default:
                     break;

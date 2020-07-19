@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Pinball.Leaderboard
+namespace CarterGames.UltimatePinball.Leaderboard
 {
     public class LeaderboardUIPinball : UltimatePinballLeaderboardGet
     {

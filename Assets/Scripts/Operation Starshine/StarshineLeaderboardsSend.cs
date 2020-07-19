@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Arcade;
-using Arcade.Leaderboard;
+using CarterGames.Arcade.UserInput;
+using CarterGames.Arcade.Leaderboard;
 
-namespace Starshine
+namespace CarterGames.Starshine
 {
     public class StarshineLeaderboardsSend : InputSettings
     {

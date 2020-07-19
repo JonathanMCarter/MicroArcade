@@ -1,10 +1,10 @@
-﻿using Arcade.Saving;
+﻿using CarterGames.Arcade.Saving;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Starshine
+namespace CarterGames.Starshine
 {
     public enum Diffuculty
     {

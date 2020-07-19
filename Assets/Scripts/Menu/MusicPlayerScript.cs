@@ -4,13 +4,13 @@
 *  W: https://jonathan.carter.games/
 */
 
-using Arcade.Saving;
+using CarterGames.Arcade.Saving;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
-namespace Arcade.Menu
+namespace CarterGames.Arcade.Menu
 {
     public class MusicPlayerScript : MonoBehaviour
     {

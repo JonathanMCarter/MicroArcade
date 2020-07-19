@@ -96,9 +96,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 715
-      width: 442
-      height: 490
-    spriteID: 0e84a25f3a038824d8fc472104dfdc08
+      width: 703
+      height: 703
+    spriteID: ecb093021eb27ed478b72eefb73e7747
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -120,7 +120,7 @@ ScriptedImporter:
       y: 4
       width: 703
       height: 703
-    spriteID: ecb093021eb27ed478b72eefb73e7747
+    spriteID: 62dda0cb545a6f84d8c0ded0ab5e5ee1
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -147,8 +147,8 @@ ScriptedImporter:
   documentPivot: {x: 0, y: 0}
   documentAlignment: 7
   importHiddenLayers: 0
-  importedTextureWidth: 64
-  importedTextureHeight: 128
+  importedTextureWidth: 256
+  importedTextureHeight: 512
   documentSize: {x: 1024, y: 1024}
   paperDollMode: 0
   keepDupilcateSpriteName: 0
@@ -165,15 +165,15 @@ ScriptedImporter:
     spriteName: Turret
     isGroup: 0
     parentIndex: -1
-    spriteID: 0e84a25f3a038824d8fc472104dfdc08
-    layerID: -728449836
+    spriteID: ecb093021eb27ed478b72eefb73e7747
+    layerID: 0
     mosaicPosition: {x: 4, y: 715}
   - name: Body
     spriteName: Body
     isGroup: 0
     parentIndex: -1
-    spriteID: ecb093021eb27ed478b72eefb73e7747
-    layerID: 0
+    spriteID: 62dda0cb545a6f84d8c0ded0ab5e5ee1
+    layerID: -911352830
     mosaicPosition: {x: 4, y: 4}
   characterData:
     bones: []

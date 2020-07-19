@@ -2,9 +2,9 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using Arcade.Saving;
+using CarterGames.Arcade.Saving;
 
-namespace Arcade
+namespace CarterGames.Arcade.UserInput
 {
     public class InputAssignment : MonoBehaviour
     {

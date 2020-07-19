@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
-using Arcade.Saving;
+using CarterGames.Arcade.Saving;
 
-namespace Arcade.Leaderboard
+namespace CarterGames.Arcade.Leaderboard
 {
     public static class OnlineLeaderboardManager
     {

@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Arcade;
+using CarterGames.Arcade.UserInput;
+using CarterGames.Assets.AudioManager;
 
-namespace Starshine
+namespace CarterGames.Starshine
 {
     [RequireComponent(typeof(Combat))]
     public class PlayerController : ShipManagement

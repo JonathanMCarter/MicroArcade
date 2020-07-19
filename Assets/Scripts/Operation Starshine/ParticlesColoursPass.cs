@@ -6,7 +6,7 @@
 
 using UnityEngine;
 
-namespace Starshine
+namespace CarterGames.Starshine
 {
     public class ParticlesColoursPass : MonoBehaviour
     {

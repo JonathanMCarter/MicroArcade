@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using Arcade;
+using CarterGames.Arcade.UserInput;
 
-namespace Pinball
+namespace CarterGames.UltimatePinball
 {
     public class GameOverScreen : MonoBehaviour
     {

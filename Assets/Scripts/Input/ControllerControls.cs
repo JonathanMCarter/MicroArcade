@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Arcade
+namespace CarterGames.Arcade.UserInput
 {
     public enum ControllerButtons
     {

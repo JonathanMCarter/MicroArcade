@@ -6,9 +6,9 @@
 
 using UnityEngine;
 using UnityEngine.Audio;
-using Arcade.Saving;
+using CarterGames.Arcade.Saving;
 
-namespace Arcade.Menu
+namespace CarterGames.Arcade.Menu
 {
     public class MicroArcadeSetup : MonoBehaviour
     {

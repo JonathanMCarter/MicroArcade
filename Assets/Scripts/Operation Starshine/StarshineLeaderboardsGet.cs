@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
-using Arcade.Leaderboard;
-using Arcade.Saving;
+using CarterGames.Arcade.Leaderboard;
+using CarterGames.Arcade.Saving;
 
-namespace Starshine
+namespace CarterGames.Starshine
 {
     public class StarshineLeaderboardsGet : MonoBehaviour
     {

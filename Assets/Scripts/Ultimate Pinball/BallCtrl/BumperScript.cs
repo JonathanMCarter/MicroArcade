@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Arcade;
+using CarterGames.Arcade.UserInput;
+using CarterGames.Assets.AudioManager;
 
-namespace Pinball.BallCtrl
+namespace CarterGames.UltimatePinball.BallCtrl
 {
     public class BumperScript : MonoBehaviour
     {

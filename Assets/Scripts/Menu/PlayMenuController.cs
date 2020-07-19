@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Arcade.Menu
+namespace CarterGames.Arcade.Menu
 {
     [RequireComponent(typeof(MenuSystem))]
     public class PlayMenuController : MenuSystem

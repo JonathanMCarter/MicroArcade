@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Arcade.Saving;
+using CarterGames.Arcade.Saving;
 using System.Linq;
 
-namespace Arcade
+namespace CarterGames.Arcade.UserInput
 {
     public enum SupportedControllers
     {

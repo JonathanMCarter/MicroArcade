@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Arcade;
-using Arcade.UserInput;
-using Arcade.Saving;
+using CarterGames.Arcade.UserInput;
+using CarterGames.Arcade.Saving;
 
 
-namespace Starshine
+namespace CarterGames.Starshine
 {
     public class StarshineUIUpdater : MonoBehaviour
     {

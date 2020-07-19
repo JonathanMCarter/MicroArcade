@@ -87,28 +87,6 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   mosaicSpriteImportData: []
   rigSpriteImportData:
-  - name: Layer 8
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 819
-      width: 783
-      height: 783
-    spriteID: 86ce79781736321409c80e9b2c8f84ba
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: -117, y: 699}
   - name: Background
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -241,6 +219,28 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 697, y: 1441}
+  - name: Layer 8
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 819
+      width: 775
+      height: 773
+    spriteID: 6eb302ba96db0c54e90de07bb7f4e931
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -117, y: 699}
   - name: Layer 2
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -252,7 +252,7 @@ ScriptedImporter:
       y: 786
       width: 775
       height: 773
-    spriteID: 6eb302ba96db0c54e90de07bb7f4e931
+    spriteID: 3df3f53340333d04791ff5a22390802d
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -279,8 +279,8 @@ ScriptedImporter:
   documentPivot: {x: 0, y: 0}
   documentAlignment: 7
   importHiddenLayers: 0
-  importedTextureWidth: 128
-  importedTextureHeight: 256
+  importedTextureWidth: 256
+  importedTextureHeight: 512
   documentSize: {x: 1024, y: 1024}
   paperDollMode: 0
   keepDupilcateSpriteName: 0
@@ -297,8 +297,8 @@ ScriptedImporter:
     spriteName: Layer 8
     isGroup: 0
     parentIndex: -1
-    spriteID: 86ce79781736321409c80e9b2c8f84ba
-    layerID: -7500609
+    spriteID: 6eb302ba96db0c54e90de07bb7f4e931
+    layerID: 0
     mosaicPosition: {x: 4, y: 819}
   - name: Background
     spriteName: Background
@@ -346,8 +346,8 @@ ScriptedImporter:
     spriteName: Layer 2
     isGroup: 0
     parentIndex: -1
-    spriteID: 6eb302ba96db0c54e90de07bb7f4e931
-    layerID: 0
+    spriteID: 3df3f53340333d04791ff5a22390802d
+    layerID: -7500619
     mosaicPosition: {x: 819, y: 786}
   characterData:
     bones: []

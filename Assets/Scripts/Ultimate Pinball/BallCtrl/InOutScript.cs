@@ -1,8 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using CarterGames.Assets.AudioManager;
+using CarterGames.Arcade.UserInput;
 
-namespace Pinball.BallCtrl
+/*
+*  Copyright (c) Jonathan Carter
+*  E: jonathan@carter.games
+*  W: https://jonathan.carter.games/
+*/
+
+namespace CarterGames.UltimatePinball.BallCtrl
 {
     public class InOutScript : MonoBehaviour
     {
@@ -18,7 +26,7 @@ namespace Pinball.BallCtrl
         [Header("Delay Amount")]
         public float InOutDelay;
 
-        public Arcade.Joysticks Side;
+        public Joysticks Side;
         BallSpawnerScript BSS;
 
         AudioManager AM;
@@ -58,13 +66,13 @@ namespace Pinball.BallCtrl
 
             switch (Script.LastHit)
             {
-                case Arcade.Joysticks.White:
+                case Joysticks.White:
                     GM.Player1Stats.Score += 500;
                     break;
-                case Arcade.Joysticks.Black:
+                case Joysticks.Black:
                     GM.Player2Stats.Score += 500;
                     break;
-                case Arcade.Joysticks.None:
+                case Joysticks.None:
                     break;
                 default:
                     break;
