@@ -13,7 +13,7 @@ using UnityEngine;
 */
 namespace CarterGames.Assets.AudioManager
 {
-    [System.Serializable, CreateAssetMenu(fileName = "Audio Manager File", menuName = "Carter Games/Audio Manager File")]
+    [System.Serializable, CreateAssetMenu(fileName = "Audio Manager File", menuName = "Carter SceneOptions/Audio Manager File")]
     public class AudioManagerFile : ScriptableObject
     {
         public List<string> clipName;

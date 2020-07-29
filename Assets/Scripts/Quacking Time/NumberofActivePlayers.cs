@@ -16,11 +16,11 @@ namespace CarterGames.QuackingTime
 
         private bool IsCoRunning;
 
-        public AudioManager AM;
+        public AudioManager am;
 
         private void Start()
         {
-            AM = FindObjectOfType<AudioManager>();
+            am = FindObjectOfType<AudioManager>();
         }
 
         private void Update()
@@ -32,7 +32,7 @@ namespace CarterGames.QuackingTime
 
             if (Input.GetButtonDown("JumpP1"))
             {
-                AM.Play("Menu_Select", .75f);
+                am.Play("Menu_Select", .75f);
                 SetNumberofPlayers(Selection);
             }
         }
@@ -45,13 +45,13 @@ namespace CarterGames.QuackingTime
             {
                 if (Selection < MaxSelection) { Selection++; }
                 else { Selection = 0; }
-                AM.Play("Menu_Switch", .5f);
+                am.Play("Menu_Switch", .5f);
             }
             else if (Input.GetAxis("HorizontalP1") < 0)
             {
                 if (Selection > 0) { Selection--; }
                 else { Selection = MaxSelection; }
-                AM.Play("Menu_Switch", .5f);
+                am.Play("Menu_Switch", .5f);
             }
 
 

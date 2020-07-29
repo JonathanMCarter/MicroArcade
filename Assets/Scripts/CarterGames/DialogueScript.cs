@@ -48,7 +48,7 @@ public class DialogueScript : MonoBehaviour
 	[Header("Type Writer Settings")]
 	public int TypeWriterCount = 1;
 
-    public AudioManager AM;
+    public AudioManager am;
 
     private void Update()
     {
@@ -161,7 +161,7 @@ public class DialogueScript : MonoBehaviour
             FileHasEnded = true;
         }
 
-        AM.PlayFromTime("Dial", 1.8f, .5f, Random.Range(.75f, 1.1f));
+        am.PlayFromTime("Dial", 1.8f, .5f, Random.Range(.75f, 1.1f));
         yield return new WaitForSeconds(Delay);
         
         IsCoRunning = false;

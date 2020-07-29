@@ -1,25 +1,36 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
+
+/*
+*  Copyright (c) Jonathan Carter
+*  E: jonathan@carter.games
+*  W: https://jonathan.carter.games/
+*/
 
 namespace CarterGames.Arcade.Menu
 {
-    [RequireComponent(typeof(MenuSystem))]
-    public class PlayMenuController : MenuSystem
+    public class PlayMenuController : MenuSystem, IMenuSceneChanger
     {
-        public List<GameObject> Games;
-        public List<Image> Pips;
-        public List<string> GameSceneNames;
-        public Animator Trans;
-        public Color32 SelectedColour;
+        public string[] SceneNames { get { return this.sceneNames; } set { } }
+        public GameObject[] SceneOptions { get { return this.sceneOptions; } set { } }
+        public Animator SceneTransition { get { return this.sceneTransition; } set { } }
+
+    
+        [SerializeField] private string[] sceneNames;
+        [SerializeField] private GameObject[] sceneOptions;
+        [SerializeField] private Animator sceneTransition;
+        [SerializeField] private Image[] pips;
+        [SerializeField] private Color SelectedColour;
+
+
 
         protected override void Start()
         {
             base.Start();
             UpdateDisplay();
-            MaxPos = Games.Count - 1;
+            maxPos = SceneOptions.Length - 1;
         }
+
 
         protected override void Update()
         {
@@ -30,37 +41,36 @@ namespace CarterGames.Arcade.Menu
             if (Return()) { ReturnToMainMenu(); }
         }
 
-        void UpdateDisplay()
+
+        public void UpdateDisplay()
         {
-            for (int i = 0; i < Games.Count; i++)
+            for (int i = 0; i < SceneOptions.Length; i++)
             {
-                if ((i == Pos) && (!Games[i].activeSelf))
+                if ((i == pos) && (!SceneOptions[i].activeSelf))
                 {
-                    Debug.Log(Pos);
-                    Games[i].SetActive(true);
-                    Pips[i].color = SelectedColour;
+                    Debug.Log(pos);
+                    SceneOptions[i].SetActive(true);
+                    pips[i].color = SelectedColour;
                 }
-                else if ((i != Pos) && (Games[i].activeSelf))
+                else if ((i != pos) && (SceneOptions[i].activeSelf))
                 {
-                    Games[i].SetActive(false);
-                    Pips[i].color = Color.white;
+                    SceneOptions[i].SetActive(false);
+                    pips[i].color = Color.white;
                 }
             }
         }
 
 
-        void GoToGameMenu()
+        private void GoToGameMenu()
         {
-            //Trans.SetFloat("Multi", 2f);
-            Trans.SetBool("ChangeScene", true);
-            ChangeScene(GameSceneNames[Pos]);
+            SceneTransition.SetBool("ChangeScene", true);
+            ChangeScene(SceneNames[pos]);
         }
 
 
-        void ReturnToMainMenu()
+        private void ReturnToMainMenu()
         {
-            //Trans.SetFloat("Multi", 2f);
-            Trans.SetBool("ChangeScene", true);
+            SceneTransition.SetBool("ChangeScene", true);
             ChangeScene("MainMenu");
         }
     }

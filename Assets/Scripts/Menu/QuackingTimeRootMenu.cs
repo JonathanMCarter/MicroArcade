@@ -31,8 +31,8 @@ namespace CarterGames.QuackingTime
 
         private new void Start()
         {
-            AM = menuAudioManager;
-            MaxPos = optionsText.Length - 1;
+            am = menuAudioManager;
+            maxPos = optionsText.Length - 1;
             MenuSystemStart();
             UpdateDisplay();
         }
@@ -53,16 +53,16 @@ namespace CarterGames.QuackingTime
 
                 if (Confirm())
                 {
-                    switch (Pos)
+                    switch (pos)
                     {
                         case 0:
                             quackingTimeMenuChanger.OpenRoundsmenu();
-                            AM.Play("Menu-Confirm", .25f);
+                            am.Play("Menu-Confirm", .25f);
                             isTutorial = false;
                             isRoot = false;
                             break;
                         case 1:
-                            AM.Play("Menu-Confirm", .25f);
+                            am.Play("Menu-Confirm", .25f);
                             isTutorial = true;
                             isRoot = false;
                             break;
@@ -107,11 +107,11 @@ namespace CarterGames.QuackingTime
         {
             for (int i = 0; i < optionsText.Length; i++)
             {
-                if (Pos == i && optionsText[i].color != optionColours[1])
+                if (pos == i && optionsText[i].color != optionColours[1])
                 {
                     optionsText[i].color = optionColours[1];
                 }
-                else if (Pos != i && optionsText[i].color != optionColours[0])
+                else if (pos != i && optionsText[i].color != optionColours[0])
                 {
                     optionsText[i].color = optionColours[0];
                 }

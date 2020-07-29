@@ -70,7 +70,7 @@ namespace CarterGames.Starshine
         bool IsFrozen;
         internal Vector2 GunshipDirection;
 
-        public AudioManager AM;
+        public AudioManager am;
 
 
         // Ship Mission Stats for Victory / End Screen....
@@ -96,8 +96,8 @@ namespace CarterGames.Starshine
 
             if (FindObjectOfType<AudioManager>())
             {
-                AM = FindObjectOfType<AudioManager>();
-                AM.UpdateLibrary();
+                am = FindObjectOfType<AudioManager>();
+                am.UpdateLibrary();
             }
         }
 
@@ -234,7 +234,7 @@ namespace CarterGames.Starshine
                         if (transform.GetChild(transform.childCount - 1).GetComponent<MeshRenderer>().enabled)
                         {
                             transform.GetChild(transform.childCount - 1).GetComponent<MeshRenderer>().enabled = false;
-                            AM.Play("ShieldDown", .25f);
+                            am.Play("ShieldDown", .25f);
                         }
                     }
                 }
@@ -368,13 +368,13 @@ namespace CarterGames.Starshine
             GetComponent<PlayerController>().enabled = false;
             Go.GetComponent<LineRenderer>().startColor = new Color32(217, 195, 219, 50);
             Go.GetComponent<LineRenderer>().enabled = true;
-            AM.Play("LaserPowerUp", .4f);
+            am.Play("LaserPowerUp", .4f);
             yield return new WaitForSeconds(.35f);
             Go.GetComponent<BoxCollider2D>().enabled = true;
             Go.GetComponent<LineRenderer>().SetPosition(0, transform.GetChild(0).position);
             Go.GetComponent<LineRenderer>().SetPosition(1, new Vector3(transform.GetChild(0).position.x, transform.GetChild(0).position.y + 30, transform.GetChild(0).position.z));
             Go.GetComponent<LineRenderer>().startColor = new Color32(194, 86, 204, 150);
-            AM.Play("LaserShoot", .4f);
+            am.Play("LaserShoot", .4f);
             yield return new WaitForSeconds(.35f);
             GetComponent<PlayerController>().enabled = true;
             Go.GetComponent<BoxCollider2D>().enabled = false;
@@ -455,7 +455,7 @@ namespace CarterGames.Starshine
 
                 for (int i = 0; i < 8; i++)
                 {
-                    AM.Play("MissileShoot", .15f);
+                    am.Play("MissileShoot", .15f);
                     GameObject currentMissile = GetComponent<Enemies>().EmWeapons.GetMissile();
                     currentMissile.GetComponent<MissileScript>().isRocketAngel = true;
                     currentMissile.transform.position = transform.position;
@@ -972,7 +972,7 @@ namespace CarterGames.Starshine
         IEnumerator AlphaDodge()
         {
             IsAlphaDodging = true;
-            AM.Play("Alpha", .5f);
+            am.Play("Alpha", .5f);
             GetComponent<PolygonCollider2D>().enabled = false;
             GetComponent<SpriteRenderer>().color = ColourAlphaChangeToFrom50(GetComponent<SpriteRenderer>().color);
             CanShootMain = false;
@@ -1015,14 +1015,14 @@ namespace CarterGames.Starshine
         {
             IsAttackTorpFired = true;
 
-            AM.PlayFromTime("TorpedoSounds", 7.9f, .5f);
+            am.PlayFromTime("TorpedoSounds", 7.9f, .5f);
 
             if (SpecialWeapon)
             {
                 GameObject Go = GetSpecWeaponObj();
-                Vector3 Pos = new Vector3(transform.position.x, transform.GetChild(0).transform.position.y, 0);
+                Vector3 pos = new Vector3(transform.position.x, transform.GetChild(0).transform.position.y, 0);
 
-                Go.transform.position = Pos;
+                Go.transform.position = pos;
                 Go.SetActive(true);
 
                 Go.GetComponent<Damage>().DMG = (int)SpecialWeapon.Damage[(int)GM.ActiveStage];
@@ -1059,7 +1059,7 @@ namespace CarterGames.Starshine
                 for (int i = 0; i < 3; i++)
                 {
                     OneVolley();
-                    AM.PlayFromTime("TorpedoSounds", 7.9f, .5f);
+                    am.PlayFromTime("TorpedoSounds", 7.9f, .5f);
                     yield return new WaitForSeconds(.4f);
                 }
 
@@ -1110,7 +1110,7 @@ namespace CarterGames.Starshine
         {
             if ((CanUseSpecialMove))
             {
-                AM.Play("Inter", .5f);
+                am.Play("Inter", .5f);
 
                 if (Shield > 10)
                 {
@@ -1147,7 +1147,7 @@ namespace CarterGames.Starshine
         IEnumerator UnityTeleport()
         {
             IsTeleporting = true;
-            AM.Play("Unity", .5f);
+            am.Play("Unity", .5f);
             GetComponent<PolygonCollider2D>().enabled = false;
             GetComponent<SpriteRenderer>().color = ColourAlphaChangeToFrom50(GetComponent<SpriteRenderer>().color);
             transform.position = new Vector3(transform.position.x + GunshipDirection.x * 4, transform.position.y + GunshipDirection.y * 4, transform.position.z);

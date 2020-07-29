@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using CarterGames.Assets.AudioManager;
@@ -15,16 +14,15 @@ namespace CarterGames.Arcade.Menu
 {
     public class MenuSystem : InputSettings
     {
-        [HideInInspector]
-        public int LastPos;
-        [HideInInspector]
-        public int Pos;
-        [HideInInspector]
-        public int MaxPos;
-        bool IsCo;
-        public bool InputReady;
+        private bool isCoR;
 
-        internal AudioManager AM;
+        internal int lastPos;
+        internal int pos;
+        internal int maxPos;
+        internal bool inputReady;
+        internal AudioManager am;
+
+
 
         protected virtual void Start()
         {
@@ -34,7 +32,7 @@ namespace CarterGames.Arcade.Menu
 
         public bool Confirm()
         {
-            if (InputReady)
+            if (inputReady)
             {
                 switch (ControllerType)
                 {
@@ -76,7 +74,7 @@ namespace CarterGames.Arcade.Menu
 
         public bool Confirm(ControllerButtons DesiredButton)
         {
-            if (InputReady)
+            if (inputReady)
             {
                 switch (ControllerType)
                 {
@@ -118,7 +116,7 @@ namespace CarterGames.Arcade.Menu
 
         public bool Return()
         {
-            if (InputReady)
+            if (inputReady)
             {
                 switch (ControllerType)
                 {
@@ -160,7 +158,7 @@ namespace CarterGames.Arcade.Menu
 
         public bool Return(ControllerButtons DesiredButton)
         {
-            if (InputReady)
+            if (inputReady)
             {
                 switch (ControllerType)
                 {
@@ -206,32 +204,32 @@ namespace CarterGames.Arcade.Menu
             {
                 case SupportedControllers.ArcadeBoard:
 
-                    if ((ArcadeControls.JoystickUp(Joysticks.White)) && (!IsCo)) { StartCoroutine(MoveAround(-1)); }
-                    if ((ArcadeControls.JoystickDown(Joysticks.White)) && (!IsCo)) { StartCoroutine(MoveAround(1)); }
+                    if ((ArcadeControls.JoystickUp(Joysticks.White)) && (!isCoR)) { StartCoroutine(MoveAround(-1)); }
+                    if ((ArcadeControls.JoystickDown(Joysticks.White)) && (!isCoR)) { StartCoroutine(MoveAround(1)); }
 
                     break;
                 case SupportedControllers.GamePadBoth:
 
-                    if ((ControllerControls.ControllerUp(Players.P1)) && (!IsCo)) { StartCoroutine(MoveAround(-1)); }
-                    if ((ControllerControls.ControllerDown(Players.P1)) && (!IsCo)) { StartCoroutine(MoveAround(1)); }
+                    if ((ControllerControls.ControllerUp(Players.P1)) && (!isCoR)) { StartCoroutine(MoveAround(-1)); }
+                    if ((ControllerControls.ControllerDown(Players.P1)) && (!isCoR)) { StartCoroutine(MoveAround(1)); }
 
                     break;
                 case SupportedControllers.KeyboardBoth:
 
-                    if ((KeyboardControls.KeyboardUp(Players.P1)) && (!IsCo)) { StartCoroutine(MoveAround(-1)); }
-                    if ((KeyboardControls.KeyboardDown(Players.P1)) && (!IsCo)) { StartCoroutine(MoveAround(1)); }
+                    if ((KeyboardControls.KeyboardUp(Players.P1)) && (!isCoR)) { StartCoroutine(MoveAround(-1)); }
+                    if ((KeyboardControls.KeyboardDown(Players.P1)) && (!isCoR)) { StartCoroutine(MoveAround(1)); }
 
                     break;
                 case SupportedControllers.KeyboardP1ControllerP2:
 
-                    if ((KeyboardControls.KeyboardUp(Players.P1)) && (!IsCo)) { StartCoroutine(MoveAround(-1)); }
-                    if ((KeyboardControls.KeyboardDown(Players.P1)) && (!IsCo)) { StartCoroutine(MoveAround(1)); }
+                    if ((KeyboardControls.KeyboardUp(Players.P1)) && (!isCoR)) { StartCoroutine(MoveAround(-1)); }
+                    if ((KeyboardControls.KeyboardDown(Players.P1)) && (!isCoR)) { StartCoroutine(MoveAround(1)); }
 
                     break;
                 case SupportedControllers.KeyboardP2ControllerP1:
 
-                    if ((ControllerControls.ControllerUp(Players.P1)) && (!IsCo)) { StartCoroutine(MoveAround(-1)); }
-                    if ((ControllerControls.ControllerDown(Players.P1)) && (!IsCo)) { StartCoroutine(MoveAround(1)); }
+                    if ((ControllerControls.ControllerUp(Players.P1)) && (!isCoR)) { StartCoroutine(MoveAround(-1)); }
+                    if ((ControllerControls.ControllerDown(Players.P1)) && (!isCoR)) { StartCoroutine(MoveAround(1)); }
 
                     break;
                 default:
@@ -246,32 +244,32 @@ namespace CarterGames.Arcade.Menu
             {
                 case SupportedControllers.ArcadeBoard:
 
-                    if ((ArcadeControls.JoystickLeft(Joysticks.White)) && (!IsCo)) { StartCoroutine(MoveAround(-1)); }
-                    if ((ArcadeControls.JoystickRight(Joysticks.White)) && (!IsCo)) { StartCoroutine(MoveAround(1)); }
+                    if ((ArcadeControls.JoystickLeft(Joysticks.White)) && (!isCoR)) { StartCoroutine(MoveAround(-1)); }
+                    if ((ArcadeControls.JoystickRight(Joysticks.White)) && (!isCoR)) { StartCoroutine(MoveAround(1)); }
 
                     break;
                 case SupportedControllers.GamePadBoth:
 
-                    if ((ControllerControls.ControllerLeft(Players.P1)) && (!IsCo)) { StartCoroutine(MoveAround(-1)); }
-                    if ((ControllerControls.ControllerRight(Players.P1)) && (!IsCo)) { StartCoroutine(MoveAround(1)); }
+                    if ((ControllerControls.ControllerLeft(Players.P1)) && (!isCoR)) { StartCoroutine(MoveAround(-1)); }
+                    if ((ControllerControls.ControllerRight(Players.P1)) && (!isCoR)) { StartCoroutine(MoveAround(1)); }
 
                     break;
                 case SupportedControllers.KeyboardBoth:
 
-                    if ((KeyboardControls.KeyboardLeft(Players.P1)) && (!IsCo)) { StartCoroutine(MoveAround(-1)); }
-                    if ((KeyboardControls.KeyboardRight(Players.P1)) && (!IsCo)) { StartCoroutine(MoveAround(1)); }
+                    if ((KeyboardControls.KeyboardLeft(Players.P1)) && (!isCoR)) { StartCoroutine(MoveAround(-1)); }
+                    if ((KeyboardControls.KeyboardRight(Players.P1)) && (!isCoR)) { StartCoroutine(MoveAround(1)); }
 
                     break;
                 case SupportedControllers.KeyboardP1ControllerP2:
 
-                    if ((KeyboardControls.KeyboardLeft(Players.P1)) && (!IsCo)) { StartCoroutine(MoveAround(-1)); }
-                    if ((KeyboardControls.KeyboardRight(Players.P1)) && (!IsCo)) { StartCoroutine(MoveAround(1)); }
+                    if ((KeyboardControls.KeyboardLeft(Players.P1)) && (!isCoR)) { StartCoroutine(MoveAround(-1)); }
+                    if ((KeyboardControls.KeyboardRight(Players.P1)) && (!isCoR)) { StartCoroutine(MoveAround(1)); }
 
                     break;
                 case SupportedControllers.KeyboardP2ControllerP1:
 
-                    if ((ControllerControls.ControllerLeft(Players.P1)) && (!IsCo)) { StartCoroutine(MoveAround(-1)); }
-                    if ((ControllerControls.ControllerRight(Players.P1)) && (!IsCo)) { StartCoroutine(MoveAround(1)); }
+                    if ((ControllerControls.ControllerLeft(Players.P1)) && (!isCoR)) { StartCoroutine(MoveAround(-1)); }
+                    if ((ControllerControls.ControllerRight(Players.P1)) && (!isCoR)) { StartCoroutine(MoveAround(1)); }
 
                     break;
                 default:
@@ -282,55 +280,55 @@ namespace CarterGames.Arcade.Menu
 
         public void MenuSystemStart()
         {
-            LastPos = Pos;
-            IsCo = false;
-            InputReady = true;
+            lastPos = pos;
+            isCoR = false;
+            inputReady = true;
 
             if (GetComponent<AudioManager>())
             {
-                AM = GetComponent<AudioManager>();
-                AM.UpdateLibrary();
+                am = GetComponent<AudioManager>();
+                am.UpdateLibrary();
             }
         }
 
 
         IEnumerator MoveAround(int Value)
         {
-            IsCo = true;
+            isCoR = true;
 
-            LastPos = Pos;
-            Pos += Value;
+            lastPos = pos;
+            pos += Value;
 
-            if (Pos == (MaxPos + 1))  {  Pos = 0;  }
-            else if (Pos == -1)  {  Pos = MaxPos;   }
+            if (pos == (maxPos + 1))  {  pos = 0;  }
+            else if (pos == -1)  {  pos = maxPos;   }
 
-            if (AM)
+            if (am)
             {
-                AM.Play("Menu_Click", Random.Range(.65f, .85f), Random.Range(.85f, 1.15f));
+                am.Play("Menu_Click", Random.Range(.65f, .85f), Random.Range(.85f, 1.15f));
             }
 
             yield return new WaitForSecondsRealtime(.25f);
-            IsCo = false;
+            isCoR = false;
         }
 
 
         IEnumerator InputLag()
         {
-            InputReady = false;
+            inputReady = false;
             yield return new WaitForSecondsRealtime(.25f);
-            InputReady = true;
+            inputReady = true;
         }
 
 
         public void Reset()
         {
-            Pos = 0;
+            pos = 0;
         }
 
 
         public bool ValueChanged()
         {
-            if (LastPos != Pos) { return true; }
+            if (lastPos != pos) { return true; }
             else { return false; }
         }
 
@@ -343,15 +341,15 @@ namespace CarterGames.Arcade.Menu
 
         IEnumerator ChangeToScene(string NewScene, float Delay = 1.25f)
         {
-            InputReady = false;
-            AM.Play("Menu-Confirm", Random.Range(.65f, .85f));
+            inputReady = false;
+            am.Play("Menu-Confirm", Random.Range(.65f, .85f));
             yield return new WaitForSecondsRealtime(Delay);
             AsyncOperation Async = SceneManager.LoadSceneAsync(NewScene);
             Async.allowSceneActivation = false;
             yield return new WaitForSecondsRealtime(.1f);
             Async.allowSceneActivation = true;
             yield return new WaitForSecondsRealtime(.1f);
-            InputReady = true;
+            inputReady = true;
         }
 
 
@@ -361,32 +359,32 @@ namespace CarterGames.Arcade.Menu
             {
                 case SupportedControllers.ArcadeBoard:
 
-                    if ((ArcadeControls.JoystickLeft(Joysticks.White)) && (!IsCo)) { return -1; }
-                    if ((ArcadeControls.JoystickRight(Joysticks.White)) && (!IsCo)) { return 1; }
+                    if ((ArcadeControls.JoystickLeft(Joysticks.White)) && (!isCoR)) { return -1; }
+                    if ((ArcadeControls.JoystickRight(Joysticks.White)) && (!isCoR)) { return 1; }
                     else { return 0; }
 
                 case SupportedControllers.GamePadBoth:
 
-                    if ((ControllerControls.ControllerLeft(Players.P1)) && (!IsCo)) { return -1; }
-                    if ((ControllerControls.ControllerRight(Players.P1)) && (!IsCo)) { return 1; }
+                    if ((ControllerControls.ControllerLeft(Players.P1)) && (!isCoR)) { return -1; }
+                    if ((ControllerControls.ControllerRight(Players.P1)) && (!isCoR)) { return 1; }
                     else { return 0; }
 
                 case SupportedControllers.KeyboardBoth:
 
-                    if ((KeyboardControls.KeyboardLeft(Players.P1)) && (!IsCo)) { return -1; }
-                    if ((KeyboardControls.KeyboardRight(Players.P1)) && (!IsCo)) { return 1; }
+                    if ((KeyboardControls.KeyboardLeft(Players.P1)) && (!isCoR)) { return -1; }
+                    if ((KeyboardControls.KeyboardRight(Players.P1)) && (!isCoR)) { return 1; }
                     else { return 0; }
 
                 case SupportedControllers.KeyboardP1ControllerP2:
 
-                    if ((KeyboardControls.KeyboardLeft(Players.P1)) && (!IsCo)) { return -1; }
-                    if ((KeyboardControls.KeyboardRight(Players.P1)) && (!IsCo)) { return 1; }
+                    if ((KeyboardControls.KeyboardLeft(Players.P1)) && (!isCoR)) { return -1; }
+                    if ((KeyboardControls.KeyboardRight(Players.P1)) && (!isCoR)) { return 1; }
                     else { return 0; }
 
                 case SupportedControllers.KeyboardP2ControllerP1:
 
-                    if ((ControllerControls.ControllerLeft(Players.P1)) && (!IsCo)) { return -1; }
-                    if ((ControllerControls.ControllerRight(Players.P1)) && (!IsCo)) { return 1; }
+                    if ((ControllerControls.ControllerLeft(Players.P1)) && (!isCoR)) { return -1; }
+                    if ((ControllerControls.ControllerRight(Players.P1)) && (!isCoR)) { return 1; }
                     else { return 0; }
 
                 default:

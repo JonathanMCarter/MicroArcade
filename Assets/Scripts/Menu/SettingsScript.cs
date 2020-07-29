@@ -48,9 +48,9 @@ namespace CarterGames.Arcade.Menu
 
         protected new void Start()
         {
-            MaxPos = Screens.Count - 1;
+            maxPos = Screens.Count - 1;
 
-            LastPos = 5;
+            lastPos = 5;
 
             // Update Pips
             UpdatePips();
@@ -70,7 +70,7 @@ namespace CarterGames.Arcade.Menu
             Mixer.SetFloat("MusicVolume", MusicVolume);
             Mixer.SetFloat("SFXVolume", SFXVolume);
 
-            InputReady = true;
+            inputReady = true;
 
             base.Start();
          }
@@ -133,10 +133,10 @@ namespace CarterGames.Arcade.Menu
         {
             if (Confirm())
             {
-                Option = (SettingMenuOption)Pos;
-                Screens[Pos].GetComponent<CanvasGroup>().alpha = 1;
-                Pos = 0;
-                LastPos = -1;
+                Option = (SettingMenuOption)pos;
+                Screens[pos].GetComponent<CanvasGroup>().alpha = 1;
+                pos = 0;
+                lastPos = -1;
                 CurrentStage = Stage.ChooseSetting;
             }
             else if (Return())
@@ -154,7 +154,7 @@ namespace CarterGames.Arcade.Menu
             {
                 case SettingMenuOption.Audio:
 
-                    MaxPos = AudioOptions.Count - 1;
+                    maxPos = AudioOptions.Count - 1;
                     UpdateAudioDisplay();
 
                     // Audio Controls
@@ -164,9 +164,9 @@ namespace CarterGames.Arcade.Menu
                         AudioOptions[1].GetComponent<Slider>().value = SFXVolume;
 
                         CurrentStage = Stage.EditSetting;
-                        AudioOptions[Pos].transform.parent.GetComponentInChildren<Text>().color = Color.green;
+                        AudioOptions[pos].transform.parent.GetComponentInChildren<Text>().color = Color.green;
 
-                        if (Pos == 0)
+                        if (pos == 0)
                         {
                             SettingText.text = "Editing Music Volume...";
                         }
@@ -184,13 +184,13 @@ namespace CarterGames.Arcade.Menu
                     break;
                 case SettingMenuOption.Info:
 
-                    MaxPos = GameplayOptions.Count - 1;
+                    maxPos = GameplayOptions.Count - 1;
                     UpdateInfoDisplay();
 
                     Pips[0].color = ActiveCol;
                     Pips[1].color = InactiveCol;
 
-                    if (Pos == 0)
+                    if (pos == 0)
                     {
                         if (Confirm())
                         {
@@ -203,17 +203,17 @@ namespace CarterGames.Arcade.Menu
                         {
                             if (ControllerType == SupportedControllers.ArcadeBoard || ControllerType == SupportedControllers.GamePadBoth || ControllerType == SupportedControllers.KeyboardBoth)
                             {
-                                GameplayOptions[Pos].GetComponent<Text>().color = Color.red;
+                                GameplayOptions[pos].GetComponent<Text>().color = Color.red;
                                 SettingText.text = "You can't do this... your controllers are not mixed...";
                             }
                         }
                     }
-                    else if (Pos == 1)
+                    else if (pos == 1)
                     {
                         if (Confirm())
                         {
                             SettingText.text = "Reset Save Data?";
-                            GameplayOptions[Pos].GetComponent<Text>().color = Color.green;
+                            GameplayOptions[pos].GetComponent<Text>().color = Color.green;
                             ConfirmResetText.SetActive(true);
                             CurrentStage = Stage.EditSetting;
                         }
@@ -227,9 +227,9 @@ namespace CarterGames.Arcade.Menu
             if (Return())
             {
                 Screens[(int)Option].GetComponent<CanvasGroup>().alpha = .5f;
-                Pos = (int)Option;
+                pos = (int)Option;
 
-                if (Pos == 0)
+                if (pos == 0)
                 {
                     Pips[0].color = ActiveCol;
                     Pips[1].color = InactiveCol;
@@ -240,7 +240,7 @@ namespace CarterGames.Arcade.Menu
                     Pips[1].color = ActiveCol;
                 }
 
-                MaxPos = Screens.Count - 1;
+                maxPos = Screens.Count - 1;
                 UpdateDisplay();
                 UpdatePips();
                 AudioOptions[0].transform.parent.GetComponentInChildren<Text>().color = Color.white;
@@ -266,7 +266,7 @@ namespace CarterGames.Arcade.Menu
                         MusicVolume = AudioOptions[0].GetComponent<Slider>().value;
                         SFXVolume = AudioOptions[1].GetComponent<Slider>().value;
 
-                        if (Pos == 0)
+                        if (pos == 0)
                         {
                             Mixer.SetFloat("MusicVolume", MusicVolume);
                             SettingText.text = "Music Volume Set To: " + MusicVolume.ToString("00");
@@ -314,15 +314,15 @@ namespace CarterGames.Arcade.Menu
 
         void UpdatePips()
         {
-            if (LastPos != Pos)
+            if (lastPos != pos)
             {
                 for (int i = 0; i < Pips.Count; i++)
                 {
-                    if ((i == Pos) && (Pips[i].color != ActiveCol))
+                    if ((i == pos) && (Pips[i].color != ActiveCol))
                     {
                         Pips[i].color = ActiveCol;
                     }
-                    else if ((i != Pos) && (Pips[i].color == ActiveCol))
+                    else if ((i != pos) && (Pips[i].color == ActiveCol))
                     {
                         Pips[i].color = InactiveCol;
                     }
@@ -333,15 +333,15 @@ namespace CarterGames.Arcade.Menu
 
         void UpdateDisplay()
         {
-            if (LastPos != Pos)
+            if (lastPos != pos)
             {
                 for (int i = 0; i < Screens.Count; i++)
                 {
-                    if ((i == Pos) && (Screens[i].GetComponent<CanvasGroup>().alpha != .5f))
+                    if ((i == pos) && (Screens[i].GetComponent<CanvasGroup>().alpha != .5f))
                     {
                         Screens[i].GetComponent<CanvasGroup>().alpha = .5f;
                     }
-                    else if ((i != Pos) && (Screens[i].GetComponent<CanvasGroup>().alpha == .5f))
+                    else if ((i != pos) && (Screens[i].GetComponent<CanvasGroup>().alpha == .5f))
                     {
                         Screens[i].GetComponent<CanvasGroup>().alpha = 0;
                     }
@@ -352,11 +352,11 @@ namespace CarterGames.Arcade.Menu
 
         SettingTypes DetectSettingType(List<GameObject> ToCheck)
         {
-            if (ToCheck[Pos].GetComponent<Toggle>())
+            if (ToCheck[pos].GetComponent<Toggle>())
             {
                 return SettingTypes.Toggle;
             }
-            else if (ToCheck[Pos].GetComponent<Slider>())
+            else if (ToCheck[pos].GetComponent<Slider>())
             {
                 return SettingTypes.Slider;
             }
@@ -369,15 +369,15 @@ namespace CarterGames.Arcade.Menu
 
         void UpdateInfoDisplay()
         {
-            if (LastPos != Pos)
+            if (lastPos != pos)
             {
                 for (int i = 0; i < GameplayOptions.Count; i++)
                 {
-                    if ((i == Pos) && (GameplayOptions[i].GetComponent<Text>().color != Color.yellow))
+                    if ((i == pos) && (GameplayOptions[i].GetComponent<Text>().color != Color.yellow))
                     {
                         GameplayOptions[i].GetComponent<Text>().color = Color.yellow;
                     }
-                    else if ((i != Pos) && (GameplayOptions[i].GetComponent<Text>().color == Color.yellow))
+                    else if ((i != pos) && (GameplayOptions[i].GetComponent<Text>().color == Color.yellow))
                     {
                         GameplayOptions[i].GetComponent<Text>().color = Color.white;
                     }
@@ -387,15 +387,15 @@ namespace CarterGames.Arcade.Menu
 
         void UpdateAudioDisplay()
         {
-            if (LastPos != Pos)
+            if (lastPos != pos)
             {
                 for (int i = 0; i < AudioOptions.Count; i++)
                 {
-                    if ((i == Pos) && (AudioOptions[i].transform.parent.GetComponentInChildren<Text>().color != Color.yellow))
+                    if ((i == pos) && (AudioOptions[i].transform.parent.GetComponentInChildren<Text>().color != Color.yellow))
                     {
                         AudioOptions[i].transform.parent.GetComponentInChildren<Text>().color = Color.yellow;
                     }
-                    else if ((i != Pos) && (AudioOptions[i].transform.parent.GetComponentInChildren<Text>().color == Color.yellow))
+                    else if ((i != pos) && (AudioOptions[i].transform.parent.GetComponentInChildren<Text>().color == Color.yellow))
                     {
                         AudioOptions[i].transform.parent.GetComponentInChildren<Text>().color = Color.white;
                     }
@@ -408,9 +408,9 @@ namespace CarterGames.Arcade.Menu
         {
             if (GetLRDir() != 0)
             {
-                ToEdit[Pos].GetComponent<Slider>().value += .1f * GetLRDir();
+                ToEdit[pos].GetComponent<Slider>().value += .1f * GetLRDir();
 
-                if (Pos == 0)
+                if (pos == 0)
                 {
                     Mixer.SetFloat("MusicVolume", MusicVolume);
                 }

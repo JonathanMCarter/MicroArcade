@@ -24,13 +24,13 @@ namespace CarterGames.QuackingTime
 
         private SceneChanger ChangeScene;
 
-        private AudioManager AM;
+        private AudioManager am;
         public SceneChanger SC;
         public RoundSelectControl RSC;
 
         private void Start()
         {
-            AM = FindObjectOfType<AudioManager>();
+            am = FindObjectOfType<AudioManager>();
             ChangeScene = FindObjectOfType<SceneChanger>();
         }
 
@@ -46,14 +46,14 @@ namespace CarterGames.QuackingTime
 
                     if (ArcadeControls.ButtonPress(Joysticks.White, Buttons.B8))
                     {
-                        AM.Play("Menu_Select", .75f);
+                        am.Play("Menu_Select", .75f);
                         ReadyP1 = !ReadyP1;
                         Ready[0].enabled = ReadyP1;
                     }
 
                     if (ArcadeControls.ButtonPress(Joysticks.White, Buttons.B7))
                     {
-                        AM.Play("Confirm", .25f);
+                        am.Play("Confirm", .25f);
                         SC.MoveToDucks = false;
                         SC.MoveToRounds = true;
                         RSC.enabled = true;
@@ -66,7 +66,7 @@ namespace CarterGames.QuackingTime
 
                     if (ArcadeControls.ButtonPress(Joysticks.Black, Buttons.B8))
                     {
-                        AM.Play("Menu_Select", .75f);
+                        am.Play("Menu_Select", .75f);
                         ReadyP2 = !ReadyP2;
                         Ready[1].enabled = ReadyP2;
                     }
@@ -80,14 +80,14 @@ namespace CarterGames.QuackingTime
 
                     if (ControllerControls.ButtonPress(Players.P1, ControllerButtons.Confirm))
                     {
-                        AM.Play("Menu_Select", .75f);
+                        am.Play("Menu_Select", .75f);
                         ReadyP1 = !ReadyP1;
                         Ready[0].enabled = ReadyP1;
                     }
 
                     if (ControllerControls.ButtonPress(Players.P1, ControllerButtons.B))
                     {
-                        AM.Play("Confirm", .25f);
+                        am.Play("Confirm", .25f);
                         SC.MoveToDucks = false;
                         SC.MoveToRounds = true;
                         RSC.enabled = true;
@@ -100,7 +100,7 @@ namespace CarterGames.QuackingTime
 
                     if (ControllerControls.ButtonPress(Players.P2, ControllerButtons.Confirm))
                     {
-                        AM.Play("Menu_Select", .75f);
+                        am.Play("Menu_Select", .75f);
                         ReadyP2 = !ReadyP2;
                         Ready[1].enabled = ReadyP2;
                     }
@@ -113,14 +113,14 @@ namespace CarterGames.QuackingTime
 
                     if (KeyboardControls.ButtonPress(Players.P1, Buttons.B8))
                     {
-                        AM.Play("Menu_Select", .75f);
+                        am.Play("Menu_Select", .75f);
                         ReadyP1 = !ReadyP1;
                         Ready[0].enabled = ReadyP1;
                     }
 
                     if (KeyboardControls.ButtonPress(Players.P1, Buttons.B7))
                     {
-                        AM.Play("Confirm", .25f);
+                        am.Play("Confirm", .25f);
                         SC.MoveToDucks = false;
                         SC.MoveToRounds = true;
                         RSC.enabled = true;
@@ -133,7 +133,7 @@ namespace CarterGames.QuackingTime
 
                     if (KeyboardControls.ButtonPress(Players.P2, Buttons.B8))
                     {
-                        AM.Play("Menu_Select", .75f);
+                        am.Play("Menu_Select", .75f);
                         ReadyP2 = !ReadyP2;
                         Ready[1].enabled = ReadyP2;
                     }
@@ -146,14 +146,14 @@ namespace CarterGames.QuackingTime
 
                     if (KeyboardControls.ButtonPress(Players.P1, Buttons.B8))
                     {
-                        AM.Play("Menu_Select", .75f);
+                        am.Play("Menu_Select", .75f);
                         ReadyP1 = !ReadyP1;
                         Ready[0].enabled = ReadyP1;
                     }
 
                     if (KeyboardControls.ButtonPress(Players.P1, Buttons.B7))
                     {
-                        AM.Play("Confirm", .25f);
+                        am.Play("Confirm", .25f);
                         SC.MoveToDucks = false;
                         SC.MoveToRounds = true;
                         RSC.enabled = true;
@@ -165,7 +165,7 @@ namespace CarterGames.QuackingTime
 
                     if (ControllerControls.ButtonPress(Players.P1, ControllerButtons.A))
                     {
-                        AM.Play("Menu_Select", .75f);
+                        am.Play("Menu_Select", .75f);
                         ReadyP2 = !ReadyP2;
                         Ready[1].enabled = ReadyP2;
                     }
@@ -178,14 +178,14 @@ namespace CarterGames.QuackingTime
 
                     if (ControllerControls.ButtonPress(Players.P1, ControllerButtons.A))
                     {
-                        AM.Play("Menu_Select", .75f);
+                        am.Play("Menu_Select", .75f);
                         ReadyP1 = !ReadyP1;
                         Ready[0].enabled = ReadyP1;
                     }
 
                     if (ControllerControls.ButtonPress(Players.P1, ControllerButtons.B))
                     {
-                        AM.Play("Confirm", .25f);
+                        am.Play("Confirm", .25f);
                         SC.MoveToDucks = false;
                         SC.MoveToRounds = true;
                         RSC.enabled = true;
@@ -197,7 +197,7 @@ namespace CarterGames.QuackingTime
 
                     if (KeyboardControls.ButtonPress(Players.P1, Buttons.B8))
                     {
-                        AM.Play("Menu_Select", .75f);
+                        am.Play("Menu_Select", .75f);
                         ReadyP2 = !ReadyP2;
                         Ready[1].enabled = ReadyP2;
                     }
@@ -232,7 +232,7 @@ namespace CarterGames.QuackingTime
 
             UpdateDisplayP1();
 
-            AM.Play("Menu_Click", .25f);
+            am.Play("Menu_Click", .25f);
 
             yield return new WaitForSeconds(.25f);
             IsCoR_P1 = false;
@@ -255,7 +255,7 @@ namespace CarterGames.QuackingTime
 
             UpdateDisplayP2();
 
-            AM.Play("Menu_Click", .25f);
+            am.Play("Menu_Click", .25f);
 
             yield return new WaitForSeconds(.25f);
             IsCoR_P2 = false;

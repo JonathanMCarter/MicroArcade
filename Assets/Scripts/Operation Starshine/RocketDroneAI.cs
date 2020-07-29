@@ -18,12 +18,12 @@ namespace CarterGames.Starshine
         public EnemyWeapons EmWeapons;
 
         GameManager GM;
-        AudioManager AM;
+        AudioManager am;
 
         void Start()
         {
             GM = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
-            AM = GameObject.FindGameObjectWithTag("GameController").GetComponent<DialogueScript>().AM;
+            am = GameObject.FindGameObjectWithTag("GameController").GetComponent<DialogueScript>().am;
 
             EmWeapons = GameObject.FindGameObjectWithTag("StarshineEnemyWeapons").GetComponent<EnemyWeapons>();
 
@@ -112,7 +112,7 @@ namespace CarterGames.Starshine
             //newMissile.transform.rotation = Quaternion.LookRotation(Vector3.forward, -(Target.transform.position - transform.position).normalized);
             newMissile.GetComponent<Damage>().DMG = (int)GetComponent<ShipManagement>().Ship.MainWeapon.Damage[(int)GM.ActiveStage];
             newMissile.SetActive(true);
-            AM.PlayFromTime("MissileShoot", .25f, .5f, 2f);
+            am.PlayFromTime("MissileShoot", .25f, .5f, 2f);
         }
     }
 }

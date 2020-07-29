@@ -20,7 +20,7 @@ namespace CarterGames.QuackingTime
         private new void Start()
         {
             MenuSystemStart();
-            MaxPos = pages.Length - 1;
+            maxPos = pages.Length - 1;
             UpdateDisplay();
         }
 
@@ -47,7 +47,7 @@ namespace CarterGames.QuackingTime
         {
             for (int i = 0; i < pages.Length; i++)
             {
-                if (Pos == i)
+                if (pos == i)
                 {
                     if (!pages[i].activeSelf)
                     {
@@ -59,7 +59,7 @@ namespace CarterGames.QuackingTime
                         pagePips[i].color = pipColours[1];
                     }
                 }
-                else if (Pos != i)
+                else if (pos != i)
                 {
                     if (pages[i].activeSelf)
                     {

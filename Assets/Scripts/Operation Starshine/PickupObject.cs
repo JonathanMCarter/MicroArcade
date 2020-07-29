@@ -16,13 +16,13 @@ namespace CarterGames.Starshine
         public PickupTypes Type;
         public int Value;
         BoxCollider2D BC;
-        public AudioManager AM;
+        public AudioManager am;
 
         private void Start()
         {
             // references the boxcollider on the gameobject
             BC = GetComponent<BoxCollider2D>();
-            AM = FindObjectOfType<DialogueScript>().AM;
+            am = FindObjectOfType<DialogueScript>().am;
         }
 
         private void OnEnable()
@@ -48,13 +48,13 @@ namespace CarterGames.Starshine
                     case PickupTypes.Health:
                         collision.gameObject.GetComponent<PlayerController>().Health += Value;
                         collision.gameObject.GetComponent<ShipManagement>().PlayerStats.healthGained += Value;
-                        AM.Play("Pickup", .5f);
+                        am.Play("Pickup", .5f);
                         BC.enabled = false;
                         break;
                     case PickupTypes.Shield:
                         collision.gameObject.GetComponent<PlayerController>().Shield += Value;
                         collision.gameObject.GetComponent<ShipManagement>().PlayerStats.shieldGained += Value;
-                        AM.Play("Pickup", .5f);
+                        am.Play("Pickup", .5f);
                         BC.enabled = false;
                         break;
                     default:

@@ -614,7 +614,7 @@ namespace CarterGames.Assets.AudioManager
         {
             int _check = 0;
 
-            // 2.3.2 - fixes a problem when using an exsisting AMF with a new AM script instance
+            // 2.3.2 - fixes a problem when using an exsisting AMF with a new am script instance
             if (audioManagerScript.audioManagerFile.directory.Count > 0 && audioManagerScript.directory.Count == audioManagerScript.audioManagerFile.directory.Count)
             {
                 for (int i = 0; i < audioManagerScript.audioManagerFile.directory.Count; i++)

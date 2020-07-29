@@ -30,13 +30,13 @@ namespace CarterGames.UltimatePinball.BallCtrl
         public Color[] Col;
 
         GameManager GM;
-        AudioManager AM;
+        AudioManager am;
         Animator Anim;
 
         private void Start()
         {
             GM = FindObjectOfType<GameManager>();
-            AM = GM.GetComponent<AudioManager>();
+            am = GM.GetComponent<AudioManager>();
             Anim = GetComponent<Animator>();
             ChangeLightColours();
         }
@@ -73,7 +73,7 @@ namespace CarterGames.UltimatePinball.BallCtrl
 
                 ChangeLightColours();
 
-                AM.Play("LogoComp", .15f);
+                am.Play("LogoComp", .15f);
                 Anim.SetTrigger("Spin");
 
                 for (int i = 0; i < Lights.Count; i++)

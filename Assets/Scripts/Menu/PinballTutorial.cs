@@ -24,18 +24,18 @@ namespace CarterGames.Arcade.Menu
 
         private void OnEnable()
         {
-            InputReady = true;
+            inputReady = true;
         }
 
         private void OnDisable()
         {
-            InputReady = false;
+            inputReady = false;
         }
 
         private new void Start()
         {
-            MaxPos = tutorialPips.Length - 1;
-            AM = menuAudioManager;
+            maxPos = tutorialPips.Length - 1;
+            am = menuAudioManager;
         }
 
         private new void Update()
@@ -74,17 +74,17 @@ namespace CarterGames.Arcade.Menu
         {
             for (int i = 0; i < tutorialPips.Length; i++)
             {
-                if ((Pos == i) && (!tutorialPages[i].activeSelf))
+                if ((pos == i) && (!tutorialPages[i].activeSelf))
                 {
                     tutorialPages[i].SetActive(true);
                     tutorialPips[i].color = Color.green;
                 }
-                else if ((Pos != i) && (tutorialPages[i].activeSelf))
+                else if ((pos != i) && (tutorialPages[i].activeSelf))
                 {
                     tutorialPages[i].SetActive(false);
                     tutorialPips[i].color = Color.grey;
                 }
-                else if ((Pos != i) && (!tutorialPages[i].activeSelf))
+                else if ((pos != i) && (!tutorialPages[i].activeSelf))
                 {
                     tutorialPips[i].color = Color.grey;
                 }

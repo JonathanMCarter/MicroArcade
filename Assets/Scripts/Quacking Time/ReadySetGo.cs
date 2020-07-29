@@ -19,14 +19,14 @@ namespace CarterGames.QuackingTime
         private GameManager GM;
         public Animator GlobalWarming;
 
-        private AudioManager AM;
+        private AudioManager am;
         private bool IsPlayingAudio;
 
 
         private void Start()
         {
             GM = FindObjectOfType<GameManager>();
-            AM = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+            am = GameObject.Find("AudioManager").GetComponent<AudioManager>();
 
             for (int i = 0; i < DucksRBs.Count; i++)
             {
@@ -35,7 +35,7 @@ namespace CarterGames.QuackingTime
 
             mapController.ResetHexagons();
 
-            Debug.Log(AM.GetNumberOfClips());
+            Debug.Log(am.GetNumberOfClips());
         }
 
 
@@ -62,7 +62,7 @@ namespace CarterGames.QuackingTime
 
                     if (!IsPlayingAudio)
                     {
-                        AM.Play("Ready");
+                        am.Play("Ready");
                         IsPlayingAudio = true;
                     }
 
@@ -83,7 +83,7 @@ namespace CarterGames.QuackingTime
 
                     if (!IsPlayingAudio)
                     {
-                        AM.Play("Set");
+                        am.Play("Set");
                         IsPlayingAudio = true;
                     }
 
@@ -100,7 +100,7 @@ namespace CarterGames.QuackingTime
 
                     if (!IsPlayingAudio)
                     {
-                        AM.Play("Go");
+                        am.Play("Go");
                         IsPlayingAudio = true;
                     }
 

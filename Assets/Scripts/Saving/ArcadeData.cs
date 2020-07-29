@@ -1,4 +1,5 @@
 ﻿using CarterGames.Arcade.UserInput;
+using System;
 
 /*
 *  Copyright (c) Jonathan Carter
@@ -8,7 +9,7 @@
 
 namespace CarterGames.Arcade.Saving
 {
-    [System.Serializable]
+    [Serializable]
     public class ArcadeData
     {
         // Audio Settings

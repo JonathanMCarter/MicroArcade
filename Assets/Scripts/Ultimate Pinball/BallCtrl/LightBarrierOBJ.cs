@@ -11,7 +11,7 @@ namespace CarterGames.UltimatePinball.BallCtrl
         public bool Active;
 
         LightBarrierCtrl LC;
-        public AudioManager AM;
+        public AudioManager am;
         GameManager GM;
 
         private void Start()
@@ -141,7 +141,7 @@ namespace CarterGames.UltimatePinball.BallCtrl
                     break;
             }
 
-            AM.Play("LightGateCom", .15f);
+            am.Play("LightGateCom", .15f);
         }
 
         internal void ResetColours()

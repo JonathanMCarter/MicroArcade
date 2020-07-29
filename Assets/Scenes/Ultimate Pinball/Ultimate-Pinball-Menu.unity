@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -150,12 +150,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0923be0d7a5df674bb4e829a4c533192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeControllers: []
-  isMixedControls: 0
-  LastPos: 0
-  Pos: 0
-  MaxPos: 0
-  InputReady: 0
   tutorialPips:
   - {fileID: 1258542959}
   - {fileID: 422208292}
@@ -168,9 +162,9 @@ MonoBehaviour:
   - {fileID: 1157957544}
   - {fileID: 815700631}
   isReturning: 0
-  scriptToEnable: {fileID: 1823621079}
+  scriptToEnable: {fileID: 0}
   audioManager: {fileID: 1156608699}
-  menuAudioManager: {fileID: 1270197468}
+  menuAudioManager: {fileID: 0}
 --- !u!4 &18858962
 Transform:
   m_ObjectHideFlags: 0
@@ -183,7 +177,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &22028263 stripped
 GameObject:
@@ -399,7 +393,7 @@ GameObject:
   - component: {fileID: 31366362}
   - component: {fileID: 31366361}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Background Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -439,6 +433,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.70888215, g: 0.8490566, b: 0.8199818, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -587,7 +582,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &38926984
 MonoBehaviour:
@@ -661,6 +656,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -747,6 +743,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.9339623, g: 0.383277, b: 0.7981758, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -874,65 +871,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bccdb6aaef5caaa45ad061dad84e9285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeControllers: []
-  isMixedControls: 0
-  GetDir: 0
-  MultiOptionMenu: 0
-  MultiNoRetrunBtn: 0
-  ValueAlter: 0
-  LoadData: 0
-  BothConfirm: 0
-  HasDesc: 0
-  MenuObjects: []
-  MenuEvents:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 53479443}
-        m_MethodName: EnableCanvasGroup_DisableThis
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 980625805}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 53479443}
-        m_MethodName: EnableScript_CanvasEdits
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1947070029}
-          m_ObjectArgumentAssemblyTypeName: Arcade.Menu.PinballMainMenu, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 53479443}
-        m_MethodName: PlayClip
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Gate-Out
-          m_BoolArgument: 0
-        m_CallState: 2
-  CanInput: 0
-  SelectedTextColour: {r: 0, g: 0, b: 0, a: 0}
-  DeselectedTextColour: {r: 0, g: 0, b: 0, a: 0}
-  Value: 0
-  IncrementAmount: 0
-  SelectedGamemode: 0
-  WhiteReady: 0
-  BlackReady: 0
-  Trans: {fileID: 1707158696}
-  AM: {fileID: 1156608699}
-  MAM: {fileID: 1270197468}
-  GamemodeText: {fileID: 0}
-  GameDescriptions: []
+  sceneTransition: {fileID: 0}
 --- !u!1 &57876974 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3711180358485102728, guid: 594f3ed8b5d2ba14eb8d7a991399da87,
@@ -991,6 +930,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0.702134, b: 0, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1064,6 +1004,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1145,6 +1086,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.039215688}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1268,6 +1210,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.039215688}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1341,6 +1284,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.122641504, g: 0.122641504, b: 0.122641504, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1614,6 +1558,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.3254717, g: 1, b: 0.6857712, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1691,6 +1636,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.9339623, g: 0.383277, b: 0.7981758, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1818,65 +1764,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bccdb6aaef5caaa45ad061dad84e9285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeControllers: []
-  isMixedControls: 0
-  GetDir: 0
-  MultiOptionMenu: 0
-  MultiNoRetrunBtn: 0
-  ValueAlter: 0
-  LoadData: 0
-  BothConfirm: 0
-  HasDesc: 0
-  MenuObjects: []
-  MenuEvents:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 153875298}
-        m_MethodName: EnableCanvasGroup_DisableThis
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 980625805}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 153875298}
-        m_MethodName: EnableScript_CanvasEdits
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1947070029}
-          m_ObjectArgumentAssemblyTypeName: Arcade.Menu.PinballMainMenu, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 153875298}
-        m_MethodName: PlayClip
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Gate-Out
-          m_BoolArgument: 0
-        m_CallState: 2
-  CanInput: 0
-  SelectedTextColour: {r: 0, g: 0, b: 0, a: 0}
-  DeselectedTextColour: {r: 0, g: 0, b: 0, a: 0}
-  Value: 0
-  IncrementAmount: 0
-  SelectedGamemode: 0
-  WhiteReady: 0
-  BlackReady: 0
-  Trans: {fileID: 1707158696}
-  AM: {fileID: 1156608699}
-  MAM: {fileID: 1270197468}
-  GamemodeText: {fileID: 0}
-  GameDescriptions: []
+  sceneTransition: {fileID: 0}
 --- !u!1 &153886516
 GameObject:
   m_ObjectHideFlags: 0
@@ -1929,6 +1817,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.7830189, g: 0.7830189, b: 0.7830189, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2006,6 +1895,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.5162814, g: 0.022828398, b: 0.5377358, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2157,6 +2047,36 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 174189295}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &221006118
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 221006119}
+  m_Layer: 0
+  m_Name: =====================
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &221006119
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 221006118}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 440.7458, y: 277.4739, z: -200.61711}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &221886904
 GameObject:
   m_ObjectHideFlags: 0
@@ -2209,6 +2129,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.9339623, g: 0.383277, b: 0.7981758, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2424,6 +2345,50 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 224444605}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &236039815
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 236039817}
+  - component: {fileID: 236039816}
+  m_Layer: 0
+  m_Name: PinballMenuController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &236039816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236039815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bccdb6aaef5caaa45ad061dad84e9285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneTransition: {fileID: 7721339121074382968}
+--- !u!4 &236039817
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236039815}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 475.0862, y: 290.59378, z: -203.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &239853538
 GameObject:
   m_ObjectHideFlags: 0
@@ -2539,6 +2504,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.3254717, g: 1, b: 0.6857712, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2616,6 +2582,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.121568635, g: 0.121568635, b: 0.121568635, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2829,6 +2796,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.9339623, g: 0.383277, b: 0.7981758, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2906,6 +2874,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.46596244, g: 0.8773585, b: 0.34349412, a: 1}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3128,6 +3097,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.9339623, g: 0.383277, b: 0.7981758, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3205,6 +3175,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.7264151, g: 0.7264151, b: 0.7264151, a: 1}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3284,6 +3255,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.039215688}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3357,6 +3329,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.9339623, g: 0.383277, b: 0.7981758, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3434,6 +3407,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.6603774, g: 0.6603774, b: 0.6603774, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3507,6 +3481,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.735849, g: 0.735849, b: 0.735849, a: 1}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3720,6 +3695,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.7830189, g: 0.7830189, b: 0.7830189, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3861,6 +3837,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0.7748438, b: 0, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3938,6 +3915,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.9339623, g: 0.383277, b: 0.7981758, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4015,6 +3993,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.9339623, g: 0.383277, b: 0.7981758, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4183,7 +4162,7 @@ GameObject:
   - component: {fileID: 567636716}
   - component: {fileID: 567636715}
   m_Layer: 5
-  m_Name: 5--PinballGame
+  m_Name: Canvas (Overlay) - Game Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4267,15 +4246,44 @@ RectTransform:
   - {fileID: 1026011029}
   - {fileID: 980625804}
   - {fileID: 1958976141}
-  - {fileID: 684507102}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &571777591
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 571777592}
+  m_Layer: 0
+  m_Name: =====================
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &571777592
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 571777591}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 440.7458, y: 277.4739, z: -200.61711}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &571964573
 GameObject:
   m_ObjectHideFlags: 0
@@ -4328,6 +4336,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.735849, g: 0.735849, b: 0.735849, a: 1}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4405,6 +4414,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4465,6 +4475,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.7735849, g: 0.7102786, b: 0.48531505, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4561,6 +4572,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.6603774, g: 0.6603774, b: 0.6603774, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4954,6 +4966,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.11240652, g: 0.09878958, b: 0.11320752, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4975,136 +4988,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 663178498}
   m_CullTransparentMesh: 0
---- !u!1001 &684507101
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 567636718}
-    m_Modifications:
-    - target: {fileID: 520111732509206610, guid: 172058d2a948d03439d2382669d360ad,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 520111732509206610, guid: 172058d2a948d03439d2382669d360ad,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 520111732509206610, guid: 172058d2a948d03439d2382669d360ad,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 520111732509206610, guid: 172058d2a948d03439d2382669d360ad,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 520111732509206610, guid: 172058d2a948d03439d2382669d360ad,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 520111732509206610, guid: 172058d2a948d03439d2382669d360ad,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 520111732509206610, guid: 172058d2a948d03439d2382669d360ad,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 520111732509206610, guid: 172058d2a948d03439d2382669d360ad,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 520111732509206610, guid: 172058d2a948d03439d2382669d360ad,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 520111732509206610, guid: 172058d2a948d03439d2382669d360ad,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 520111732509206610, guid: 172058d2a948d03439d2382669d360ad,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 520111732509206610, guid: 172058d2a948d03439d2382669d360ad,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -9.700073
-      objectReference: {fileID: 0}
-    - target: {fileID: 520111732509206610, guid: 172058d2a948d03439d2382669d360ad,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 3.2000122
-      objectReference: {fileID: 0}
-    - target: {fileID: 520111732509206610, guid: 172058d2a948d03439d2382669d360ad,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 2217
-      objectReference: {fileID: 0}
-    - target: {fileID: 520111732509206610, guid: 172058d2a948d03439d2382669d360ad,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 1321.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 520111732509206610, guid: 172058d2a948d03439d2382669d360ad,
-        type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 520111732509206610, guid: 172058d2a948d03439d2382669d360ad,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 520111732509206610, guid: 172058d2a948d03439d2382669d360ad,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 520111732509206610, guid: 172058d2a948d03439d2382669d360ad,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 520111732509206610, guid: 172058d2a948d03439d2382669d360ad,
-        type: 3}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 520111732509206610, guid: 172058d2a948d03439d2382669d360ad,
-        type: 3}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 520111732509206611, guid: 172058d2a948d03439d2382669d360ad,
-        type: 3}
-      propertyPath: m_Name
-      value: FadeWhite (Overlay)
-      objectReference: {fileID: 0}
-    - target: {fileID: 520111732509206611, guid: 172058d2a948d03439d2382669d360ad,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 172058d2a948d03439d2382669d360ad, type: 3}
---- !u!224 &684507102 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 520111732509206610, guid: 172058d2a948d03439d2382669d360ad,
-    type: 3}
-  m_PrefabInstance: {fileID: 684507101}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &696913671
 GameObject:
   m_ObjectHideFlags: 0
@@ -5157,6 +5040,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.8784314, g: 0.7356327, b: 0.34509808, a: 1}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5244,6 +5128,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.735849, g: 0.735849, b: 0.735849, a: 1}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5457,6 +5342,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.3254717, g: 1, b: 0.6857712, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5534,6 +5420,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.9339623, g: 0.383277, b: 0.7981758, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5611,6 +5498,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.8392157, g: 0.7840571, b: 0, a: 1}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5736,7 +5624,6 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_CameraOutput: 0
   m_Cameras: []
   m_RendererIndex: -1
   m_VolumeLayerMask:
@@ -5748,6 +5635,7 @@ MonoBehaviour:
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
+  m_ClearDepth: 1
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
@@ -5858,6 +5746,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.31858742, g: 0.24056603, b: 0.3207547, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5949,6 +5838,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.039215688}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6024,6 +5914,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6105,6 +5996,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.039215688}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6228,6 +6120,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.122641504, g: 0.122641504, b: 0.122641504, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6485,6 +6378,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.9339623, g: 0.383277, b: 0.7981758, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6687,6 +6581,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.8018868, g: 0.66657203, b: 0.3517711, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6760,6 +6655,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.8392157, g: 0.7840571, b: 0, a: 1}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6927,6 +6823,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.039215688}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -7136,6 +7033,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.6886792, g: 0.4273622, b: 0, a: 1}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -7284,12 +7182,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasScannedOnce: 1
+  shouldShowDir: 1
+  shouldShowClips: 1
   audioManagerFile: {fileID: 11400000, guid: 5b8f479bbbee9594683e9022a83d954a, type: 2}
   lastAudioManagerFile: {fileID: 11400000, guid: 5b8f479bbbee9594683e9022a83d954a,
     type: 2}
   soundPrefab: {fileID: 977031777656076914, guid: c8aadc768be109f478c9aad2b841252d,
     type: 3}
-  directory: PinballSounds
+  directory:
+  - PinballSounds
+  - Menu
 --- !u!4 &1156608700
 Transform:
   m_ObjectHideFlags: 0
@@ -7302,7 +7204,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1157957539
 GameObject:
@@ -7362,6 +7264,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.039215688}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -7910,6 +7813,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.7839284, g: 0.5896226, b: 1, a: 1}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -7998,6 +7902,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.039215688}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -8071,6 +7976,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.6886792, g: 0.4273622, b: 0, a: 1}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -8144,6 +8050,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.9339623, g: 0.383277, b: 0.7981758, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -8221,6 +8128,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -8298,6 +8206,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.122641504, g: 0.122641504, b: 0.122641504, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -8505,6 +8414,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.4424982, g: 0.8584906, b: 0.34420612, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -8526,153 +8436,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1258542957}
   m_CullTransparentMesh: 0
---- !u!1 &1270197466
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1270197469}
-  - component: {fileID: 1270197468}
-  - component: {fileID: 1270197467}
-  m_Layer: 0
-  m_Name: MenuAudioManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!82 &1270197467
-AudioSource:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1270197466}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 176cc15af7976b5429a480aba63c8b6a, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!114 &1270197468
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1270197466}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bfb506d2985adb44a36c2b3ce98edb7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hasScannedOnce: 1
-  audioManagerFile: {fileID: 11400000, guid: 5d8ab69bc54591a4ca956ce0b0bea69b, type: 2}
-  lastAudioManagerFile: {fileID: 11400000, guid: 5d8ab69bc54591a4ca956ce0b0bea69b,
-    type: 2}
-  soundPrefab: {fileID: 977031777656076914, guid: c8aadc768be109f478c9aad2b841252d,
-    type: 3}
-  directory: Menu
---- !u!4 &1270197469
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1270197466}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 422.0614, y: 186.33752, z: -648.5625}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1316291535 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3711180358485102728, guid: 594f3ed8b5d2ba14eb8d7a991399da87,
@@ -8885,6 +8648,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.039215688}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -9094,6 +8858,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0.7748438, b: 0, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -9171,6 +8936,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.8392157, g: 0.7840571, b: 0, a: 1}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -9248,6 +9014,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.9339623, g: 0.383277, b: 0.7981758, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -9325,6 +9092,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.122641504, g: 0.122641504, b: 0.122641504, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -9402,6 +9170,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -9481,6 +9250,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0.7748438, b: 0, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -9558,6 +9328,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.6745098, g: 0.64705884, b: 0.7058824, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -9951,6 +9722,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.75336385, g: 0.5999911, b: 0.9150943, a: 1}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -10028,6 +9800,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.6886792, g: 0.4273622, b: 0, a: 1}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -10107,6 +9880,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.6758411, g: 0.64413494, b: 0.7075472, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -10183,133 +9957,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bccdb6aaef5caaa45ad061dad84e9285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeControllers: []
-  isMixedControls: 0
-  GetDir: 0
-  MultiOptionMenu: 0
-  MultiNoRetrunBtn: 0
-  ValueAlter: 1
-  LoadData: 1
-  BothConfirm: 0
-  HasDesc: 0
-  MenuObjects: []
-  MenuEvents:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1610130722}
-        m_MethodName: EnableScript_CanvasEdits
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1868710017}
-          m_ObjectArgumentAssemblyTypeName: Arcade.Menu.PinballMainMenu, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1610130722}
-        m_MethodName: PlayClip
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Gate-Out
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1610130722}
-        m_MethodName: HideThisCanvasGroup
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 602401987}
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1610130722}
-        m_MethodName: SaveValue
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1610130722}
-        m_MethodName: EnableScript_DisableThis
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 2093268592}
-          m_ObjectArgumentAssemblyTypeName: Arcade.Menu.PinballMainMenu, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1494883573}
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 585969821}
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1610130722}
-        m_MethodName: PlayClip
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Gate-In
-          m_BoolArgument: 1
-        m_CallState: 2
-  CanInput: 0
-  SelectedTextColour: {r: 0, g: 0, b: 0, a: 0}
-  DeselectedTextColour: {r: 0, g: 0, b: 0, a: 0}
-  Value: 0
-  IncrementAmount: 0
-  SelectedGamemode: 0
-  WhiteReady: 0
-  BlackReady: 0
-  Trans: {fileID: 1707158696}
-  AM: {fileID: 1156608699}
-  MAM: {fileID: 1270197468}
-  GamemodeText: {fileID: 0}
-  GameDescriptions: []
+  sceneTransition: {fileID: 0}
 --- !u!225 &1610130723
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -10374,6 +10022,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.9339623, g: 0.383277, b: 0.7981758, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -10452,6 +10101,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.7075472, g: 0.7075472, b: 0.7075472, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -10527,6 +10177,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.039215688}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -10600,6 +10251,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.6886792, g: 0.4273622, b: 0, a: 1}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -10674,6 +10326,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.7537658, g: 0.42301533, b: 0.9245283, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -10753,6 +10406,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.3254717, g: 1, b: 0.6857712, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -10778,12 +10432,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1702795720}
   m_CullTransparentMesh: 0
---- !u!95 &1707158696 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 520111732509206609, guid: 172058d2a948d03439d2382669d360ad,
-    type: 3}
-  m_PrefabInstance: {fileID: 684507101}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1732916999
 GameObject:
   m_ObjectHideFlags: 0
@@ -10836,6 +10484,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -11161,65 +10810,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bccdb6aaef5caaa45ad061dad84e9285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeControllers: []
-  isMixedControls: 0
-  GetDir: 0
-  MultiOptionMenu: 0
-  MultiNoRetrunBtn: 0
-  ValueAlter: 0
-  LoadData: 0
-  BothConfirm: 0
-  HasDesc: 0
-  MenuObjects: []
-  MenuEvents:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1753347925}
-        m_MethodName: EnableCanvasGroup_DisableThis
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 980625805}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1753347925}
-        m_MethodName: EnableScript_CanvasEdits
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1947070029}
-          m_ObjectArgumentAssemblyTypeName: Arcade.Menu.PinballMainMenu, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1753347925}
-        m_MethodName: PlayClip
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Gate-Out
-          m_BoolArgument: 0
-        m_CallState: 2
-  CanInput: 0
-  SelectedTextColour: {r: 0, g: 0, b: 0, a: 0}
-  DeselectedTextColour: {r: 0, g: 0, b: 0, a: 0}
-  Value: 0
-  IncrementAmount: 0
-  SelectedGamemode: 0
-  WhiteReady: 0
-  BlackReady: 0
-  Trans: {fileID: 1707158696}
-  AM: {fileID: 1156608699}
-  MAM: {fileID: 1270197468}
-  GamemodeText: {fileID: 0}
-  GameDescriptions: []
+  sceneTransition: {fileID: 0}
 --- !u!1 &1767321367
 GameObject:
   m_ObjectHideFlags: 0
@@ -11272,6 +10863,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.9339623, g: 0.383277, b: 0.7981758, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -11354,6 +10946,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -11641,6 +11234,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.039215688}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -11850,6 +11444,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.7830189, g: 0.7830189, b: 0.7830189, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -11885,7 +11480,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1823621077}
   - component: {fileID: 1823621078}
-  - component: {fileID: 1823621079}
   m_Layer: 5
   m_Name: 5--MenuOptions
   m_TagString: Untagged
@@ -11941,182 +11535,6 @@ MonoBehaviour:
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
---- !u!114 &1823621079
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1823621076}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bccdb6aaef5caaa45ad061dad84e9285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  activeControllers: []
-  isMixedControls: 0
-  GetDir: 1
-  MultiOptionMenu: 1
-  MultiNoRetrunBtn: 0
-  ValueAlter: 0
-  LoadData: 0
-  BothConfirm: 0
-  HasDesc: 0
-  MenuObjects: []
-  MenuEvents:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1823621079}
-        m_MethodName: EnableCanvasGroup_KeepThis
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1004407893}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1823621079}
-        m_MethodName: EnableScript_CanvasEdits
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1868710017}
-          m_ObjectArgumentAssemblyTypeName: Arcade.Menu.PinballMainMenu, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1823621079}
-        m_MethodName: PlayClip
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Gate-In
-          m_BoolArgument: 0
-        m_CallState: 2
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1823621079}
-        m_MethodName: EnableCanvasGroup_DisableThis
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1157957544}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1823621079}
-        m_MethodName: PlayClip
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Gate-In
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 18858961}
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 18858961}
-        m_MethodName: ChangePage
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1823621079}
-        m_MethodName: EnableCanvasGroup_DisableThis
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 980625805}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1823621079}
-        m_MethodName: EnableScript_CanvasEdits
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1947070029}
-          m_ObjectArgumentAssemblyTypeName: Arcade.Menu.PinballMainMenu, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1823621079}
-        m_MethodName: PlayClip
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Gate-In
-          m_BoolArgument: 0
-        m_CallState: 2
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1823621079}
-        m_MethodName: ChangeScene
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: PlayMenu
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1823621079}
-        m_MethodName: PlayClip
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Gate-Out
-          m_BoolArgument: 0
-        m_CallState: 2
-  CanInput: 0
-  SelectedTextColour: {r: 1, g: 0.7803922, b: 0, a: 1}
-  DeselectedTextColour: {r: 0.121568635, g: 0.121568635, b: 0.121568635, a: 1}
-  Value: 0
-  IncrementAmount: 0
-  SelectedGamemode: 0
-  WhiteReady: 0
-  BlackReady: 0
-  Trans: {fileID: 1707158696}
-  AM: {fileID: 1156608699}
-  MAM: {fileID: 1270197468}
-  GamemodeText: {fileID: 0}
-  GameDescriptions: []
 --- !u!1 &1841467003
 GameObject:
   m_ObjectHideFlags: 0
@@ -12170,6 +11588,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.735849, g: 0.735849, b: 0.735849, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -12243,6 +11662,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.6132076, g: 0.6132076, b: 0.6132076, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -12301,6 +11721,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -12398,305 +11819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bccdb6aaef5caaa45ad061dad84e9285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeControllers: []
-  isMixedControls: 0
-  GetDir: 0
-  MultiOptionMenu: 1
-  MultiNoRetrunBtn: 1
-  ValueAlter: 0
-  LoadData: 0
-  BothConfirm: 0
-  HasDesc: 1
-  MenuObjects: []
-  MenuEvents:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1868710017}
-        m_MethodName: SetGamemode
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1868710017}
-        m_MethodName: SetIncrementOffset
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1868710017}
-        m_MethodName: LoadData_Other
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1610130722}
-          m_ObjectArgumentAssemblyTypeName: Arcade.Menu.PinballMainMenu, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1868710017}
-        m_MethodName: EnableScript_CanvasEdits
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1610130722}
-          m_ObjectArgumentAssemblyTypeName: Arcade.Menu.PinballMainMenu, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1868710017}
-        m_MethodName: PlayClip
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Gate-In
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1868710017}
-        m_MethodName: EnableCanvasGroup_KeepThis
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1610130723}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 602401987}
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1868710017}
-        m_MethodName: SetGamemode
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1868710017}
-        m_MethodName: SetIncrementOffset
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 15
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1868710017}
-        m_MethodName: LoadData_Other
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1610130722}
-          m_ObjectArgumentAssemblyTypeName: Arcade.Menu.PinballMainMenu, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1868710017}
-        m_MethodName: EnableScript_CanvasEdits
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1610130722}
-          m_ObjectArgumentAssemblyTypeName: Arcade.Menu.PinballMainMenu, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1868710017}
-        m_MethodName: PlayClip
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Gate-In
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1868710017}
-        m_MethodName: EnableCanvasGroup_KeepThis
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1610130723}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 602401987}
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1868710017}
-        m_MethodName: SetGamemode
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1868710017}
-        m_MethodName: SetIncrementOffset
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1000
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1868710017}
-        m_MethodName: LoadData_Other
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1610130722}
-          m_ObjectArgumentAssemblyTypeName: Arcade.Menu.PinballMainMenu, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1868710017}
-        m_MethodName: EnableScript_CanvasEdits
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1610130722}
-          m_ObjectArgumentAssemblyTypeName: Arcade.Menu.PinballMainMenu, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1868710017}
-        m_MethodName: PlayClip
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Gate-In
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1868710017}
-        m_MethodName: EnableCanvasGroup_KeepThis
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1610130723}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 602401987}
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1868710017}
-        m_MethodName: HideThisCanvasGroup
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1868710017}
-        m_MethodName: EnableScript_CanvasEdits
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1823621079}
-          m_ObjectArgumentAssemblyTypeName: Arcade.Menu.PinballMainMenu, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1868710017}
-        m_MethodName: PlayClip
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Gate-Out
-          m_BoolArgument: 0
-        m_CallState: 2
-  CanInput: 0
-  SelectedTextColour: {r: 1, g: 0.7803922, b: 0, a: 1}
-  DeselectedTextColour: {r: 0.6745098, g: 0.64705884, b: 0.7058824, a: 1}
-  Value: 0
-  IncrementAmount: 0
-  SelectedGamemode: 0
-  WhiteReady: 0
-  BlackReady: 0
-  Trans: {fileID: 1707158696}
-  AM: {fileID: 1156608699}
-  MAM: {fileID: 1270197468}
-  GamemodeText: {fileID: 602401987}
-  GameDescriptions:
-  - Play to outlast your opponent, losing balls will reduce your lives.
-  - Play until the time runs out.
-  - Play until one player reached the defined score.
+  sceneTransition: {fileID: 0}
 --- !u!1 &1869888352
 GameObject:
   m_ObjectHideFlags: 0
@@ -12750,6 +11873,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.7264151, g: 0.7264151, b: 0.7264151, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -12823,6 +11947,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.122641504, g: 0.122641504, b: 0.122641504, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -12900,6 +12025,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.19607843}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -13104,170 +12230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bccdb6aaef5caaa45ad061dad84e9285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeControllers: []
-  isMixedControls: 0
-  GetDir: 1
-  MultiOptionMenu: 1
-  MultiNoRetrunBtn: 0
-  ValueAlter: 0
-  LoadData: 0
-  BothConfirm: 0
-  HasDesc: 0
-  MenuObjects: []
-  MenuEvents:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1947070029}
-        m_MethodName: EnableCanvasGroup_DisableThis
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 153875296}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1947070029}
-        m_MethodName: EnableScript_CanvasEdits
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 153875298}
-          m_ObjectArgumentAssemblyTypeName: Arcade.Menu.PinballMainMenu, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1947070029}
-        m_MethodName: PlayClip
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Gate-In
-          m_BoolArgument: 0
-        m_CallState: 2
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1947070029}
-        m_MethodName: EnableCanvasGroup_DisableThis
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 53479441}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1947070029}
-        m_MethodName: EnableScript_CanvasEdits
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 53479443}
-          m_ObjectArgumentAssemblyTypeName: Arcade.Menu.PinballMainMenu, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1947070029}
-        m_MethodName: PlayClip
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Gate-In
-          m_BoolArgument: 0
-        m_CallState: 2
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1947070029}
-        m_MethodName: EnableCanvasGroup_DisableThis
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1753347923}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1947070029}
-        m_MethodName: EnableScript_CanvasEdits
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1753347925}
-          m_ObjectArgumentAssemblyTypeName: Arcade.Menu.PinballMainMenu, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1947070029}
-        m_MethodName: PlayClip
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Gate-In
-          m_BoolArgument: 0
-        m_CallState: 2
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1947070029}
-        m_MethodName: EnableCanvasGroup_DisableThis
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 815700631}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1947070029}
-        m_MethodName: EnableScript_CanvasEdits
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1823621079}
-          m_ObjectArgumentAssemblyTypeName: Arcade.Menu.PinballMainMenu, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1947070029}
-        m_MethodName: PlayClip
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Gate-Out
-          m_BoolArgument: 0
-        m_CallState: 2
-  CanInput: 0
-  SelectedTextColour: {r: 1, g: 0.7803922, b: 0, a: 1}
-  DeselectedTextColour: {r: 0.121568635, g: 0.121568635, b: 0.121568635, a: 1}
-  Value: 0
-  IncrementAmount: 0
-  SelectedGamemode: 0
-  WhiteReady: 0
-  BlackReady: 0
-  Trans: {fileID: 0}
-  AM: {fileID: 1156608699}
-  MAM: {fileID: 1270197468}
-  GamemodeText: {fileID: 0}
-  GameDescriptions: []
+  sceneTransition: {fileID: 0}
 --- !u!114 &1947070030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13345,6 +12308,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.9339623, g: 0.383277, b: 0.7981758, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -13422,6 +12386,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -13533,6 +12498,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.4215873, g: 0.16171236, b: 0.4339623, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -13736,6 +12702,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.6886792, g: 0.4273622, b: 0, a: 1}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -13945,6 +12912,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.77801055, g: 0.9150943, b: 0.6949537, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -14290,100 +13258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bccdb6aaef5caaa45ad061dad84e9285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeControllers: []
-  isMixedControls: 0
-  GetDir: 2
-  MultiOptionMenu: 0
-  MultiNoRetrunBtn: 0
-  ValueAlter: 0
-  LoadData: 0
-  BothConfirm: 1
-  HasDesc: 0
-  MenuObjects: []
-  MenuEvents:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1494883573}
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 585969821}
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2093268592}
-        m_MethodName: EnableScript_CanvasEdits
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1610130722}
-          m_ObjectArgumentAssemblyTypeName: Arcade.Menu.PinballMainMenu, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2093268592}
-        m_MethodName: PlayClip
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Gate-Out
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2093268592}
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2093268592}
-        m_MethodName: ChangeScene
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Gate-In
-          m_BoolArgument: 0
-        m_CallState: 2
-  CanInput: 0
-  SelectedTextColour: {r: 1, g: 0.78442526, b: 0, a: 1}
-  DeselectedTextColour: {r: 0, g: 0, b: 0, a: 0}
-  Value: 0
-  IncrementAmount: 0
-  SelectedGamemode: 0
-  WhiteReady: 0
-  BlackReady: 0
-  Trans: {fileID: 1707158696}
-  AM: {fileID: 1156608699}
-  MAM: {fileID: 1270197468}
-  GamemodeText: {fileID: 0}
-  GameDescriptions: []
+  sceneTransition: {fileID: 0}
 --- !u!1001 &2105669017
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14585,6 +13460,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.039215688}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -14803,6 +13679,136 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 594f3ed8b5d2ba14eb8d7a991399da87, type: 3}
+--- !u!1001 &7721339121074382967
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7144834606897778821, guid: 18f7de4359675e441af5c50a00a9506e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1.2998047
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210337654486658897, guid: 18f7de4359675e441af5c50a00a9506e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210337654486658897, guid: 18f7de4359675e441af5c50a00a9506e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210337654486658897, guid: 18f7de4359675e441af5c50a00a9506e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210337654486658897, guid: 18f7de4359675e441af5c50a00a9506e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210337654486658897, guid: 18f7de4359675e441af5c50a00a9506e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210337654486658897, guid: 18f7de4359675e441af5c50a00a9506e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210337654486658897, guid: 18f7de4359675e441af5c50a00a9506e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210337654486658897, guid: 18f7de4359675e441af5c50a00a9506e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210337654486658897, guid: 18f7de4359675e441af5c50a00a9506e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210337654486658897, guid: 18f7de4359675e441af5c50a00a9506e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210337654486658897, guid: 18f7de4359675e441af5c50a00a9506e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210337654486658897, guid: 18f7de4359675e441af5c50a00a9506e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210337654486658897, guid: 18f7de4359675e441af5c50a00a9506e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210337654486658897, guid: 18f7de4359675e441af5c50a00a9506e,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210337654486658897, guid: 18f7de4359675e441af5c50a00a9506e,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210337654486658897, guid: 18f7de4359675e441af5c50a00a9506e,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210337654486658897, guid: 18f7de4359675e441af5c50a00a9506e,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210337654486658897, guid: 18f7de4359675e441af5c50a00a9506e,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210337654486658897, guid: 18f7de4359675e441af5c50a00a9506e,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210337654486658897, guid: 18f7de4359675e441af5c50a00a9506e,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210337654486658897, guid: 18f7de4359675e441af5c50a00a9506e,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210337654486658909, guid: 18f7de4359675e441af5c50a00a9506e,
+        type: 3}
+      propertyPath: m_Name
+      value: Canvas (Overlay) - Fade (White)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 18f7de4359675e441af5c50a00a9506e, type: 3}
+--- !u!95 &7721339121074382968 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7144834606897778822, guid: 18f7de4359675e441af5c50a00a9506e,
+    type: 3}
+  m_PrefabInstance: {fileID: 7721339121074382967}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9158229775928567005
 PrefabInstance:
   m_ObjectHideFlags: 0

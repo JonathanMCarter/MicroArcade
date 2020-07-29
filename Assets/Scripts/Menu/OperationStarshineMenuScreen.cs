@@ -66,8 +66,8 @@ namespace CarterGames.Arcade.Menu
 
         // Menu movement (internal)
         int CurrentPos;
-        int MaxPos;
-        int LastPos;
+        int maxPos;
+        int lastPos;
         bool CanInput;
 
         Animator Trans;
@@ -86,7 +86,7 @@ namespace CarterGames.Arcade.Menu
                     ScreenOptions.RemoveAt(1);
                 }
 
-                MaxPos = ScreenOptions.Count;
+                maxPos = ScreenOptions.Count;
                 CurrentPos = 0;
 
                 UpdateSelectedVisuals();
@@ -346,7 +346,7 @@ namespace CarterGames.Arcade.Menu
 
         bool UpdateSelectedNeeded()
         {
-            if (LastPos != CurrentPos) { return true; }
+            if (lastPos != CurrentPos) { return true; }
             else { return false; }
         }
 
@@ -375,11 +375,11 @@ namespace CarterGames.Arcade.Menu
         {
             CanInput = false;
 
-            LastPos = CurrentPos;
+            lastPos = CurrentPos;
             CurrentPos += PosChange;
 
-            if (CurrentPos == MaxPos) { CurrentPos = 0; }
-            else if (CurrentPos <= -1) { CurrentPos = (MaxPos - 1); }
+            if (CurrentPos == maxPos) { CurrentPos = 0; }
+            else if (CurrentPos <= -1) { CurrentPos = (maxPos - 1); }
 
             MAM.Play("Menu_Click", .25f);
 

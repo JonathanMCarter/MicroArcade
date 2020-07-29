@@ -27,4 +27,5 @@ MonoBehaviour:
   soundPrefab: {fileID: 977031777656076914, guid: c8aadc768be109f478c9aad2b841252d,
     type: 3}
   isPopulated: 1
-  directory: Menu
+  directory:
+  - Menu

@@ -17,12 +17,9 @@ namespace CarterGames.Arcade.UserInput
 
     public class InputSettings : MonoBehaviour
     {
-        [SerializeField]
         private string[] activeControllers;
         private bool isCoRunning;
-
-
-        public bool isMixedControls;
+        private bool isMixedControls;
 
 
         public static SupportedControllers ControllerType { get; set; }

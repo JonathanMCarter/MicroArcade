@@ -4,21 +4,29 @@ using UnityEngine;
 
 namespace CarterGames.Arcade.Menu
 {
-    [RequireComponent(typeof(MenuSystem))]
-    public class MainMenuCtrl : MenuSystem
+    public class MainMenuCtrl : MenuSystem, IMenuSceneChanger
     {
-        public List<GameObject> MenuOptions;
-        public List<string> SceneNames;
-        public Animator Trans;
+        public string[] SceneNames { get { return this.sceneNames; } set { } }
+        public GameObject[] SceneOptions { get { return sceneOptions; } set { } }
+        public Animator SceneTransition { get { return this.sceneTransitions; } set { } }
+
+
+        [SerializeField] private string[] sceneNames;
+        [SerializeField] private GameObject[] sceneOptions;
+        [SerializeField] private Animator sceneTransitions;
+
+
 
         private void OnEnable()
         {
             UpdateDisplay();
         }
 
+
         protected override void Start()
         {
-            Pos = 0;
+            pos = 0;
+            maxPos = sceneOptions.Length - 1;
             base.Start();
             UpdateDisplay();
         }
@@ -34,23 +42,22 @@ namespace CarterGames.Arcade.Menu
         }
 
 
-        void UpdateDisplay()
+        public void UpdateDisplay()
         {
-            for (int i = 0; i < MenuOptions.Count; i++)
+            for (int i = 0; i < SceneOptions.Length; i++)
             {
-                if ((i == Pos) && (!MenuOptions[i].activeSelf))
+                if ((i == pos) && (!SceneOptions[i].activeSelf))
                 {
-                    Debug.Log(Pos);
-                    MenuOptions[i].SetActive(true);
-                    MenuOptions[i].GetComponentInParent<Animator>().SetBool("Hover", true);
+                    SceneOptions[i].SetActive(true);
+                    SceneOptions[i].GetComponentInParent<Animator>().SetBool("Hover", true);
                 }
-                else if ((i != Pos) && (MenuOptions[i].activeSelf))
+                else if ((i != pos) && (SceneOptions[i].activeSelf))
                 {
-                    MenuOptions[i].SetActive(false);
+                    SceneOptions[i].SetActive(false);
 
-                    if (MenuOptions[i].GetComponentInParent<Animator>().GetBool("Hover"))
+                    if (SceneOptions[i].GetComponentInParent<Animator>().GetBool("Hover"))
                     {
-                        MenuOptions[i].GetComponentInParent<Animator>().SetBool("Hover", false);
+                        SceneOptions[i].GetComponentInParent<Animator>().SetBool("Hover", false);
                     }
                 }
             }
@@ -59,15 +66,15 @@ namespace CarterGames.Arcade.Menu
 
         void MainMenuToAnotherScene()
         {
-            Trans.SetBool("ChangeScene", true);
-            ChangeScene(SceneNames[Pos]);
+            SceneTransition.SetBool("ChangeScene", true);
+            ChangeScene(sceneNames[pos]);
         }
 
 
         void ReturnToBoot()
         {
-            //Trans.SetFloat("Multi", 2f);
-            Trans.SetBool("ChangeScene", true);
+            //SceneTransition.SetFloat("Multi", 2f);
+            SceneTransition.SetBool("ChangeScene", true);
             ChangeScene("Boot");
         }
     }

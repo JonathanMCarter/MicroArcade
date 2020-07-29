@@ -14,7 +14,7 @@ namespace CarterGames.Arcade.Menu
         protected override void Start()
         {
             base.Start();
-            MaxPos = EndOptions.Count-1;
+            maxPos = EndOptions.Count-1;
             UpdateDisplay();
         }
 
@@ -24,7 +24,7 @@ namespace CarterGames.Arcade.Menu
             base.Update();
             MoveLR();
             if (ValueChanged()) { UpdateDisplay(); }
-            if (Confirm()) { EndOptions[Pos].GetComponent<Button>().onClick.Invoke(); }
+            if (Confirm()) { EndOptions[pos].GetComponent<Button>().onClick.Invoke(); }
         }
 
 
@@ -32,11 +32,11 @@ namespace CarterGames.Arcade.Menu
         {
             for (int i = 0; i < EndOptions.Count; i++)
             {
-                if (Pos == i && EndOptions[i].color != Colours[0])
+                if (pos == i && EndOptions[i].color != Colours[0])
                 {
                     EndOptions[i].GetComponentInChildren<Text>().color = Colours[0];
                 }
-                else if (Pos != i && EndOptions[i].color != Colours[1])
+                else if (pos != i && EndOptions[i].color != Colours[1])
                 {
                     EndOptions[i].GetComponentInChildren<Text>().color = Colours[1];
                 }

@@ -224,13 +224,13 @@ namespace CarterGames.Starshine
         /// <summary>
         /// Spawns more than one enemy type into the scene at once (used when the stage has more than one enemy in it)
         /// </summary>
-        /// <param name="Pos">Position in the string array to check</param>
+        /// <param name="pos">Position in the string array to check</param>
         /// <param name="Array">THe string array for the enemies to spawn in this phase of the stage</param>
-        void SpawnMultipleObjectsIntoScene(int Pos, string[] Array)
+        void SpawnMultipleObjectsIntoScene(int pos, string[] Array)
         {
             for (int j = 0; j < SpawnedEnemies.Count; j++)
             {
-                if ((!SpawnedEnemies[j].activeInHierarchy) && (SpawnedEnemies[j].name.Contains("Rocket")) && (!Array[Pos].Contains("Drone")))
+                if ((!SpawnedEnemies[j].activeInHierarchy) && (SpawnedEnemies[j].name.Contains("Rocket")) && (!Array[pos].Contains("Drone")))
                 {
                     Debug.Log("Not Spawning Drones");
                     Vector3 NewPos = new Vector3(Random.Range(-16f, 16f), 12.5f, 0f);
@@ -246,9 +246,9 @@ namespace CarterGames.Starshine
                     SpawnedEnemies[j].SetActive(true);
                     break;
                 }
-                else if ((!SpawnedEnemies[j].activeInHierarchy) && (Array[Pos].Contains("Drone")))
+                else if ((!SpawnedEnemies[j].activeInHierarchy) && (Array[pos].Contains("Drone")))
                 {
-                    if (SpawnedEnemies[j].name.Contains(Array[Pos]))
+                    if (SpawnedEnemies[j].name.Contains(Array[pos]))
                     {
                         SpawnedEnemies[j].SetActive(true);
                         break;

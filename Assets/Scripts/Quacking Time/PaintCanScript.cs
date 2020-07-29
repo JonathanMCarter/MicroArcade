@@ -39,7 +39,7 @@ namespace CarterGames.QuackingTime
             {
                 if (!hasPlayedSound)
                 {
-                    other.gameObject.GetComponent<DuckScript>().AM.Play("RetroFX2", .5f);
+                    other.gameObject.GetComponent<DuckScript>().am.Play("RetroFX2", .5f);
                     hasPlayedSound = true;
                 }
 

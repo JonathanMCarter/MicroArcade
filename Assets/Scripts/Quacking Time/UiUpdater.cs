@@ -34,13 +34,13 @@ namespace CarterGames.QuackingTime
 
         public Elly Ellements;
         private GameManager GM;
-        private AudioManager AM;
+        private AudioManager am;
         private bool HasPlayedBeep;
 
         private void Start()
         {
             GM = FindObjectOfType<GameManager>();
-            AM = FindObjectOfType<DuckScript>().AM;
+            am = FindObjectOfType<DuckScript>().am;
         }
 
         private void Update()
@@ -119,7 +119,7 @@ namespace CarterGames.QuackingTime
 
                     if ((Sec == "59") && (!HasPlayedBeep))
                     {
-                        AM.Play("Game_Timer_Beep_01");
+                        am.Play("Game_Timer_Beep_01");
                         HasPlayedBeep = true;
                     }
 

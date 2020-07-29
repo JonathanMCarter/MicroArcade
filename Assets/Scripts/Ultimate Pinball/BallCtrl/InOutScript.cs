@@ -29,13 +29,13 @@ namespace CarterGames.UltimatePinball.BallCtrl
         public Joysticks Side;
         BallSpawnerScript BSS;
 
-        AudioManager AM;
+        AudioManager am;
         GameManager GM;
 
         private void Start()
         {
             BSS = FindObjectOfType<BallSpawnerScript>();
-            AM = FindObjectOfType<AudioManager>();
+            am = FindObjectOfType<AudioManager>();
             GM = FindObjectOfType<GameManager>();
             InOBJ = gameObject;
         }
@@ -50,7 +50,7 @@ namespace CarterGames.UltimatePinball.BallCtrl
                 Debug.Log("Check hit");
                 collision.gameObject.SetActive(false);
                 StartCoroutine(SendBallOutWithDelay(collision.gameObject.GetComponent<BallMoveScript>()));
-                AM.Play("Gate-In", .15f);
+                am.Play("Gate-In", .15f);
             }
         }
 
@@ -80,7 +80,7 @@ namespace CarterGames.UltimatePinball.BallCtrl
 
             Debug.Log("spawning");
             BSS.SpawnBallCall(OutOBJ.transform.position, Side);
-            AM.Play("Gate-Out", .15f);
+            am.Play("Gate-Out", .15f);
         }
     }
 }

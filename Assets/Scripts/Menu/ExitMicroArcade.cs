@@ -22,7 +22,7 @@ namespace CarterGames.Arcade.Menu
         private new void Start()
         {
             MenuSystemStart();
-            MaxPos = quitOptions.Length - 1;
+            maxPos = quitOptions.Length - 1;
         }
 
 
@@ -45,11 +45,11 @@ namespace CarterGames.Arcade.Menu
                 if (ValueChanged())
                 {
                     UpdateDisplay();
-                    Debug.Log("Pos:" + Pos);
+                    Debug.Log("pos:" + pos);
                 }
 
 
-                switch (Pos)
+                switch (pos)
                 {
                     case 0:
 
@@ -65,7 +65,7 @@ namespace CarterGames.Arcade.Menu
                         if (Confirm())
                         {
                             CloseQuitPopup();
-                            Pos = 0;
+                            pos = 0;
                         }
 
                         break;
@@ -109,18 +109,18 @@ namespace CarterGames.Arcade.Menu
         {
             for (int i = 0; i < quitOptions.Length; i++)
             {
-                if (Pos == i)
+                if (pos == i)
                 {
-                    if ((Pos == 0 && quitOptions[i].GetComponent<Image>().color != colors[1]))
+                    if ((pos == 0 && quitOptions[i].GetComponent<Image>().color != colors[1]))
                     {
                         quitOptions[i].GetComponent<Image>().color = colors[1];
                     }
-                    else if (Pos == 1 && quitOptions[i].GetComponent<Image>().color != colors[2])
+                    else if (pos == 1 && quitOptions[i].GetComponent<Image>().color != colors[2])
                     {
                         quitOptions[i].GetComponent<Image>().color = colors[2];
                     }
                 }
-                else if (Pos != i && quitOptions[i].GetComponent<Image>().color != colors[1] || quitOptions[i].GetComponent<Image>().color != colors[2])
+                else if (pos != i && quitOptions[i].GetComponent<Image>().color != colors[1] || quitOptions[i].GetComponent<Image>().color != colors[2])
                 {
                     quitOptions[i].GetComponent<Image>().color = colors[0];
                 }

@@ -17,7 +17,7 @@ namespace CarterGames.QuackingTime
 
         public List<CanvasGroup> Groups;
 
-        private AudioManager AM;
+        private AudioManager am;
         public QuackingTimeRootMenu rootMenu;
         public RoundSelectControl RSC;
         public DuckCustomMenu DCM;
@@ -36,9 +36,9 @@ namespace CarterGames.QuackingTime
 
         private void Update()
         {
-            if (AM == null)
+            if (am == null)
             {
-                AM = FindObjectOfType<AudioManager>();
+                am = FindObjectOfType<AudioManager>();
             }
 
 

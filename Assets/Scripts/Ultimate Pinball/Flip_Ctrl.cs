@@ -31,15 +31,15 @@ namespace CarterGames.UltimatePinball
         HingeJoint2D HG;
         JointMotor2D MT;
 
-        // AM
-        AudioManager AM;
+        // am
+        AudioManager am;
         bool PlaySound;
 
         private void Start()
         {
             HG = GetComponent<HingeJoint2D>();
             MT = HG.motor;
-            AM = GameObject.FindGameObjectWithTag("GameController").GetComponent<AudioManager>();
+            am = GameObject.FindGameObjectWithTag("GameController").GetComponent<AudioManager>();
         }
 
         private void FixedUpdate()
@@ -173,7 +173,7 @@ namespace CarterGames.UltimatePinball
         {
             if (PlaySound)
             {
-                AM.Play("BumperHit", .2f, 1.5f);
+                am.Play("BumperHit", .2f, 1.5f);
                 PlaySound = false;
             }
 
@@ -198,7 +198,7 @@ namespace CarterGames.UltimatePinball
         {
             if (PlaySound)
             {
-                AM.Play("BumperHit", .2f, 1.5f);
+                am.Play("BumperHit", .2f, 1.5f);
                 PlaySound = false;
             }
 

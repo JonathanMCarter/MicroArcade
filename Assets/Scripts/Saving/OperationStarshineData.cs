@@ -1,12 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using CarterGames.Arcade.Leaderboard;
+﻿using CarterGames.Arcade.Leaderboard;
 using System;
+
+/*
+*  Copyright (c) Jonathan Carter
+*  E: jonathan@carter.games
+*  W: https://jonathan.carter.games/
+*/
 
 namespace CarterGames.Arcade.Saving
 {
-    [System.Serializable]
+    [Serializable]
     public struct PlayerStats
     {
         public int healthLost;

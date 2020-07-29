@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using CarterGames.Arcade.Saving;
 
 /*
@@ -13,16 +11,27 @@ namespace CarterGames.Arcade.Menu
 {
     public class BootMenu : MenuSystem
     {
-        public Animator BootMenuAnim;
-        public Animator FadeToWhite;
+        [SerializeField] private Animator BootMenuAnim;
+        [SerializeField] private Animator FadeToWhite;
+        [SerializeField] private ExitMicroArcade exitMicroArcade;
 
-        public ExitMicroArcade exitMicroArcade;
+        public string sceneName = "Arcade-Menu";
+        public bool shouldHideCursor;
+
+
+        private void Awake()
+        {
+            SaveManager.InitialseFiles();
+        }
 
 
         protected override void Start()
         {
-            Cursor.visible = false;
-            SaveManager.InitialseFiles();
+            if (shouldHideCursor)
+            {
+                Cursor.visible = false;
+            }
+
             MenuSystemStart();
         }
 
@@ -31,8 +40,16 @@ namespace CarterGames.Arcade.Menu
         {
             base.Update();
 
-            if (Confirm()) { BootScreenToRootScreen(); }
-            if (Return()) { exitMicroArcade.enabled = true; exitMicroArcade.OpenQuitPopup(); }
+            if (Confirm()) 
+            { 
+                BootScreenToRootScreen(); 
+            }
+
+            if (Return()) 
+            { 
+                exitMicroArcade.enabled = true; 
+                exitMicroArcade.OpenQuitPopup(); 
+            }
         }
 
 
@@ -41,7 +58,7 @@ namespace CarterGames.Arcade.Menu
             BootMenuAnim.SetBool("HasPressedStart", true);
             BootMenuAnim.gameObject.GetComponentInChildren<ParticleSystem>().Play();
             FadeToWhite.SetBool("ChangeScene", true);
-            ChangeScene("MainMenu", 1.1f);
+            ChangeScene(sceneName, 1.1f);
         }
     }
 }

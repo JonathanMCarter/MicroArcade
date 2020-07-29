@@ -54,7 +54,7 @@ namespace CarterGames.Starshine
 
         public StageController SC;
         GameManager GM;
-        public AudioManager AM;
+        public AudioManager am;
 
 
 
@@ -80,9 +80,9 @@ namespace CarterGames.Starshine
         private void Update()
         {
 
-            if (GM && !AM)
+            if (GM && !am)
             {
-                AM = GM.GetComponent<DialogueScript>().AM;
+                am = GM.GetComponent<DialogueScript>().am;
             }
 
 
@@ -241,7 +241,7 @@ namespace CarterGames.Starshine
 
                 Go.GetComponent<Damage>().DMG = (int)BossWeapons[0].Damage[0];
                 Go.GetComponent<Rigidbody2D>().velocity += ChooseDirection() * 10;
-                AM.Play("Shoot", Random.Range(.04f, .1f), Random.Range(.9f, 1f));
+                am.Play("Shoot", Random.Range(.04f, .1f), Random.Range(.9f, 1f));
             }
 
             yield return new WaitForSeconds(BossWeapons[0].Delay);
@@ -267,7 +267,7 @@ namespace CarterGames.Starshine
                 Go.transform.position = ChoosePosition(Attack2SpawnPoints).position;
                 Go.SetActive(true);
                 Go.GetComponent<Damage>().DMG = (int)BossWeapons[1].Damage[0];
-                AM.Play("MisslieShoot", .25f);
+                am.Play("MisslieShoot", .25f);
             }
 
            
@@ -289,7 +289,7 @@ namespace CarterGames.Starshine
         {
             CanShootAttack3 = false;
 
-            AM.Play("LaserPowerUp", .4f);
+            am.Play("LaserPowerUp", .4f);
             yield return new WaitForSeconds(1f);
 
             for (int i = 0; i < Lasers.Count; i++)
@@ -306,7 +306,7 @@ namespace CarterGames.Starshine
                 Lasers[i].GetComponent<BoxCollider2D>().enabled = true;
             }
 
-            AM.Play("LaserShoot", .4f);
+            am.Play("LaserShoot", .4f);
             yield return new WaitForSeconds(2f);
 
             for (int i = 0; i < Lasers.Count; i++)

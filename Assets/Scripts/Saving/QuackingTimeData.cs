@@ -1,4 +1,6 @@
-﻿/*
+﻿using System;
+
+/*
 *  Copyright (c) Jonathan Carter
 *  E: jonathan@carter.games
 *  W: https://jonathan.carter.games/
@@ -7,7 +9,7 @@
 
 namespace CarterGames.Arcade.Saving
 {
-    [System.Serializable]
+    [Serializable]
     public class QuackingTimeData
     {
         public int player1HatSelection;

@@ -44,7 +44,7 @@ namespace CarterGames.UltimatePinball
         protected override void Start()
         {
             base.Start();
-            MaxPos = ButtonOptions.Count - 1;
+            maxPos = ButtonOptions.Count - 1;
             UpdateDisplay();
             ModeData = SaveManager.LoadUltimatePinball();
             ShowCorrectStats();
@@ -64,7 +64,7 @@ namespace CarterGames.UltimatePinball
 
                     if (Confirm())
                     {
-                        switch (Pos)
+                        switch (pos)
                         {
                             case 0:
                                 Rematch();
@@ -93,7 +93,7 @@ namespace CarterGames.UltimatePinball
 
                     if (Confirm() && !IsCoR)
                     {
-                        switch (Pos)
+                        switch (pos)
                         {
                             case 0:
                                 SelectedGamemode = Gamemodes.Lives;
@@ -124,7 +124,7 @@ namespace CarterGames.UltimatePinball
                     }
                     else if (Return() && !IsCoR)
                     {
-                        Pos = 1;
+                        pos = 1;
                         IsReplay = false;
                         StartCoroutine(InputDelay());
                     }
@@ -297,7 +297,7 @@ namespace CarterGames.UltimatePinball
         void ReplaySelected()
         {
             IsReplay = true;
-            Pos = 0;
+            pos = 0;
             UpdateReplayDisplay();
         }
 
@@ -361,11 +361,11 @@ namespace CarterGames.UltimatePinball
         {
             for (int i = 0; i < ButtonOptions.Count; i++)
             {
-                if ((i == Pos) && (!ButtonOptions[i].GetComponent<Image>().enabled))
+                if ((i == pos) && (!ButtonOptions[i].GetComponent<Image>().enabled))
                 {
                     ButtonOptions[i].GetComponent<Image>().enabled = true;
                 }
-                else if ((i != Pos) && (ButtonOptions[i].GetComponent<Image>().enabled))
+                else if ((i != pos) && (ButtonOptions[i].GetComponent<Image>().enabled))
                 {
                     ButtonOptions[i].GetComponent<Image>().enabled = false;
                 }
@@ -378,11 +378,11 @@ namespace CarterGames.UltimatePinball
         {
             for (int i = 0; i < ReplayOptions.Count; i++)
             {
-                if ((i == Pos) && (ReplayOptions[i].GetComponent<Text>().color != Color.white))
+                if ((i == pos) && (ReplayOptions[i].GetComponent<Text>().color != Color.white))
                 {
                     ReplayOptions[i].GetComponent<Text>().color = Color.white;
                 }
-                else if ((i != Pos) && (ReplayOptions[i].GetComponent<Text>().color == Color.white))
+                else if ((i != pos) && (ReplayOptions[i].GetComponent<Text>().color == Color.white))
                 {
                     ReplayOptions[i].GetComponent<Text>().color = Color.yellow;
                 }

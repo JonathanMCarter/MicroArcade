@@ -39,7 +39,7 @@ namespace CarterGames.UltimatePinball.BallCtrl
 
         public bool CanSpawnAuto;
 
-        public AudioManager AM;
+        public AudioManager am;
 
         int NumberSpawned;
 
@@ -134,7 +134,7 @@ namespace CarterGames.UltimatePinball.BallCtrl
                 }
             }
 
-            AM.Play("BallSpawn", .05f);
+            am.Play("BallSpawn", .05f);
 
             // wait for the desired seconds
             yield return new WaitForSeconds(SpawnDelay);
@@ -181,7 +181,7 @@ namespace CarterGames.UltimatePinball.BallCtrl
                 }
             }
 
-            AM.Play("BallSpawn", .05f);
+            am.Play("BallSpawn", .05f);
 
             // wait for the desired seconds
             yield return new WaitForSeconds(AutoSpawnDelay);
@@ -191,7 +191,7 @@ namespace CarterGames.UltimatePinball.BallCtrl
         }
 
 
-        public void SpawnBallCall(Vector3 Pos, Joysticks Side)
+        public void SpawnBallCall(Vector3 pos, Joysticks Side)
         {
             for (int i = 0; i < BallObjectPoolAmount; i++)
             {
@@ -211,7 +211,7 @@ namespace CarterGames.UltimatePinball.BallCtrl
                             break;
                     }
 
-                    BallObjectPool[i].transform.position = Pos;
+                    BallObjectPool[i].transform.position = pos;
                     BallObjectPool[i].SetActive(true);
                     break;
                 }

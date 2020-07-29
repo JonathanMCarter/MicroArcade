@@ -17,7 +17,7 @@ namespace CarterGames.QuackingTime
         public List<GameObject> Customise;
 
         private bool IsCoR;
-        public AudioManager AM;
+        public AudioManager am;
 
         public SceneChanger SC;
         public QuackingTimeRootMenu rootMenu;
@@ -43,13 +43,13 @@ namespace CarterGames.QuackingTime
                     if (ArcadeControls.ButtonPress(Joysticks.White, Buttons.B8))
                     {
                         SetNumberofRounds(Selection);
-                        AM.Play("Menu-Confirm", .25f);
+                        am.Play("Menu-Confirm", .25f);
                         OpenCustomMenu();
                     }
 
                     if (ArcadeControls.ButtonPress(Joysticks.White, Buttons.B7))
                     {
-                        AM.Play("Confirm", .25f);
+                        am.Play("Confirm", .25f);
                         BackToRootMenu();
                     }
 
@@ -62,13 +62,13 @@ namespace CarterGames.QuackingTime
                     if (ControllerControls.ButtonPress(Players.P1, ControllerButtons.A))
                     {
                         SetNumberofRounds(Selection);
-                        AM.Play("Menu-Confirm", .25f);
+                        am.Play("Menu-Confirm", .25f);
                         OpenCustomMenu();
                     }
 
                     if (ControllerControls.ButtonPress(Players.P1, ControllerButtons.B))
                     {
-                        AM.Play("Confirm", .25f);
+                        am.Play("Confirm", .25f);
                         BackToRootMenu();
                     }
 
@@ -81,13 +81,13 @@ namespace CarterGames.QuackingTime
                     if (KeyboardControls.ButtonPress(Players.P1, Buttons.B8))
                     {
                         SetNumberofRounds(Selection);
-                        AM.Play("Menu-Confirm", .25f);
+                        am.Play("Menu-Confirm", .25f);
                         OpenCustomMenu();
                     }
 
                     if (KeyboardControls.ButtonPress(Players.P1, Buttons.B7))
                     {
-                        AM.Play("Confirm", .25f);
+                        am.Play("Confirm", .25f);
                         BackToRootMenu();
                     }
 
@@ -100,13 +100,13 @@ namespace CarterGames.QuackingTime
                     if (KeyboardControls.ButtonPress(Players.P1, Buttons.B8))
                     {
                         SetNumberofRounds(Selection);
-                        AM.Play("Menu-Confirm", .25f);
+                        am.Play("Menu-Confirm", .25f);
                         OpenCustomMenu();
                     }
 
                     if (KeyboardControls.ButtonPress(Players.P1, Buttons.B7))
                     {
-                        AM.Play("Confirm", .25f);
+                        am.Play("Confirm", .25f);
                         BackToRootMenu();
                     }
 
@@ -119,13 +119,13 @@ namespace CarterGames.QuackingTime
                     if (ControllerControls.ButtonPress(Players.P1, ControllerButtons.A))
                     {
                         SetNumberofRounds(Selection);
-                        AM.Play("Menu-Confirm", .25f);
+                        am.Play("Menu-Confirm", .25f);
                         OpenCustomMenu();
                     }
 
                     if (ControllerControls.ButtonPress(Players.P1, ControllerButtons.B))
                     {
-                        AM.Play("Confirm", .25f);
+                        am.Play("Confirm", .25f);
                         BackToRootMenu();
                     }
 
@@ -154,7 +154,7 @@ namespace CarterGames.QuackingTime
                 else { Selection = 0; }
             }
 
-            AM.Play("Menu_Click", .25f);
+            am.Play("Menu_Click", .25f);
 
             yield return new WaitForSeconds(.25f);
             IsCoR = false;

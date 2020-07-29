@@ -19,7 +19,7 @@ namespace CarterGames.Starshine
         internal StageController SC;
 
         public GameManager GM;
-        AudioManager AM;
+        AudioManager am;
         bool FirstSpawned;
 
         private void OnEnable()
@@ -28,7 +28,7 @@ namespace CarterGames.Starshine
             if (!DI) { DI = FindObjectOfType<DamageIndicators>(); }
             if (!SC) { SC = FindObjectOfType<StageController>(); }
             if (!GM) { GM = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>(); }
-            if (!AM) { AM = FindObjectOfType<AudioManager>(); }
+            if (!am) { am = FindObjectOfType<AudioManager>(); }
             if (!Ship) { Ship = GetComponent<ShipManagement>(); }
         }
 
@@ -167,7 +167,7 @@ namespace CarterGames.Starshine
                                 }
 
 
-                                AM.Play("ShieldHit", .15f, Random.Range(.75f, 1.15f));
+                                am.Play("ShieldHit", .15f, Random.Range(.75f, 1.15f));
                             }
                             else
                             {
@@ -204,7 +204,7 @@ namespace CarterGames.Starshine
                                     Destroy(_go, 1f);
                                 }
 
-                                AM.Play("MissileImpact", .1f, .75f);
+                                am.Play("MissileImpact", .1f, .75f);
 
                                 // Score additions
                                 if (Hit.GetPlayerShotFrom() == 1)

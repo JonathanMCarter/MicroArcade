@@ -18,13 +18,13 @@ namespace CarterGames.UltimatePinball.BallCtrl
         public GateEnum Gates;
 
         GameManager GM;
-        AudioManager AM;
+        AudioManager am;
 
 
         private void Start()
         {
             GM = FindObjectOfType<GameManager>();
-            AM = GM.GetComponent<AudioManager>();
+            am = GM.GetComponent<AudioManager>();
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -51,7 +51,7 @@ namespace CarterGames.UltimatePinball.BallCtrl
                     --GM.Player1Stats.Health;
                 }
 
-                AM.Play("BallLost", .1f);
+                am.Play("BallLost", .1f);
             }
             else if (Gates == GateEnum.P2Gate)
             {
@@ -63,7 +63,7 @@ namespace CarterGames.UltimatePinball.BallCtrl
                     --GM.Player2Stats.Health;
                 }
 
-                AM.Play("BallLost", .1f);
+                am.Play("BallLost", .1f);
             }
         }
     }

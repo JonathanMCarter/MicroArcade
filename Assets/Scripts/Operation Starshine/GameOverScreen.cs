@@ -20,9 +20,9 @@ namespace CarterGames.Starshine
             base.Start();
 
             MAM = GetComponent<AudioManager>();
-            MaxPos = (Buttons.Count - 1);
+            maxPos = (Buttons.Count - 1);
             UpdateDisplay();
-            AM = MAM;
+            am = MAM;
         }
 
 
@@ -35,7 +35,7 @@ namespace CarterGames.Starshine
             if (Confirm()) 
             { 
                 Trans.SetBool("ChangeScene", true);  
-                ChangeScene(SceneNames[Pos]); 
+                ChangeScene(SceneNames[pos]); 
             }
 
             UpdateDisplay();
@@ -46,11 +46,11 @@ namespace CarterGames.Starshine
         {
             for (int i = 0; i < Buttons.Count; i++)
             {
-                if ((Pos == i) && (Buttons[i].GetComponent<Text>().color != Colours[0]))
+                if ((pos == i) && (Buttons[i].GetComponent<Text>().color != Colours[0]))
                 {
                     Buttons[i].GetComponent<Text>().color = Colours[0];
                 }
-                else if ((Pos != i) && (Buttons[i].GetComponent<Text>().color != Colours[1]))
+                else if ((pos != i) && (Buttons[i].GetComponent<Text>().color != Colours[1]))
                 {
                     Buttons[i].GetComponent<Text>().color = Colours[1];
                 }

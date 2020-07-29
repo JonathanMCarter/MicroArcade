@@ -31,8 +31,8 @@ namespace CarterGames.Arcade.UserInput
         {
             pauseAnim = GetComponent<Animator>();
             MenuSystemStart();
-            MaxPos = menuObjects.Length - 1;
-            AM = audioManager;
+            maxPos = menuObjects.Length - 1;
+            am = audioManager;
         }
 
 
@@ -47,7 +47,7 @@ namespace CarterGames.Arcade.UserInput
 
                 if (Confirm())
                 {
-                    switch (Pos)
+                    switch (pos)
                     {
                         case 0:
                             ResumeGame();
@@ -85,11 +85,11 @@ namespace CarterGames.Arcade.UserInput
         {
             for (int i = 0; i < menuObjects.Length; i++)
             {
-                if (Pos == i && !menuObjects[i].GetComponent<Animator>().GetBool("isHover"))
+                if (pos == i && !menuObjects[i].GetComponent<Animator>().GetBool("isHover"))
                 {
                     menuObjects[i].GetComponent<Animator>().SetBool("isHover", true);
                 }
-                else if (Pos != i && menuObjects[i].GetComponent<Animator>().GetBool("isHover"))
+                else if (pos != i && menuObjects[i].GetComponent<Animator>().GetBool("isHover"))
                 {
                     menuObjects[i].GetComponent<Animator>().SetBool("isHover", false);
                 }

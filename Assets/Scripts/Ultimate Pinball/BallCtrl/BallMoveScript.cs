@@ -37,14 +37,14 @@ namespace CarterGames.UltimatePinball.BallCtrl
         /// Reference to the ball gamemanager, used for scoring 'n' stuff
         /// </summary>
         GameManager GM;
-        AudioManager AM;
+        AudioManager am;
 
         // When Spawned into the game
         void Awake()
         {
             // References the ball gamemanger when it is first made, only runs once in theory
             GM = FindObjectOfType<GameManager>();
-            AM = FindObjectOfType<AudioManager>();
+            am = FindObjectOfType<AudioManager>();
         }
 
         // When Ball is enabled (from OBJ-POOL)
@@ -102,11 +102,11 @@ namespace CarterGames.UltimatePinball.BallCtrl
                 {
                     case Joysticks.White:
                         GM.Player1Stats.Score += 100;
-                        AM.Play("BumperHit", .05f, 1.2f);
+                        am.Play("BumperHit", .05f, 1.2f);
                         break;
                     case Joysticks.Black:
                         GM.Player2Stats.Score += 100;
-                        AM.Play("BumperHit", .05f, 1.2f);
+                        am.Play("BumperHit", .05f, 1.2f);
                         break;
                     case Joysticks.None:
                         break;

@@ -43,8 +43,8 @@ namespace CarterGames.Starshine
             MenuSystemStart();
             P1PreviousCol = keyboards[0].GetComponentsInChildren<Image>()[0].color;
             P2PreviousCol = keyboards[1].GetComponentsInChildren<Image>()[0].color;
-            MaxPos = menuObjects.Length - 1;
-            AM = FindObjectOfType<AudioManager>();
+            maxPos = menuObjects.Length - 1;
+            am = FindObjectOfType<AudioManager>();
         }
 
 
@@ -304,7 +304,7 @@ namespace CarterGames.Starshine
 
                 if (Confirm())
                 {
-                    switch (Pos)
+                    switch (pos)
                     {
                         case 0:
                             animator.SetBool("ChangeScene", true);
@@ -354,11 +354,11 @@ namespace CarterGames.Starshine
         {
             for (int i = 0; i < menuObjects.Length; i++)
             {
-                if (Pos == i && menuObjects[i].GetComponent<Text>().color != Color.yellow)
+                if (pos == i && menuObjects[i].GetComponent<Text>().color != Color.yellow)
                 {
                     menuObjects[i].GetComponent<Text>().color = Color.yellow;
                 }
-                else if (Pos != i && menuObjects[i].GetComponent<Text>().color == Color.yellow)
+                else if (pos != i && menuObjects[i].GetComponent<Text>().color == Color.yellow)
                 {
                     menuObjects[i].GetComponent<Text>().color = Color.white;
                 }

@@ -65,7 +65,7 @@ namespace CarterGames.QuackingTime
 
         [SerializeField] internal bool LockHex = false;
 
-        internal AudioManager AM;
+        internal AudioManager am;
         private ReadySetGo RSG;
         [SerializeField] private bool JumpCoolRunning;
 
@@ -74,7 +74,7 @@ namespace CarterGames.QuackingTime
         private void Start()
         {
             GM = FindObjectOfType<GameManager>();
-            AM = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+            am = GameObject.Find("AudioManager").GetComponent<AudioManager>();
             RSG = FindObjectOfType<ReadySetGo>();
             Power = Powerups.None;
             UpdateHat();
@@ -151,7 +151,7 @@ namespace CarterGames.QuackingTime
 
                             if ((ArcadeControls.ButtonPress(Joysticks.White, Buttons.B1)) && (CanDuckJump))
                             {
-                                AM.PlayFromTime("Jump", .05f);
+                                am.PlayFromTime("Jump", .05f);
                                 GetComponent<Rigidbody>().AddForce(transform.up * JumpHeight, ForceMode.Impulse);
                                 StartCoroutine(JumpCooldown());
                             }
@@ -165,7 +165,7 @@ namespace CarterGames.QuackingTime
 
                             if ((ArcadeControls.ButtonPress(Joysticks.Black, Buttons.B1)) && (CanDuckJump))
                             {
-                                AM.PlayFromTime("Jump", .05f);
+                                am.PlayFromTime("Jump", .05f);
                                 GetComponent<Rigidbody>().AddForce(transform.up * JumpHeight, ForceMode.Impulse);
                                 StartCoroutine(JumpCooldown());
                             }
@@ -186,7 +186,7 @@ namespace CarterGames.QuackingTime
 
                             if ((ControllerControls.ButtonPress(Players.P1, ControllerButtons.A)) && (CanDuckJump))
                             {
-                                AM.PlayFromTime("Jump", .05f);
+                                am.PlayFromTime("Jump", .05f);
                                 GetComponent<Rigidbody>().AddForce(transform.up * JumpHeight, ForceMode.Impulse);
                                 StartCoroutine(JumpCooldown());
                             }
@@ -200,7 +200,7 @@ namespace CarterGames.QuackingTime
 
                             if ((ControllerControls.ButtonPress(Players.P2, ControllerButtons.A)) && (CanDuckJump))
                             {
-                                AM.PlayFromTime("Jump", .05f);
+                                am.PlayFromTime("Jump", .05f);
                                 GetComponent<Rigidbody>().AddForce(transform.up * JumpHeight, ForceMode.Impulse);
                                 StartCoroutine(JumpCooldown());
                             }
@@ -221,7 +221,7 @@ namespace CarterGames.QuackingTime
 
                             if ((KeyboardControls.ButtonPress(Players.P1, Buttons.B1)) && (CanDuckJump))
                             {
-                                AM.PlayFromTime("Jump", .05f);
+                                am.PlayFromTime("Jump", .05f);
                                 GetComponent<Rigidbody>().AddForce(transform.up * JumpHeight, ForceMode.Impulse);
                                 StartCoroutine(JumpCooldown());
                             }
@@ -235,7 +235,7 @@ namespace CarterGames.QuackingTime
 
                             if ((KeyboardControls.ButtonPress(Players.P2, Buttons.B1)) && (CanDuckJump))
                             {
-                                AM.PlayFromTime("Jump", .05f);
+                                am.PlayFromTime("Jump", .05f);
                                 GetComponent<Rigidbody>().AddForce(transform.up * JumpHeight, ForceMode.Impulse);
                                 StartCoroutine(JumpCooldown());
                             }
@@ -256,7 +256,7 @@ namespace CarterGames.QuackingTime
 
                             if ((KeyboardControls.ButtonPress(Players.P1, Buttons.B1)) && (CanDuckJump))
                             {
-                                AM.PlayFromTime("Jump", .05f);
+                                am.PlayFromTime("Jump", .05f);
                                 GetComponent<Rigidbody>().AddForce(transform.up * JumpHeight, ForceMode.Impulse);
                                 StartCoroutine(JumpCooldown());
                             }
@@ -270,7 +270,7 @@ namespace CarterGames.QuackingTime
 
                             if ((ControllerControls.ButtonPress(Players.P1, ControllerButtons.A)) && (CanDuckJump))
                             {
-                                AM.PlayFromTime("Jump", .05f);
+                                am.PlayFromTime("Jump", .05f);
                                 GetComponent<Rigidbody>().AddForce(transform.up * JumpHeight, ForceMode.Impulse);
                                 StartCoroutine(JumpCooldown());
                             }
@@ -291,7 +291,7 @@ namespace CarterGames.QuackingTime
 
                             if ((KeyboardControls.ButtonPress(Players.P1, Buttons.B1)) && (CanDuckJump))
                             {
-                                AM.PlayFromTime("Jump", .05f);
+                                am.PlayFromTime("Jump", .05f);
                                 GetComponent<Rigidbody>().AddForce(transform.up * JumpHeight, ForceMode.Impulse);
                                 StartCoroutine(JumpCooldown());
                             }
@@ -305,7 +305,7 @@ namespace CarterGames.QuackingTime
 
                             if ((ControllerControls.ButtonPress(Players.P1, ControllerButtons.A)) && (CanDuckJump))
                             {
-                                AM.PlayFromTime("Jump", .05f);
+                                am.PlayFromTime("Jump", .05f);
                                 GetComponent<Rigidbody>().AddForce(transform.up * JumpHeight, ForceMode.Impulse);
                                 StartCoroutine(JumpCooldown());
                             }
@@ -356,7 +356,7 @@ namespace CarterGames.QuackingTime
         {
             if (other.gameObject.tag.Contains("Gimme"))
             {
-                AM.Play("Collect", .5f);
+                am.Play("Collect", .5f);
                 GM.SetDuckScoreToFinal(Ducks, other.GetComponent<ScoringBoxScript>().scoringBoxMultiplier);
                 other.gameObject.SetActive(false);
             }
@@ -364,7 +364,7 @@ namespace CarterGames.QuackingTime
             if (other.gameObject.tag.Contains("Lockie"))
             {
                 StopAllCoroutines();
-                AM.Play("Metal", 1.5f);
+                am.Play("Metal", 1.5f);
                 Power = Powerups.Lockie;
                 LockDuckSquares(other.gameObject);
                 other.gameObject.SetActive(false);
@@ -378,7 +378,7 @@ namespace CarterGames.QuackingTime
             if (other.gameObject.tag.Contains("Speed"))
             {
                 StopAllCoroutines();
-                AM.Play("Speed", .75f);
+                am.Play("Speed", .75f);
                 Power = Powerups.Speedie;
                 other.gameObject.SetActive(false);
             }
@@ -386,7 +386,7 @@ namespace CarterGames.QuackingTime
             if (other.gameObject.tag.Contains("Wat"))
             {
                 StopAllCoroutines();
-                AM.Play("Splat", .75f);
+                am.Play("Splat", .75f);
                 Power = Powerups.None;
                 GM.RespawnDuck(Ducks);
             }

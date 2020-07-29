@@ -80,7 +80,7 @@ namespace CarterGames.Utilities
             if (ypos > 0) ypos = ypos + (int)rect1.rect.height / 2;
             else ypos += (int)rect1.rect.height / 2;
 
-            Debug.Log("Correct Cursor Pos: " + xpos + " " + ypos);
+            Debug.Log("Correct Cursor pos: " + xpos + " " + ypos);
 
             Color CheckColour = colourTexture.sprite.texture.GetPixel(xpos, ypos);
 

@@ -6,19 +6,19 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Arcade/Boot.unity
+    path: Assets/Scenes/Arcade/Arcade-Boot.unity
     guid: ae8087b5e31eff347b764b23c14be797
   - enabled: 1
-    path: Assets/Scenes/Arcade/MainMenu.unity
+    path: Assets/Scenes/Arcade/Arcade-Menu.unity
     guid: fab6fd8e3bb66c54fbed76b343884db3
   - enabled: 1
-    path: Assets/Scenes/Arcade/PlayMenu.unity
+    path: Assets/Scenes/Arcade/Arcade-Play.unity
     guid: 9e819e7cd38199f4d8952b494d21711c
   - enabled: 1
-    path: Assets/Scenes/Arcade/Settings.unity
+    path: Assets/Scenes/Arcade/Arcade-Settings.unity
     guid: 834492c3d8ddbfd4a807d4a167cb7da7
   - enabled: 1
-    path: Assets/Scenes/Arcade/Credits.unity
+    path: Assets/Scenes/Arcade/Arcade-Credits.unity
     guid: f131434c74ea1464cac259ae8016edd9
   - enabled: 1
     path: Assets/Scenes/Ultimate Pinball/Ultimate-Pinball-Menu.unity
@@ -50,6 +50,39 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Quacking Time/QuackingTime-End.unity
     guid: 214d75b1823088843adb44c8a147032f
+  - enabled: 1
+    path: Assets/Scenes/Crushing!/Crushing-Credits.unity
+    guid: 257b38496c54df44c98fb788cbcc1206
+  - enabled: 1
+    path: Assets/Scenes/Crushing!/Crushing-Game.unity
+    guid: c5fb4d25e4a65f247a9912ded5fa0a32
+  - enabled: 1
+    path: Assets/Scenes/Crushing!/Crushing-GameOver.unity
+    guid: 97d0c04f48574df42a2b76558a310b38
+  - enabled: 1
+    path: Assets/Scenes/Crushing!/Crushing-Menu.unity
+    guid: b1efc4f5d40093b41b771fe0dac53a09
+  - enabled: 1
+    path: Assets/Scenes/Crushing!/Crushing-Settings.unity
+    guid: 6bf1e615750bbee4089343152793f8b6
+  - enabled: 1
+    path: Assets/Scenes/Crushing!/Crushing-Stats.unity
+    guid: e040296ed430f774ebfa8bdfc5a30875
+  - enabled: 1
+    path: Assets/Scenes/CWIS/CWIS-Credits.unity
+    guid: f030c078ca20d9948aacf12cee01033f
+  - enabled: 1
+    path: Assets/Scenes/CWIS/CWIS-Game.unity
+    guid: f7f08488226a4204993382096bdcf42f
+  - enabled: 1
+    path: Assets/Scenes/CWIS/CWIS-Leaderboard.unity
+    guid: 51906b3b75f38714cbc7bd974868e677
+  - enabled: 1
+    path: Assets/Scenes/CWIS/CWIS-Menu.unity
+    guid: 113ac202222597841a79e81a2736001e
+  - enabled: 1
+    path: Assets/Scenes/CWIS/CWIS-Name.unity
+    guid: 4c48ffe9569a5c148953f780810d52e6
   - enabled: 1
     path: Assets/Scenes/Arcade/InputCheck.unity
     guid: 1bbeb142e26a7194a8fa3f874a36e30f
