@@ -27,5 +27,19 @@ Play together in this two player mini-campaign to free a star from captivity. Wi
 
 Play against eachother in this improved version of the game jam title under the same title. Collect as many points as you can before the round ends!
 
+## Upcoming Additions
+
+#### Crushing!
+- 1-Player
+
+An endless survival game where you control and orb which is surrounded by crushers on all sides, your objective is the guide the orb away from the crushers for as long as possible.
+
+### C.W.I.S
+- 1-player & 2-Player
+- Versus
+
+C.W.I.S is a tatical survival game where you fend off endless waves of missiles heading right for you. How do you stop these missiles? with a C.W.I.S of course!
+
+
 ## Copyright (c)
 This project is public for people to look at, but is not to be copied or sold. The repository is intended as to be Read-Only for those not working on the project.
