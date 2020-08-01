@@ -957,7 +957,7 @@ GameObject:
   - component: {fileID: 72865665}
   - component: {fileID: 72865664}
   m_Layer: 5
-  m_Name: 5--2--InfoOption (2)
+  m_Name: Menu
   m_TagString: MenuItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2248,6 +2248,12 @@ MonoBehaviour:
   - array:
     - HowMany
   - array: []
+  - array: []
+  - array:
+    - LivesLB
+    - TimerLB
+    - ScoreLB
+    - RootMenu
   sceneObjects:
   - array:
     - {fileID: 1625965595}
@@ -2260,10 +2266,16 @@ MonoBehaviour:
     - {fileID: 93875671}
   - array:
     - {fileID: 1610130720}
+  - array: []
   - array:
     - {fileID: 1777509919}
     - {fileID: 934368927}
     - {fileID: 1848764656}
+  - array:
+    - {fileID: 416693719}
+    - {fileID: 1178377970}
+    - {fileID: 2138221820}
+    - {fileID: 72865661}
   sceneTransition: {fileID: 7721339121074382968}
   activeTier: 0
   cg:
@@ -3191,7 +3203,7 @@ GameObject:
   - component: {fileID: 416693722}
   - component: {fileID: 416693721}
   m_Layer: 5
-  m_Name: 5--1--PlayOption
+  m_Name: Lives
   m_TagString: MenuItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7881,7 +7893,7 @@ GameObject:
   - component: {fileID: 1178377974}
   - component: {fileID: 1178377973}
   m_Layer: 5
-  m_Name: 5--2--InfoOption
+  m_Name: Timer
   m_TagString: MenuItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13388,7 +13400,7 @@ GameObject:
   - component: {fileID: 2138221824}
   - component: {fileID: 2138221823}
   m_Layer: 5
-  m_Name: 5--2--InfoOption (1)
+  m_Name: Score
   m_TagString: MenuItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

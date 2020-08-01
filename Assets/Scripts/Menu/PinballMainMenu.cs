@@ -36,11 +36,14 @@ namespace CarterGames.Arcade.Menu
         [SerializeField] short selectionGM;
 
         private bool shouldDisable = false;
-        private short posForBack = 0;
+        private bool shouldUsePos = true;
+        private short returnTier;
+        private short returnPos;
 
 
         protected override void Start()
         {
+            am = FindObjectOfType<AudioManager>();
             pos = 0;
             maxPos = sceneMethods[activeTier].array.Length - 1;
             base.Start();
@@ -54,7 +57,14 @@ namespace CarterGames.Arcade.Menu
             base.Update();
             if (ValueChanged()) { UpdateDisplay(); }
             if (Confirm()) { InvokeMethod(sceneMethods[activeTier].array[pos]); }
-            if (Return() && activeTier >= 0) { InvokeMethod(sceneMethods[activeTier-1].array[posForBack] + "Back"); }
+            if (shouldUsePos)
+            {
+                if (Return() && activeTier >= 0) { InvokeMethod(sceneMethods[returnTier].array[pos] + "Back"); }
+            }
+            else
+            {
+                if (Return() && activeTier >= 0) { InvokeMethod(sceneMethods[returnTier].array[returnPos] + "Back"); }
+            }
         }
 
 
@@ -123,8 +133,11 @@ namespace CarterGames.Arcade.Menu
                 case 2:
                     MoveLR();
                     break;
-                case 3:
+                case 4:
                     MoveLR();
+                    break;
+                case 5:
+                    MoveUD();
                     break;
                 default:
                     break;
@@ -192,20 +205,44 @@ namespace CarterGames.Arcade.Menu
         {
             EditCanvasGroup(false, cg[0]);
             EditCanvasGroup(true, cg[5]);
-            ChangeTier(3, false);
+            ChangeTier(4, false);
             shouldDisable = true;
+            shouldUsePos = false;
+            returnTier = 0;
+            returnPos = 1;
         }
 
         private void TutorialBack()
         {
+            shouldDisable = false;
             EditCanvasGroup(true, cg[0]);
             EditCanvasGroup(false, cg[5]);
             ChangeTier(0, true);
-            shouldDisable = false;
+            shouldUsePos = true;
         }
 
+        private void Leaderboard()
+        {
+            EditCanvasGroup(false, cg[0]);
+            EditCanvasGroup(true, cg[6]);
+            ChangeTier(5, true);
+            shouldUsePos = false;
+            returnTier = 0;
+            returnPos = 2;
+        }
 
+        private void LeaderboardBack()
+        {
+            EditCanvasGroup(true, cg[0]);
+            EditCanvasGroup(false, cg[6]);
+            ChangeTier(0, true);
+            shouldUsePos = true;
+        }
 
+        private void Menu()
+        {
+            ChangeScene("Arcade-Play");
+        }
 
 
         /*  ======================================================
