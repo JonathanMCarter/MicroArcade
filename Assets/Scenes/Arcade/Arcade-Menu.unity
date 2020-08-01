@@ -131,8 +131,8 @@ GameObject:
   m_Component:
   - component: {fileID: 35267831}
   - component: {fileID: 35267830}
-  - component: {fileID: 35267833}
   - component: {fileID: 35267832}
+  - component: {fileID: 35267833}
   m_Layer: 0
   m_Name: MenuCtrl
   m_TagString: Untagged
@@ -161,6 +161,10 @@ MonoBehaviour:
   - {fileID: 1191566681}
   - {fileID: 410281125}
   sceneTransitions: {fileID: 365144158}
+  shouldDisable: 1
+  returnScene: Arcade-Boot
+  colours: []
+  isUpDown: 0
 --- !u!4 &35267831
 Transform:
   m_ObjectHideFlags: 0
@@ -280,19 +284,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 35267829}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bfb506d2985adb44a36c2b3ce98edb7, type: 3}
+  m_Script: {fileID: 11500000, guid: 9cbeb1e7a26272c4b8239e36fffea03d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hasScannedOnce: 1
-  shouldShowDir: 1
-  shouldShowClips: 1
-  audioManagerFile: {fileID: 11400000, guid: 5d8ab69bc54591a4ca956ce0b0bea69b, type: 2}
-  lastAudioManagerFile: {fileID: 11400000, guid: 5d8ab69bc54591a4ca956ce0b0bea69b,
+  shouldShowDir: 0
+  shouldShowClips: 0
+  audioManagerFile: {fileID: 11400000, guid: f5e6423e55a048f4592a4d561c757c26, type: 2}
+  lastAudioManagerFile: {fileID: 11400000, guid: f5e6423e55a048f4592a4d561c757c26,
     type: 2}
   soundPrefab: {fileID: 977031777656076914, guid: c8aadc768be109f478c9aad2b841252d,
     type: 3}
-  directory:
-  - Menu
 --- !u!1 &56807690
 GameObject:
   m_ObjectHideFlags: 0

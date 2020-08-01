@@ -71,7 +71,7 @@ namespace CarterGames.Arcade.Menu
         private void ReturnToMainMenu()
         {
             SceneTransition.SetBool("ChangeScene", true);
-            ChangeScene("MainMenu");
+            ChangeScene("Arcade-Menu");
         }
     }
 }

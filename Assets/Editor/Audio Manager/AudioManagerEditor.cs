@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEditor;
 using System.IO;
 using System.Linq;
-using UnityEditor.Rendering;
 
 /*
  * 
@@ -37,7 +36,7 @@ namespace CarterGames.Assets.AudioManager
 
         private string _newPath = "";
 
-        private bool showDirectories = false;
+        private bool showDirectories;
         private bool showClips = true;
         private bool isSetup = false;
 
@@ -122,7 +121,6 @@ namespace CarterGames.Assets.AudioManager
                 if (audioManagerScript.soundPrefab)
                 {
                     audioManagerScript.audioManagerFile.soundPrefab = audioManagerScript.soundPrefab;
-                    serializedObject.FindProperty("shouldShowDir").boolValue = true;
                 }
 
                 EditorGUILayout.EndHorizontal();
@@ -138,7 +136,7 @@ namespace CarterGames.Assets.AudioManager
                         GUI.color = Color.cyan;
                         if (GUILayout.Button("Show Directories", GUILayout.Width(120)))
                         {
-                            serializedObject.FindProperty("shouldShowDir").boolValue = !serializedObject.FindProperty("shouldShowDir").boolValue;
+                            serializedObject.FindProperty("shouldShowDir").boolValue = true;
                         }
                     }
                     else
@@ -146,7 +144,7 @@ namespace CarterGames.Assets.AudioManager
                         GUI.color = Color.white;
                         if (GUILayout.Button("Hide Directories", GUILayout.Width(120)))
                         {
-                            serializedObject.FindProperty("shouldShowDir").boolValue = !serializedObject.FindProperty("shouldShowDir").boolValue;
+                            serializedObject.FindProperty("shouldShowDir").boolValue = false;
                         }
                     }
 
@@ -155,7 +153,7 @@ namespace CarterGames.Assets.AudioManager
                         GUI.color = Color.cyan;
                         if (GUILayout.Button("Show Clips", GUILayout.Width(95)))
                         {
-                            serializedObject.FindProperty("shouldShowClips").boolValue = !serializedObject.FindProperty("shouldShowClips").boolValue;
+                            serializedObject.FindProperty("shouldShowClips").boolValue = true;
                         }
                     }
                     else
@@ -163,7 +161,7 @@ namespace CarterGames.Assets.AudioManager
                         GUI.color = Color.white;
                         if (GUILayout.Button("Hide Clips", GUILayout.Width(95)))
                         {
-                            serializedObject.FindProperty("shouldShowClips").boolValue = !serializedObject.FindProperty("shouldShowClips").boolValue;
+                            serializedObject.FindProperty("shouldShowClips").boolValue = false;
                         }
                     }
                     GUI.color = Color.white;
@@ -247,113 +245,24 @@ namespace CarterGames.Assets.AudioManager
                       // Changes the text & colour of the first button based on if you've pressed it before or not
                         if (serializedObject.FindProperty("hasScannedOnce").boolValue) { scanButtonString = "Re-Scan"; GUI.color = scannedCol; }
                         else { scanButtonString = "Scan"; GUI.color = scanCol; }
-                        
+
 
                         if (CheckAmount() > 0)
                         {
-                            /*
-                            // The actual Scan button - Runs functions to get the audio from the directory and add it to the library on the Audio Manager Script
-                            if (GUILayout.Button(scanButtonString, GUILayout.Width(80)))
-                            {
-                                
-                                if (!audioManagerScript.audioManagerFile.isPopulated)
-                                {
-                                    if (audioManagerScript.audioManagerFile)
-                                    {
-                                        audioManagerScript.audioManagerFile.isPopulated = false;
+                            serializedObject.FindProperty("hasScannedOnce").boolValue = true;  // Sets the has scanned once to true so the scan button turns into the re-scan button
+                                                                                               // Init Lists
+                            audioList = new List<AudioClip>();
+                            audioStrings = new List<string>();
 
-                                        // Init Lists
-                                        audioList = new List<AudioClip>();
-                                        audioStrings = new List<string>();
+                            // Auto filling the lists 
+                            AddAudioClips();
+                            AddStrings();
 
-                                        // Auto filling the lists 
-                                        AddAudioClips();
-                                        AddStrings();
+                            // Updates the lists
+                            audioManagerScript.audioManagerFile.clipName = audioStrings;
+                            audioManagerScript.audioManagerFile.audioClip = audioList;
 
-                                        serializedObject.FindProperty("hasScannedOnce").boolValue = true;  // Sets the has scanned once to true so the scan button turns into the re-scan button
-
-                                        // Shows clips
-                                        if (!showClips)
-                                        {
-                                            serializedObject.FindProperty("shouldShowClips").boolValue = true;
-                                        }
-
-                                        // Updates the lists
-                                        audioManagerScript.audioManagerFile.clipName = audioStrings;
-                                        audioManagerScript.audioManagerFile.audioClip = audioList;
-
-                                        audioManagerScript.UpdateLibrary();
-
-                                        EditorUtility.SetDirty(audioManagerScript.audioManagerFile);
-                                    }
-                                    else
-                                    {
-                                        Debug.LogAssertion("(*Audio Manager*): Please select a Audio Manager audioManagerFile before scanning, I can't scan without somewhere to put it all :)");
-                                    }
-                                }
-                                else
-                                {
-                                    serializedObject.FindProperty("hasScannedOnce").boolValue = true;  // Sets the has scanned once to true so the scan button turns into the re-scan button
-
-                                    // Init Lists
-                                    audioList = new List<AudioClip>();
-                                    audioStrings = new List<string>();
-
-                                    // Auto filling the lists 
-                                    AddAudioClips();
-                                    AddStrings();
-
-                                    // Updates the lists
-                                    audioManagerScript.audioManagerFile.clipName = audioStrings;
-                                    audioManagerScript.audioManagerFile.audioClip = audioList;
-
-                                    audioManagerScript.UpdateLibrary();
-                                }
-                                
-                            }
-                            else
-                            {*/
-                                serializedObject.FindProperty("hasScannedOnce").boolValue = true;  // Sets the has scanned once to true so the scan button turns into the re-scan button
-                                                                                                   // Init Lists
-                                audioList = new List<AudioClip>();
-                                audioStrings = new List<string>();
-
-                                // Auto filling the lists 
-                                AddAudioClips();
-                                AddStrings();
-
-                                // Updates the lists
-                                audioManagerScript.audioManagerFile.clipName = audioStrings;
-                                audioManagerScript.audioManagerFile.audioClip = audioList;
-
-                                audioManagerScript.UpdateLibrary();
-                            //}
-
-
-                            // Resets the color of the GUI
-                            //GUI.color = Color.white;
-
-                            /*
-                            // The actual Clear button - This just clear the Lists and Library in the Audio Manager Script and resets the Has Scanned bool for the Scan button reverts to green and "Scan"
-                            if (GUILayout.Button("Clear", GUILayout.Width(60)))
-                            {
-                                
-                                if (audioManagerScript.audioManagerFile)
-                                {
-                                    audioManagerScript.soundLibrary.Clear();
-                                    audioManagerScript.audioManagerFile.clipName.Clear();
-                                    audioManagerScript.audioManagerFile.audioClip.Clear();
-                                    audioManagerScript.audioManagerFile.isPopulated = false;
-                                    serializedObject.FindProperty("hasScannedOnce").boolValue = false;
-                                    shouldShowMessage = false;
-                                }
-                                else
-                                {
-                                    Debug.Log("(*Audio Manager*): No Audio Manager (Audio Manager File) selected, ignoring request.");
-                                }
-                                
-                            }
-                            */
+                            audioManagerScript.UpdateLibrary();
 
                             GUI.color = Color.white;
                         }
