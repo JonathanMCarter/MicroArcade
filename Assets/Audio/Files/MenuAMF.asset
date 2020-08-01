@@ -9,32 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1595da7272d9c574896c19ccdeccc914, type: 3}
-  m_Name: Ultimate-Pinball-SFX
+  m_Script: {fileID: 11500000, guid: e6510f5ad8e276e49beeaba43bc5ad76, type: 3}
+  m_Name: MenuAMF
   m_EditorClassIdentifier: 
   clipName:
-  - BallLost
-  - BallSpawn
-  - BumperHit
-  - Coin02
-  - Gate-In
-  - Gate-Out
-  - LightGateCom
-  - LogoComp
   - Confirm
   - Confirm2
   - Menu-Confirm
   - Menu_Click
   - Menu_Select
   audioClip:
-  - {fileID: 8300000, guid: f0c66165c6be0254ab94ab0c33fd9697, type: 3}
-  - {fileID: 8300000, guid: b9b6bd35074c28d488e6329222c5c2bf, type: 3}
-  - {fileID: 8300000, guid: 52dfa700397e7c447b7a4750e3d94d76, type: 3}
-  - {fileID: 8300000, guid: 786c3d1d1feb3e5419d602f0a78eaa58, type: 3}
-  - {fileID: 8300000, guid: dfb683d171fbcb940b4f7e9cce8c1adc, type: 3}
-  - {fileID: 8300000, guid: 919932e93f8b1494794b53b6f5ce2533, type: 3}
-  - {fileID: 8300000, guid: a56f3c8ffbcf40746b0c0a6a163bc060, type: 3}
-  - {fileID: 8300000, guid: 2421f815a22e22c4e8772f7d543e4cd5, type: 3}
   - {fileID: 8300000, guid: ee5198778dffcf14583ee18b69717ed0, type: 3}
   - {fileID: 8300000, guid: b7a219a91f6687143a6774610e9cef80, type: 3}
   - {fileID: 8300000, guid: cab3696059ed0c4438d9b638e3333e9a, type: 3}
@@ -43,6 +27,6 @@ MonoBehaviour:
   soundPrefab: {fileID: 977031777656076914, guid: c8aadc768be109f478c9aad2b841252d,
     type: 3}
   isPopulated: 1
+  hasDirectories: 1
   directory:
-  - PinballSounds
   - Menu

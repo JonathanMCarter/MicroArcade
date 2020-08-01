@@ -9,10 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1595da7272d9c574896c19ccdeccc914, type: 3}
-  m_Name: OPSSAMF
+  m_Script: {fileID: 11500000, guid: e6510f5ad8e276e49beeaba43bc5ad76, type: 3}
+  m_Name: StarhineSFX+MenuAMF
   m_EditorClassIdentifier: 
   clipName:
+  - Confirm
+  - Confirm2
+  - Menu-Confirm
+  - Menu_Click
+  - Menu_Select
   - Alpha
   - Dial
   - Inter
@@ -27,6 +32,11 @@ MonoBehaviour:
   - TorpedoSounds
   - Unity
   audioClip:
+  - {fileID: 8300000, guid: ee5198778dffcf14583ee18b69717ed0, type: 3}
+  - {fileID: 8300000, guid: b7a219a91f6687143a6774610e9cef80, type: 3}
+  - {fileID: 8300000, guid: cab3696059ed0c4438d9b638e3333e9a, type: 3}
+  - {fileID: 8300000, guid: 176cc15af7976b5429a480aba63c8b6a, type: 3}
+  - {fileID: 8300000, guid: 92c0e6def1ff9934fbd0c976f4c10bc8, type: 3}
   - {fileID: 8300000, guid: 60a87c5f82311cc4ba502a75a5788c5c, type: 3}
   - {fileID: 8300000, guid: e9adcb207be79b6418abac5b6f762944, type: 3}
   - {fileID: 8300000, guid: be20bce0c70676d4db21a0bb8501ebc4, type: 3}
@@ -40,7 +50,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: eee9a9790f062c7498f15f3259c6aae3, type: 3}
   - {fileID: 8300000, guid: e8bc15f1f6e63a046b6b75b9d79fda46, type: 3}
   - {fileID: 8300000, guid: 7f9d383073d3d2e4fb4e6620f8eaf5de, type: 3}
-  soundPrefab: {fileID: 977031777656076914, guid: c8aadc768be109f478c9aad2b841252d,
+  soundPrefab: {fileID: 977031777656076914, guid: c40912f5a7dede148af5b68dd313394f,
     type: 3}
   isPopulated: 1
-  directory: 
+  hasDirectories: 1
+  directory:
+  - Menu
+  - OpssSounds

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using CarterGames.MAExtras;
 
 /*
 *  Copyright (c) Jonathan Carter
@@ -10,9 +11,10 @@ namespace CarterGames.Arcade.Menu
 {
     public interface IMultiLayerMenu
     {
-        string[,] SceneNames { get; set; }
-        GameObject[,] SceneObjects { get; set; }
+        StringAoA[] SceneMethods { get; set; }
+        GameObjectAoA[] SceneObjects { get; set; }
         Animator SceneTransition { get; set; }
+        short ActiveTier { get; set; }
         void UpdateDisplay();
     }
 }

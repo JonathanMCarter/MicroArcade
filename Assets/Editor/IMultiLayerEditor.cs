@@ -9,11 +9,14 @@ using UnityEditor;
 
 namespace CarterGames.Arcade.Menu
 {
-    [CustomEditor(typeof(IMultiLayerEditor))]
-    public class IMultiLayerEditor : Editor
-    {
+    //[CustomEditor(typeof(IMultiLayerMenu))]
+    //public class IMultiLayerEditor : Editor
+    //{
 
+    //    private void OnEnable()
+    //    {
+    //        IMultiLayerMenu script = (IMultiLayerMenu) target;
+    //    }
 
-
-    }
+    //}
 }

@@ -8,8 +8,8 @@ using System.Linq;
  *								Audio Manager Script
  *			
  *			Script written by: Jonathan Carter (https://jonathan.carter.games)
- *									Version: 2.3.1
- *							  Last Updated: 07/06/2020
+ *									Version: 2.3.3
+ *							  Last Updated: 30/07/2020
  * 
  * 
 */
@@ -24,34 +24,29 @@ namespace CarterGames.Assets.AudioManager
         [SerializeField] private bool shouldShowClips;
 
         [Tooltip("This should be the Audio Manager File you are working with, if it is not then please change it to the correct one.")]
-        public AudioManagerFile audioManagerFile;
+        [SerializeField] public AudioManagerFile audioManagerFile;
 
-        public AudioManagerFile lastAudioManagerFile;
+        [SerializeField] public AudioManagerFile lastAudioManagerFile;
 
+        [SerializeField]
         [Tooltip("This should be set when you have a audioManagerFile in use, if not please select it and put it here.")]
         public GameObject soundPrefab = null;       // Holds the prefab that plays the sound requested
 
-        public List<string> directory;
-
-        public Dictionary<string, AudioClip> soundLibrary = new Dictionary<string, AudioClip>();       // Dictionary that holds the audio names and clips
+        //[SerializeField] public List<string> directory;
+        [SerializeField] public Dictionary<string, AudioClip> soundLibrary = new Dictionary<string, AudioClip>();       // Dictionary that holds the audio names and clips
 
 
 
         private void Start()
         {
+            UpdateLibrary();
+
             if (soundPrefab == null)
             {
                 Debug.LogWarning("(*Audio Manager*): Prefab has not been assigned! Please assign a prefab in the inspector before using the manager.");
             }
 
             GetComponent<AudioSource>().hideFlags = HideFlags.HideInInspector;
-
-            for (int i = 0; i < audioManagerFile.clipName.Count; i++)         // For loop that populates the dictionary with all the sound assets in the lists
-            {
-                soundLibrary.Add(audioManagerFile.clipName[i], audioManagerFile.audioClip[i]);
-            }
-
-            UpdateLibrary();
         }
 
 
@@ -403,27 +398,6 @@ namespace CarterGames.Assets.AudioManager
                     soundLibrary.Add(audioManagerFile.clipName[i], audioManagerFile.audioClip[i]);
                 }
             }
-        }
-
-
-        public void PlayMenuButtonClick()
-        {
-            GameObject _clip = Instantiate(soundPrefab);                                    // Instantiate a Sound prefab
-            _clip.GetComponent<AudioSource>().clip = soundLibrary["MenuButton"];                     // Get the prefab and add the requested clip to it
-            _clip.GetComponent<AudioSource>().volume = 1.5f;  // changes the volume if a it is inputted
-            _clip.GetComponent<AudioSource>().pitch = 1;      // changes the pitch if a change is inputted
-            _clip.GetComponent<AudioSource>().Play();                                       // play the audio from the prefab
-            Destroy(_clip, _clip.GetComponent<AudioSource>().clip.length);                  // Destroy the prefab once the clip has finished playing
-        }
-
-        public void PlayPlayMenuButtonClick()
-        {
-            GameObject _clip = Instantiate(soundPrefab);                                    // Instantiate a Sound prefab
-            _clip.GetComponent<AudioSource>().clip = soundLibrary["PlayButton"];                     // Get the prefab and add the requested clip to it
-            _clip.GetComponent<AudioSource>().volume = .75f;  // changes the volume if a it is inputted
-            _clip.GetComponent<AudioSource>().pitch = 1;      // changes the pitch if a change is inputted
-            _clip.GetComponent<AudioSource>().Play();                                       // play the audio from the prefab
-            Destroy(_clip, _clip.GetComponent<AudioSource>().clip.length);                  // Destroy the prefab once the clip has finished playing
         }
     }
 }
