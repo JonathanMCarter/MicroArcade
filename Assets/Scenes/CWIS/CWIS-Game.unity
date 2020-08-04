@@ -2299,6 +2299,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   option: 0
+--- !u!1 &295600139
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 295600140}
+  m_Layer: 0
+  m_Name: -------------------------------------
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &295600140
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295600139}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.010925881, y: -4.6361074, z: 2.974669}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 29
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &300999409
 GameObject:
   m_ObjectHideFlags: 0
@@ -14904,7 +14934,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 27
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &672823557
 GameObject:
@@ -15963,19 +15993,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2deebf80985de894ca59dc93c23323d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasScannedOnce: 1
-  shouldShowDir: 1
-  shouldShowClips: 1
-  audioManagerFile: {fileID: 11400000, guid: 4128882b49600d04d918a584b40a6897, type: 2}
-  lastAudioManagerFile: {fileID: 11400000, guid: 4128882b49600d04d918a584b40a6897,
-    type: 2}
-  soundPrefab: {fileID: 977031777656076914, guid: b5d5badebe4196a46b2ceec15e850185,
-    type: 3}
-  directory:
-  - CWIS
-  - SFX
-  - 
-  - 
 --- !u!4 &834820594
 Transform:
   m_ObjectHideFlags: 0
@@ -40048,12 +40065,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19af5eb07d8a58247978adeba753890e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerID: 0
-  tagString: GameMusic
-  sceneNames:
-  - Game
-  volumeEdit: 0
-  gameAudioMixer: {fileID: 24100000, guid: 2e8159ae406729b4eb71e9293aded0f8, type: 2}
 --- !u!4 &1454765305
 Transform:
   m_ObjectHideFlags: 0
@@ -42271,6 +42282,11 @@ PrefabInstance:
       propertyPath: ps
       value: 
       objectReference: {fileID: 598178343}
+    - target: {fileID: 889554106645383555, guid: 3b895b023b14a94458530ef934b49a53,
+        type: 3}
+      propertyPath: inputType
+      value: 
+      objectReference: {fileID: 2135780513}
     - target: {fileID: 1844764018082386250, guid: 3b895b023b14a94458530ef934b49a53,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -49862,6 +49878,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2130235209}
   m_CullTransparentMesh: 0
+--- !u!1 &2135780512
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2135780514}
+  - component: {fileID: 2135780513}
+  m_Layer: 0
+  m_Name: Arcade Input
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2135780513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2135780512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aad3ad7897c918459c09619aa456bc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: 0
+--- !u!4 &2135780514
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2135780512}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 508.14075, y: 249.693, z: -240.375}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 27
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &5187298297805509265
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -49939,6 +49999,11 @@ PrefabInstance:
       propertyPath: ps
       value: 
       objectReference: {fileID: 1308239537}
+    - target: {fileID: 889554106645383555, guid: 3b895b023b14a94458530ef934b49a53,
+        type: 3}
+      propertyPath: inputType
+      value: 
+      objectReference: {fileID: 2135780513}
     - target: {fileID: 1844764018082386250, guid: 3b895b023b14a94458530ef934b49a53,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -50097,5 +50162,10 @@ PrefabInstance:
       propertyPath: maxController
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 7942542492640292903, guid: 1e945fafe461ef24f977a9f8bdba09bc,
+        type: 3}
+      propertyPath: inputType
+      value: 
+      objectReference: {fileID: 2135780513}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e945fafe461ef24f977a9f8bdba09bc, type: 3}

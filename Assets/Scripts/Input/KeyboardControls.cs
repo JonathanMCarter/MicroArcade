@@ -11,7 +11,8 @@ namespace CarterGames.Arcade.UserInput
     public enum Players
     {
         P1,
-        P2
+        P2,
+        P0
     };
 
     public static class KeyboardControls

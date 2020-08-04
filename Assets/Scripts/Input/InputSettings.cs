@@ -2,7 +2,12 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using CarterGames.Arcade.Saving;
-using System.Linq;
+
+/*
+*  Copyright (c) Jonathan Carter
+*  E: jonathan@carter.games
+*  W: https://jonathan.carter.games/
+*/
 
 namespace CarterGames.Arcade.UserInput
 {
@@ -179,6 +184,13 @@ namespace CarterGames.Arcade.UserInput
             yield return new WaitForSeconds(2);
 
             isCoRunning = false;
+        }
+
+
+
+        public Players ConvertToPlayers(Joysticks joystick)
+        {
+            return (Players)joystick;
         }
     }
 }

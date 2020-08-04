@@ -11,7 +11,8 @@ namespace CarterGames.CWIS
 {
     public class CWIS_Turret : MonoBehaviour
     {
-        [SerializeField] private CWIS_Controller.Controller thisTurret;
+        [Header("Arcade Input")][SerializeField] private CWISGameInput inputType;
+        [Header("Script")][SerializeField] private CWIS_Controller.Controller thisTurret;
         [SerializeField] internal GameManager.Ranks thisRank;
         [SerializeField] private ParticleSystem ps;
 
@@ -78,7 +79,7 @@ namespace CarterGames.CWIS
                     }
                 }
 
-                if (Input.GetMouseButton(0))
+                if (inputType.FireButton())
                 {
                     IncrementTimeHeldDown();
                     isFiring = true;

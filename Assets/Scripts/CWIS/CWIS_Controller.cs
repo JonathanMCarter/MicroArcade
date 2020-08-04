@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using CarterGames.Arcade.UserInput;
 using CarterGames.Utilities;
 using CarterGames.Assets.AudioManager;
 
@@ -14,6 +15,9 @@ namespace CarterGames.CWIS
 {
     public class CWIS_Controller : MonoBehaviour, IObjectPool<GameObject>
     {
+        [Header("Arcade Input")]
+        public CWISGameInput inputType;
+
         public enum Controller { CWIS1, CWIS2, Shaft, Missiles };
         [Header("Which Turret Is In Use?")]
         public Controller activeTurret;
@@ -72,33 +76,29 @@ namespace CarterGames.CWIS
 
         private void Update()
         {
-            //if ((Input.GetMouseButtonDown(1)) && (!isCoR))
-            //{
-            //    StartCoroutine(Cycle());
-            //}
 
-            if (Input.GetButtonDown("Button1") && !isCoR)
+            if ((inputType.Button1()) && !isCoR)
             {
                 activeTurret = Controller.CWIS1;
                 UpdateTurretUI();
                 am.Play("click", .5f);
             }
 
-            if (Input.GetButtonDown("Button2") && !isCoR)
+            if ((inputType.Button2()) && !isCoR)
             {
                 activeTurret = Controller.CWIS2;
                 UpdateTurretUI();
                 am.Play("click", .5f);
             }
 
-            if (Input.GetButtonDown("Button3") && !isCoR)
+            if ((inputType.Button3()) && !isCoR)
             {
                 activeTurret = Controller.Shaft;
                 UpdateTurretUI();
                 am.Play("click", .5f);
             }
 
-            if (Input.GetButtonDown("Button4") && !isCoR)
+            if ((inputType.Button4()) && !isCoR)
             {
                 activeTurret = Controller.Missiles;
                 UpdateTurretUI();
@@ -159,14 +159,6 @@ namespace CarterGames.CWIS
                     turretUI[3].SetActive(false);
                     break;
             }
-        }
-
-        private IEnumerator Cycle()
-        {
-            isCoR = true;
-            CycleController();
-            yield return new WaitForSeconds(.25f);
-            isCoR = false;
         }
 
 
