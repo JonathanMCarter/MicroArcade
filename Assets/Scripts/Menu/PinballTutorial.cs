@@ -18,7 +18,6 @@ namespace CarterGames.Arcade.Menu
 
         [SerializeField] private bool isReturning;
 
-        public PinballMainMenu scriptToEnable;
         public AudioManager audioManager;
         public AudioManager menuAudioManager;
 
@@ -94,7 +93,6 @@ namespace CarterGames.Arcade.Menu
 
         private void ChangeBackToMenu()
         {
-            scriptToEnable.enabled = true;
             isReturning = true;
         }
     }

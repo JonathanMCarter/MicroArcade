@@ -22,6 +22,7 @@ namespace CarterGames.Arcade.Menu
         [SerializeField] private Color[] colours;
 
         [SerializeField] private bool isUpDown;
+        [SerializeField] private bool useTrans;
 
         private void OnEnable()
         {
@@ -92,8 +93,23 @@ namespace CarterGames.Arcade.Menu
 
         private void ConfirmOption()
         {
-            SceneTransition.SetBool("ChangeScene", true);
-            ChangeScene(sceneNames[pos]);
+            if (useTrans)
+            {
+                SceneTransition.SetBool("ChangeScene", true);
+                ChangeScene(sceneNames[pos]);
+            }
+            else
+            {
+                if (pos == maxPos)
+                {
+                    SceneTransition.SetBool("ChangeScene", true);
+                    ChangeScene(sceneNames[pos]);
+                }
+                else
+                {
+                    ChangeScene(sceneNames[pos]);
+                }
+            }
         }
 
 
