@@ -10,14 +10,13 @@ namespace CarterGames.UltimatePinball.Leaderboard
         public bool shouldUpdateLeaderboard;
 
 
-        protected override void Start()
+        protected void Start()
         {
-            base.Start();
             shouldUpdateLeaderboard = true;
         }
 
 
-        private void Update()
+        private new void Update()
         {
             shouldUpdateLeaderboard = true;
 

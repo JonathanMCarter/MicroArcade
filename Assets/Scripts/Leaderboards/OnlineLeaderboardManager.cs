@@ -58,5 +58,4 @@ namespace CarterGames.Arcade.Leaderboard
             yield return W.SendWebRequest();
         }
     }
-
 }

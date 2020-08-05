@@ -15,7 +15,7 @@ namespace CarterGames.UltimatePinball.Leaderboard
         public DataTypes Type;
 
 
-        protected virtual void Start()
+        protected virtual void Update()
         {
             if (GetData)
             {

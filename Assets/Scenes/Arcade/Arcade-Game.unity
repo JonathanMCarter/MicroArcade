@@ -1702,6 +1702,8 @@ GameObject:
   - component: {fileID: 996841522}
   - component: {fileID: 996841524}
   - component: {fileID: 996841523}
+  - component: {fileID: 996841526}
+  - component: {fileID: 996841525}
   m_Layer: 0
   m_Name: MenuController
   m_TagString: Untagged
@@ -1764,6 +1766,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64b4ae10a6cdc53459f1bc72238658b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &996841525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996841521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3649f1e59b377ef4f930b58dc38e1c19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ZeData: []
+  GetData: 0
+  GetAll: 0
+--- !u!114 &996841526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996841521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80061ea9241b238499013b12abfd4481, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ZeData: []
+  GetData: 0
+  Type: 0
 --- !u!1 &1029773817
 GameObject:
   m_ObjectHideFlags: 0
