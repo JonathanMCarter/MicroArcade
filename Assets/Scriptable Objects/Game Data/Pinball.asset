@@ -10,9 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 874657b13d76e33448148dd764001d4e, type: 3}
-  m_Name: Quacking
+  m_Name: Pinball
   m_EditorClassIdentifier: 
-  GameTitle: Quacking Time
-  GameDesc: 
+  GameTitle: Ultimate Pinball
+  GameDesc: Play against each other in this two player pinball machine. Outlive your
+    opponent and get the highest score possible!
+  gameBackground: {fileID: 21300000, guid: 5cd656b891f8b9944a1cf9dfedaba44a, type: 3}
   supportedControls: 010101
   hasLeaderboard: 1
+  hasPlayPanel: 0
+  hasInfoPanel: 0
+  panels: 010000000200000003000000
+  infoPanelPos: 0

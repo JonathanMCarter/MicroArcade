@@ -14,8 +14,7 @@ namespace CarterGames.Arcade.Menu
 {
     public class MenuSystem : InputSettings
     {
-        private bool isCoR;
-
+        internal bool isCoR;
         internal int lastPos;
         internal int pos;
         internal int maxPos;
@@ -32,80 +31,9 @@ namespace CarterGames.Arcade.Menu
 
         public bool Confirm()
         {
-            if (inputReady)
+            if (MenuControls.Confirm())
             {
-                switch (ControllerType)
-                {
-                    case SupportedControllers.ArcadeBoard:
-
-                        if (ArcadeControls.ButtonPress(Joysticks.White, Buttons.B8)) { StartCoroutine(InputLag()); return true; }
-                        else { return false; }
-
-                    case SupportedControllers.GamePadBoth:
-
-                        if (ControllerControls.ButtonPress(Players.P1, ControllerButtons.A)) { StartCoroutine(InputLag()); return true; }
-                        else { return false; }
-
-                    case SupportedControllers.KeyboardBoth:
-
-                        if (KeyboardControls.ButtonPress(Players.P1, Buttons.B8)) { StartCoroutine(InputLag()); Debug.Log(">> Confirm Pressed <<");  return true; }
-                        else { return false; }
-
-                    case SupportedControllers.KeyboardP1ControllerP2:
-
-                        if (KeyboardControls.ButtonPress(Players.P1, Buttons.B8)) { StartCoroutine(InputLag()); return true; }
-                        else { return false; }
-
-                    case SupportedControllers.KeyboardP2ControllerP1:
-
-                        if (ControllerControls.ButtonPress(Players.P1, ControllerButtons.A)) { StartCoroutine(InputLag()); return true; }
-                        else { return false; }
-
-                    default:
-                        return false;
-                }
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-
-        public bool Confirm(ControllerButtons DesiredButton)
-        {
-            if (inputReady)
-            {
-                switch (ControllerType)
-                {
-                    case SupportedControllers.ArcadeBoard:
-
-                        if (ArcadeControls.ButtonPress(Joysticks.White, Buttons.B8)) { StartCoroutine(InputLag()); return true; }
-                        else { return false; }
-
-                    case SupportedControllers.GamePadBoth:
-
-                        if (ControllerControls.ButtonPress(Players.P1, DesiredButton)) { StartCoroutine(InputLag()); return true; }
-                        else { return false; }
-
-                    case SupportedControllers.KeyboardBoth:
-
-                        if (KeyboardControls.ButtonPress(Players.P1, Buttons.B8)) { StartCoroutine(InputLag()); return true; }
-                        else { return false; }
-
-                    case SupportedControllers.KeyboardP1ControllerP2:
-
-                        if (KeyboardControls.ButtonPress(Players.P1, Buttons.B8)) { StartCoroutine(InputLag()); return true; }
-                        else { return false; }
-
-                    case SupportedControllers.KeyboardP2ControllerP1:
-
-                        if (ControllerControls.ButtonPress(Players.P1, DesiredButton)) { StartCoroutine(InputLag()); return true; }
-                        else { return false; }
-
-                    default:
-                        return false;
-                }
+                return true;
             }
             else
             {
@@ -116,80 +44,9 @@ namespace CarterGames.Arcade.Menu
 
         public bool Return()
         {
-            if (inputReady)
+            if (MenuControls.Return())
             {
-                switch (ControllerType)
-                {
-                    case SupportedControllers.ArcadeBoard:
-
-                        if (ArcadeControls.ButtonPress(Joysticks.White, Buttons.B7)) { StartCoroutine(InputLag()); return true; }
-                        else { return false; }
-
-                    case SupportedControllers.GamePadBoth:
-
-                        if (ControllerControls.ButtonPress(Players.P1, ControllerButtons.B)) { StartCoroutine(InputLag()); return true; }
-                        else { return false; }
-
-                    case SupportedControllers.KeyboardBoth:
-
-                        if (KeyboardControls.ButtonPress(Players.P1, Buttons.B7)) { StartCoroutine(InputLag()); return true; }
-                        else { return false; }
-
-                    case SupportedControllers.KeyboardP1ControllerP2:
-
-                        if (KeyboardControls.ButtonPress(Players.P1, Buttons.B7)) { StartCoroutine(InputLag()); return true; }
-                        else { return false; }
-
-                    case SupportedControllers.KeyboardP2ControllerP1:
-
-                        if (ControllerControls.ButtonPress(Players.P1, ControllerButtons.B)) { StartCoroutine(InputLag()); return true; }
-                        else { return false; }
-
-                    default:
-                        return false;
-                }
-            }
-            else
-            {
-                return false;
-            }    
-        }
-
-
-        public bool Return(ControllerButtons DesiredButton)
-        {
-            if (inputReady)
-            {
-                switch (ControllerType)
-                {
-                    case SupportedControllers.ArcadeBoard:
-
-                        if (ArcadeControls.ButtonPress(Joysticks.White, Buttons.B7)) { StartCoroutine(InputLag()); return true; }
-                        else { return false; }
-
-                    case SupportedControllers.GamePadBoth:
-
-                        if (ControllerControls.ButtonPress(Players.P1, DesiredButton)) { StartCoroutine(InputLag()); return true; }
-                        else { return false; }
-
-                    case SupportedControllers.KeyboardBoth:
-
-                        if (KeyboardControls.ButtonPress(Players.P1, Buttons.B7)) { StartCoroutine(InputLag()); return true; }
-                        else { return false; }
-
-                    case SupportedControllers.KeyboardP1ControllerP2:
-
-                        if (KeyboardControls.ButtonPress(Players.P1, Buttons.B7)) { StartCoroutine(InputLag()); return true; }
-                        else { return false; }
-
-                    case SupportedControllers.KeyboardP2ControllerP1:
-
-                        if (ControllerControls.ButtonPress(Players.P1, DesiredButton)) { StartCoroutine(InputLag()); return true; }
-                        else { return false; }
-
-                    default:
-                        return false;
-                }
+                return true;
             }
             else
             {
@@ -200,80 +57,28 @@ namespace CarterGames.Arcade.Menu
 
         public void MoveUD()
         {
-            switch (ControllerType)
+            if (MenuControls.Up() && !isCoR)
             {
-                case SupportedControllers.ArcadeBoard:
+                StartCoroutine(MoveAround(-1));
+            }
 
-                    if ((ArcadeControls.JoystickUp(Joysticks.White)) && (!isCoR)) { StartCoroutine(MoveAround(-1)); }
-                    if ((ArcadeControls.JoystickDown(Joysticks.White)) && (!isCoR)) { StartCoroutine(MoveAround(1)); }
-
-                    break;
-                case SupportedControllers.GamePadBoth:
-
-                    if ((ControllerControls.ControllerUp(Players.P1)) && (!isCoR)) { StartCoroutine(MoveAround(-1)); }
-                    if ((ControllerControls.ControllerDown(Players.P1)) && (!isCoR)) { StartCoroutine(MoveAround(1)); }
-
-                    break;
-                case SupportedControllers.KeyboardBoth:
-
-                    if ((KeyboardControls.KeyboardUp(Players.P1)) && (!isCoR)) { StartCoroutine(MoveAround(-1)); }
-                    if ((KeyboardControls.KeyboardDown(Players.P1)) && (!isCoR)) { StartCoroutine(MoveAround(1)); }
-
-                    break;
-                case SupportedControllers.KeyboardP1ControllerP2:
-
-                    if ((KeyboardControls.KeyboardUp(Players.P1)) && (!isCoR)) { StartCoroutine(MoveAround(-1)); }
-                    if ((KeyboardControls.KeyboardDown(Players.P1)) && (!isCoR)) { StartCoroutine(MoveAround(1)); }
-
-                    break;
-                case SupportedControllers.KeyboardP2ControllerP1:
-
-                    if ((ControllerControls.ControllerUp(Players.P1)) && (!isCoR)) { StartCoroutine(MoveAround(-1)); }
-                    if ((ControllerControls.ControllerDown(Players.P1)) && (!isCoR)) { StartCoroutine(MoveAround(1)); }
-
-                    break;
-                default:
-                    break;
+            if (MenuControls.Down() && !isCoR)
+            {
+                StartCoroutine(MoveAround(1));
             }
         }
 
 
         public void MoveLR()
         {
-            switch (ControllerType)
+            if (MenuControls.Left() && !isCoR)
             {
-                case SupportedControllers.ArcadeBoard:
+                StartCoroutine(MoveAround(-1));
+            }
 
-                    if ((ArcadeControls.JoystickLeft(Joysticks.White)) && (!isCoR)) { StartCoroutine(MoveAround(-1)); }
-                    if ((ArcadeControls.JoystickRight(Joysticks.White)) && (!isCoR)) { StartCoroutine(MoveAround(1)); }
-
-                    break;
-                case SupportedControllers.GamePadBoth:
-
-                    if ((ControllerControls.ControllerLeft(Players.P1)) && (!isCoR)) { StartCoroutine(MoveAround(-1)); }
-                    if ((ControllerControls.ControllerRight(Players.P1)) && (!isCoR)) { StartCoroutine(MoveAround(1)); }
-
-                    break;
-                case SupportedControllers.KeyboardBoth:
-
-                    if ((KeyboardControls.KeyboardLeft(Players.P1)) && (!isCoR)) { StartCoroutine(MoveAround(-1)); }
-                    if ((KeyboardControls.KeyboardRight(Players.P1)) && (!isCoR)) { StartCoroutine(MoveAround(1)); }
-
-                    break;
-                case SupportedControllers.KeyboardP1ControllerP2:
-
-                    if ((KeyboardControls.KeyboardLeft(Players.P1)) && (!isCoR)) { StartCoroutine(MoveAround(-1)); }
-                    if ((KeyboardControls.KeyboardRight(Players.P1)) && (!isCoR)) { StartCoroutine(MoveAround(1)); }
-
-                    break;
-                case SupportedControllers.KeyboardP2ControllerP1:
-
-                    if ((ControllerControls.ControllerLeft(Players.P1)) && (!isCoR)) { StartCoroutine(MoveAround(-1)); }
-                    if ((ControllerControls.ControllerRight(Players.P1)) && (!isCoR)) { StartCoroutine(MoveAround(1)); }
-
-                    break;
-                default:
-                    break;
+            if (MenuControls.Right() && !isCoR)
+            {
+                StartCoroutine(MoveAround(1));
             }
         }
 
@@ -287,12 +92,11 @@ namespace CarterGames.Arcade.Menu
             if (GetComponent<AudioManager>())
             {
                 am = GetComponent<AudioManager>();
-                am.UpdateLibrary();
             }
         }
 
 
-        IEnumerator MoveAround(int Value)
+        internal IEnumerator MoveAround(int Value)
         {
             isCoR = true;
 

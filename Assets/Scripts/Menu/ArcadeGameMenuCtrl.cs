@@ -1,11 +1,14 @@
 ﻿using CarterGames.Arcade.Leaderboard;
 using CarterGames.Arcade.Saving;
 using CarterGames.Arcade.UserInput;
+using CarterGames.Assets.AudioManager;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
+using UnityEditorInternal;
 
 /*
 *  Copyright (c) Jonathan Carter
@@ -17,9 +20,6 @@ namespace CarterGames.Arcade.Menu
 {
     public class ArcadeGameMenuCtrl : MonoBehaviour
     {
-        [Header("Controls Script")]
-        public MenuControls controls;
-
         [Header("Menu Data")]
         [SerializeField] private GameMenuData[] data;
         [SerializeField] private GameMenuData activeData;
@@ -27,17 +27,46 @@ namespace CarterGames.Arcade.Menu
         [Header("Menu Fields")]
         [SerializeField] private Text gameTitle;
         [SerializeField] private Text gameDesc;
+        [SerializeField] private Image gameBackground;
         [SerializeField] private Image[] supportedControllers;
         [SerializeField] private GameObject[] topThreeScores;
 
+        [Header("Menu Button Controls")]
+        [SerializeField] private GameObject[] buttons;
+        [SerializeField] private Color32[] activeButtonColours;
+        [SerializeField] private Color32[] inactiveButtonColours;
+
         private Color32 activeCol = new Color32(90, 200, 130, 255);
         private Color32 inactiveCol = new Color32(200, 95, 90, 255);
+
+        [SerializeField] private bool isCoR;
+        [SerializeField] private int lastPos;
+        [SerializeField] private int pos;
+        [SerializeField] private int maxPos;
+        [SerializeField] private bool inputReady;
+
+
+        [Header("Panel Active Status")]
+        [SerializeField] private bool playPanelActive;
+        [SerializeField] private bool infoPanelActive;
+        [SerializeField] private bool leaderboardPanelActive;
+
+
+        [Header("Tutorial Options")]
+        [SerializeField] private GameObject[] tutorialPages;
+
+
+        [Header("(CG) - Audio Manager")]
+        [SerializeField] private AudioManager am;
+
+
+        private GameObject panelHolder;
 
 
 
         private void Start()
         {
-            controls = GetComponent<MenuControls>();
+            panelHolder = GameObject.FindGameObjectWithTag("Respawn");
 
 
             // Sets the game data for the menu to the one selected
@@ -47,6 +76,8 @@ namespace CarterGames.Arcade.Menu
             gameTitle.text = activeData.GameTitle;
             gameDesc.text = activeData.GameDesc;
 
+            gameBackground.sprite = activeData.gameBackground;
+
 
             if (activeData.supportedControls[0]) { supportedControllers[0].color = activeCol; }
             else { supportedControllers[0].color = inactiveCol; }
@@ -54,8 +85,6 @@ namespace CarterGames.Arcade.Menu
             else { supportedControllers[1].color = inactiveCol; }
             if (activeData.supportedControls[2]) { supportedControllers[2].color = activeCol; }
             else { supportedControllers[2].color = inactiveCol; }
-
-
 
 
             if (activeData.hasLeaderboard)
@@ -69,8 +98,173 @@ namespace CarterGames.Arcade.Menu
                     StartCoroutine(Call_Starshine_Online());
                 }
             }
+
+
+            // Menu System Start
+            maxPos = buttons.Length - 1;
+            lastPos = pos;
+            isCoR = false;
+            inputReady = true;
+
+            if (GetComponent<AudioManager>())
+            {
+                am = GetComponent<AudioManager>();
+            }
+
+            buttons[pos].GetComponent<Image>().color = inactiveButtonColours[pos];
         }
 
+
+
+        private void Update()
+        {
+            MenuMovement();
+            ConfirmOption();
+            ReturnOption();
+
+            if (infoPanelActive)
+            {
+                TutorialMovement();
+            }
+        }
+
+
+        private void MenuMovement()
+        {
+            if (!playPanelActive && !infoPanelActive && !leaderboardPanelActive)
+            {
+                // Controls
+                if (MenuControls.Left() && (!isCoR))
+                {
+                    StartCoroutine(MoveAround(-1));
+                }
+
+                if (MenuControls.Right() && (!isCoR))
+                {
+                    StartCoroutine(MoveAround(1));
+                }
+
+                if (MenuControls.Up() && (!isCoR))
+                {
+                    StartCoroutine(MoveAround(-2));
+                }
+
+                if (MenuControls.Down() && (!isCoR))
+                {
+                    StartCoroutine(MoveAround(2));
+                }
+
+
+
+                // Edits Visuals based on move
+                if (pos != lastPos)
+                {
+                    for (int i = 0; i < buttons.Length; i++)
+                    {
+                        if (buttons[i].GetComponent<Image>().color == inactiveButtonColours[i])
+                        {
+                            buttons[i].GetComponent<Image>().color = activeButtonColours[i];
+                        }
+                    }
+
+                    buttons[pos].GetComponent<Image>().color = inactiveButtonColours[pos];
+                }
+            }
+        }
+
+
+        private void ConfirmOption()
+        {
+            if (MenuControls.Confirm())
+            {
+                switch (pos)
+                {
+                    case 0:
+
+                        if (!playPanelActive)
+                        {
+                            playPanelActive = true;
+                            panelHolder.transform.GetChild(activeData.panels[0]).gameObject.SetActive(true);
+                        }
+
+                        break;
+
+                    case 1:
+
+                        if (!infoPanelActive)
+                        {
+                            infoPanelActive = true;
+                            panelHolder.transform.GetChild(activeData.panels[1]).gameObject.SetActive(true);
+                            pos = 0;
+                            maxPos = 2;
+                            isCoR = false;
+                        }
+
+                        break;
+
+                    case 2:
+
+                        if (!leaderboardPanelActive)
+                        {
+                            leaderboardPanelActive = true;
+                            panelHolder.transform.GetChild(activeData.panels[2]).gameObject.SetActive(true);
+                        }
+
+                        break;
+
+                    case 3:
+
+                        ChangeScene("Arcade-Play");
+
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+
+        private void ReturnOption()
+        {
+            if (MenuControls.Return())
+            {
+                switch (pos)
+                {
+                    case 0:
+
+                        if (playPanelActive)
+                        {
+                            playPanelActive = false;
+                            panelHolder.transform.GetChild(activeData.panels[0]).gameObject.SetActive(false);
+                        }
+
+                        break;
+
+                    case 1:
+
+                        if (infoPanelActive)
+                        {
+                            infoPanelActive = false;
+                            panelHolder.transform.GetChild(activeData.panels[1]).gameObject.SetActive(false);
+                        }
+
+                        break;
+
+                    case 2:
+
+                        if (leaderboardPanelActive)
+                        {
+                            leaderboardPanelActive = false;
+                            panelHolder.transform.GetChild(activeData.panels[2]).gameObject.SetActive(false);
+                        }
+
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+        }
 
 
         private IEnumerator Call_Ultimate_Pinball_Data_Online_Lives()
@@ -227,6 +421,77 @@ namespace CarterGames.Arcade.Menu
                         topThreeScores[i].GetComponentsInChildren<Text>()[1].text = "##### |  #####";
                         topThreeScores[i].GetComponentsInChildren<Text>()[2].text = "000,000,000,000";
                     }
+                }
+            }
+        }
+
+
+        private IEnumerator MoveAround(int Value)
+        {
+            isCoR = true;
+
+            lastPos = pos;
+            pos += Value;
+
+            if (pos > maxPos)
+            {
+                pos -= 4;
+            }
+            else if (pos < 0)
+            {
+                pos = maxPos;
+            }
+
+            if (am)
+            {
+                am.Play("Menu_Click", Random.Range(.65f, .85f), Random.Range(.85f, 1.15f));
+            }
+
+            yield return new WaitForSecondsRealtime(.25f);
+            isCoR = false;
+        }
+
+
+        public void ChangeScene(string Scene, float Delay = 1.25f)
+        {
+            StartCoroutine(ChangeToScene(Scene, Delay));
+        }
+
+
+        IEnumerator ChangeToScene(string NewScene, float Delay = 1.25f)
+        {
+            inputReady = false;
+            yield return new WaitForSecondsRealtime(Delay);
+            AsyncOperation Async = SceneManager.LoadSceneAsync(NewScene);
+            Async.allowSceneActivation = false;
+            yield return new WaitForSecondsRealtime(.1f);
+            Async.allowSceneActivation = true;
+            yield return new WaitForSecondsRealtime(.1f);
+            inputReady = true;
+        }
+
+
+        private void TutorialMovement()
+        {
+            if (MenuControls.Left() && !isCoR)
+            {
+                StartCoroutine(MoveAround(-1));
+            }
+            else if (MenuControls.Right() && !isCoR)
+            {
+                StartCoroutine(MoveAround(1));
+            }
+
+
+            for (int i = 0; i < tutorialPages[activeData.infoPanelPos].transform.childCount; i++)
+            {
+                if (i == pos && !tutorialPages[activeData.infoPanelPos].transform.GetComponentsInChildren<GameObject>()[i].activeInHierarchy)
+                {
+                    tutorialPages[activeData.infoPanelPos].transform.GetComponentsInChildren<GameObject>()[i].SetActive(true);
+                }
+                else if (i != pos && tutorialPages[activeData.infoPanelPos].transform.GetComponentsInChildren<GameObject>()[i].activeInHierarchy)
+                {
+                    tutorialPages[pos].SetActive(false);
                 }
             }
         }

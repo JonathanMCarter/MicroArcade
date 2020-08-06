@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using CarterGames.Arcade.UserInput;
+using UnityEngine;
+using UnityEngine.SocialPlatforms;
 using UnityEngine.UI;
 
 /*
