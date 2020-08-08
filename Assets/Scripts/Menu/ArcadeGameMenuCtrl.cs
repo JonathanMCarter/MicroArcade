@@ -8,7 +8,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
-using UnityEditorInternal;
 
 /*
 *  Copyright (c) Jonathan Carter
@@ -47,9 +46,9 @@ namespace CarterGames.Arcade.Menu
 
 
         [Header("Panel Active Status")]
-        [SerializeField] private bool playPanelActive;
-        [SerializeField] private bool infoPanelActive;
-        [SerializeField] private bool leaderboardPanelActive;
+        [SerializeField] internal bool playPanelActive;
+        [SerializeField] internal bool infoPanelActive;
+        [SerializeField] internal bool leaderboardPanelActive;
 
 
         [Header("Tutorial Options")]
@@ -119,12 +118,23 @@ namespace CarterGames.Arcade.Menu
         private void Update()
         {
             MenuMovement();
-            ConfirmOption();
-            ReturnOption();
+
+            if (!playPanelActive)
+            {
+                if (MenuControls.Confirm())
+                {
+                    ConfirmOption();
+                }
+
+                if (MenuControls.Return())
+                {
+                    ReturnOption();
+                }
+            }
 
             if (infoPanelActive)
             {
-                TutorialMovement();
+                tutorialPages[activeData.infoPanelPos].SetActive(true);
             }
         }
 
@@ -175,8 +185,9 @@ namespace CarterGames.Arcade.Menu
 
         private void ConfirmOption()
         {
-            if (MenuControls.Confirm())
-            {
+
+                Debug.Log("Confirm Hit");
+
                 switch (pos)
                 {
                     case 0:
@@ -193,11 +204,10 @@ namespace CarterGames.Arcade.Menu
 
                         if (!infoPanelActive)
                         {
-                            infoPanelActive = true;
                             panelHolder.transform.GetChild(activeData.panels[1]).gameObject.SetActive(true);
-                            pos = 0;
-                            maxPos = 2;
+                            pos = 1;
                             isCoR = false;
+                            infoPanelActive = true;
                         }
 
                         break;
@@ -218,9 +228,11 @@ namespace CarterGames.Arcade.Menu
 
                         break;
                     default:
+                    Debug.Log("default");
+
                         break;
                 }
-            }
+            
         }
 
 
@@ -468,32 +480,6 @@ namespace CarterGames.Arcade.Menu
             Async.allowSceneActivation = true;
             yield return new WaitForSecondsRealtime(.1f);
             inputReady = true;
-        }
-
-
-        private void TutorialMovement()
-        {
-            if (MenuControls.Left() && !isCoR)
-            {
-                StartCoroutine(MoveAround(-1));
-            }
-            else if (MenuControls.Right() && !isCoR)
-            {
-                StartCoroutine(MoveAround(1));
-            }
-
-
-            for (int i = 0; i < tutorialPages[activeData.infoPanelPos].transform.childCount; i++)
-            {
-                if (i == pos && !tutorialPages[activeData.infoPanelPos].transform.GetComponentsInChildren<GameObject>()[i].activeInHierarchy)
-                {
-                    tutorialPages[activeData.infoPanelPos].transform.GetComponentsInChildren<GameObject>()[i].SetActive(true);
-                }
-                else if (i != pos && tutorialPages[activeData.infoPanelPos].transform.GetComponentsInChildren<GameObject>()[i].activeInHierarchy)
-                {
-                    tutorialPages[pos].SetActive(false);
-                }
-            }
         }
     }
 }

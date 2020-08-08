@@ -156,72 +156,146 @@ namespace CarterGames.Arcade.UserInput
         }
 
 
-        public static bool Confirm()
+        public static bool Confirm(bool isPlayer1 = true)
         {
-            switch (ControllerType)
+            if (isPlayer1)
             {
-                case SupportedControllers.ArcadeBoard:
+                Debug.Log("got P1");
 
-                    if (ArcadeControls.ButtonPress(Joysticks.White, Buttons.B8)) { return true; }
-                    else { return false; }
+                switch (ControllerType)
+                {
+                    case SupportedControllers.ArcadeBoard:
 
-                case SupportedControllers.GamePadBoth:
+                        if (ArcadeControls.ButtonPress(Joysticks.White, Buttons.B8)) { return true; }
+                        else { return false; }
 
-                    if (ControllerControls.ButtonPress(Players.P1, ControllerButtons.A)) { return true; }
-                    else { return false; }
+                    case SupportedControllers.GamePadBoth:
 
-                case SupportedControllers.KeyboardBoth:
+                        if (ControllerControls.ButtonPress(Players.P1, ControllerButtons.A)) { return true; }
+                        else { return false; }
 
-                    if (KeyboardControls.ButtonPress(Players.P1, Buttons.B8)) { return true; }
-                    else { return false; }
+                    case SupportedControllers.KeyboardBoth:
 
-                case SupportedControllers.KeyboardP1ControllerP2:
+                        if (KeyboardControls.ButtonPress(Players.P1, Buttons.B8)) { return true; }
+                        else { return false; }
 
-                    if (KeyboardControls.ButtonPress(Players.P1, Buttons.B8)) { return true; }
-                    else { return false; }
+                    case SupportedControllers.KeyboardP1ControllerP2:
 
-                case SupportedControllers.KeyboardP2ControllerP1:
+                        if (KeyboardControls.ButtonPress(Players.P1, Buttons.B8)) { return true; }
+                        else { return false; }
 
-                    if (ControllerControls.ButtonPress(Players.P1, ControllerButtons.A)) { return true; }
-                    else { return false; }
+                    case SupportedControllers.KeyboardP2ControllerP1:
 
-                default:
-                    return false;
+                        if (ControllerControls.ButtonPress(Players.P1, ControllerButtons.A)) { return true; }
+                        else { return false; }
+
+                    default:
+                        return false;
+                }
+            }
+            else
+            {
+                switch (ControllerType)
+                {
+                    case SupportedControllers.ArcadeBoard:
+
+                        if (ArcadeControls.ButtonPress(Joysticks.Black, Buttons.B8)) { return true; }
+                        else { return false; }
+
+                    case SupportedControllers.GamePadBoth:
+
+                        if (ControllerControls.ButtonPress(Players.P2, ControllerButtons.A)) { return true; }
+                        else { return false; }
+
+                    case SupportedControllers.KeyboardBoth:
+
+                        if (KeyboardControls.ButtonPress(Players.P2, Buttons.B8)) { return true; }
+                        else { return false; }
+
+                    case SupportedControllers.KeyboardP1ControllerP2:
+
+                        if (ControllerControls.ButtonPress(Players.P2, ControllerButtons.A)) { return true; }
+                        else { return false; }
+
+                    case SupportedControllers.KeyboardP2ControllerP1:
+
+                        if (KeyboardControls.ButtonPress(Players.P2, Buttons.B8)) { return true; }
+                        else { return false; }
+
+                    default:
+                        return false;
+                }
             }
         }
 
 
-        public static bool Return()
+        public static bool Return(bool isPlayer1 = true)
         {
-            switch (ControllerType)
+            if (isPlayer1)
             {
-                case SupportedControllers.ArcadeBoard:
+                switch (ControllerType)
+                {
+                    case SupportedControllers.ArcadeBoard:
 
-                    if (ArcadeControls.ButtonPress(Joysticks.White, Buttons.B7)) { return true; }
-                    else { return false; }
+                        if (ArcadeControls.ButtonPress(Joysticks.White, Buttons.B7)) { return true; }
+                        else { return false; }
 
-                case SupportedControllers.GamePadBoth:
+                    case SupportedControllers.GamePadBoth:
 
-                    if (ControllerControls.ButtonPress(Players.P1, ControllerButtons.B)) { return true; }
-                    else { return false; }
+                        if (ControllerControls.ButtonPress(Players.P1, ControllerButtons.B)) { return true; }
+                        else { return false; }
 
-                case SupportedControllers.KeyboardBoth:
+                    case SupportedControllers.KeyboardBoth:
 
-                    if (KeyboardControls.ButtonPress(Players.P1, Buttons.B7)) { return true; }
-                    else { return false; }
+                        if (KeyboardControls.ButtonPress(Players.P1, Buttons.B7)) { return true; }
+                        else { return false; }
 
-                case SupportedControllers.KeyboardP1ControllerP2:
+                    case SupportedControllers.KeyboardP1ControllerP2:
 
-                    if (KeyboardControls.ButtonPress(Players.P1, Buttons.B7)) { return true; }
-                    else { return false; }
+                        if (KeyboardControls.ButtonPress(Players.P1, Buttons.B7)) { return true; }
+                        else { return false; }
 
-                case SupportedControllers.KeyboardP2ControllerP1:
+                    case SupportedControllers.KeyboardP2ControllerP1:
 
-                    if (ControllerControls.ButtonPress(Players.P1, ControllerButtons.B)) { return true; }
-                    else { return false; }
+                        if (ControllerControls.ButtonPress(Players.P1, ControllerButtons.B)) { return true; }
+                        else { return false; }
 
-                default:
-                    return false;
+                    default:
+                        return false;
+                }
+            }
+            else
+            {
+                switch (ControllerType)
+                {
+                    case SupportedControllers.ArcadeBoard:
+
+                        if (ArcadeControls.ButtonPress(Joysticks.Black, Buttons.B7)) { return true; }
+                        else { return false; }
+
+                    case SupportedControllers.GamePadBoth:
+
+                        if (ControllerControls.ButtonPress(Players.P2, ControllerButtons.B)) { return true; }
+                        else { return false; }
+
+                    case SupportedControllers.KeyboardBoth:
+
+                        if (KeyboardControls.ButtonPress(Players.P2, Buttons.B7)) { return true; }
+                        else { return false; }
+
+                    case SupportedControllers.KeyboardP1ControllerP2:
+
+                        if (ControllerControls.ButtonPress(Players.P2, ControllerButtons.B)) { return true; }
+                        else { return false; }
+
+                    case SupportedControllers.KeyboardP2ControllerP1:
+
+                        if (KeyboardControls.ButtonPress(Players.P2, Buttons.B7)) { return true; }
+                        else { return false; }
+
+                    default:
+                        return false;
+                }
             }
         }
     }
