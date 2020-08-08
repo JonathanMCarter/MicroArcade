@@ -18,7 +18,7 @@ namespace CarterGames.QuackingTime
         public List<CanvasGroup> Groups;
 
         private AudioManager am;
-        public QuackingTimeRootMenu rootMenu;
+        //public QuackingTimeRootMenu rootMenu;
         public RoundSelectControl RSC;
         public DuckCustomMenu DCM;
 
@@ -134,7 +134,7 @@ namespace CarterGames.QuackingTime
         {
             MoveToRounds = true;
             MoveToDucks = false;
-            rootMenu.isScriptEnabled = false;
+            //rootMenu.isScriptEnabled = false;
             RSC.enabled = true;
         }
 

@@ -461,6 +461,25 @@ namespace CarterGames.Arcade.Saving
 
 
         /// <summary>
+        /// Saves the game data from the menu through to the game...
+        /// </summary>
+        /// <param name="Input">data to send</param>
+        public static void SaveUltimatePinball(UltimatePinballData Input)
+        {
+            BinaryFormatter Formatter = new BinaryFormatter();
+            string SavePath = Application.persistentDataPath + "/ultimatepinball.masf";
+            FileStream Stream = new FileStream(SavePath, FileMode.OpenOrCreate);
+
+            UltimatePinballData Data = new UltimatePinballData();
+
+            Data = Input;
+
+            Formatter.Serialize(Stream, Data);
+            Stream.Close();
+        }
+
+
+        /// <summary>
         /// Loads the ultimate pinball game data
         /// </summary>
         /// <returns>UltimatePinballData with the loaded data</returns>

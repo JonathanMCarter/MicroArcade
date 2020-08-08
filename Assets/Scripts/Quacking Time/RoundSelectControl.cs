@@ -20,7 +20,7 @@ namespace CarterGames.QuackingTime
         public AudioManager am;
 
         public SceneChanger SC;
-        public QuackingTimeRootMenu rootMenu;
+        //public QuackingTimeRootMenu rootMenu;
 
 
         private void Start()
@@ -195,7 +195,7 @@ namespace CarterGames.QuackingTime
         {
             SC.MoveToRounds = false;
             SC.MoveToDucks = false;
-            rootMenu.isScriptEnabled = true;
+            //rootMenu.isScriptEnabled = true;
             enabled = false;
         }
     }

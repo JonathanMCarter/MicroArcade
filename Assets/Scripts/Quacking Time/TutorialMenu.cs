@@ -15,7 +15,7 @@ namespace CarterGames.QuackingTime
         [SerializeField] private GameObject[] pages;
         [SerializeField] private Image[] pagePips;
         [SerializeField] private Color[] pipColours;
-        [SerializeField] private QuackingTimeRootMenu quackingTimeRootmenu;
+        //[SerializeField] private QuackingTimeRootMenu quackingTimeRootmenu;
 
         private new void Start()
         {
@@ -38,7 +38,7 @@ namespace CarterGames.QuackingTime
 
             if (Return())
             {
-                quackingTimeRootmenu.ChangeToRootMenu();
+                //quackingTimeRootmenu.ChangeToRootMenu();
             }
         }
 

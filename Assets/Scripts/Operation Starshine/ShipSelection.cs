@@ -33,7 +33,7 @@ namespace CarterGames.Starshine
 
         public Animator Trans;
 
-        public OperationStarshineMenuScreen Screen;
+        //public OperationStarshineMenuScreen Screen;
         OperationStarshineData _data;
 
         public AudioManager MenuAM;
@@ -52,18 +52,18 @@ namespace CarterGames.Starshine
             // Undo Selection
             if (Player1Selected || Player2Selected)
             {
-                Screen.Use_Return_Event = false;
+                //Screen.Use_Return_Event = false;
                 UndoConfirmOption(Joysticks.White);
                 UndoConfirmOption(Joysticks.Black);
 
-                if (Screen.enabled)
-                {
-                    Screen.enabled = false;
-                }
+                //if (Screen.enabled)
+                //{
+                //    Screen.enabled = false;
+                //}
             }
             else
             {
-                Screen.Use_Return_Event = true;
+                //Screen.Use_Return_Event = true;
             }
 
             if (Player1Selected && !Player1Confirmed.enabled)
@@ -85,9 +85,9 @@ namespace CarterGames.Starshine
                 }
             }
 
-            if ((!Player1Selected) && (!Player2Selected) && (!Screen.enabled))
+            if ((!Player1Selected) && (!Player2Selected) /*&& !Screen.enabled*/)
             {
-                Screen.enabled = true;
+                //Screen.enabled = true;
             }
         }
 

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using CarterGames.Arcade.UserInput;
 using UnityEngine.UI;
+using CarterGames.Arcade.Saving;
 
 /*
 *  Copyright (c) Jonathan Carter
@@ -21,7 +22,6 @@ namespace CarterGames.Arcade.Menu
         private const string sceneName = "Ultimate-Pinball-Level";
         public int lives;
 
-        public bool readyStage;
         public bool whiteReady, blackReady;
 
 
@@ -44,25 +44,20 @@ namespace CarterGames.Arcade.Menu
             {
                 lives -= 1;
                 StartCoroutine(panel.ChangeValueCooldown());
-                panel.KeepWithinBounds(lives, 3, 99);
+                KeepWithinBounds(3, 99);
             }
 
             if (MenuControls.Right() && !panel.isCoR)
             {
                 lives += 1;
                 StartCoroutine(panel.ChangeValueCooldown());
-                panel.KeepWithinBounds(lives, 3, 99);
+                KeepWithinBounds(3, 99);
             }
 
 
             if (MenuControls.Return())
             {
-                if (!readyStage)
-                {
-                    aGMC.playPanelActive = false;
-                    gameObject.SetActive(false);
-                }
-                else if (whiteReady)
+                if (whiteReady)
                 {
                     whiteReady = false;
                     whiteOptions[1].enabled = false;
@@ -70,42 +65,63 @@ namespace CarterGames.Arcade.Menu
                 }
                 else
                 {
-                    readyStage = false;
+                    aGMC.playPanelActive = false;
+                    gameObject.SetActive(false);
                 }
             }
 
 
             if (MenuControls.Confirm())
             {
-                if ((readyStage) && (whiteReady) && (blackReady))
+                if ((whiteReady) && (blackReady))
                 {
                     StartCoroutine(panel.ChangeScene(sceneName));
                 }
-                else if (readyStage && !whiteReady)
+                else if (!whiteReady)
                 {
                     whiteReady = true;
                     whiteOptions[0].enabled = false;
                     whiteOptions[1].enabled = true;
                 }
-                else if (!readyStage)
-                {
-                    readyStage = true;
-                }
             }
 
 
-            if (MenuControls.Confirm(false) && readyStage)
+            if (MenuControls.Confirm(false))
             {
                 blackReady = true;
                 blackOptions[0].enabled = false;
                 blackOptions[1].enabled = true;
             }
 
-            if (MenuControls.Return(false) && readyStage)
+            if (MenuControls.Return(false))
             {
                 blackReady = false;
                 blackOptions[1].enabled = false;
                 blackOptions[0].enabled = true;
+            }
+
+
+            if (whiteReady && blackReady && !panel.isCoR)
+            {
+                panel.isCoR = true;
+                UltimatePinballData _data = new UltimatePinballData();
+                _data.LastGameTypeSelected = 1;
+                _data.LastGameTypeAmountSelected = lives;
+                SaveManager.SaveUltimatePinball(_data);
+                StartCoroutine(panel.ChangeScene(sceneName));
+            }
+        }
+
+        private void KeepWithinBounds(int min, int max)
+        {
+            if (lives > max)
+            {   
+                lives = max;
+            }   
+                
+            if (lives < min)
+            {   
+                lives = min;
             }
         }
     }

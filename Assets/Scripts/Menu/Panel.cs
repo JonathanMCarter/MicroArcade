@@ -82,19 +82,5 @@ namespace CarterGames.Arcade.Menu
             yield return new WaitForSecondsRealtime(.25f);
             isCoR = false;
         }
-
-
-        public void KeepWithinBounds(int value, int min, int max)
-        {
-            if (value > max)
-            {
-                value = max;
-            }
-
-            if (value < min)
-            {
-                value = min;
-            }
-        }
     }
 }
