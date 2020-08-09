@@ -2,6 +2,7 @@
 using CarterGames.Arcade.UserInput;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 /*
 *  Copyright (c) Jonathan Carter
@@ -9,41 +10,62 @@ using UnityEngine.UI;
 *  W: https://jonathan.carter.games/
 */
 
-public class LeaderboardPanel : MonoBehaviour
+namespace CarterGames.Arcade.Menu
 {
-    [SerializeField] private ScrollRect rect;
-    [SerializeField] private GameObject parent;
-
-    private Panel panel;
-    private ArcadeGameMenuCtrl aGMC;
-
-
-    private void Start()
+    public class LeaderboardPanel : MonoBehaviour
     {
-        aGMC = FindObjectOfType<ArcadeGameMenuCtrl>();
-        rect = GetComponent<ScrollRect>();
-        panel = new Panel();
-        panel.BaseSetup();
-    }
+        [SerializeField] private ScrollRect rect;
+        [SerializeField] private GameObject parent;
+
+        [SerializeField] private GameObject leaderboardRowPrefab;
+
+        private Panel panel;
+        private ArcadeGameMenuCtrl aGMC;
+
+        internal List<string> playerNames;
+        internal List<string> playerScores;
 
 
-    private void Update()
-    {
-        if (MenuControls.Up())
+
+        private void Start()
         {
-            rect.verticalNormalizedPosition += 2f * Time.deltaTime;
-        }
-
-        if (MenuControls.Down())
-        {
-            rect.verticalNormalizedPosition -= 2f * Time.deltaTime;
+            aGMC = FindObjectOfType<ArcadeGameMenuCtrl>();
+            rect = GetComponent<ScrollRect>();
+            panel = new Panel();
+            panel.BaseSetup();
         }
 
 
-        if (MenuControls.Return())
+        private void Update()
         {
-            aGMC.leaderboardPanelActive = false;
-            parent.SetActive(false);
+            if (MenuControls.Up())
+            {
+                rect.verticalNormalizedPosition += 2f * Time.deltaTime;
+            }
+
+            if (MenuControls.Down())
+            {
+                rect.verticalNormalizedPosition -= 2f * Time.deltaTime;
+            }
+
+
+            if (MenuControls.Return())
+            {
+                aGMC.leaderboardPanelActive = false;
+                parent.SetActive(false);
+            }
+        }
+
+
+        internal void PopulateLeaderboard()
+        {
+            for (int i = 0; i < playerNames.Count; i++)
+            {
+                GameObject _go = Instantiate(leaderboardRowPrefab, transform.GetChild(0).transform.GetChild(0));
+                _go.GetComponentsInChildren<Text>()[0].text = (i+1).ToString();
+                _go.GetComponentsInChildren<Text>()[1].text = playerNames[i];
+                _go.GetComponentsInChildren<Text>()[2].text = playerScores[i];
+            }
         }
     }
 }

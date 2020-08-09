@@ -24,7 +24,7 @@ namespace CarterGames.Arcade.Menu
         [SerializeField] private GameMenuData activeData;
 
         [Header("Menu Fields")]
-        [SerializeField] private Text gameTitle;
+        [SerializeField] private GameObject gameTitle;
         [SerializeField] private Text gameDesc;
         [SerializeField] private Image gameBackground;
         [SerializeField] private Image[] supportedControllers;
@@ -55,6 +55,15 @@ namespace CarterGames.Arcade.Menu
         [SerializeField] private GameObject[] tutorialPages;
 
 
+        [Header("Leaderboard Options")]
+        [SerializeField] private GameObject[] leaderboardPanels;
+        [SerializeField] private bool hasPopulated;
+
+
+        [Header("Transitions")]
+        [SerializeField] internal Animator transitions;
+
+
         [Header("(CG) - Audio Manager")]
         [SerializeField] private AudioManager am;
 
@@ -72,8 +81,8 @@ namespace CarterGames.Arcade.Menu
             activeData = data[PlayerPrefs.GetInt("GameSel")];
 
             // sets the display info up
-            gameTitle.text = activeData.GameTitle;
-            gameDesc.text = activeData.GameDesc;
+            gameTitle.transform.GetChild(activeData.gameTitlePos).gameObject.SetActive(true);
+            gameDesc.text = activeData.gameDesc;
 
             gameBackground.sprite = activeData.gameBackground;
 
@@ -88,13 +97,22 @@ namespace CarterGames.Arcade.Menu
 
             if (activeData.hasLeaderboard)
             {
-                if (activeData.GameTitle.Contains("Pinball"))
+                if (activeData.gameTitlePos == 0)
                 {
-                    StartCoroutine(Call_Ultimate_Pinball_Data_Online_Lives());
+                    StartCoroutine(Call_Ultimate_Pinball_Data_Online_Lives(true));
                 }
-                else if (activeData.GameTitle.Contains("Starshine"))
+                else if (activeData.gameTitlePos == 1)
                 {
-                    StartCoroutine(Call_Starshine_Online());
+                    StartCoroutine(Call_Starshine_Online(true));
+                }
+            }
+            else
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    topThreeScores[i].GetComponentsInChildren<Text>()[0].text = "";
+                    topThreeScores[i].GetComponentsInChildren<Text>()[1].text = "";
+                    topThreeScores[i].GetComponentsInChildren<Text>()[2].text = "";
                 }
             }
 
@@ -185,54 +203,67 @@ namespace CarterGames.Arcade.Menu
 
         private void ConfirmOption()
         {
+            switch (pos)
+            {
+                case 0:
 
-                Debug.Log("Confirm Hit");
+                    if (!playPanelActive)
+                    {
+                        playPanelActive = true;
+                        panelHolder.transform.GetChild(activeData.panels[0]).gameObject.SetActive(true);
+                    }
 
-                switch (pos)
-                {
-                    case 0:
+                    break;
 
-                        if (!playPanelActive)
+                case 1:
+
+                    if (!infoPanelActive)
+                    {
+                        panelHolder.transform.GetChild(activeData.panels[1]).gameObject.SetActive(true);
+                        pos = 1;
+                        isCoR = false;
+                        infoPanelActive = true;
+                    }
+
+                    break;
+
+                case 2:
+
+                    if (!leaderboardPanelActive)
+                    {
+                        leaderboardPanelActive = true;
+                        panelHolder.transform.GetChild(activeData.panels[2]).gameObject.SetActive(true);
+                        
+                        if (!hasPopulated)
                         {
-                            playPanelActive = true;
-                            panelHolder.transform.GetChild(activeData.panels[0]).gameObject.SetActive(true);
+                            switch (activeData.infoPanelPos)
+                            {
+                                case 0:
+                                    StartCoroutine(Call_Ultimate_Pinball_Data_Online_Lives(false));
+                                    hasPopulated = true;
+                                    break;
+                                case 1:
+                                    StartCoroutine(Call_Starshine_Online(false));
+                                    hasPopulated = true;
+                                    break;
+                                default:
+                                    break;
+                            }
                         }
+                    }
 
-                        break;
+                    break;
 
-                    case 1:
+                case 3:
 
-                        if (!infoPanelActive)
-                        {
-                            panelHolder.transform.GetChild(activeData.panels[1]).gameObject.SetActive(true);
-                            pos = 1;
-                            isCoR = false;
-                            infoPanelActive = true;
-                        }
+                    ChangeScene("Arcade-Play");
 
-                        break;
-
-                    case 2:
-
-                        if (!leaderboardPanelActive)
-                        {
-                            leaderboardPanelActive = true;
-                            panelHolder.transform.GetChild(activeData.panels[2]).gameObject.SetActive(true);
-                        }
-
-                        break;
-
-                    case 3:
-
-                        ChangeScene("Arcade-Play");
-
-                        break;
-                    default:
+                    break;
+                default:
                     Debug.Log("default");
 
-                        break;
-                }
-            
+                    break;
+            }
         }
 
 
@@ -279,7 +310,7 @@ namespace CarterGames.Arcade.Menu
         }
 
 
-        private IEnumerator Call_Ultimate_Pinball_Data_Online_Lives()
+        private IEnumerator Call_Ultimate_Pinball_Data_Online_Lives(bool getTopThree)
         {
             List<UltimatePinballLeaderboardData> listData = new List<UltimatePinballLeaderboardData>(10);
 
@@ -292,57 +323,115 @@ namespace CarterGames.Arcade.Menu
 
             yield return Request.SendWebRequest();
 
-            if (Request.error == null)
+            if (getTopThree)
             {
-                string[] Values = Request.downloadHandler.text.Split("\r"[0]);
-
-                for (int i = 0; i < 12; i++)
+                if (Request.error == null)
                 {
-                    if (i % 4 == 0)
+                    string[] Values = Request.downloadHandler.text.Split("\r"[0]);
+
+                    for (int i = 0; i < 12; i++)
                     {
-                        ReceivedPlayerName.Add(Values[i]);
+                        if (i % 4 == 0)
+                        {
+                            ReceivedPlayerName.Add(Values[i]);
+                        }
+                        else if (i % 4 == 1)
+                        {
+                            ReceivedPlayerScore.Add(Values[i]);
+                        }
+                        else if (i % 4 == 2)
+                        {
+                            ReceivedPlayerPlatform.Add(Values[i]);
+                        }
+                        else if (i % 4 == 3)
+                        {
+                            ReceivedPlayerGamemode.Add(Values[i]);
+                        }
+                        else
+                        {
+                            Debug.LogError("Value to added to any list!");
+                        }
                     }
-                    else if (i % 4 == 1)
+
+
+                    for (int i = 0; i < 3; i++)
                     {
-                        ReceivedPlayerScore.Add(Values[i]);
+                        UltimatePinballLeaderboardData Data = new UltimatePinballLeaderboardData();
+
+                        Data.PlayerName = ReceivedPlayerName[i];
+                        Data.PlayerScore = int.Parse(ReceivedPlayerScore[i]);
+                        Data.PlayerPlatform = ReceivedPlayerPlatform[i];
+
+                        listData.Add(Data);
                     }
-                    else if (i % 4 == 2)
+
+
+                    for (int i = 0; i < 3; i++)
                     {
-                        ReceivedPlayerPlatform.Add(Values[i]);
-                    }
-                    else if (i % 4 == 3)
-                    {
-                        ReceivedPlayerGamemode.Add(Values[i]);
-                    }
-                    else
-                    {
-                        Debug.LogError("Value to added to any list!");
+                        topThreeScores[i].GetComponentsInChildren<Text>()[1].text = listData[i].PlayerName;
+                        topThreeScores[i].GetComponentsInChildren<Text>()[2].text = listData[i].PlayerScore.ToString();
                     }
                 }
-
-
-                for (int i = 0; i < 3; i++)
+            }
+            else
+            {
+                if (Request.error == null)
                 {
-                    UltimatePinballLeaderboardData Data = new UltimatePinballLeaderboardData();
+                    string[] Values = Request.downloadHandler.text.Split("\r"[0]);
 
-                    Data.PlayerName = ReceivedPlayerName[i];
-                    Data.PlayerScore = int.Parse(ReceivedPlayerScore[i]);
-                    Data.PlayerPlatform = ReceivedPlayerPlatform[i];
+                    for (int i = 0; i < Values.Length - 1; i++)
+                    {
+                        if (i % 4 == 0)
+                        {
+                            ReceivedPlayerName.Add(Values[i]);
+                        }
+                        else if (i % 4 == 1)
+                        {
+                            ReceivedPlayerScore.Add(Values[i]);
+                        }
+                        else if (i % 4 == 2)
+                        {
+                            ReceivedPlayerPlatform.Add(Values[i]);
+                        }
+                        else if (i % 4 == 3)
+                        {
+                            ReceivedPlayerGamemode.Add(Values[i]);
+                        }
+                        else
+                        {
+                            Debug.LogError("Value to added to any list!");
+                        }
+                    }
 
-                    listData.Add(Data);
-                }
+
+                    for (int i = 0; i < ReceivedPlayerName.Count; i++)
+                    {
+                        UltimatePinballLeaderboardData Data = new UltimatePinballLeaderboardData();
+
+                        Data.PlayerName = ReceivedPlayerName[i];
+                        Data.PlayerScore = int.Parse(ReceivedPlayerScore[i]);
+
+                        listData.Add(Data);
+                    }
 
 
-                for (int i = 0; i < 3; i++)
-                {
-                    topThreeScores[i].GetComponentsInChildren<Text>()[1].text = listData[i].PlayerName;
-                    topThreeScores[i].GetComponentsInChildren<Text>()[2].text = listData[i].PlayerScore.ToString();
+                    LeaderboardPanel _lPanel = leaderboardPanels[activeData.infoPanelPos].GetComponentInChildren<LeaderboardPanel>();
+                    _lPanel.playerNames = new List<string>();
+                    _lPanel.playerScores = new List<string>();
+
+                    for (int i = 0; i < ReceivedPlayerName.Count; i++)
+                    {
+                        _lPanel.playerNames.Add(listData[i].PlayerName);
+                        _lPanel.playerScores.Add(listData[i].PlayerScore.ToString());
+                    }
+
+                    _lPanel.PopulateLeaderboard();
                 }
             }
         }
 
 
-        private IEnumerator Call_Starshine_Online()
+        private IEnumerator Call_Starshine_Online(bool getTopThree)
         {
             List<StarshineLeaderboardData> listData = new List<StarshineLeaderboardData>(5);
 
@@ -359,80 +448,160 @@ namespace CarterGames.Arcade.Menu
 
             yield return Request.SendWebRequest();
 
-            if (Request.error == null)
+            if (getTopThree)
             {
-                string[] Values = Request.downloadHandler.text.Split("\r"[0]);
-
-                // only get the top 5 entries
-                for (int i = 0; i < Values.Length; i++)
+                if (Request.error == null)
                 {
-                    if (i % 8 == 0)
+                    string[] Values = Request.downloadHandler.text.Split("\r"[0]);
+
+                    // only get the top 5 entries
+                    for (int i = 0; i < Values.Length; i++)
                     {
-                        ReceivedPlayer1Name.Add(Values[i]);
+                        if (i % 8 == 0)
+                        {
+                            ReceivedPlayer1Name.Add(Values[i]);
+                        }
+                        else if (i % 8 == 1)
+                        {
+                            ReceivedPlayer2Name.Add(Values[i]);
+                        }
+                        else if (i % 8 == 2)
+                        {
+                            ReceivedPlayer1ShipName.Add(Values[i]);
+                        }
+                        else if (i % 8 == 3)
+                        {
+                            ReceivedPlayer2ShipName.Add(Values[i]);
+                        }
+                        else if (i % 8 == 4)
+                        {
+                            ReceivedPlayer1Score.Add(Values[i]);
+                        }
+                        else if (i % 8 == 5)
+                        {
+                            ReceivedPlayer2Score.Add(Values[i]);
+                        }
+                        else if (i % 8 == 6)
+                        {
+                            ReceivedTotalScore.Add(Values[i]);
+                        }
+                        else if (i % 8 == 7)
+                        {
+                            ReceivedPlatform.Add(Values[i]);
+                        }
+                        else
+                        {
+                            Debug.LogError("Value to added to any list!");
+                        }
                     }
-                    else if (i % 8 == 1)
+
+
+                    for (int i = 0; i < ReceivedPlatform.Count; i++)
                     {
-                        ReceivedPlayer2Name.Add(Values[i]);
+                        StarshineLeaderboardData Data = new StarshineLeaderboardData();
+
+                        Data.Player1Name = ReceivedPlayer1Name[i];
+                        Data.Player2Name = ReceivedPlayer2Name[i];
+                        Data.Player1ShipName = ReceivedPlayer1ShipName[i];
+                        Data.Player2ShipName = ReceivedPlayer2ShipName[i];
+                        Data.Player1Score = int.Parse(ReceivedPlayer1Score[i]);
+                        Data.Player2Score = int.Parse(ReceivedPlayer2Score[i]);
+                        Data.Platform = ReceivedPlatform[i];
+
+                        listData.Add(Data);
                     }
-                    else if (i % 8 == 2)
+
+
+                    for (int i = 0; i < 3; i++)
                     {
-                        ReceivedPlayer1ShipName.Add(Values[i]);
-                    }
-                    else if (i % 8 == 3)
-                    {
-                        ReceivedPlayer2ShipName.Add(Values[i]);
-                    }
-                    else if (i % 8 == 4)
-                    {
-                        ReceivedPlayer1Score.Add(Values[i]);
-                    }
-                    else if (i % 8 == 5)
-                    {
-                        ReceivedPlayer2Score.Add(Values[i]);
-                    }
-                    else if (i % 8 == 6)
-                    {
-                        ReceivedTotalScore.Add(Values[i]);
-                    }
-                    else if (i % 8 == 7)
-                    {
-                        ReceivedPlatform.Add(Values[i]);
-                    }
-                    else
-                    {
-                        Debug.LogError("Value to added to any list!");
+                        if (i < listData.Count)
+                        {
+                            topThreeScores[i].GetComponentsInChildren<Text>()[1].text = listData[i].Player1Name + " | " + listData[i].Player2Name;
+                            topThreeScores[i].GetComponentsInChildren<Text>()[2].text = (listData[i].Player1Score + listData[i].Player2Score).ToString();
+                        }
+                        else
+                        {
+                            topThreeScores[i].GetComponentsInChildren<Text>()[1].text = "##### |  #####";
+                            topThreeScores[i].GetComponentsInChildren<Text>()[2].text = "000,000,000,000";
+                        }
                     }
                 }
-
-
-                for (int i = 0; i < ReceivedPlatform.Count; i++)
+            }
+            else
+            {
+                if (Request.error == null)
                 {
-                    StarshineLeaderboardData Data = new StarshineLeaderboardData();
+                    string[] Values = Request.downloadHandler.text.Split("\r"[0]);
 
-                    Data.Player1Name = ReceivedPlayer1Name[i];
-                    Data.Player2Name = ReceivedPlayer2Name[i];
-                    Data.Player1ShipName = ReceivedPlayer1ShipName[i];
-                    Data.Player2ShipName = ReceivedPlayer2ShipName[i];
-                    Data.Player1Score = int.Parse(ReceivedPlayer1Score[i]);
-                    Data.Player2Score = int.Parse(ReceivedPlayer2Score[i]);
-                    Data.Platform = ReceivedPlatform[i];
-
-                    listData.Add(Data);
-                }
-
-
-                for (int i = 0; i < 3; i++)
-                {
-                    if (i < listData.Count)
+                    // only get the top 5 entries
+                    for (int i = 0; i < Values.Length - 1; i++)
                     {
-                        topThreeScores[i].GetComponentsInChildren<Text>()[1].text = listData[i].Player1Name + " | " + listData[i].Player2Name;
-                        topThreeScores[i].GetComponentsInChildren<Text>()[2].text = (listData[i].Player1Score + listData[i].Player2Score).ToString();
+                        if (i % 8 == 0)
+                        {
+                            ReceivedPlayer1Name.Add(Values[i]);
+                        }
+                        else if (i % 8 == 1)
+                        {
+                            ReceivedPlayer2Name.Add(Values[i]);
+                        }
+                        else if (i % 8 == 2)
+                        {
+                            ReceivedPlayer1ShipName.Add(Values[i]);
+                        }
+                        else if (i % 8 == 3)
+                        {
+                            ReceivedPlayer2ShipName.Add(Values[i]);
+                        }
+                        else if (i % 8 == 4)
+                        {
+                            ReceivedPlayer1Score.Add(Values[i]);
+                        }
+                        else if (i % 8 == 5)
+                        {
+                            ReceivedPlayer2Score.Add(Values[i]);
+                        }
+                        else if (i % 8 == 6)
+                        {
+                            ReceivedTotalScore.Add(Values[i]);
+                        }
+                        else if (i % 8 == 7)
+                        {
+                            ReceivedPlatform.Add(Values[i]);
+                        }
+                        else
+                        {
+                            Debug.LogError("Value to added to any list!");
+                        }
                     }
-                    else
+
+
+                    for (int i = 0; i < ReceivedPlatform.Count; i++)
                     {
-                        topThreeScores[i].GetComponentsInChildren<Text>()[1].text = "##### |  #####";
-                        topThreeScores[i].GetComponentsInChildren<Text>()[2].text = "000,000,000,000";
+                        StarshineLeaderboardData Data = new StarshineLeaderboardData();
+
+                        Data.Player1Name = ReceivedPlayer1Name[i];
+                        Data.Player2Name = ReceivedPlayer2Name[i];
+                        Data.Player1ShipName = ReceivedPlayer1ShipName[i];
+                        Data.Player2ShipName = ReceivedPlayer2ShipName[i];
+                        Data.Player1Score = int.Parse(ReceivedPlayer1Score[i]);
+                        Data.Player2Score = int.Parse(ReceivedPlayer2Score[i]);
+                        Data.Platform = ReceivedPlatform[i];
+
+                        listData.Add(Data);
                     }
+
+
+                    LeaderboardPanel _lPanel = leaderboardPanels[activeData.infoPanelPos].GetComponentInChildren<LeaderboardPanel>();
+                    _lPanel.playerNames = new List<string>();
+                    _lPanel.playerScores = new List<string>();
+
+                    for (int i = 0; i < ReceivedPlayer1Name.Count; i++)
+                    {
+                        _lPanel.playerNames.Add(listData[i].Player1Name + " & " + listData[i].Player2Name);
+                        _lPanel.playerScores.Add((listData[i].Player1Score + listData[i].Player2Score).ToString());
+                    }
+
+                    _lPanel.PopulateLeaderboard();
                 }
             }
         }
@@ -473,6 +642,7 @@ namespace CarterGames.Arcade.Menu
         IEnumerator ChangeToScene(string NewScene, float Delay = 1.25f)
         {
             inputReady = false;
+            transitions.SetBool("ChangeScene", true);
             yield return new WaitForSecondsRealtime(Delay);
             AsyncOperation Async = SceneManager.LoadSceneAsync(NewScene);
             Async.allowSceneActivation = false;

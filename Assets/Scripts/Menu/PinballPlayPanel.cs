@@ -108,6 +108,7 @@ namespace CarterGames.Arcade.Menu
                 _data.LastGameTypeSelected = 1;
                 _data.LastGameTypeAmountSelected = lives;
                 SaveManager.SaveUltimatePinball(_data);
+                aGMC.transitions.SetBool("ChangeScene", true);
                 StartCoroutine(panel.ChangeScene(sceneName));
             }
         }

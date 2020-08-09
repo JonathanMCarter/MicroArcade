@@ -9,8 +9,8 @@
 [CreateAssetMenu(fileName = "Game Menu Data", menuName = "Arcade/Game Menu Data")]
 public class GameMenuData : ScriptableObject
 {
-    public string GameTitle;
-    public string GameDesc;
+    public int gameTitlePos;
+    public string gameDesc;
     public Sprite gameBackground;
     public bool[] supportedControls = new bool[3];
     public bool hasLeaderboard;
