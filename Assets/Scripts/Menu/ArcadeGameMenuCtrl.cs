@@ -779,7 +779,14 @@ namespace CarterGames.Arcade.Menu
 
             if (pos > maxPos)
             {
-                pos -= 4;
+                if (pos == 4)
+                {
+                    pos = 0;
+                }
+                else
+                {
+                    pos -= 4;
+                }
             }
             else if (pos < 0)
             {
