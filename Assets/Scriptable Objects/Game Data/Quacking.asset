@@ -18,7 +18,7 @@ MonoBehaviour:
   gameBackground: {fileID: 21300000, guid: 398561655889c4447a7b2e9e29452b4a, type: 3}
   supportedControls: 010101
   hasLeaderboard: 0
-  hasPlayPanel: 0
-  hasInfoPanel: 0
+  hasPlayPanel: 1
+  hasInfoPanel: 1
   panels: 090000000a0000000b000000
   infoPanelPos: 2

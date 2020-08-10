@@ -17,7 +17,7 @@ namespace CarterGames.Assets.LeaderboardManager
         /// Sends the inputted data to the ultimate pinball leaderboard
         /// </summary>
         /// <param name="Data">Data to be sent</param>
-        public static IEnumerator SendDataOnline(LeaderboardData Data)
+        public static IEnumerator SendDataOnline(CWIS.LeaderboardData Data)
         {
             // Online Leaderboard Save...
             WWWForm Form = new WWWForm();

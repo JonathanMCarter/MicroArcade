@@ -86,36 +86,9 @@ namespace CarterGames.Arcade.Menu
 
             gameBackground.sprite = activeData.gameBackground;
 
-
-            if (activeData.supportedControls[0]) { supportedControllers[0].color = activeCol; }
-            else { supportedControllers[0].color = inactiveCol; }
-            if (activeData.supportedControls[1]) { supportedControllers[1].color = activeCol; }
-            else { supportedControllers[1].color = inactiveCol; }
-            if (activeData.supportedControls[2]) { supportedControllers[2].color = activeCol; }
-            else { supportedControllers[2].color = inactiveCol; }
-
-
-            if (activeData.hasLeaderboard)
-            {
-                if (activeData.gameTitlePos == 0)
-                {
-                    StartCoroutine(Call_Ultimate_Pinball_Data_Online_Lives(true));
-                }
-                else if (activeData.gameTitlePos == 1)
-                {
-                    StartCoroutine(Call_Starshine_Online(true));
-                }
-            }
-            else
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    topThreeScores[i].GetComponentsInChildren<Text>()[0].text = "";
-                    topThreeScores[i].GetComponentsInChildren<Text>()[1].text = "";
-                    topThreeScores[i].GetComponentsInChildren<Text>()[2].text = "";
-                }
-            }
-
+            SupportedControlsSetup();
+            LeaderboardSetup();
+            MenuButtonsSetup();
 
             // Menu System Start
             maxPos = buttons.Length - 1;
@@ -150,13 +123,16 @@ namespace CarterGames.Arcade.Menu
                 }
             }
 
-            if (infoPanelActive)
+
+            if (infoPanelActive && !tutorialPages[activeData.infoPanelPos].activeInHierarchy)
             {
                 tutorialPages[activeData.infoPanelPos].SetActive(true);
             }
         }
 
-
+        /// <summary>
+        /// Defines how player 1 can move around the menu with no panels open
+        /// </summary>
         private void MenuMovement()
         {
             if (!playPanelActive && !infoPanelActive && !leaderboardPanelActive)
@@ -200,14 +176,16 @@ namespace CarterGames.Arcade.Menu
             }
         }
 
-
+        /// <summary>
+        /// Defines what happens when the Confirm button is pressed with no panels open
+        /// </summary>
         private void ConfirmOption()
         {
             switch (pos)
             {
                 case 0:
 
-                    if (!playPanelActive)
+                    if (!playPanelActive && activeData.hasPlayPanel)
                     {
                         playPanelActive = true;
                         panelHolder.transform.GetChild(activeData.panels[0]).gameObject.SetActive(true);
@@ -217,7 +195,7 @@ namespace CarterGames.Arcade.Menu
 
                 case 1:
 
-                    if (!infoPanelActive)
+                    if (!infoPanelActive && activeData.hasInfoPanel)
                     {
                         panelHolder.transform.GetChild(activeData.panels[1]).gameObject.SetActive(true);
                         pos = 1;
@@ -229,7 +207,7 @@ namespace CarterGames.Arcade.Menu
 
                 case 2:
 
-                    if (!leaderboardPanelActive)
+                    if (!leaderboardPanelActive && activeData.hasLeaderboard)
                     {
                         leaderboardPanelActive = true;
                         panelHolder.transform.GetChild(activeData.panels[2]).gameObject.SetActive(true);
@@ -244,6 +222,10 @@ namespace CarterGames.Arcade.Menu
                                     break;
                                 case 1:
                                     StartCoroutine(Call_Starshine_Online(false));
+                                    hasPopulated = true;
+                                    break;
+                                case 3:
+                                    StartCoroutine(Call_CWIS(false));
                                     hasPopulated = true;
                                     break;
                                 default:
@@ -266,7 +248,9 @@ namespace CarterGames.Arcade.Menu
             }
         }
 
-
+        /// <summary>
+        /// Defines what happens when the Return button is pressed with no panels open
+        /// </summary>
         private void ReturnOption()
         {
             if (MenuControls.Return())
@@ -309,7 +293,75 @@ namespace CarterGames.Arcade.Menu
             }
         }
 
+        /// <summary>
+        /// Sets up the supported controls UI. (Only run once!)
+        /// </summary>
+        private void SupportedControlsSetup()
+        {
+            if (activeData.supportedControls[0]) { supportedControllers[0].color = activeCol; }
+            else { supportedControllers[0].color = inactiveCol; }
+            if (activeData.supportedControls[1]) { supportedControllers[1].color = activeCol; }
+            else { supportedControllers[1].color = inactiveCol; }
+            if (activeData.supportedControls[2]) { supportedControllers[2].color = activeCol; }
+            else { supportedControllers[2].color = inactiveCol; }
+        }
 
+        /// <summary>
+        /// Sets up the leaderboard display panel with the top three scores if the game has a leaderboard. (Only run once!)
+        /// </summary>
+        private void LeaderboardSetup()
+        {
+            if (activeData.hasLeaderboard)
+            {
+                if (activeData.gameTitlePos == 0)
+                {
+                    StartCoroutine(Call_Ultimate_Pinball_Data_Online_Lives(true));
+                }
+                else if (activeData.gameTitlePos == 1)
+                {
+                    StartCoroutine(Call_Starshine_Online(true));
+                }
+                else if (activeData.gameTitlePos == 3)
+                {
+                    StartCoroutine(Call_CWIS(true));
+                }
+            }
+            else
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    topThreeScores[i].GetComponentsInChildren<Text>()[0].text = "";
+                    topThreeScores[i].GetComponentsInChildren<Text>()[1].text = "";
+                    topThreeScores[i].GetComponentsInChildren<Text>()[2].text = "";
+                }
+            }
+        }
+
+        /// <summary>
+        /// Sets up the menu buttons to show crosses if the game in question does not support the option. (Only run once!)
+        /// </summary>
+        private void MenuButtonsSetup()
+        {
+            if (!activeData.hasPlayPanel)
+            {
+                buttons[0].GetComponentsInChildren<Image>()[2].enabled = true;
+            }
+
+            if (!activeData.hasInfoPanel)
+            {
+                buttons[1].GetComponentsInChildren<Image>()[2].enabled = true;
+            }
+
+            if (!activeData.hasLeaderboard)
+            {
+                buttons[2].GetComponentsInChildren<Image>()[2].enabled = true;
+            }
+        }
+
+        /// <summary>
+        /// Coroutine || Calls the Ultimate Pinball leaderboard and sets up the leaderboard panel with the result, the amount of entries returned are based on the bool.
+        /// </summary>
+        /// <param name="getTopThree">should it only get the top three entries?</param>
         private IEnumerator Call_Ultimate_Pinball_Data_Online_Lives(bool getTopThree)
         {
             List<UltimatePinballLeaderboardData> listData = new List<UltimatePinballLeaderboardData>(10);
@@ -430,7 +482,10 @@ namespace CarterGames.Arcade.Menu
             }
         }
 
-
+        /// <summary>
+        /// Coroutine || Calls the Operation Starshine leaderboard and sets up the leaderboard panel with the result, the amount of entries returned are based on the bool.
+        /// </summary>
+        /// <param name="getTopThree">should it only get the top three entries?</param>
         private IEnumerator Call_Starshine_Online(bool getTopThree)
         {
             List<StarshineLeaderboardData> listData = new List<StarshineLeaderboardData>(5);
@@ -606,7 +661,115 @@ namespace CarterGames.Arcade.Menu
             }
         }
 
+        /// <summary>
+        /// Coroutine || Calls the CWIS leaderboard and sets up the leaderboard panel with the result, the amount of entries returned are based on the bool.
+        /// </summary>
+        /// <param name="getTopThree">should it only get the top three entries?</param>
+        private IEnumerator Call_CWIS(bool getTopThree)
+        {
+            List<CWIS.LeaderboardData> listData = new List<CWIS.LeaderboardData>();
 
+            List<string> ReceivedPlayerName = new List<string>();
+            List<string> ReceivedPlayerScore = new List<string>();
+
+            UnityWebRequest Request = UnityWebRequest.Get(SaveManager.LoadOnlineBoardPath().onlineLeaderboardsBasePath + "/getcwis.php?");
+
+            yield return Request.SendWebRequest();
+
+            if (getTopThree)
+            {
+                if (Request.error == null)
+                {
+                    string[] Values = Request.downloadHandler.text.Split("\r"[0]);
+
+                    for (int i = 0; i < 12; i++)
+                    {
+                        if (i % 2 == 0)
+                        {
+                            ReceivedPlayerName.Add(Values[i]);
+                        }
+                        else if (i % 2 == 1)
+                        {
+                            ReceivedPlayerScore.Add(Values[i]);
+                        }
+                        else
+                        {
+                            Debug.LogError("Value to added to any list!");
+                        }
+                    }
+
+
+                    for (int i = 0; i < 3; i++)
+                    {
+                        CWIS.LeaderboardData _data = new CWIS.LeaderboardData();
+
+                        _data.name = ReceivedPlayerName[i];
+                        _data.score = int.Parse(ReceivedPlayerScore[i]);
+
+                        listData.Add(_data);
+                    }
+
+
+                    for (int i = 0; i < 3; i++)
+                    {
+                        topThreeScores[i].GetComponentsInChildren<Text>()[1].text = listData[i].name;
+                        topThreeScores[i].GetComponentsInChildren<Text>()[2].text = listData[i].score.ToString();
+                    }
+                }
+            }
+            else
+            {
+                if (Request.error == null)
+                {
+                    string[] Values = Request.downloadHandler.text.Split("\r"[0]);
+
+                    for (int i = 0; i < Values.Length - 1; i++)
+                    {
+                        if (i % 2 == 0)
+                        {
+                            ReceivedPlayerName.Add(Values[i]);
+                        }
+                        else if (i % 2 == 1)
+                        {
+                            ReceivedPlayerScore.Add(Values[i]);
+                        }
+                        else
+                        {
+                            Debug.LogError("Value to added to any list!");
+                        }
+                    }
+
+
+                    for (int i = 0; i < ReceivedPlayerName.Count; i++)
+                    {
+                        CWIS.LeaderboardData _data = new CWIS.LeaderboardData();
+
+                        _data.name = ReceivedPlayerName[i];
+                        _data.score = int.Parse(ReceivedPlayerScore[i]);
+
+                        listData.Add(_data);
+                    }
+
+
+                    LeaderboardPanel _lPanel = leaderboardPanels[activeData.infoPanelPos].GetComponentInChildren<LeaderboardPanel>();
+                    _lPanel.playerNames = new List<string>();
+                    _lPanel.playerScores = new List<string>();
+
+                    for (int i = 0; i < ReceivedPlayerName.Count; i++)
+                    {
+                        _lPanel.playerNames.Add(listData[i].name);
+                        _lPanel.playerScores.Add(listData[i].score.ToString());
+                    }
+
+                    _lPanel.PopulateLeaderboard();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Coroutine || Controls the delay between actions when you move around the menus
+        /// </summary>
+        /// <param name="Value">The amount the pos needs the change for the UI</param>
         private IEnumerator MoveAround(int Value)
         {
             isCoR = true;
@@ -632,13 +795,21 @@ namespace CarterGames.Arcade.Menu
             isCoR = false;
         }
 
-
+        /// <summary>
+        /// Changes the scene with a delay and transition (Calls IEnumerator ChangeToScene())
+        /// </summary>
+        /// <param name="Scene">Scene name to change to</param>
+        /// <param name="Delay">Optional || the delay to wait for before changing scene</param>
         public void ChangeScene(string Scene, float Delay = 1.25f)
         {
             StartCoroutine(ChangeToScene(Scene, Delay));
         }
 
-
+        /// <summary>
+        /// Coroutine || Changes the scene after a delay, is called from Method ChangeScene()
+        /// </summary>
+        /// <param name="NewScene">Scene name to change to</param>
+        /// <param name="Delay">Optional || the delay to wait for before changing scene</param>
         IEnumerator ChangeToScene(string NewScene, float Delay = 1.25f)
         {
             inputReady = false;

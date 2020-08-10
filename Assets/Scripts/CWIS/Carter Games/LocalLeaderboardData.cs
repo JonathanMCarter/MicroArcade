@@ -10,6 +10,6 @@ namespace CarterGames.Assets.LeaderboardManager
 {
     public class LocalLeaderboardData
     {
-        public LeaderboardData[] localData;
+        public CWIS.LeaderboardData[] localData;
     }
 }

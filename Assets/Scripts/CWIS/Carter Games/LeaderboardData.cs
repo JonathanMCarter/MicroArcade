@@ -4,7 +4,7 @@
 *  W: https://jonathan.carter.games/
 */
 
-namespace CarterGames.Assets.LeaderboardManager
+namespace CarterGames.CWIS
 {
     [System.Serializable]
     public class LeaderboardData

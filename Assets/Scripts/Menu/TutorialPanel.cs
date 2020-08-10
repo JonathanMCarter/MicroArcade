@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /*
 *  Copyright (c) Jonathan Carter
@@ -21,6 +22,9 @@ namespace CarterGames.Arcade.Menu
         [SerializeField] private List<GameObject> pages;
         private ArcadeGameMenuCtrl aGMC;
 
+        private GameObject pipsObject;
+        private Color basePipCol;
+
         public bool isUD;
 
 
@@ -36,6 +40,9 @@ namespace CarterGames.Arcade.Menu
             }
 
             aGMC = FindObjectOfType<ArcadeGameMenuCtrl>();
+
+            pipsObject = transform.parent.GetChild(2).gameObject;
+            basePipCol = pipsObject.GetComponentsInChildren<Image>()[1].color;
         }
 
 
@@ -91,6 +98,25 @@ namespace CarterGames.Arcade.Menu
                     pages[i].SetActive(false);
                 }
             }
+
+            Pips();
+        }
+
+
+        private void Pips()
+        {
+            for (int i = 0; i < maxPos + 1; i++)
+            {
+                if ((i == pos) && (pipsObject.GetComponentsInChildren<Image>()[i+1].color != Color.cyan))
+                {
+                    pipsObject.GetComponentsInChildren<Image>()[i+1].color = Color.black;
+                }
+                else if ((i != pos) && (pipsObject.GetComponentsInChildren<Image>()[i+1].color == Color.black))
+                {
+                    pipsObject.GetComponentsInChildren<Image>()[i+1].color = basePipCol;
+                }
+            }
+            
         }
 
 

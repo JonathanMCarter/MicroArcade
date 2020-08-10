@@ -12,12 +12,12 @@ namespace CarterGames.Assets.LeaderboardManager
 {
     public class LocalLeaderboardManager : MonoBehaviour
     {
-        [SerializeField] private List<LeaderboardData> data;
+        [SerializeField] private List<CWIS.LeaderboardData> data;
 
         private int CompareData(object a, object b)
         {
-            LeaderboardData c1 = (LeaderboardData)a;
-            LeaderboardData c2 = (LeaderboardData)b;
+            CWIS.LeaderboardData c1 = (CWIS.LeaderboardData)a;
+            CWIS.LeaderboardData c2 = (CWIS.LeaderboardData)b;
             return String.Compare(c2.score.ToString(), c1.score.ToString());
         }
     }

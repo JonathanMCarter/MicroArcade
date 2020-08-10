@@ -15,7 +15,7 @@ namespace CarterGames.Arcade.Menu
     {
         [SerializeField] internal List<GameObject> items;
 
-        private int pos;
+        internal int pos;
         private int lastPos;
         internal int maxPos;
         internal bool isCoR;

@@ -11,19 +11,19 @@ namespace CarterGames.Arcade.Leaderboard
         /// <summary>
         /// Sends the inputted data to the ultimate pinball leaderboard
         /// </summary>
-        /// <param name="Data">Data to be sent</param>
-        public static IEnumerator Send_UltimatePinball_Data_Online(UltimatePinballLeaderboardData Data)
+        /// <param name="_data">data to pass through</param>
+        public static IEnumerator Send_UltimatePinball_Data_Online(UltimatePinballLeaderboardData _data)
         {
             // Local Leaderboard Save...
-            SaveManager.SaveUltimatePinballToLocal(Data);
+            SaveManager.SaveUltimatePinballToLocal(_data);
 
             // Online Leaderboard Save...
             WWWForm Form = new WWWForm();
 
-            Form.AddField("Name", Data.PlayerName);
-            Form.AddField("Score", Data.PlayerScore);
-            Form.AddField("Platform", Data.PlayerPlatform);
-            Form.AddField("Gamemode", Data.PlayerGamemode);
+            Form.AddField("Name", _data.PlayerName);
+            Form.AddField("Score", _data.PlayerScore);
+            Form.AddField("Platform", _data.PlayerPlatform);
+            Form.AddField("Gamemode", _data.PlayerGamemode);
             Form.AddField("Date", System.DateTime.Now.ToString());
 
             UnityWebRequest W = UnityWebRequest.Post(SaveManager.LoadOnlineBoardPath().onlineLeaderboardsBasePath + "addscorepinball.php?", Form);
@@ -34,27 +34,48 @@ namespace CarterGames.Arcade.Leaderboard
         /// <summary>
         /// Sends the inputted data to the operation starshine leaderboard
         /// </summary>
-        /// <param name="Data">Data to be sent</param>
-        public static IEnumerator Send_OPSS_Data_Online(StarshineLeaderboardData Data)
+        /// <param name="_data">data to pass through</param>
+        public static IEnumerator Send_OPSS_Data_Online(StarshineLeaderboardData _data)
         {
             // Local Leaderboard Save...
-            SaveManager.SaveOperationStarshineToLocal(Data);
-
+            SaveManager.SaveOperationStarshineToLocal(_data);
 
             // Online Leaderboard Save...
             WWWForm Form = new WWWForm();
 
-            Form.AddField("Player1Name", Data.Player1Name);
-            Form.AddField("Player2Name", Data.Player2Name);
-            Form.AddField("Player1Ship", Data.Player1ShipName);
-            Form.AddField("Player2Ship", Data.Player2ShipName);
-            Form.AddField("Player1Score", Data.Player1Score);
-            Form.AddField("Player2Score", Data.Player2Score);
-            Form.AddField("TotalScore", (Data.Player1Score + Data.Player2Score));
-            Form.AddField("Platform", Data.Platform);
+            Form.AddField("Player1Name", _data.Player1Name);
+            Form.AddField("Player2Name", _data.Player2Name);
+            Form.AddField("Player1Ship", _data.Player1ShipName);
+            Form.AddField("Player2Ship", _data.Player2ShipName);
+            Form.AddField("Player1Score", _data.Player1Score);
+            Form.AddField("Player2Score", _data.Player2Score);
+            Form.AddField("TotalScore", (_data.Player1Score + _data.Player2Score));
+            Form.AddField("Platform", _data.Platform);
             Form.AddField("Date", System.DateTime.Now.ToString());
 
             UnityWebRequest W = UnityWebRequest.Post(SaveManager.LoadOnlineBoardPath().onlineLeaderboardsBasePath + "addscorestarshine.php?", Form);
+            yield return W.SendWebRequest();
+        }
+
+
+        /// <summary>
+        /// Sends the inputted data to the cwis leaderboard
+        /// </summary>
+        /// <param name="_data">data to pass through</param>
+        /// <returns></returns>
+        private static IEnumerator Send_To_CWIS(CWIS.LeaderboardData _data)
+        {
+            // Save to local leaderboard
+
+
+            // Online Leaderboard
+            WWWForm Form = new WWWForm();
+
+            Form.AddField("Name", _data.name);
+            Form.AddField("Score", _data.score.ToString());
+            Form.AddField("Date", System.DateTime.Now.ToString());
+
+            UnityWebRequest W = UnityWebRequest.Post(SaveManager.LoadOnlineBoardPath().onlineLeaderboardsBasePath + "addtocwis.php?", Form);
             yield return W.SendWebRequest();
         }
     }

@@ -14,7 +14,7 @@ namespace CarterGames.Assets.LeaderboardManager
 {
     public class LeaderboardDisplay : MonoBehaviour
     {
-        [SerializeField] private LeaderboardData[] data;
+        [SerializeField] private CWIS.LeaderboardData[] data;
         [SerializeField] private GameObject rowAnchor;
         [SerializeField] private GameObject rowPrefab;
         [SerializeField] private GameObject loading;
@@ -58,7 +58,7 @@ namespace CarterGames.Assets.LeaderboardManager
         {
             loading.SetActive(true);
 
-            List<LeaderboardData> ListData = new List<LeaderboardData>();
+            List<CWIS.LeaderboardData> ListData = new List<CWIS.LeaderboardData>();
 
             List<string> ReceivedPlayerName = new List<string>();
             List<string> ReceivedPlayerScore = new List<string>();
@@ -91,7 +91,7 @@ namespace CarterGames.Assets.LeaderboardManager
 
                 for (int i = 0; i < ReceivedPlayerName.Count; i++)
                 {
-                    LeaderboardData Data = new LeaderboardData();
+                    CWIS.LeaderboardData Data = new CWIS.LeaderboardData();
 
                     Data.name = ReceivedPlayerName[i];
 
