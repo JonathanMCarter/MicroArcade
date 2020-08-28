@@ -19,7 +19,8 @@ namespace CarterGames.Arcade.Menu
         private int lastPos;
         internal int maxPos;
         internal bool isCoR;
-       
+
+
 
         public void BaseSetup()
         {

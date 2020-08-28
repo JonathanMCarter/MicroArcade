@@ -58,6 +58,7 @@ namespace CarterGames.Arcade.Menu
         [Header("Leaderboard Options")]
         [SerializeField] private GameObject[] leaderboardPanels;
         [SerializeField] private bool hasPopulated;
+        private bool useOnline;
 
 
         [Header("Transitions")]
@@ -70,6 +71,12 @@ namespace CarterGames.Arcade.Menu
 
         private GameObject panelHolder;
 
+
+
+        private void OnDisable()
+        {
+            StopAllCoroutines();
+        }
 
 
         private void Start()
@@ -211,7 +218,14 @@ namespace CarterGames.Arcade.Menu
                     {
                         leaderboardPanelActive = true;
                         panelHolder.transform.GetChild(activeData.panels[2]).gameObject.SetActive(true);
-                        
+
+
+                        if (MenuControls.ToggleButton() && !isCoR)
+                        {
+                            ToggleOnlineLocalLeaderboards();
+                        }
+
+
                         if (!hasPopulated)
                         {
                             switch (activeData.infoPanelPos)
@@ -828,6 +842,35 @@ namespace CarterGames.Arcade.Menu
             Async.allowSceneActivation = true;
             yield return new WaitForSecondsRealtime(.1f);
             inputReady = true;
+        }
+
+
+        private void ToggleOnlineLocalLeaderboards()
+        {
+            if (useOnline)
+            {
+                useOnline = false;
+
+                switch (activeData.infoPanelPos)
+                {
+                    case 0:
+                        
+                        break;
+                    case 1:
+                        
+                        break;
+                    case 3:
+                        
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+            {
+                useOnline = true;
+                hasPopulated = false;
+            }
         }
     }
 }

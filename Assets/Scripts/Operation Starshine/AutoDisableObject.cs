@@ -11,6 +11,12 @@ namespace CarterGames.Starshine
         public float ObjPoolResetDelay = 3;
 
 
+        private void OnDisable()
+        {
+            StopAllCoroutines();
+        }
+
+
         void OnEnable()
         {
             // Start the IEnumerator to disable the attached object

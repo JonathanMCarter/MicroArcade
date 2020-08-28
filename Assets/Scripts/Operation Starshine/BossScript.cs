@@ -57,6 +57,11 @@ namespace CarterGames.Starshine
         public AudioManager am;
 
 
+        private void OnDisable()
+        {
+            StopAllCoroutines();
+        }
+
 
         private void Start()
         {

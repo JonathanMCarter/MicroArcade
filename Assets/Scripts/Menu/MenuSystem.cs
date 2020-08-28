@@ -22,6 +22,11 @@ namespace CarterGames.Arcade.Menu
         internal AudioManager am;
 
 
+        private void OnDisable()
+        {
+            StopAllCoroutines();
+        }
+
 
         protected virtual void Start()
         {

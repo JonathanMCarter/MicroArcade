@@ -20,6 +20,13 @@ namespace CarterGames.Arcade.Menu
 
         public Animator FadeToWhite;
 
+
+        private void OnDisable()
+        {
+            StopAllCoroutines();
+        }
+
+
         protected override void Start()
         {
             base.Start();

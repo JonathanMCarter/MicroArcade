@@ -298,5 +298,78 @@ namespace CarterGames.Arcade.UserInput
                 }
             }
         }
+
+
+        public static bool ToggleButton(bool isPlayer1 = true)
+        {
+            if (isPlayer1)
+            {
+                Debug.Log("got P1");
+
+                switch (ControllerType)
+                {
+                    case SupportedControllers.ArcadeBoard:
+
+                        if (ArcadeControls.ButtonPress(Joysticks.White, Buttons.B1)) { return true; }
+                        else { return false; }
+
+                    case SupportedControllers.GamePadBoth:
+
+                        if (ControllerControls.ButtonPress(Players.P1, ControllerButtons.X)) { return true; }
+                        else { return false; }
+
+                    case SupportedControllers.KeyboardBoth:
+
+                        if (KeyboardControls.ButtonPress(Players.P1, Buttons.B1)) { return true; }
+                        else { return false; }
+
+                    case SupportedControllers.KeyboardP1ControllerP2:
+
+                        if (KeyboardControls.ButtonPress(Players.P1, Buttons.B1)) { return true; }
+                        else { return false; }
+
+                    case SupportedControllers.KeyboardP2ControllerP1:
+
+                        if (ControllerControls.ButtonPress(Players.P1, ControllerButtons.X)) { return true; }
+                        else { return false; }
+
+                    default:
+                        return false;
+                }
+            }
+            else
+            {
+                switch (ControllerType)
+                {
+                    case SupportedControllers.ArcadeBoard:
+
+                        if (ArcadeControls.ButtonPress(Joysticks.Black, Buttons.B1)) { return true; }
+                        else { return false; }
+
+                    case SupportedControllers.GamePadBoth:
+
+                        if (ControllerControls.ButtonPress(Players.P2, ControllerButtons.X)) { return true; }
+                        else { return false; }
+
+                    case SupportedControllers.KeyboardBoth:
+
+                        if (KeyboardControls.ButtonPress(Players.P2, Buttons.B1)) { return true; }
+                        else { return false; }
+
+                    case SupportedControllers.KeyboardP1ControllerP2:
+
+                        if (ControllerControls.ButtonPress(Players.P2, ControllerButtons.X)) { return true; }
+                        else { return false; }
+
+                    case SupportedControllers.KeyboardP2ControllerP1:
+
+                        if (KeyboardControls.ButtonPress(Players.P2, Buttons.B1)) { return true; }
+                        else { return false; }
+
+                    default:
+                        return false;
+                }
+            }
+        }
     }
 }

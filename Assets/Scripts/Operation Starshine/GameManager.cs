@@ -65,6 +65,12 @@ namespace CarterGames.Starshine
         public Animator animator;
 
 
+        private void OnDisable()
+        {
+            StopAllCoroutines();
+        }
+
+
         private void Awake()
         {
             PlayersAlive = 2;

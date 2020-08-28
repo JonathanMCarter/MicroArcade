@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -6973,7 +6973,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cbeb1e7a26272c4b8239e36fffea03d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasScannedOnce: 0
+  hasScannedOnce: 1
   shouldShowDir: 0
   shouldShowClips: 0
   audioManagerFile: {fileID: 11400000, guid: f5e6423e55a048f4592a4d561c757c26, type: 2}
@@ -7139,11 +7139,11 @@ MonoBehaviour:
   playerID: 0
   tagString: MusicPlayer
   sceneNames:
-  - Boot
-  - MainMenu
-  - PlayMenu
-  - Settings
-  - Credits
+  - Arcade-Boot
+  - Arcade-Menu
+  - Arcade-Play
+  - Arcade-Settings
+  - Arcade-Credits
   - InputCheck
   volumeEdit: 0.65
   Mixer: {fileID: 24100000, guid: 116de77a600d67643b46de76e34fe755, type: 2}

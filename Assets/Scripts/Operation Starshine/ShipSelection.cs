@@ -39,6 +39,12 @@ namespace CarterGames.Starshine
         public AudioManager MenuAM;
 
 
+        private void OnDisable()
+        {
+            StopAllCoroutines();
+        }
+
+
         protected override void Update()
         {
             // Player Selection Controls

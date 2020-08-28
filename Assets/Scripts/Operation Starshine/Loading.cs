@@ -16,6 +16,11 @@ namespace CarterGames.Starshine
         public Slider LoadingSlider;
 
 
+        private void OnDisable()
+        {
+            StopAllCoroutines();
+        }
+
 
         void Start()
         {

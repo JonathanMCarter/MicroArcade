@@ -36,6 +36,11 @@ namespace CarterGames.Starshine
         bool IsActive;
 
 
+        private void OnDisable()
+        {
+            StopAllCoroutines();
+        }
+
 
         private void Awake()
         {

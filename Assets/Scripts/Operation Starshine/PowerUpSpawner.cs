@@ -22,6 +22,12 @@ namespace CarterGames.Starshine
         bool CoRunning;
 
 
+        private void OnDisable()
+        {
+            StopAllCoroutines();
+        }
+
+
         void Start()
         {
             Player1 = GameObject.FindGameObjectWithTag("WhitePlayer").GetComponent<ShipManagement>();

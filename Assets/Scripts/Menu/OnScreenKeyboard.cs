@@ -40,6 +40,12 @@ namespace CarterGames.Arcade.UserInput
         bool IsCooldownOver;
 
 
+        private void OnDisable()
+        {
+            StopAllCoroutines();
+        }
+
+
         void Start()
         {
             RowMaxValues = new List<int>();

@@ -76,6 +76,11 @@ namespace CarterGames.Starshine
         // Ship Mission Stats for Victory / End Screen....
         public PlayerStats PlayerStats;
 
+        private void OnDisable()
+        {
+            StopAllCoroutines();
+        }
+
 
         protected virtual void OnEnable()
         {

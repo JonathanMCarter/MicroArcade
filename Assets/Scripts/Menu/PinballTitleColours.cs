@@ -7,6 +7,13 @@ namespace Menu.Pinball
 {
     public class PinballTitleColours : MonoBehaviour
     {
+
+        private void OnDisable()
+        {
+            StopAllCoroutines();
+        }
+
+
         void OnEnable()
         {
             StartCoroutine(Cycle());

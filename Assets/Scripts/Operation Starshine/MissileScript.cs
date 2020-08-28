@@ -34,6 +34,7 @@ namespace CarterGames.Starshine
         TrailRenderer TR;
         internal bool isRocketAngel;
 
+
         private void OnEnable()
         { 
             if (!isRocketAngel)
@@ -73,6 +74,8 @@ namespace CarterGames.Starshine
                 IsCoRunning = false;
                 StopAllCoroutines();
             }
+
+            StopAllCoroutines();
         }
 
 

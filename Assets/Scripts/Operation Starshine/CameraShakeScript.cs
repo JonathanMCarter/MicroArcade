@@ -31,6 +31,12 @@ namespace CarterGames.Starshine
         private Vector3 CameraPos;
 
 
+        private void OnDisable()
+        {
+            StopAllCoroutines();
+        }
+
+
         private void Update()
         {
             if (CameraShake)

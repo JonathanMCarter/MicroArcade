@@ -34,6 +34,13 @@ namespace CarterGames.Starshine
 
         bool IsCoR;
 
+
+        private void OnDisable()
+        {
+            StopAllCoroutines();
+        }
+
+
         private void Start()
         {
             Player1 = GameObject.FindGameObjectWithTag("WhitePlayer").GetComponent<Rigidbody2D>();

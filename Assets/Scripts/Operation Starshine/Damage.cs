@@ -23,6 +23,13 @@ namespace CarterGames.Starshine
         float TParam;
         GameManager GM;
 
+
+        private void OnDisable()
+        {
+            StopAllCoroutines();
+        }
+
+
         protected virtual void OnEnable()
         {
             if (!IsLaser)

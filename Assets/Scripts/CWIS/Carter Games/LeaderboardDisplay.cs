@@ -10,7 +10,7 @@ using System.Collections;
 *  W: https://jonathan.carter.games/
 */
 
-namespace CarterGames.Assets.LeaderboardManager
+namespace CarterGames.CWIS
 {
     public class LeaderboardDisplay : MonoBehaviour
     {

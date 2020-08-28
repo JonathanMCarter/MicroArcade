@@ -13,6 +13,13 @@ namespace CarterGames.Starshine
         public bool GetData;
         public bool GetAll;
 
+
+        private void OnDisable()
+        {
+            StopAllCoroutines();
+        }
+
+
         void Start()
         {
             if ((GetData) && (!GetAll))

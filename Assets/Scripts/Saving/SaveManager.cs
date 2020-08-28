@@ -6,7 +6,6 @@ using System.Runtime.Serialization.Formatters.Binary;
 using CarterGames.Arcade.Leaderboard;
 using CarterGames.Arcade.UserInput;
 using CarterGames.UltimatePinball;
-using CarterGames.Crushing.Saving;
 
 /*
 *  Copyright (c) Jonathan Carter
@@ -35,11 +34,17 @@ namespace CarterGames.Arcade.Saving
 
             FileStream _stream;
 
+
+            if (!Directory.Exists(baseSavePath + "/Arcade"))
+            {
+                Directory.CreateDirectory(baseSavePath + "/Arcade");
+            }
+
             // Create Save Files
             // /settings.masf
-            if (!File.Exists(baseSavePath + "/settings.masf"))
+            if (!File.Exists(baseSavePath + "/Arcade/settings.masf"))
             {
-                _stream = new FileStream(baseSavePath + "/settings.masf", FileMode.Create);
+                _stream = new FileStream(baseSavePath + "/Arcade/settings.masf", FileMode.Create);
                 ArcadeData _settingsData = new ArcadeData();
                 _formatter.Serialize(_stream, _settingsData);
                 _stream.Close();
@@ -55,9 +60,9 @@ namespace CarterGames.Arcade.Saving
             //}
 
             // /arcadeonline.masf
-            if (!File.Exists(baseSavePath + "/arcadeonline.masf"))
+            if (!File.Exists(baseSavePath + "/Arcade/arcadeonline.masf"))
             {
-                _stream = new FileStream(baseSavePath + "/arcadeonline.masf", FileMode.Create);
+                _stream = new FileStream(baseSavePath + "/Arcade/arcadeonline.masf", FileMode.Create);
                 ArcadeOnlinePaths _onlineData = new ArcadeOnlinePaths();
                 _formatter.Serialize(_stream, _onlineData);
                 _stream.Close();
@@ -65,51 +70,77 @@ namespace CarterGames.Arcade.Saving
 
 
 
-            // Pinball Save Files
+            /// =========================================================================================================================
+            /// =========================================================================================================================
+            /// 
+            ///         Ultimeate Pinball File Creation
+            /// 
+            /// =========================================================================================================================
+            /// =========================================================================================================================
+
+            if (!Directory.Exists(baseSavePath + "/Games"))
+            {
+                Directory.CreateDirectory(baseSavePath + "/Games");
+            }
+
+            if (!Directory.Exists(baseSavePath + "/Games/Ultimate Pinball"))
+            {
+                Directory.CreateDirectory(baseSavePath + "/Games/Ultimate Pinball");
+            }
 
             // /ultimatepinball.masf
-            if (!File.Exists(baseSavePath + "/ultimatepinball.masf"))
+            if (!File.Exists(baseSavePath + "/Games/Ultimate Pinball/ultimatepinball.masf"))
             {
-                _stream = new FileStream(baseSavePath + "/ultimatepinball.masf", FileMode.Create);
+                _stream = new FileStream(baseSavePath + "/Games/Ultimate Pinball/ultimatepinball.masf", FileMode.Create);
                 UltimatePinballData _pinballData = new UltimatePinballData();
                 _formatter.Serialize(_stream, _pinballData);
                 _stream.Close();
             }
 
             // /ultimatepinballsession.masf
-            if (!File.Exists(baseSavePath + "/ultimatepinballsession.masf"))
+            if (!File.Exists(baseSavePath + "/Games/Ultimate Pinball/ultimatepinballsession.masf"))
             {
-                _stream = new FileStream(baseSavePath + "/ultimatepinballsession.masf", FileMode.Create);
+                _stream = new FileStream(baseSavePath + "/Games/Ultimate Pinball/ultimatepinballsession.masf", FileMode.Create);
                 UltimatePinballSessionData _pinballSessionData = new UltimatePinballSessionData();
                 _formatter.Serialize(_stream, _pinballSessionData);
                 _stream.Close();
             }
 
             // /ultimatepinballsession.malf
-            if (!File.Exists(baseSavePath + "/ultimatepinball.malf"))
+            if (!File.Exists(baseSavePath + "/Games/Ultimate Pinball/ultimatepinball.malf"))
             {
-                _stream = new FileStream(baseSavePath + "/ultimatepinball.malf", FileMode.Create);
+                _stream = new FileStream(baseSavePath + "/Games/Ultimate Pinball/ultimatepinball.malf", FileMode.Create);
                 _formatter.Serialize(_stream, null);
                 _stream.Close();
             }
 
 
+            /// =========================================================================================================================
+            /// =========================================================================================================================
+            /// 
+            ///         Operation Starshine File Creation
+            /// 
+            /// =========================================================================================================================
+            /// =========================================================================================================================
 
-            // Operation Starshine Save Files
+            if (!Directory.Exists(baseSavePath + "/Games/Operation Starshine"))
+            {
+                Directory.CreateDirectory(baseSavePath + "/Games/Operation Starshine");
+            }
 
             // /operationstarshine.masf
-            if (!File.Exists(baseSavePath + "/operationstarshine.masf"))
+            if (!File.Exists(baseSavePath + "/Games/Operation Starshine/operationstarshine.masf"))
             {
-                _stream = new FileStream(baseSavePath + "/operationstarshine.masf", FileMode.Create);
+                _stream = new FileStream(baseSavePath + "/Games/Operation Starshine/operationstarshine.masf", FileMode.Create);
                 OperationStarshineData _operationStarshineData = new OperationStarshineData();
                 _formatter.Serialize(_stream, _operationStarshineData);
                 _stream.Close();
             }
 
             // /operationstarshine.malf
-            if (!File.Exists(baseSavePath + "/operationstarshine.malf"))
+            if (!File.Exists(baseSavePath + "/Games/Operation Starshine/operationstarshine.malf"))
             {
-                _stream = new FileStream(baseSavePath + "/operationstarshine.malf", FileMode.Create);
+                _stream = new FileStream(baseSavePath + "/Games/Operation Starshine/operationstarshine.malf", FileMode.Create);
                 StarshineLeaderboardData _operationStarshineLeaderboardData = new StarshineLeaderboardData();
                 _formatter.Serialize(_stream, _operationStarshineLeaderboardData);
                 _stream.Close();
@@ -117,12 +148,25 @@ namespace CarterGames.Arcade.Saving
 
 
 
-            // Quacking Time Save Files
+            /// =========================================================================================================================
+            /// =========================================================================================================================
+            /// 
+            ///         Quacking Time File Creation
+            /// 
+            /// =========================================================================================================================
+            /// =========================================================================================================================
+
+
+            if (!Directory.Exists(baseSavePath + "/Games/Quacking Time"))
+            {
+                Directory.CreateDirectory(baseSavePath + "/Games/Quacking Time");
+            }
+
 
             // /quackingtime.masf
-            if (!File.Exists(baseSavePath + "/quackingtime.masf"))
+            if (!File.Exists(baseSavePath + "/Games/Quacking Time/quackingtime.masf"))
             {
-                _stream = new FileStream(baseSavePath + "/quackingtime.masf", FileMode.Create);
+                _stream = new FileStream(baseSavePath + "/Games/Quacking Time/quackingtime.masf", FileMode.Create);
                 QuackingTimeData _quackingTimeData = new QuackingTimeData();
                 _formatter.Serialize(_stream, _quackingTimeData);
                 _stream.Close();
@@ -130,15 +174,18 @@ namespace CarterGames.Arcade.Saving
 
 
 
-            // Crushing Save Files
+            /// =========================================================================================================================
+            /// =========================================================================================================================
+            /// 
+            ///         C.W.I.S File Creation
+            /// 
+            /// =========================================================================================================================
+            /// =========================================================================================================================
 
-            // /crushing.masf
-            if (!File.Exists(baseSavePath + "/crushing.masf"))
+
+            if (!Directory.Exists(baseSavePath + "/Games/C.W.I.S"))
             {
-                _stream = new FileStream(baseSavePath + "/crushing.masf", FileMode.Create);
-                 CrushingData _crushingData = new CrushingData();
-                _formatter.Serialize(_stream, _crushingData);
-                _stream.Close();
+                Directory.CreateDirectory(baseSavePath + "/Games/C.W.I.S");
             }
         }
 
@@ -204,7 +251,7 @@ namespace CarterGames.Arcade.Saving
         public static void SaveArcadeSettings(Menu.SettingsScript Settings)
         {
             BinaryFormatter Formatter = new BinaryFormatter();
-            string SavePath = Application.persistentDataPath + "/settings.masf";
+            string SavePath = Application.persistentDataPath + "/Arcade/settings.masf";
             FileStream Stream = new FileStream(SavePath, FileMode.OpenOrCreate);
 
             ArcadeData Data = new ArcadeData(Settings);
@@ -221,7 +268,7 @@ namespace CarterGames.Arcade.Saving
         public static void SaveArcadeControlScheme(SupportedControllers Scheme)
         {
             BinaryFormatter Formatter = new BinaryFormatter();
-            string SavePath = Application.persistentDataPath + "/controlconfig.masf";
+            string SavePath = Application.persistentDataPath + "/Arcade/controlconfig.masf";
             FileStream Stream = new FileStream(SavePath, FileMode.OpenOrCreate);
 
             ArcadeData Data = new ArcadeData(Scheme);
@@ -238,7 +285,7 @@ namespace CarterGames.Arcade.Saving
         public static void SaveOnlineLeaderboardsPath(ArcadeOnlinePaths paths)
         {
             BinaryFormatter Formatter = new BinaryFormatter();
-            string SavePath = Application.persistentDataPath + "/arcadeonline.masf";
+            string SavePath = Application.persistentDataPath + "/Arcade/arcadeonline.masf";
             FileStream Stream = new FileStream(SavePath, FileMode.OpenOrCreate);
 
             ArcadeOnlinePaths Data = paths;
@@ -254,7 +301,7 @@ namespace CarterGames.Arcade.Saving
         /// <returns>ArcadeData with Settings</returns>
         public static ArcadeData LoadArcadeSettings()
         {
-            string SavePath = Application.persistentDataPath + "/settings.masf";
+            string SavePath = Application.persistentDataPath + "/Arcade/settings.masf";
 
             if (File.Exists(SavePath))
             {
@@ -281,7 +328,7 @@ namespace CarterGames.Arcade.Saving
         /// <returns>ArcadeData with Control Scheme</returns>
         public static ArcadeData LoadArcadeControlScheme()
         {
-            string SavePath = Application.persistentDataPath + "/controlconfig.masf";
+            string SavePath = Application.persistentDataPath + "/Arcade/controlconfig.masf";
 
             if (File.Exists(SavePath))
             {
@@ -308,7 +355,7 @@ namespace CarterGames.Arcade.Saving
         /// <returns>The URL for the leaderboards on the Carter SceneOptions Server</returns>
         public static ArcadeOnlinePaths LoadOnlineBoardPath()
         {
-            string SavePath = Application.persistentDataPath + "/arcadeonline.masf";
+            string SavePath = Application.persistentDataPath + "/Arcade/arcadeonline.masf";
 
             if (File.Exists(SavePath))
             {
@@ -346,7 +393,7 @@ namespace CarterGames.Arcade.Saving
         public static void SaveUltimatePinballToLocal(UltimatePinballLeaderboardData _data)
         {
             BinaryFormatter Formatter = new BinaryFormatter();
-            string SavePath = Application.persistentDataPath + "/ultimatepinball.malf";
+            string SavePath = Application.persistentDataPath + "/Games/Ultimate Pinball/ultimatepinball.malf";
 
             FileStream Stream;
 
@@ -373,7 +420,7 @@ namespace CarterGames.Arcade.Saving
         public static void SaveUltimatePinballGamemode(int Gamemode = 0, int Increment = 0, int LastValue = 0)
         {
             BinaryFormatter Formatter = new BinaryFormatter();
-            string SavePath = Application.persistentDataPath + "/ultimatepinball.masf";
+            string SavePath = Application.persistentDataPath + "/Games/Ultimate Pinball/ultimatepinball.masf";
             FileStream Stream = new FileStream(SavePath, FileMode.OpenOrCreate);
 
             UltimatePinballData Data = new UltimatePinballData();
@@ -399,7 +446,7 @@ namespace CarterGames.Arcade.Saving
         public static void SaveUltimatePinballSession(string Player1Name, int Player1Score, string Player2Name, int Player2Score, int Player1Health = 0, int Player2Health = 0)
         {
             BinaryFormatter Formatter = new BinaryFormatter();
-            string SavePath = Application.persistentDataPath + "/ultimatepinballsession.masf";
+            string SavePath = Application.persistentDataPath + "/Games/Ultimate Pinball/ultimatepinballsession.masf";
             FileStream Stream = new FileStream(SavePath, FileMode.OpenOrCreate);
 
             UltimatePinballSessionData Data = new UltimatePinballSessionData();
@@ -424,7 +471,7 @@ namespace CarterGames.Arcade.Saving
         public static void SaveUltimatePinballSession(GameManager.BG_PlayerStats Player1Stats, GameManager.BG_PlayerStats Player2Stats)
         {
             BinaryFormatter Formatter = new BinaryFormatter();
-            string SavePath = Application.persistentDataPath + "/ultimatepinballsession.masf";
+            string SavePath = Application.persistentDataPath + "/Games/Ultimate Pinball/ultimatepinballsession.masf";
             FileStream Stream = new FileStream(SavePath, FileMode.OpenOrCreate);
 
             UltimatePinballSessionData Data = new UltimatePinballSessionData();
@@ -448,7 +495,7 @@ namespace CarterGames.Arcade.Saving
         public static void SaveUltimatePinballSession(UltimatePinballSessionData Input)
         {
             BinaryFormatter Formatter = new BinaryFormatter();
-            string SavePath = Application.persistentDataPath + "/ultimatepinballsession.masf";
+            string SavePath = Application.persistentDataPath + "/Games/Ultimate Pinball/ultimatepinballsession.masf";
             FileStream Stream = new FileStream(SavePath, FileMode.OpenOrCreate);
 
             UltimatePinballSessionData Data = new UltimatePinballSessionData();
@@ -467,7 +514,7 @@ namespace CarterGames.Arcade.Saving
         public static void SaveUltimatePinball(UltimatePinballData Input)
         {
             BinaryFormatter Formatter = new BinaryFormatter();
-            string SavePath = Application.persistentDataPath + "/ultimatepinball.masf";
+            string SavePath = Application.persistentDataPath + "/Games/Ultimate Pinball/ultimatepinball.masf";
             FileStream Stream = new FileStream(SavePath, FileMode.OpenOrCreate);
 
             UltimatePinballData Data = new UltimatePinballData();
@@ -485,7 +532,7 @@ namespace CarterGames.Arcade.Saving
         /// <returns>UltimatePinballData with the loaded data</returns>
         public static UltimatePinballData LoadUltimatePinball()
         {
-            string SavePath = Application.persistentDataPath + "/ultimatepinball.masf";
+            string SavePath = Application.persistentDataPath + "/Games/Ultimate Pinball/ultimatepinball.masf";
 
             if (File.Exists(SavePath))
             {
@@ -512,7 +559,7 @@ namespace CarterGames.Arcade.Saving
         /// <returns>UltimatePinballData with the loaded data</returns>
         public static UltimatePinballSessionData LoadLastUltimatePinballSession()
         {
-            string SavePath = Application.persistentDataPath + "/ultimatepinballsession.masf";
+            string SavePath = Application.persistentDataPath + "/Games/Ultimate Pinball/ultimatepinballsession.masf";
 
             if (File.Exists(SavePath))
             {
@@ -549,7 +596,7 @@ namespace CarterGames.Arcade.Saving
         public static void SaveOperationStarshineToLocal(StarshineLeaderboardData _leaderboardData)
         {
             BinaryFormatter Formatter = new BinaryFormatter();
-            string SavePath = Application.persistentDataPath + "/operationstarshine.malf";
+            string SavePath = Application.persistentDataPath + "/Games/Operation Starshine/operationstarshine.malf";
 
             FileStream Stream = new FileStream(SavePath, FileMode.Append);
 
@@ -565,7 +612,7 @@ namespace CarterGames.Arcade.Saving
         public static void SaveOperationStarshine(OperationStarshineData data)
         {
             BinaryFormatter Formatter = new BinaryFormatter();
-            string SavePath = Application.persistentDataPath + "/operationstarshine.masf";
+            string SavePath = Application.persistentDataPath + "/Games/Operation Starshine/operationstarshine.masf";
             FileStream Stream = new FileStream(SavePath, FileMode.OpenOrCreate);
 
             OperationStarshineData _data = data;
@@ -582,7 +629,7 @@ namespace CarterGames.Arcade.Saving
         public static void SaveStarshinePlayerStats(OperationStarshineData data)
         {
             BinaryFormatter Formatter = new BinaryFormatter();
-            string SavePath = Application.persistentDataPath + "/operationstarshine.masf";
+            string SavePath = Application.persistentDataPath + "/Games/Operation Starshine/operationstarshine.masf";
             FileStream Stream = new FileStream(SavePath, FileMode.OpenOrCreate);
 
             OperationStarshineData _data = data;
@@ -598,7 +645,7 @@ namespace CarterGames.Arcade.Saving
         /// <returns>The Loaded OperationStarshineData</returns>
         public static OperationStarshineData LoadOperationStarshine()
         {
-            string SavePath = Application.persistentDataPath + "/operationstarshine.masf";
+            string SavePath = Application.persistentDataPath + "/Games/Operation Starshine/operationstarshine.masf";
 
             if (File.Exists(SavePath))
             {
@@ -626,7 +673,7 @@ namespace CarterGames.Arcade.Saving
         /// <returns>The loaded StarshineLeaderboardData</returns>
         public static StarshineLeaderboardData LoadOperationStarshineLeaderboard()
         {
-            string SavePath = Application.persistentDataPath + "/operationstarshine.malf";
+            string SavePath = Application.persistentDataPath + "/Games/Operation Starshine/operationstarshine.malf";
 
             if (File.Exists(SavePath))
             {
@@ -663,7 +710,7 @@ namespace CarterGames.Arcade.Saving
         public static void SaveQuackingTime(QuackingTimeData data)
         {
             BinaryFormatter Formatter = new BinaryFormatter();
-            string SavePath = Application.persistentDataPath + "/quackingtime.masf";
+            string SavePath = Application.persistentDataPath + "/Games/Quacking Time/quackingtime.masf";
             FileStream Stream = new FileStream(SavePath, FileMode.OpenOrCreate);
 
             QuackingTimeData _data = data;
@@ -679,7 +726,7 @@ namespace CarterGames.Arcade.Saving
         /// <returns>The Loaded QuackingTimeData</returns>
         public static QuackingTimeData LoadQuackingTime()
         {
-            string SavePath = Application.persistentDataPath + "/quackingtime.masf";
+            string SavePath = Application.persistentDataPath + "/Games/Quacking Time/quackingtime.masf";
 
             if (File.Exists(SavePath))
             {
@@ -703,53 +750,9 @@ namespace CarterGames.Arcade.Saving
         /// =========================================================================================================================
         /// =========================================================================================================================
         /// 
-        ///         Crushing!  ( Saving / Loading )
+        ///         C.W.I.S  ( Saving / Loading )
         /// 
         /// =========================================================================================================================
         /// =========================================================================================================================
-
-
-        /// <summary>
-        /// Saves the Crushing game data inputted
-        /// </summary>
-        /// <param name="data">CrushingData to save</param>
-        public static void SaveCrushing(CrushingData data)
-        {
-            BinaryFormatter Formatter = new BinaryFormatter();
-            string SavePath = Application.persistentDataPath + "/crushing.masf";
-            FileStream Stream = new FileStream(SavePath, FileMode.OpenOrCreate);
-
-            CrushingData _data = data;
-
-            Formatter.Serialize(Stream, _data);
-            Stream.Close();
-        }
-
-
-        /// <summary>
-        /// Loads the Crushing game data
-        /// </summary>
-        /// <returns>The Loaded CrushingData</returns>
-        public static CrushingData LoadCrushing()
-        {
-            string SavePath = Application.persistentDataPath + "/crushing.masf";
-
-            if (File.Exists(SavePath))
-            {
-                BinaryFormatter Formatter = new BinaryFormatter();
-                FileStream Stream = new FileStream(SavePath, FileMode.Open);
-
-                CrushingData _data = Formatter.Deserialize(Stream) as CrushingData;
-
-                Stream.Close();
-
-                return _data;
-            }
-            else
-            {
-                Debug.LogError("Save file not found! (Crushing - Load)");
-                return null;
-            }
-        }
     }
 }
