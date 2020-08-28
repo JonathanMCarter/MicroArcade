@@ -8,6 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
+using CarterGames.Assets.LeaderboardManager;
 
 /*
 *  Copyright (c) Jonathan Carter
@@ -58,7 +59,7 @@ namespace CarterGames.Arcade.Menu
         [Header("Leaderboard Options")]
         [SerializeField] private GameObject[] leaderboardPanels;
         [SerializeField] private bool hasPopulated;
-        private bool useOnline;
+        [SerializeField] private bool useOnline;
 
 
         [Header("Transitions")]
@@ -127,6 +128,14 @@ namespace CarterGames.Arcade.Menu
                 if (MenuControls.Return())
                 {
                     ReturnOption();
+                }
+            }
+
+            if (leaderboardPanelActive)
+            {
+                if (MenuControls.ToggleButton() && !isCoR)
+                {
+                    ToggleOnlineLocalLeaderboards();
                 }
             }
 
@@ -220,19 +229,18 @@ namespace CarterGames.Arcade.Menu
                         panelHolder.transform.GetChild(activeData.panels[2]).gameObject.SetActive(true);
 
 
-                        if (MenuControls.ToggleButton() && !isCoR)
-                        {
-                            ToggleOnlineLocalLeaderboards();
-                        }
-
-
                         if (!hasPopulated)
                         {
                             switch (activeData.infoPanelPos)
                             {
                                 case 0:
-                                    StartCoroutine(Call_Ultimate_Pinball_Data_Online_Lives(false));
-                                    hasPopulated = true;
+
+                                    if (useOnline)
+                                    {
+                                        StartCoroutine(Call_Ultimate_Pinball_Data_Online_Lives(false));
+                                        hasPopulated = true;
+                                    }
+
                                     break;
                                 case 1:
                                     StartCoroutine(Call_Starshine_Online(false));
@@ -854,7 +862,20 @@ namespace CarterGames.Arcade.Menu
                 switch (activeData.infoPanelPos)
                 {
                     case 0:
-                        
+                        UltimatePinballLeaderboardData[] _data = ArcadeLeaderboardManager.GetUltimatePinballLocal();
+
+                        LeaderboardPanel _lPanel = leaderboardPanels[activeData.infoPanelPos].GetComponentInChildren<LeaderboardPanel>();
+                        _lPanel.ClearLeaderboard();
+                        _lPanel.playerNames = new List<string>();
+                        _lPanel.playerScores = new List<string>();
+
+                        for (int i = 0; i < _data.Length; i++)
+                        {
+                            _lPanel.playerNames.Add(_data[i].PlayerName);
+                            _lPanel.playerScores.Add(_data[i].PlayerScore.ToString());
+                        }
+
+                        _lPanel.PopulateLeaderboard();
                         break;
                     case 1:
                         

@@ -1,5 +1,4 @@
-﻿using CarterGames.Arcade.Menu;
-using CarterGames.Arcade.UserInput;
+﻿using CarterGames.Arcade.UserInput;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
@@ -65,6 +64,15 @@ namespace CarterGames.Arcade.Menu
                 _go.GetComponentsInChildren<Text>()[0].text = (i+1).ToString();
                 _go.GetComponentsInChildren<Text>()[1].text = playerNames[i];
                 _go.GetComponentsInChildren<Text>()[2].text = playerScores[i];
+            }
+        }
+
+
+        internal void ClearLeaderboard()
+        {
+            for (int i = 0; i < playerNames.Count; i++)
+            {
+                transform.GetChild(0).transform.GetChild(0).transform.GetChild(i).gameObject.SetActive(false);
             }
         }
     }

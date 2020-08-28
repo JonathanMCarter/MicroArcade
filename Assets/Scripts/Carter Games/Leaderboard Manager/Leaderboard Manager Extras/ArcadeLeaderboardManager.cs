@@ -4,6 +4,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System;
+using CarterGames.Arcade.Leaderboard;
 
 /*
 *  Copyright (c) Jonathan Carter
@@ -22,7 +23,7 @@ namespace CarterGames.Assets.LeaderboardManager
         /// (Get Ultimate Pinball Leaderboard Data)
         /// </summary>
         /// <returns>UltimatePinballData</returns>
-        public static UltimatePinballData GetUltimatePinballLocal()
+        public static UltimatePinballLeaderboardData[] GetUltimatePinballLocal()
         {
             StringBuilder SavePath = new StringBuilder();
             SavePath.Append(Application.persistentDataPath);
@@ -33,11 +34,11 @@ namespace CarterGames.Assets.LeaderboardManager
                 BinaryFormatter Formatter = new BinaryFormatter();
                 FileStream Stream = new FileStream(SavePath.ToString(), FileMode.Open);
 
-                UltimatePinballData Data = Formatter.Deserialize(Stream) as UltimatePinballData;
+                UltimatePinballLeaderboardData[] data = Formatter.Deserialize(Stream) as UltimatePinballLeaderboardData[];
 
                 Stream.Close();
 
-                return Data;
+                return data;
             }
             else
             {
