@@ -29,20 +29,22 @@ namespace CarterGames.Assets.LeaderboardManager
             SavePath.Append(Application.persistentDataPath);
             SavePath.Append("/Games/Ultimate Pinball/ultimatepinball.malf");
 
-            if (File.Exists(SavePath.ToString()))
+            FileStream _stream = new FileStream(SavePath.ToString(), FileMode.Open);
+
+            if (File.Exists(SavePath.ToString()) && _stream.Length > 0)
             {
                 BinaryFormatter Formatter = new BinaryFormatter();
-                FileStream Stream = new FileStream(SavePath.ToString(), FileMode.Open);
 
-                UltimatePinballLeaderboardData[] data = Formatter.Deserialize(Stream) as UltimatePinballLeaderboardData[];
+                UltimatePinballLeaderboardData[] data = Formatter.Deserialize(_stream) as UltimatePinballLeaderboardData[];
 
-                Stream.Close();
+                _stream.Close();
 
                 return data;
             }
             else
             {
                 Debug.LogError("Leaderboard file not found! (Ultimate Pinball Leaderboard - Load)");
+                _stream.Close();
                 return null;
             }
         }

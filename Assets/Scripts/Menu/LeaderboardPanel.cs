@@ -70,7 +70,7 @@ namespace CarterGames.Arcade.Menu
 
         internal void ClearLeaderboard()
         {
-            for (int i = 0; i < playerNames.Count; i++)
+            for (int i = 0; i < transform.GetChild(0).transform.GetChild(0).childCount; i++)
             {
                 transform.GetChild(0).transform.GetChild(0).transform.GetChild(i).gameObject.SetActive(false);
             }

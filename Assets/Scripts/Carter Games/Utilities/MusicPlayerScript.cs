@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
-using CarterGames.Crushing.Saving;
 
 /*
 *  Copyright (c) Jonathan Carter
@@ -20,7 +19,6 @@ namespace CarterGames.Utilities
         [SerializeField] private AudioMixer gameAudioMixer;
 
         private AudioSource audioSource;
-        private CrushingData loadedData;
         private GameObject[] musicPlayers;
 
         private void Start()
@@ -83,9 +81,9 @@ namespace CarterGames.Utilities
             audioSource = GetComponent<AudioSource>();
             DontDestroyOnLoad(this);
 
-            loadedData = SaveManager.LoadGame();
+            //loadedData = SaveManager.LoadGame();
 
-            gameAudioMixer.SetFloat("musicVolume", loadedData.musicVolume);
+            //gameAudioMixer.SetFloat("musicVolume", loadedData.musicVolume);
         }
 
 

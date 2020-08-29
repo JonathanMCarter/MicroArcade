@@ -852,7 +852,9 @@ namespace CarterGames.Arcade.Menu
             inputReady = true;
         }
 
-
+        /// <summary>
+        /// Toggles between local and online leaderboards.
+        /// </summary>
         private void ToggleOnlineLocalLeaderboards()
         {
             if (useOnline)
@@ -862,17 +864,21 @@ namespace CarterGames.Arcade.Menu
                 switch (activeData.infoPanelPos)
                 {
                     case 0:
-                        UltimatePinballLeaderboardData[] _data = ArcadeLeaderboardManager.GetUltimatePinballLocal();
+                        UltimatePinballLeaderboardData[] _data = new UltimatePinballLeaderboardData[0];
+                        _data = ArcadeLeaderboardManager.GetUltimatePinballLocal();
 
                         LeaderboardPanel _lPanel = leaderboardPanels[activeData.infoPanelPos].GetComponentInChildren<LeaderboardPanel>();
                         _lPanel.ClearLeaderboard();
                         _lPanel.playerNames = new List<string>();
                         _lPanel.playerScores = new List<string>();
 
-                        for (int i = 0; i < _data.Length; i++)
+                        if (_data != null)
                         {
-                            _lPanel.playerNames.Add(_data[i].PlayerName);
-                            _lPanel.playerScores.Add(_data[i].PlayerScore.ToString());
+                            for (int i = 0; i < _data.Length; i++)
+                            {
+                                _lPanel.playerNames.Add(_data[i].PlayerName);
+                                _lPanel.playerScores.Add(_data[i].PlayerScore.ToString());
+                            }
                         }
 
                         _lPanel.PopulateLeaderboard();
