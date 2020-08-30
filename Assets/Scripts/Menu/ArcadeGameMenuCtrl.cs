@@ -860,6 +860,8 @@ namespace CarterGames.Arcade.Menu
             if (useOnline)
             {
                 useOnline = false;
+                leaderboardPanels[activeData.infoPanelPos].transform.GetChild(1).GetChild(2).GetChild(1).gameObject.SetActive(true);
+                leaderboardPanels[activeData.infoPanelPos].transform.GetChild(1).GetChild(2).GetChild(0).gameObject.SetActive(false);
 
                 switch (activeData.infoPanelPos)
                 {
@@ -895,8 +897,28 @@ namespace CarterGames.Arcade.Menu
             }
             else
             {
+                leaderboardPanels[activeData.infoPanelPos].transform.GetChild(1).GetChild(2).GetChild(0).gameObject.SetActive(true);
+                leaderboardPanels[activeData.infoPanelPos].transform.GetChild(1).GetChild(2).GetChild(1).gameObject.SetActive(false);
+
+                switch (activeData.infoPanelPos)
+                {
+                    case 0:
+                        StartCoroutine(Call_Ultimate_Pinball_Data_Online_Lives(false));
+                        hasPopulated = true;
+                        break;
+                    case 1:
+                        StartCoroutine(Call_Starshine_Online(false));
+                        hasPopulated = true;
+                        break;
+                    case 3:
+                        StartCoroutine(Call_CWIS(false));
+                        hasPopulated = true;
+                        break;
+                    default:
+                        break;
+                }
+
                 useOnline = true;
-                hasPopulated = false;
             }
         }
     }

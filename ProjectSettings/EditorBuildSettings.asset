@@ -38,16 +38,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Ultimate Pinball/Ultimate-Pinball-Tutorial.unity
     guid: de7af22f673c51a469ece973571f47d9
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Operation Starshine/Operation-Starshine-Menu.unity
     guid: cc91c1609efce2c4a8a8b0bc91531fef
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Operation Starshine/Operation-Starshine-Level.unity
     guid: 3ca77137432f720439ff932f5e3b492e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Operation Starshine/Operation-Starshine-Lose.unity
     guid: 0d0f3fa283479624cb47f9c45c807d71
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Operation Starshine/Operation-Starshine-Win.unity
     guid: 610e154fa120bb7449b8cb5e3ec73452
   - enabled: 1
@@ -59,24 +59,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Quacking Time/QuackingTime-End.unity
     guid: 214d75b1823088843adb44c8a147032f
-  - enabled: 1
-    path: Assets/Scenes/Crushing!/Crushing-Credits.unity
-    guid: 257b38496c54df44c98fb788cbcc1206
-  - enabled: 1
-    path: Assets/Scenes/Crushing!/Crushing-Game.unity
-    guid: c5fb4d25e4a65f247a9912ded5fa0a32
-  - enabled: 1
-    path: Assets/Scenes/Crushing!/Crushing-GameOver.unity
-    guid: 97d0c04f48574df42a2b76558a310b38
-  - enabled: 1
-    path: Assets/Scenes/Crushing!/Crushing-Menu.unity
-    guid: b1efc4f5d40093b41b771fe0dac53a09
-  - enabled: 1
-    path: Assets/Scenes/Crushing!/Crushing-Settings.unity
-    guid: 6bf1e615750bbee4089343152793f8b6
-  - enabled: 1
-    path: Assets/Scenes/Crushing!/Crushing-Stats.unity
-    guid: e040296ed430f774ebfa8bdfc5a30875
   - enabled: 1
     path: Assets/Scenes/CWIS/CWIS-Credits.unity
     guid: f030c078ca20d9948aacf12cee01033f
