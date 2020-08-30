@@ -19,10 +19,12 @@ namespace CarterGames.Arcade.Menu
 
         [SerializeField] private bool shouldDisable;
         [SerializeField] private string returnScene;
-        [SerializeField] private Color[] colours;
+        [SerializeField] private GameObject[] covers;
 
         [SerializeField] private bool isUpDown;
         [SerializeField] private bool useTrans;
+
+        private Vector3 checkVector = new Vector3(1.1f, 1.1f, 1f);
 
         private void OnEnable()
         {
@@ -54,39 +56,26 @@ namespace CarterGames.Arcade.Menu
 
         public void UpdateDisplay()
         {
-            if (shouldDisable)
+            if (!shouldDisable)
             {
                 for (int i = 0; i < SceneOptions.Length; i++)
                 {
-                    if ((i == pos) && (!SceneOptions[i].activeSelf))
+                    if ((i == pos) && (SceneOptions[i].transform.localScale != checkVector))
                     {
-                        SceneOptions[i].SetActive(true);
-                        SceneOptions[i].GetComponentInParent<Animator>().SetBool("Hover", true);
-                    }
-                    else if ((i != pos) && (SceneOptions[i].activeSelf))
-                    {
-                        SceneOptions[i].SetActive(false);
+                        SceneOptions[i].transform.localScale = checkVector;
+                        covers[i].SetActive(true);
 
-                        if (SceneOptions[i].GetComponentInParent<Animator>().GetBool("Hover"))
-                        {
-                            SceneOptions[i].GetComponentInParent<Animator>().SetBool("Hover", false);
-                        }
+                    }
+                    else if ((i != pos) && (SceneOptions[i].transform.localScale == checkVector))
+                    {
+                        SceneOptions[i].transform.localScale = Vector3.one;
+                        covers[i].SetActive(false);
                     }
                 }
             }
             else
             {
-                for (int i = 0; i < SceneOptions.Length; i++)
-                {
-                    if ((i == pos) && (SceneOptions[i].GetComponentInChildren<Text>().color != colours[0]))
-                    {
-                        SceneOptions[i].GetComponentInChildren<Text>().color = colours[0];
-                    }
-                    else if ((i != pos) && (SceneOptions[i].GetComponentInChildren<Text>().color == colours[0]))
-                    {
-                        SceneOptions[i].GetComponentInChildren<Text>().color = colours[1];
-                    }
-                }
+
             }
         }
 
