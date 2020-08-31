@@ -73,7 +73,7 @@ namespace CarterGames.Arcade.Menu
             inputReady = true;
 
             base.Start();
-         }
+        }
 
 
 
