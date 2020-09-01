@@ -25,6 +25,12 @@ namespace CarterGames.Arcade.Menu
         public bool whiteReady, blackReady;
 
 
+        private void OnDisable()
+        {
+            StopAllCoroutines();
+        }
+
+
         private void Start()
         {
             aGMC = FindObjectOfType<ArcadeGameMenuCtrl>();

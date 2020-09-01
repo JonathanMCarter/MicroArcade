@@ -13,13 +13,12 @@ namespace CarterGames.Arcade.Menu
 {
     public class Panel
     {
-        [SerializeField] internal List<GameObject> items;
+        [SerializeField] internal GameObject[] items;
 
         internal int pos;
         private int lastPos;
         internal int maxPos;
         internal bool isCoR;
-
 
 
         public void BaseSetup()
@@ -55,7 +54,7 @@ namespace CarterGames.Arcade.Menu
 
             if (pos > maxPos)
             {
-                pos -= (maxPos + 1);
+                pos = 0;
             }
             else if (pos < 0)
             {

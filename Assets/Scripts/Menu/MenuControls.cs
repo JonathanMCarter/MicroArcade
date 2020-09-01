@@ -16,142 +16,286 @@ namespace CarterGames.Arcade.UserInput
         }
 
 
-        public static bool Left()
+        public static bool Left(bool isPlayer1 = true)
         {
-            switch (ControllerType)
+            if (isPlayer1)
             {
-                case SupportedControllers.ArcadeBoard:
+                switch (ControllerType)
+                {
+                    case SupportedControllers.ArcadeBoard:
 
-                    if (ArcadeControls.JoystickLeft(Joysticks.White)) { return true; }
-                    else { return false; }
+                        if (ArcadeControls.JoystickLeft(Joysticks.White)) { return true; }
+                        else { return false; }
 
-                case SupportedControllers.GamePadBoth:
+                    case SupportedControllers.GamePadBoth:
 
-                    if (ControllerControls.ControllerLeft(Players.P1)) { return true; }
-                    else { return false; }
+                        if (ControllerControls.ControllerLeft(Players.P1)) { return true; }
+                        else { return false; }
 
-                case SupportedControllers.KeyboardBoth:
+                    case SupportedControllers.KeyboardBoth:
 
-                    if (KeyboardControls.KeyboardLeft(Players.P1)) { return true; }
-                    else { return false; }
+                        if (KeyboardControls.KeyboardLeft(Players.P1)) { return true; }
+                        else { return false; }
 
-                case SupportedControllers.KeyboardP1ControllerP2:
+                    case SupportedControllers.KeyboardP1ControllerP2:
 
-                    if (KeyboardControls.KeyboardLeft(Players.P1)) { return true; }
-                    else { return false; }
+                        if (KeyboardControls.KeyboardLeft(Players.P1)) { return true; }
+                        else { return false; }
 
-                case SupportedControllers.KeyboardP2ControllerP1:
+                    case SupportedControllers.KeyboardP2ControllerP1:
 
-                    if (ControllerControls.ControllerLeft(Players.P1)) { return true; }
-                    else { return false; }
+                        if (ControllerControls.ControllerLeft(Players.P1)) { return true; }
+                        else { return false; }
 
-                default:
-                    return false;
+                    default:
+                        return false;
+                }
+            }
+            else
+            {
+                switch (ControllerType)
+                {
+                    case SupportedControllers.ArcadeBoard:
+
+                        if (ArcadeControls.JoystickLeft(Joysticks.Black)) { return true; }
+                        else { return false; }
+
+                    case SupportedControllers.GamePadBoth:
+
+                        if (ControllerControls.ControllerLeft(Players.P2)) { return true; }
+                        else { return false; }
+
+                    case SupportedControllers.KeyboardBoth:
+
+                        if (KeyboardControls.KeyboardLeft(Players.P2)) { return true; }
+                        else { return false; }
+
+                    case SupportedControllers.KeyboardP1ControllerP2:
+
+                        if (KeyboardControls.KeyboardLeft(Players.P2)) { return true; }
+                        else { return false; }
+
+                    case SupportedControllers.KeyboardP2ControllerP1:
+
+                        if (ControllerControls.ControllerLeft(Players.P2)) { return true; }
+                        else { return false; }
+
+                    default:
+                        return false;
+                }
             }
         }
 
 
-        public static bool Right()
+        public static bool Right(bool isPlayer1 = true)
         {
-            switch (ControllerType)
+            if (isPlayer1)
             {
-                case SupportedControllers.ArcadeBoard:
+                switch (ControllerType)
+                {
+                    case SupportedControllers.ArcadeBoard:
 
-                    if (ArcadeControls.JoystickRight(Joysticks.White)) { return true; }
-                    else { return false; }
+                        if (ArcadeControls.JoystickRight(Joysticks.White)) { return true; }
+                        else { return false; }
 
-                case SupportedControllers.GamePadBoth:
+                    case SupportedControllers.GamePadBoth:
 
-                    if (ControllerControls.ControllerRight(Players.P1)) { return true; }
-                    else { return false; }
+                        if (ControllerControls.ControllerRight(Players.P1)) { return true; }
+                        else { return false; }
 
-                case SupportedControllers.KeyboardBoth:
+                    case SupportedControllers.KeyboardBoth:
 
-                    if (KeyboardControls.KeyboardRight(Players.P1)) { return true; }
-                    else { return false; }
+                        if (KeyboardControls.KeyboardRight(Players.P1)) { return true; }
+                        else { return false; }
 
-                case SupportedControllers.KeyboardP1ControllerP2:
+                    case SupportedControllers.KeyboardP1ControllerP2:
 
-                    if (KeyboardControls.KeyboardRight(Players.P1)) { return true; }
-                    else { return false; }
+                        if (KeyboardControls.KeyboardRight(Players.P1)) { return true; }
+                        else { return false; }
 
-                case SupportedControllers.KeyboardP2ControllerP1:
+                    case SupportedControllers.KeyboardP2ControllerP1:
 
-                    if (ControllerControls.ControllerRight(Players.P1)) { return true; }
-                    else { return false; }
+                        if (ControllerControls.ControllerRight(Players.P1)) { return true; }
+                        else { return false; }
 
-                default:
-                    return false;
+                    default:
+                        return false;
+                }
+            }
+            else
+            {
+                switch (ControllerType)
+                {
+                    case SupportedControllers.ArcadeBoard:
+
+                        if (ArcadeControls.JoystickRight(Joysticks.Black)) { return true; }
+                        else { return false; }
+
+                    case SupportedControllers.GamePadBoth:
+
+                        if (ControllerControls.ControllerRight(Players.P2)) { return true; }
+                        else { return false; }
+
+                    case SupportedControllers.KeyboardBoth:
+
+                        if (KeyboardControls.KeyboardRight(Players.P2)) { return true; }
+                        else { return false; }
+
+                    case SupportedControllers.KeyboardP1ControllerP2:
+
+                        if (KeyboardControls.KeyboardRight(Players.P2)) { return true; }
+                        else { return false; }
+
+                    case SupportedControllers.KeyboardP2ControllerP1:
+
+                        if (ControllerControls.ControllerRight(Players.P2)) { return true; }
+                        else { return false; }
+
+                    default:
+                        return false;
+                }
             }
         }
 
 
-        public static bool Up()
+        public static bool Up(bool isPlayer1 = true)
         {
-            switch (ControllerType)
+            if (isPlayer1)
             {
-                case SupportedControllers.ArcadeBoard:
+                switch (ControllerType)
+                {
+                    case SupportedControllers.ArcadeBoard:
 
-                    if (ArcadeControls.JoystickUp(Joysticks.White)) { return true; }
-                    else { return false; }
+                        if (ArcadeControls.JoystickUp(Joysticks.White)) { return true; }
+                        else { return false; }
 
-                case SupportedControllers.GamePadBoth:
+                    case SupportedControllers.GamePadBoth:
 
-                    if (ControllerControls.ControllerUp(Players.P1)) { return true; }
-                    else { return false; }
+                        if (ControllerControls.ControllerUp(Players.P1)) { return true; }
+                        else { return false; }
 
-                case SupportedControllers.KeyboardBoth:
+                    case SupportedControllers.KeyboardBoth:
 
-                    if (KeyboardControls.KeyboardUp(Players.P1)) { return true; }
-                    else { return false; }
+                        if (KeyboardControls.KeyboardUp(Players.P1)) { return true; }
+                        else { return false; }
 
-                case SupportedControllers.KeyboardP1ControllerP2:
+                    case SupportedControllers.KeyboardP1ControllerP2:
 
-                    if (KeyboardControls.KeyboardUp(Players.P1)) { return true; }
-                    else { return false; }
+                        if (KeyboardControls.KeyboardUp(Players.P1)) { return true; }
+                        else { return false; }
 
-                case SupportedControllers.KeyboardP2ControllerP1:
+                    case SupportedControllers.KeyboardP2ControllerP1:
 
-                    if (ControllerControls.ControllerUp(Players.P1)) { return true; }
-                    else { return false; }
+                        if (ControllerControls.ControllerUp(Players.P1)) { return true; }
+                        else { return false; }
 
-                default:
-                    return false;
+                    default:
+                        return false;
+                }
+            }
+            else
+            {
+                switch (ControllerType)
+                {
+                    case SupportedControllers.ArcadeBoard:
+
+                        if (ArcadeControls.JoystickUp(Joysticks.Black)) { return true; }
+                        else { return false; }
+
+                    case SupportedControllers.GamePadBoth:
+
+                        if (ControllerControls.ControllerUp(Players.P2)) { return true; }
+                        else { return false; }
+
+                    case SupportedControllers.KeyboardBoth:
+
+                        if (KeyboardControls.KeyboardUp(Players.P2)) { return true; }
+                        else { return false; }
+
+                    case SupportedControllers.KeyboardP1ControllerP2:
+
+                        if (KeyboardControls.KeyboardUp(Players.P2)) { return true; }
+                        else { return false; }
+
+                    case SupportedControllers.KeyboardP2ControllerP1:
+
+                        if (ControllerControls.ControllerUp(Players.P2)) { return true; }
+                        else { return false; }
+
+                    default:
+                        return false;
+                }
             }
         }
 
 
-        public static bool Down()
+        public static bool Down(bool isPlayer1 = true)
         {
-            switch (ControllerType)
+            if (isPlayer1)
             {
-                case SupportedControllers.ArcadeBoard:
+                switch (ControllerType)
+                {
+                    case SupportedControllers.ArcadeBoard:
 
-                    if (ArcadeControls.JoystickDown(Joysticks.White)) { return true; }
-                    else { return false; }
+                        if (ArcadeControls.JoystickDown(Joysticks.White)) { return true; }
+                        else { return false; }
 
-                case SupportedControllers.GamePadBoth:
+                    case SupportedControllers.GamePadBoth:
 
-                    if (ControllerControls.ControllerDown(Players.P1)) { return true; }
-                    else { return false; }
+                        if (ControllerControls.ControllerDown(Players.P1)) { return true; }
+                        else { return false; }
 
-                case SupportedControllers.KeyboardBoth:
+                    case SupportedControllers.KeyboardBoth:
 
-                    if (KeyboardControls.KeyboardDown(Players.P1)) { return true; }
-                    else { return false; }
+                        if (KeyboardControls.KeyboardDown(Players.P1)) { return true; }
+                        else { return false; }
 
-                case SupportedControllers.KeyboardP1ControllerP2:
+                    case SupportedControllers.KeyboardP1ControllerP2:
 
-                    if (KeyboardControls.KeyboardDown(Players.P1)) { return true; }
-                    else { return false; }
+                        if (KeyboardControls.KeyboardDown(Players.P1)) { return true; }
+                        else { return false; }
 
-                case SupportedControllers.KeyboardP2ControllerP1:
+                    case SupportedControllers.KeyboardP2ControllerP1:
 
-                    if (ControllerControls.ControllerDown(Players.P1)) { return true; }
-                    else { return false; }
+                        if (ControllerControls.ControllerDown(Players.P1)) { return true; }
+                        else { return false; }
 
-                default:
-                    return false;
+                    default:
+                        return false;
+                }
+            }
+            else
+            {
+                switch (ControllerType)
+                {
+                    case SupportedControllers.ArcadeBoard:
+
+                        if (ArcadeControls.JoystickDown(Joysticks.Black)) { return true; }
+                        else { return false; }
+
+                    case SupportedControllers.GamePadBoth:
+
+                        if (ControllerControls.ControllerDown(Players.P2)) { return true; }
+                        else { return false; }
+
+                    case SupportedControllers.KeyboardBoth:
+
+                        if (KeyboardControls.KeyboardDown(Players.P2)) { return true; }
+                        else { return false; }
+
+                    case SupportedControllers.KeyboardP1ControllerP2:
+
+                        if (KeyboardControls.KeyboardDown(Players.P2)) { return true; }
+                        else { return false; }
+
+                    case SupportedControllers.KeyboardP2ControllerP1:
+
+                        if (ControllerControls.ControllerDown(Players.P2)) { return true; }
+                        else { return false; }
+
+                    default:
+                        return false;
+                }
             }
         }
 
