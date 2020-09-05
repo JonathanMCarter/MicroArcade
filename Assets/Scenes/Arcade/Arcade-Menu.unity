@@ -254,10 +254,10 @@ MonoBehaviour:
   - Arcade-Credits
   - 
   sceneOptions:
-  - {fileID: 211020060}
-  - {fileID: 1694431907}
-  - {fileID: 97779040}
-  - {fileID: 1378962350}
+  - {fileID: 2124224278}
+  - {fileID: 1435333235}
+  - {fileID: 1621899217}
+  - {fileID: 1643189086}
   sceneTransitions: {fileID: 365144158}
   shouldDisable: 0
   returnScene: 
@@ -266,7 +266,7 @@ MonoBehaviour:
   - {fileID: 347973083}
   - {fileID: 1588323937}
   - {fileID: 385845169}
-  isUpDown: 1
+  isUpDown: 0
   useTrans: 0
 --- !u!4 &35267831
 Transform:

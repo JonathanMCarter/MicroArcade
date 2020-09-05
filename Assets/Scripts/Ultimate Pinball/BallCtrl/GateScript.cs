@@ -24,7 +24,7 @@ namespace CarterGames.UltimatePinball.BallCtrl
         private void Start()
         {
             GM = FindObjectOfType<GameManager>();
-            am = GM.GetComponent<AudioManager>();
+            am = FindObjectOfType<AudioManager>();
         }
 
         private void OnTriggerEnter2D(Collider2D collision)

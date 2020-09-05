@@ -30,7 +30,6 @@ namespace CarterGames.UltimatePinball.Leaderboard
                     {
                         leaderboardDisplayRows[i].GetComponentsInChildren<Text>()[1].text = ZeData[i].PlayerName.Substring(0, 1) + ZeData[i].PlayerName.Substring(1).ToLower();
                         leaderboardDisplayRows[i].GetComponentsInChildren<Text>()[2].text = ZeData[i].PlayerScore.ToString();
-                        leaderboardDisplayRows[i].GetComponentsInChildren<Text>()[3].text = ZeData[i].PlayerPlatform;
                     }
                 }
 

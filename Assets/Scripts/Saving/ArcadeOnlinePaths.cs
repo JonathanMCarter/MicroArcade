@@ -10,8 +10,8 @@ namespace CarterGames.Arcade.Saving
     [System.Serializable]
     public class ArcadeOnlinePaths
     {
-        public string onlineLeaderboardsBasePath = "https://www.carter.games/fmp/";
-        public string defaultLeaderboardsPath = "https://www.carter.games/fmp/";
+        public string onlineLeaderboardsBasePath = "https://www.carter.games/ma/";
+        public string defaultLeaderboardsPath = "https://www.carter.games/ma/";
 
         public ArcadeOnlinePaths(string basePath)
         {

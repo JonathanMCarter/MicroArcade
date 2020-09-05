@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/Arcade/Arcade-Boot.unity
-    guid: ae8087b5e31eff347b764b23c14be797
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Arcade/Arcade-Menu.unity
     guid: fab6fd8e3bb66c54fbed76b343884db3
@@ -24,23 +24,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Arcade/Arcade-Credits.unity
     guid: f131434c74ea1464cac259ae8016edd9
   - enabled: 1
-    path: Assets/Scenes/Ultimate Pinball/Ultimate-Pinball-Menu.unity
-    guid: ce51a4237bd401e4794d39ee4795fbc8
-  - enabled: 1
-    path: Assets/Scenes/Ultimate Pinball/Ultimate-Pinball-Leaderboard.unity
-    guid: 492419d45040ba949a19d57630e05f35
-  - enabled: 1
     path: Assets/Scenes/Ultimate Pinball/Ultimate-Pinball-Level.unity
     guid: cfebb361816661149907532101e850df
   - enabled: 1
     path: Assets/Scenes/Ultimate Pinball/Ultimate-Pinball-End.unity
     guid: 7d62ca3e4bb5de349a4bb9c4603ce0f6
-  - enabled: 1
-    path: Assets/Scenes/Ultimate Pinball/Ultimate-Pinball-Tutorial.unity
-    guid: de7af22f673c51a469ece973571f47d9
-  - enabled: 1
-    path: Assets/Scenes/Operation Starshine/Operation-Starshine-Menu.unity
-    guid: cc91c1609efce2c4a8a8b0bc91531fef
   - enabled: 1
     path: Assets/Scenes/Operation Starshine/Operation-Starshine-Level.unity
     guid: 3ca77137432f720439ff932f5e3b492e

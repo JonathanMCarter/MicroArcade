@@ -55,7 +55,7 @@ namespace CarterGames.UltimatePinball.BallCtrl
         private void Start()
         {
             gameManager = FindObjectOfType<GameManager>();
-            audioManager = gameManager.gameObject.GetComponent<AudioManager>();
+            audioManager = FindObjectOfType<AudioManager>();
         }
 
 

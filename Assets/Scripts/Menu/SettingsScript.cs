@@ -330,20 +330,22 @@ namespace CarterGames.Arcade.Menu
             }
         }
 
-
+        /// <summary>
+        /// Updates the display on the options based on when is currently being hovered over...
+        /// </summary>
         void UpdateDisplay()
         {
             if (lastPos != pos)
             {
                 for (int i = 0; i < Screens.Count; i++)
                 {
-                    if ((i == pos) && (Screens[i].GetComponent<CanvasGroup>().alpha != .5f))
+                    if ((i == pos) && (Screens[i].GetComponent<CanvasGroup>().alpha != 1f))
                     {
-                        Screens[i].GetComponent<CanvasGroup>().alpha = .5f;
+                        Screens[i].GetComponent<CanvasGroup>().alpha = 1f;
                     }
-                    else if ((i != pos) && (Screens[i].GetComponent<CanvasGroup>().alpha == .5f))
+                    else if ((i != pos) && (Screens[i].GetComponent<CanvasGroup>().alpha == 1f))
                     {
-                        Screens[i].GetComponent<CanvasGroup>().alpha = 0;
+                        Screens[i].GetComponent<CanvasGroup>().alpha = 0f;
                     }
                 }
             }
@@ -367,25 +369,28 @@ namespace CarterGames.Arcade.Menu
         }
 
 
-        void UpdateInfoDisplay()
+        /// <summary>
+        /// Updates the display BG colour for the hovered item in the info menu
+        /// </summary>
+        private void UpdateInfoDisplay()
         {
             if (lastPos != pos)
             {
                 for (int i = 0; i < GameplayOptions.Count; i++)
                 {
-                    if ((i == pos) && (GameplayOptions[i].GetComponent<Text>().color != Color.yellow))
+                    if ((i.Equals(pos)) && (!GameplayOptions[i].transform.parent.GetComponent<Image>().color.Equals(ActiveCol)))
                     {
-                        GameplayOptions[i].GetComponent<Text>().color = Color.yellow;
+                        GameplayOptions[i].transform.parent.GetComponent<Image>().color = ActiveCol;
                     }
-                    else if ((i != pos) && (GameplayOptions[i].GetComponent<Text>().color == Color.yellow))
+                    else if ((!i.Equals(pos)) && (GameplayOptions[i].transform.parent.GetComponent<Image>().color.Equals(ActiveCol)))
                     {
-                        GameplayOptions[i].GetComponent<Text>().color = Color.white;
+                        GameplayOptions[i].transform.parent.GetComponent<Image>().color = Color.white;
                     }
                 }
             }
         }
 
-        void UpdateAudioDisplay()
+        private void UpdateAudioDisplay()
         {
             if (lastPos != pos)
             {

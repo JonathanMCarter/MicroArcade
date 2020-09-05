@@ -326,6 +326,8 @@ namespace CarterGames.Arcade.Menu
             else { supportedControllers[1].color = inactiveCol; }
             if (activeData.supportedControls[2]) { supportedControllers[2].color = activeCol; }
             else { supportedControllers[2].color = inactiveCol; }
+            if (activeData.supportedControls[3]) { supportedControllers[3].color = activeCol; }
+            else { supportedControllers[3].color = inactiveCol; }
         }
 
         /// <summary>
@@ -390,10 +392,8 @@ namespace CarterGames.Arcade.Menu
 
             List<string> ReceivedPlayerName = new List<string>();
             List<string> ReceivedPlayerScore = new List<string>();
-            List<string> ReceivedPlayerPlatform = new List<string>();
-            List<string> ReceivedPlayerGamemode = new List<string>();
 
-            UnityWebRequest Request = UnityWebRequest.Get(SaveManager.LoadOnlineBoardPath().onlineLeaderboardsBasePath + "/getpinballlivestop.php?");
+            UnityWebRequest Request = UnityWebRequest.Get(SaveManager.LoadOnlineBoardPath().onlineLeaderboardsBasePath + "/getpinball.php?");
 
             yield return Request.SendWebRequest();
 
@@ -405,21 +405,13 @@ namespace CarterGames.Arcade.Menu
 
                     for (int i = 0; i < 12; i++)
                     {
-                        if (i % 4 == 0)
+                        if (i % 2 == 0)
                         {
                             ReceivedPlayerName.Add(Values[i]);
                         }
-                        else if (i % 4 == 1)
+                        else if (i % 2 == 1)
                         {
                             ReceivedPlayerScore.Add(Values[i]);
-                        }
-                        else if (i % 4 == 2)
-                        {
-                            ReceivedPlayerPlatform.Add(Values[i]);
-                        }
-                        else if (i % 4 == 3)
-                        {
-                            ReceivedPlayerGamemode.Add(Values[i]);
                         }
                         else
                         {
@@ -434,7 +426,6 @@ namespace CarterGames.Arcade.Menu
 
                         Data.PlayerName = ReceivedPlayerName[i];
                         Data.PlayerScore = int.Parse(ReceivedPlayerScore[i]);
-                        Data.PlayerPlatform = ReceivedPlayerPlatform[i];
 
                         listData.Add(Data);
                     }
@@ -455,21 +446,13 @@ namespace CarterGames.Arcade.Menu
 
                     for (int i = 0; i < Values.Length - 1; i++)
                     {
-                        if (i % 4 == 0)
+                        if (i % 2 == 0)
                         {
                             ReceivedPlayerName.Add(Values[i]);
                         }
-                        else if (i % 4 == 1)
+                        else if (i % 2 == 1)
                         {
                             ReceivedPlayerScore.Add(Values[i]);
-                        }
-                        else if (i % 4 == 2)
-                        {
-                            ReceivedPlayerPlatform.Add(Values[i]);
-                        }
-                        else if (i % 4 == 3)
-                        {
-                            ReceivedPlayerGamemode.Add(Values[i]);
                         }
                         else
                         {
@@ -583,7 +566,6 @@ namespace CarterGames.Arcade.Menu
                         Data.Player2ShipName = ReceivedPlayer2ShipName[i];
                         Data.Player1Score = int.Parse(ReceivedPlayer1Score[i]);
                         Data.Player2Score = int.Parse(ReceivedPlayer2Score[i]);
-                        Data.Platform = ReceivedPlatform[i];
 
                         listData.Add(Data);
                     }
@@ -662,7 +644,6 @@ namespace CarterGames.Arcade.Menu
                         Data.Player2ShipName = ReceivedPlayer2ShipName[i];
                         Data.Player1Score = int.Parse(ReceivedPlayer1Score[i]);
                         Data.Player2Score = int.Parse(ReceivedPlayer2Score[i]);
-                        Data.Platform = ReceivedPlatform[i];
 
                         listData.Add(Data);
                     }

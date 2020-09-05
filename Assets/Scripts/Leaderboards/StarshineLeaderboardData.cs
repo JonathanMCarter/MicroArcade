@@ -9,6 +9,5 @@
         public string Player2ShipName;
         public int Player1Score;
         public int Player2Score;
-        public string Platform;
     }
 }

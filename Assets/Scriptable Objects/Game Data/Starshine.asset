@@ -17,7 +17,7 @@ MonoBehaviour:
     With 5 ships to choose from each with their own stats and abilities, defeat waves
     of drones and AI enemies, ultimately defeating the final boss!
   gameBackground: {fileID: 21300000, guid: ccdfa4fb428faa44ba1216a40dc8baee, type: 3}
-  supportedControls: 010101
+  supportedControls: 01010101
   hasLeaderboard: 1
   hasPlayPanel: 1
   hasInfoPanel: 1

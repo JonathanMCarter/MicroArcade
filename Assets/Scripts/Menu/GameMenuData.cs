@@ -12,7 +12,7 @@ public class GameMenuData : ScriptableObject
     public int gameTitlePos;
     public string gameDesc;
     public Sprite gameBackground;
-    public bool[] supportedControls = new bool[3];
+    public bool[] supportedControls = new bool[4];
     public bool hasLeaderboard;
     public bool hasPlayPanel;
     public bool hasInfoPanel;

@@ -407,6 +407,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.5882353}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -454,7 +455,7 @@ BoxCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0.16, y: 0.16, z: 0.16, w: 0.16}
+    border: {x: 0.16000001, y: 0.16000001, z: 0.16000001, w: 0.16000001}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 10, y: 10}
     newSize: {x: 10, y: 10}
@@ -788,6 +789,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.3987629, g: 0.73119175, b: 0.8207547, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1980,16 +1982,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8055953a257cd44fbef5e236c1c6748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeControllers: []
-  isMixedControls: 0
-  LastPos: 0
-  Pos: 0
-  MaxPos: 0
-  InputReady: 0
   menuObjects:
   - {fileID: 298358750}
   - {fileID: 751144473}
-  audioManager: {fileID: 917706877}
+  audioManager: {fileID: 0}
   Trans: {fileID: 1181114468}
   threeTwoOne: {fileID: 306998439}
 --- !u!114 &147245819
@@ -3016,6 +3012,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.5943396, g: 0.5943396, b: 0.5943396, a: 0}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -11610,6 +11607,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.21698111, g: 0.21698111, b: 0.21698111, a: 0.13725491}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -12810,6 +12808,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -13505,6 +13504,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.5943396, g: 0.5943396, b: 0.5943396, a: 0}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -14488,8 +14488,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95255e87df3cece4c8534d035bc8e490, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeControllers: []
-  isMixedControls: 0
   ThisPlayer: 1
   PlayerFlippers:
   - {fileID: 775041033}
@@ -14753,6 +14751,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.3987629, g: 0.73119175, b: 0.8207547, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -15039,7 +15038,6 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_CameraOutput: 0
   m_Cameras: []
   m_RendererIndex: 1
   m_VolumeLayerMask:
@@ -15051,6 +15049,7 @@ MonoBehaviour:
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
+  m_ClearDepth: 1
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
@@ -15165,6 +15164,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -15526,10 +15526,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 917706878}
-  - component: {fileID: 917706877}
   - component: {fileID: 917706876}
+  - component: {fileID: 917706877}
   m_Layer: 0
-  m_Name: MenuAudioManager
+  m_Name: AudioManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15640,16 +15640,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 917706875}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bfb506d2985adb44a36c2b3ce98edb7, type: 3}
+  m_Script: {fileID: 11500000, guid: 9cbeb1e7a26272c4b8239e36fffea03d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hasScannedOnce: 1
-  audioManagerFile: {fileID: 11400000, guid: 5d8ab69bc54591a4ca956ce0b0bea69b, type: 2}
-  lastAudioManagerFile: {fileID: 11400000, guid: 5d8ab69bc54591a4ca956ce0b0bea69b,
+  shouldShowDir: 0
+  shouldShowClips: 0
+  audioManagerFile: {fileID: 11400000, guid: 018f975c7ff30004f9a8ad95193ba0fa, type: 2}
+  lastAudioManagerFile: {fileID: 11400000, guid: 018f975c7ff30004f9a8ad95193ba0fa,
     type: 2}
   soundPrefab: {fileID: 977031777656076914, guid: c8aadc768be109f478c9aad2b841252d,
     type: 3}
-  directory: Menu
 --- !u!4 &917706878
 Transform:
   m_ObjectHideFlags: 0
@@ -16695,6 +16696,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.5882353}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -17605,6 +17607,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.3987629, g: 0.73119175, b: 0.8207547, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -17857,6 +17860,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -23932,7 +23936,7 @@ MonoBehaviour:
   IsSpawning: 0
   IsSpawningAuto: 0
   CanSpawnAuto: 1
-  AM: {fileID: 1861263349}
+  am: {fileID: 917706877}
 --- !u!212 &1282429249
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -24556,7 +24560,7 @@ BoxCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0.16, y: 0.16, z: 0.16, w: 0.16}
+    border: {x: 0.16000001, y: 0.16000001, z: 0.16000001, w: 0.16000001}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 10, y: 10}
     newSize: {x: 10, y: 10}
@@ -24885,7 +24889,7 @@ MonoBehaviour:
   IsSpawning: 0
   IsSpawningAuto: 0
   CanSpawnAuto: 1
-  AM: {fileID: 1861263349}
+  am: {fileID: 917706877}
 --- !u!212 &1357649729
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25351,6 +25355,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -26214,6 +26219,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -26758,7 +26764,6 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_CameraOutput: 0
   m_Cameras: []
   m_RendererIndex: 1
   m_VolumeLayerMask:
@@ -26770,6 +26775,7 @@ MonoBehaviour:
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
+  m_ClearDepth: 1
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
@@ -27078,6 +27084,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.17676413, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -27161,6 +27168,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.19607843}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -27771,6 +27779,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -27939,8 +27948,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95255e87df3cece4c8534d035bc8e490, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeControllers: []
-  isMixedControls: 0
   ThisPlayer: 0
   PlayerFlippers:
   - {fileID: 1032421762}
@@ -28557,6 +28564,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -28600,7 +28608,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1861263347}
   - component: {fileID: 1861263346}
-  - component: {fileID: 1861263349}
   - component: {fileID: 1861263348}
   m_Layer: 0
   m_Name: GameManager
@@ -28737,25 +28744,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1861263349
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1861263345}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bfb506d2985adb44a36c2b3ce98edb7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hasScannedOnce: 1
-  audioManagerFile: {fileID: 11400000, guid: 5b8f479bbbee9594683e9022a83d954a, type: 2}
-  lastAudioManagerFile: {fileID: 11400000, guid: 5b8f479bbbee9594683e9022a83d954a,
-    type: 2}
-  soundPrefab: {fileID: 977031777656076914, guid: c8aadc768be109f478c9aad2b841252d,
-    type: 3}
-  directory: PinballSounds
 --- !u!1 &1866986726
 GameObject:
   m_ObjectHideFlags: 0
@@ -28966,6 +28954,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -29376,6 +29365,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -29653,6 +29643,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -30175,6 +30166,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.3987629, g: 0.73119175, b: 0.8207547, a: 0}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -30264,6 +30256,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.33521715, g: 0.764151, b: 0.7526162, a: 0}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -30795,6 +30788,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.17676413, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -31819,7 +31813,12 @@ PrefabInstance:
         type: 3}
       propertyPath: AM
       value: 
-      objectReference: {fileID: 1861263349}
+      objectReference: {fileID: 0}
+    - target: {fileID: 4759979740006454676, guid: 0ed55274a2ae59041a0313e0fd0121d8,
+        type: 3}
+      propertyPath: am
+      value: 
+      objectReference: {fileID: 917706877}
     - target: {fileID: 4759979740006454677, guid: 0ed55274a2ae59041a0313e0fd0121d8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -31954,7 +31953,12 @@ PrefabInstance:
         type: 3}
       propertyPath: AM
       value: 
-      objectReference: {fileID: 1861263349}
+      objectReference: {fileID: 0}
+    - target: {fileID: 4759979740992946265, guid: 0ed55274a2ae59041a0313e0fd0121d8,
+        type: 3}
+      propertyPath: am
+      value: 
+      objectReference: {fileID: 917706877}
     - target: {fileID: 4759979740992946266, guid: 0ed55274a2ae59041a0313e0fd0121d8,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -32024,7 +32028,12 @@ PrefabInstance:
         type: 3}
       propertyPath: AM
       value: 
-      objectReference: {fileID: 1861263349}
+      objectReference: {fileID: 0}
+    - target: {fileID: 4759979741392036022, guid: 0ed55274a2ae59041a0313e0fd0121d8,
+        type: 3}
+      propertyPath: am
+      value: 
+      objectReference: {fileID: 917706877}
     - target: {fileID: 4759979741392036023, guid: 0ed55274a2ae59041a0313e0fd0121d8,
         type: 3}
       propertyPath: m_LocalScale.x

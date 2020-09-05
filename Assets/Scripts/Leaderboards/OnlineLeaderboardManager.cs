@@ -22,11 +22,9 @@ namespace CarterGames.Arcade.Leaderboard
 
             Form.AddField("Name", _data.PlayerName);
             Form.AddField("Score", _data.PlayerScore);
-            Form.AddField("Platform", _data.PlayerPlatform);
-            Form.AddField("Gamemode", _data.PlayerGamemode);
             Form.AddField("Date", System.DateTime.Now.ToString());
 
-            UnityWebRequest W = UnityWebRequest.Post(SaveManager.LoadOnlineBoardPath().onlineLeaderboardsBasePath + "addscorepinball.php?", Form);
+            UnityWebRequest W = UnityWebRequest.Post(SaveManager.LoadOnlineBoardPath().onlineLeaderboardsBasePath + "addscorestandard.php?", Form);
             yield return W.SendWebRequest();
         }
 
@@ -50,7 +48,6 @@ namespace CarterGames.Arcade.Leaderboard
             Form.AddField("Player1Score", _data.Player1Score);
             Form.AddField("Player2Score", _data.Player2Score);
             Form.AddField("TotalScore", (_data.Player1Score + _data.Player2Score));
-            Form.AddField("Platform", _data.Platform);
             Form.AddField("Date", System.DateTime.Now.ToString());
 
             UnityWebRequest W = UnityWebRequest.Post(SaveManager.LoadOnlineBoardPath().onlineLeaderboardsBasePath + "addscorestarshine.php?", Form);
@@ -75,7 +72,7 @@ namespace CarterGames.Arcade.Leaderboard
             Form.AddField("Score", _data.score.ToString());
             Form.AddField("Date", System.DateTime.Now.ToString());
 
-            UnityWebRequest W = UnityWebRequest.Post(SaveManager.LoadOnlineBoardPath().onlineLeaderboardsBasePath + "addtocwis.php?", Form);
+            UnityWebRequest W = UnityWebRequest.Post(SaveManager.LoadOnlineBoardPath().onlineLeaderboardsBasePath + "addscorestandard.php?", Form);
             yield return W.SendWebRequest();
         }
     }

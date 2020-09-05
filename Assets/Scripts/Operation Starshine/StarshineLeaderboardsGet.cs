@@ -108,7 +108,6 @@ namespace CarterGames.Starshine
                     Data.Player2ShipName = ReceivedPlayer2ShipName[i];
                     Data.Player1Score = int.Parse(ReceivedPlayer1Score[i]);
                     Data.Player2Score = int.Parse(ReceivedPlayer2Score[i]);
-                    Data.Platform = ReceivedPlatform[i];
 
                     ListData.Add(Data);
                 }
@@ -129,7 +128,6 @@ namespace CarterGames.Starshine
             List<string> ReceivedPlayer1Score = new List<string>();
             List<string> ReceivedPlayer2Score = new List<string>();
             List<string> ReceivedTotalScore = new List<string>();
-            List<string> ReceivedPlatform = new List<string>();
 
             UnityWebRequest Request = UnityWebRequest.Get(SaveManager.LoadOnlineBoardPath().onlineLeaderboardsBasePath + "getscorestarshineall.php?");
 
@@ -142,37 +140,33 @@ namespace CarterGames.Starshine
                 // only get the top 5 entries
                 for (int i = 0; i < Values.Length; i++)
                 {
-                    if (i % 8 == 0)
+                    if (i % 7 == 0)
                     {
                         ReceivedPlayer1Name.Add(Values[i]);
                     }
-                    else if (i % 8 == 1)
+                    else if (i % 7 == 1)
                     {
                         ReceivedPlayer2Name.Add(Values[i]);
                     }
-                    else if (i % 8 == 2)
+                    else if (i % 7 == 2)
                     {
                         ReceivedPlayer1ShipName.Add(Values[i]);
                     }
-                    else if (i % 8 == 3)
+                    else if (i % 7 == 3)
                     {
                         ReceivedPlayer2ShipName.Add(Values[i]);
                     }
-                    else if (i % 8 == 4)
+                    else if (i % 7 == 4)
                     {
                         ReceivedPlayer1Score.Add(Values[i]);
                     }
-                    else if (i % 8 == 5)
+                    else if (i % 7 == 5)
                     {
                         ReceivedPlayer2Score.Add(Values[i]);
                     }
-                    else if (i % 8 == 6)
+                    else if (i % 7 == 6)
                     {
                         ReceivedTotalScore.Add(Values[i]);
-                    }
-                    else if (i % 8 == 7)
-                    {
-                        ReceivedPlatform.Add(Values[i]);
                     }
                     else
                     {
@@ -181,7 +175,7 @@ namespace CarterGames.Starshine
                 }
 
 
-                for (int i = 0; i < ReceivedPlatform.Count; i++)
+                for (int i = 0; i < ReceivedPlayer1Name.Count; i++)
                 {
                     StarshineLeaderboardData Data = new StarshineLeaderboardData();
 
@@ -191,7 +185,6 @@ namespace CarterGames.Starshine
                     Data.Player2ShipName = ReceivedPlayer2ShipName[i];
                     Data.Player1Score = int.Parse(ReceivedPlayer1Score[i]);
                     Data.Player2Score = int.Parse(ReceivedPlayer2Score[i]);
-                    Data.Platform = ReceivedPlatform[i];
 
                     ListData.Add(Data);
                 }

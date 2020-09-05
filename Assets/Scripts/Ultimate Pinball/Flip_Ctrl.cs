@@ -39,7 +39,7 @@ namespace CarterGames.UltimatePinball
         {
             HG = GetComponent<HingeJoint2D>();
             MT = HG.motor;
-            am = GameObject.FindGameObjectWithTag("GameController").GetComponent<AudioManager>();
+            am = FindObjectOfType<AudioManager>();
         }
 
         private void FixedUpdate()

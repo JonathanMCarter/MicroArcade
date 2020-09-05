@@ -35,9 +35,6 @@ namespace CarterGames.UltimatePinball.Leaderboard
 
             Player1_LB_Data.PlayerScore = LoadedData.Player1Score;
             Player2_LB_Data.PlayerScore = LoadedData.Player2Score;
-
-            Player1_LB_Data.PlayerGamemode = PinballGameData.LastGameTypeSelected;
-            Player2_LB_Data.PlayerGamemode = PinballGameData.LastGameTypeSelected;
         }
 
 
@@ -116,8 +113,6 @@ namespace CarterGames.UltimatePinball.Leaderboard
             Player1Keyboard.HideSelected();
             if (!Player1Ready) { Player1Ready = true; }
             Player1ReadyImage.enabled = true;
-
-            SetPlatform();
         }
 
 
@@ -127,8 +122,6 @@ namespace CarterGames.UltimatePinball.Leaderboard
             Player2Keyboard.HideSelected();
             if (!Player2Ready) { Player2Ready = true; }
             Player2ReadyImage.enabled = true;
-
-            SetPlatform();
         }
 
 
@@ -180,33 +173,6 @@ namespace CarterGames.UltimatePinball.Leaderboard
                 StartCoroutine(OnlineLeaderboardManager.Send_UltimatePinball_Data_Online(Data));
                 HasDataSentP2 = true;
                 Debug.Log("Data Send P2");
-            }
-        }
-
-        void SetPlatform()
-        {
-            switch (ControllerType)
-            {
-                case SupportedControllers.ArcadeBoard:
-
-                    Player1_LB_Data.PlayerPlatform = "Arcade";
-                    Player2_LB_Data.PlayerPlatform = "Arcade";
-
-                    break;
-                case SupportedControllers.GamePadBoth:
-
-                    Player1_LB_Data.PlayerPlatform = "PC";
-                    Player2_LB_Data.PlayerPlatform = "PC";
-
-                    break;
-                case SupportedControllers.KeyboardBoth:
-
-                    Player1_LB_Data.PlayerPlatform = "PC";
-                    Player2_LB_Data.PlayerPlatform = "PC";
-
-                    break;
-                default:
-                    break;
             }
         }
 

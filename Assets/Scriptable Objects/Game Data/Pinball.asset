@@ -16,7 +16,7 @@ MonoBehaviour:
   gameDesc: Play against each other in this two player pinball machine. Play to get
     the highest score possible!
   gameBackground: {fileID: 21300000, guid: 5cd656b891f8b9944a1cf9dfedaba44a, type: 3}
-  supportedControls: 010101
+  supportedControls: 01010101
   hasLeaderboard: 1
   hasPlayPanel: 1
   hasInfoPanel: 1

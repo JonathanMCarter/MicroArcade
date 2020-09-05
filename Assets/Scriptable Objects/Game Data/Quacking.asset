@@ -16,7 +16,7 @@ MonoBehaviour:
   gameDesc: Play against eachother in this improved version of the game jam title
     under the same title. Collect as many points as you can before the round ends!
   gameBackground: {fileID: 21300000, guid: 398561655889c4447a7b2e9e29452b4a, type: 3}
-  supportedControls: 010101
+  supportedControls: 01010101
   hasLeaderboard: 0
   hasPlayPanel: 1
   hasInfoPanel: 1

@@ -32,7 +32,6 @@ namespace CarterGames.Arcade.Leaderboard
                     leaderboardDisplayRows[i].GetComponentsInChildren<Text>()[1].text = leaderboardData.ZeData[i].Player1Name.Substring(0, 1) + leaderboardData.ZeData[i].Player1Name.Substring(1).ToLower() + " & " + leaderboardData.ZeData[i].Player2Name.Substring(0, 1) + leaderboardData.ZeData[i].Player2Name.Substring(1).ToLower();
                     leaderboardDisplayRows[i].GetComponentsInChildren<Text>()[2].text = leaderboardData.ZeData[i].Player1ShipName.Substring(0, 1) + leaderboardData.ZeData[i].Player1ShipName.Substring(1).ToLower() + " & " + leaderboardData.ZeData[i].Player2ShipName.Substring(0, 1) + leaderboardData.ZeData[i].Player2ShipName.Substring(1).ToLower();
                     leaderboardDisplayRows[i].GetComponentsInChildren<Text>()[3].text = ((leaderboardData.ZeData[i].Player1Score) + (leaderboardData.ZeData[i].Player2Score)).ToString();
-                    leaderboardDisplayRows[i].GetComponentsInChildren<Text>()[4].text = leaderboardData.ZeData[i].Platform;
                 }
 
                 shouldUpdateLeaderboard = false;

@@ -17,7 +17,7 @@ MonoBehaviour:
     of missiles heading right for you. How do you stop these missiles? with a C.W.I.S
     ofcourse!
   gameBackground: {fileID: 21300000, guid: 37fd5df6ea62fe04c8a0c1edef8aac37, type: 3}
-  supportedControls: 010100
+  supportedControls: 01010100
   hasLeaderboard: 1
   hasPlayPanel: 1
   hasInfoPanel: 1

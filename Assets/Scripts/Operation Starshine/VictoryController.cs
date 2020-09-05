@@ -274,14 +274,6 @@ namespace CarterGames.Starshine
                         leaderboardData.Player1ShipName = ConvertToShipName(loadedData.LastPlayer1ShipSelection);
                         leaderboardData.Player2ShipName = ConvertToShipName(loadedData.LastPlayer2ShipSelection);
 
-                        if (ControllerType == SupportedControllers.ArcadeBoard)
-                        {
-                            leaderboardData.Platform = "Arcade";
-                        }
-                        else
-                        {
-                            leaderboardData.Platform = "PC";
-                        }
 
                         isLeaderboardScreen = true;
                         currentScreen = Screens.Leaderboard;
