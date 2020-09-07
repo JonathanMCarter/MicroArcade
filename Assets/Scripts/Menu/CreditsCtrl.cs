@@ -6,17 +6,17 @@ namespace CarterGames.Arcade.Menu
 {
     public class CreditsCtrl : MenuSystem
     {
+        [Header("Credits Screens")][Tooltip("All the gameobjects to cycle through in the credits.")]
+        [SerializeField] private GameObject[] screens;
+
+        [SerializeField] private GameObject[] controlScreens;
+
         private bool StartCreditsSequence;
 
-        public GameObject CreditsHolder;
-        [Header("Credits Speed")]
-        [Tooltip("How fast the crewdits should scroll up")]
-        public float CreditsSpd;
+
         [Header("Start Delay")]
         [Tooltip("How long should the script wait before starting the credits?")]
         public float StartingDelay;
-
-        public float maxYPosition;
 
         public Animator FadeToWhite;
 
@@ -42,36 +42,20 @@ namespace CarterGames.Arcade.Menu
             RunCredits();
 
             if (Return()) { ReturnToMainMenu(); }
+
+            if (ControllerType == UserInput.SupportedControllers.ArcadeBoard)
+            {
+
+            }
         }
 
 
         void RunCredits()
         {
-            // if the credits should be moving..
-            if (StartCreditsSequence)
-            {
-                if (CreditsHolder.transform.localPosition.y < maxYPosition)
-                {
-                    // Move the credits xD
-                    CreditsHolder.transform.localPosition += Vector3.up * CreditsSpd * Time.deltaTime;
-                }
-                else
-                {
-                    CreditsHolder.transform.localPosition = new Vector3(CreditsHolder.transform.localPosition.x, maxYPosition, CreditsHolder.transform.localPosition.z);
-                }
-            }
-            else
-            {
-                // else if they are not at vector 3 zero
-                if (transform.localPosition != Vector3.zero)
-                {
-                    // move 'em to vector3 zero xD
-                    ResetCreditsPos();
-                }
-            }
+
         }
 
-        IEnumerator CreditsStartDelay()
+        private IEnumerator CreditsStartDelay()
         {
             // wait for the amount inputted in the inspector
             yield return new WaitForSeconds(StartingDelay);
@@ -89,7 +73,7 @@ namespace CarterGames.Arcade.Menu
         }
 
 
-        void ReturnToMainMenu()
+        private void ReturnToMainMenu()
         {
             FadeToWhite.SetBool("ChangeScene", true);
             ChangeScene("MainMenu", 1.1f);
