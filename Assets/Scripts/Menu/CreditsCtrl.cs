@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using CarterGames.Arcade.UserInput;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,8 +12,11 @@ namespace CarterGames.Arcade.Menu
 
         [SerializeField] private GameObject[] controlScreens;
 
-        private bool StartCreditsSequence;
+        private float timer;
+        private float timeLimit = 4f;
 
+        private bool StartCreditsSequence;
+        private bool updateScreen;
 
         [Header("Start Delay")]
         [Tooltip("How long should the script wait before starting the credits?")]
@@ -29,31 +33,104 @@ namespace CarterGames.Arcade.Menu
 
         protected override void Start()
         {
+            maxPos = screens.Length;
+
             base.Start();
 
             // Wait before starting the credits (helps show the title a little)
             StartCoroutine(CreditsStartDelay());
+
+
+            screens[pos].SetActive(true);
+
+
+
+            switch (ControllerType)
+            {
+                case SupportedControllers.ArcadeBoard:
+                    controlScreens[0].SetActive(true);
+                    controlScreens[1].SetActive(false);
+                    controlScreens[2].SetActive(false);
+                    break;
+                case SupportedControllers.GamePadBoth:
+                    controlScreens[1].SetActive(true);
+                    controlScreens[0].SetActive(false);
+                    controlScreens[2].SetActive(false);
+                    break;
+                case SupportedControllers.KeyboardBoth:
+                    controlScreens[2].SetActive(true);
+                    controlScreens[0].SetActive(false);
+                    controlScreens[1].SetActive(false);
+                    break;
+                case SupportedControllers.KeyboardP1ControllerP2:
+                    controlScreens[2].SetActive(true);
+                    controlScreens[0].SetActive(false);
+                    controlScreens[1].SetActive(false);
+                    break;
+                case SupportedControllers.KeyboardP2ControllerP1:
+                    controlScreens[1].SetActive(true);
+                    controlScreens[0].SetActive(false);
+                    controlScreens[2].SetActive(false);
+                    break;
+                default:
+                    break;
+            }
         }
 
 
         protected override void Update()
         {
             base.Update();
-            RunCredits();
+
 
             if (Return()) { ReturnToMainMenu(); }
 
-            if (ControllerType == UserInput.SupportedControllers.ArcadeBoard)
-            {
 
+            if (StartCreditsSequence)
+            {
+                timer += Time.deltaTime;
+
+                if (timer >= timeLimit)
+                {
+                    MoveToNextScreen();
+                }
+
+                if (timer >= timeLimit - 1)
+                {
+                    updateScreen = true;
+                }
+
+
+                if (ControllerType == SupportedControllers.ArcadeBoard && ArcadeControls.ButtonPress(Joysticks.White, Buttons.B1))
+                {
+                    timer = 2.9f;
+                }
+                else if (ControllerType == SupportedControllers.GamePadBoth && ControllerControls.ButtonPress(Players.P1, ControllerButtons.A))
+                {
+                    timer = 2.9f;
+                }
+                else if (ControllerType == SupportedControllers.KeyboardP2ControllerP1 && ControllerControls.ButtonPress(Players.P1, ControllerButtons.A))
+                {
+                    timer = 2.9f;
+                }
+                else if (ControllerType == SupportedControllers.KeyboardP1ControllerP2 && KeyboardControls.ButtonPress(Players.P1, Buttons.B1))
+                {
+                    timer = 2.9f;
+                }
+                else if (ControllerType == SupportedControllers.KeyboardBoth && KeyboardControls.ButtonPress(Players.P1, Buttons.B1))
+                {
+                    timer = 2.9f;
+                }
+            }
+
+
+            if (updateScreen)
+            {
+                ScreenTrans();
             }
         }
 
 
-        void RunCredits()
-        {
-
-        }
 
         private IEnumerator CreditsStartDelay()
         {
@@ -64,6 +141,8 @@ namespace CarterGames.Arcade.Menu
             StartCreditsSequence = true;
         }
 
+
+
         /// <summary>
         /// Resets the credits position to the default positon of vector3 zero to be played
         /// </summary>
@@ -73,10 +152,42 @@ namespace CarterGames.Arcade.Menu
         }
 
 
+
         private void ReturnToMainMenu()
         {
             FadeToWhite.SetBool("ChangeScene", true);
-            ChangeScene("MainMenu", 1.1f);
+            ChangeScene("Arcade-Menu", 1.1f);
+        }
+
+
+        private void ResetTimer()
+        {
+            timer = 0;
+            updateScreen = false;
+        }
+
+
+        private void MoveToNextScreen()
+        {
+            lastPos = pos;
+
+            if (pos +1 != maxPos)
+            {
+                pos++;
+            }
+            else
+            {
+                pos = 0;
+            }
+
+            ResetTimer();
+        }
+
+
+        private void ScreenTrans()
+        {
+            screens[lastPos].GetComponent<CanvasGroup>().alpha -= 1 * Time.deltaTime;
+            screens[pos].GetComponent<CanvasGroup>().alpha += 1 * Time.deltaTime;
         }
     }
 }
