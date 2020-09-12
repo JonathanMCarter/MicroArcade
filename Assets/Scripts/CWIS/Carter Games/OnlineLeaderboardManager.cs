@@ -9,7 +9,7 @@ using UnityEngine.Networking;
 *  W: https://jonathan.carter.games/
 */
 
-namespace CarterGames.Assets.LeaderboardManager
+namespace CarterGames.CWIS
 {
     public static class OnlineLeaderboardManager
     {

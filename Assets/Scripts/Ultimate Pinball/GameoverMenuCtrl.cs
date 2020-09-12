@@ -41,6 +41,14 @@ namespace CarterGames.UltimatePinball
 
         public Animator Trans;
 
+
+
+        private void OnDisable()
+        {
+            StopAllCoroutines();
+        }
+
+
         protected override void Start()
         {
             base.Start();
@@ -60,9 +68,7 @@ namespace CarterGames.UltimatePinball
                 // Root Menu With Buttons
                 if (!IsReplay)
                 {
-                    Debug.Log("hi>");
-
-                    if (Confirm())
+                    if (MenuControls.Confirm())
                     {
                         switch (pos)
                         {
@@ -89,7 +95,6 @@ namespace CarterGames.UltimatePinball
                     MoveUD();
 
                     if (ValueChanged()) { UpdateReplayDisplay(); }
-                    Debug.Log("hi>>");
 
                     if (Confirm() && !IsCoR)
                     {
@@ -131,22 +136,16 @@ namespace CarterGames.UltimatePinball
                 }
                 else if ((IsReplay) && (ReplayOptionSelected))
                 {
-
-                    Debug.Log("hi>>>");
-                    if (Confirm() && !IsCoR)
+                    if (MenuControls.Confirm() && !IsCoR)
                     {
                         SaveManager.SaveUltimatePinballGamemode((int)SelectedGamemode, IncrementAmount, Value);
                         StartCoroutine(LoadReplay());
                     }
-                    else if (Return() && !IsCoR)
+                    else if (MenuControls.Return() && !IsCoR)
                     {
                         ReplayOptionSelected = false;
                         StartCoroutine(InputDelay());
                     }
-                }
-                else
-                {
-                    Debug.Log("hi");
                 }
             }
 
@@ -171,105 +170,21 @@ namespace CarterGames.UltimatePinball
                     ReplayValueCanvas.alpha += Time.deltaTime * 2;
                 }
 
-                switch (ControllerType)
+
+                if (MenuControls.Left() && (!IsCoR))
                 {
-                    case SupportedControllers.ArcadeBoard:
-
-                        if ((ArcadeControls.JoystickLeft(Joysticks.White) && (!IsCoR))) 
-                        {
-                            if (Value != minValue)
-                            {
-                                Value -= IncrementAmount;
-                            }
-                            StartCoroutine(InputDelay()); 
-                            UpdateTextValue(); 
-                        }
-                        if ((ArcadeControls.JoystickRight(Joysticks.White) && (!IsCoR))) 
-                        { 
-                            Value += IncrementAmount; 
-                            StartCoroutine(InputDelay()); 
-                            UpdateTextValue(); 
-                        }
-
-                        break;
-                    case SupportedControllers.GamePadBoth:
-
-                        if ((ControllerControls.ControllerLeft(Players.P1) && (!IsCoR)))
-                        {
-                            if (Value != minValue)
-                            {
-                                Value -= IncrementAmount;
-                            }
-                            StartCoroutine(InputDelay());
-                            UpdateTextValue();
-                        }
-                        if ((ControllerControls.ControllerRight(Players.P1) && (!IsCoR)))
-                        {
-                            Value += IncrementAmount;
-                            StartCoroutine(InputDelay());
-                            UpdateTextValue();
-                        }
-
-                        break;
-                    case SupportedControllers.KeyboardBoth:
-
-                        if ((KeyboardControls.KeyboardLeft(Players.P1) && (!IsCoR)))
-                        {
-                            if (Value != minValue)
-                            {
-                                Value -= IncrementAmount;
-                            }
-                            StartCoroutine(InputDelay());
-                            UpdateTextValue();
-                        }
-                        if ((KeyboardControls.KeyboardRight(Players.P1) && (!IsCoR)))
-                        {
-                            Value += IncrementAmount;
-                            StartCoroutine(InputDelay());
-                            UpdateTextValue();
-                        }
-
-                        break;
-                    case SupportedControllers.KeyboardP1ControllerP2:
-
-                        if ((KeyboardControls.KeyboardLeft(Players.P1) && (!IsCoR)))
-                        {
-                            if (Value != minValue)
-                            {
-                                Value -= IncrementAmount;
-                            }
-                            StartCoroutine(InputDelay());
-                            UpdateTextValue();
-                        }
-                        if ((KeyboardControls.KeyboardRight(Players.P1) && (!IsCoR)))
-                        {
-                            Value += IncrementAmount;
-                            StartCoroutine(InputDelay());
-                            UpdateTextValue();
-                        }
-
-                        break;
-                    case SupportedControllers.KeyboardP2ControllerP1:
-
-                        if ((ControllerControls.ControllerLeft(Players.P1) && (!IsCoR)))
-                        {
-                            if (Value != minValue)
-                            {
-                                Value -= IncrementAmount;
-                            }
-                            StartCoroutine(InputDelay());
-                            UpdateTextValue();
-                        }
-                        if ((ControllerControls.ControllerRight(Players.P1) && (!IsCoR)))
-                        {
-                            Value += IncrementAmount;
-                            StartCoroutine(InputDelay());
-                            UpdateTextValue();
-                        }
-
-                        break;
-                    default:
-                        break;
+                    if (Value != minValue)
+                    {
+                        Value -= IncrementAmount;
+                    }
+                    StartCoroutine(InputDelay());
+                    UpdateTextValue();
+                }
+                else if (MenuControls.Right() && (!IsCoR))
+                {
+                    Value += IncrementAmount;
+                    StartCoroutine(InputDelay());
+                    UpdateTextValue();
                 }
             }
             else if (IsReplay && !ReplayOptionSelected && ReplayValueCanvas.alpha != 0)
@@ -353,7 +268,7 @@ namespace CarterGames.UltimatePinball
             //Trans.SetFloat("Multi", 2f);
             Trans.SetBool("ChangeScene", true);
             yield return new WaitForSeconds(.5f);
-            SceneManager.LoadSceneAsync("Ultimate-Pinball-Menu");
+            SceneManager.LoadSceneAsync("Arcade-Game");
         }
 
 

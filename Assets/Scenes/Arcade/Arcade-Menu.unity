@@ -267,7 +267,7 @@ MonoBehaviour:
   - {fileID: 1588323937}
   - {fileID: 385845169}
   isUpDown: 0
-  useTrans: 0
+  useTrans: 1
 --- !u!4 &35267831
 Transform:
   m_ObjectHideFlags: 0

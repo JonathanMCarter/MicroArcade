@@ -52,7 +52,7 @@ namespace CarterGames.Starshine
         {
             if (currentScreen == Screens.Input)
             {
-                if (P1Ready && P2Ready/*&& (!string.IsNullOrEmpty(keyboards[0].InputtedValue)) && (!string.IsNullOrEmpty(keyboards[1].InputtedValue))*/)
+                if (P1Ready && P2Ready)
                 {
                     if (Confirm())
                     {

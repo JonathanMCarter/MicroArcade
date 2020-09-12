@@ -148,7 +148,7 @@ namespace CarterGames.Arcade.Menu
         }
 
 
-        IEnumerator ChangeToScene(string NewScene, float Delay = 1.25f)
+        IEnumerator ChangeToScene(string NewScene, float Delay = .5f)
         {
             inputReady = false;
             am.Play("Menu-Confirm", Random.Range(.65f, .85f));

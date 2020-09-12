@@ -125,7 +125,7 @@ namespace CarterGames.Arcade.Menu
         {
             //Trans.SetFloat("Multi", 2f);
             Trans.SetBool("ChangeScene", true);
-            ChangeScene("MainMenu");
+            ChangeScene("Arcade-Menu");
         }
 
 

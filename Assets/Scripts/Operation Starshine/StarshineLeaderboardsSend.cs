@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using CarterGames.Arcade.UserInput;
 using CarterGames.Arcade.Leaderboard;
+using CarterGames.Assets.LeaderboardManager;
 
 namespace CarterGames.Starshine
 {
@@ -29,6 +30,10 @@ namespace CarterGames.Starshine
             {
                 StartCoroutine(OnlineLeaderboardManager.Send_OPSS_Data_Online(Data));
                 HasDataSent = true;
+
+                // Add to local leaderboard
+                ArcadeLeaderboardManager.AddToOperationStarshineLocal(Data);
+
                 Debug.Log("Data Send");
             }
             else if ((!CheckFullData(Data)) && (!HasDataSent)) { Debug.LogWarning("Data Not Send - Not all values were filled"); }

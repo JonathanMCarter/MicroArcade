@@ -15,7 +15,7 @@ namespace CarterGames.Arcade.Leaderboard
         public static IEnumerator Send_UltimatePinball_Data_Online(UltimatePinballLeaderboardData _data)
         {
             // Local Leaderboard Save...
-            SaveManager.SaveUltimatePinballToLocal(_data);
+            ArcadeLeaderboardManager.AddToUltimatePinballLocal(_data);
 
             // Online Leaderboard Save...
             WWWForm Form = new WWWForm();

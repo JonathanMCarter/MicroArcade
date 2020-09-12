@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -14579,12 +14579,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 496531582}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &792040218 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6864398578557021872, guid: a894e743e0476c64a80c7ce15e196dfd,
-    type: 3}
-  m_PrefabInstance: {fileID: 1731590722}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &810260069
 GameObject:
   m_ObjectHideFlags: 0
@@ -15665,12 +15659,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &948080924 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6864398578557021872, guid: a894e743e0476c64a80c7ce15e196dfd,
-    type: 3}
-  m_PrefabInstance: {fileID: 1829044738}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &958703014
 GameObject:
   m_ObjectHideFlags: 0
@@ -24129,6 +24117,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6864398577340664256, guid: a894e743e0476c64a80c7ce15e196dfd,
         type: 3}
+      propertyPath: bumperSprites.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6864398577340664256, guid: a894e743e0476c64a80c7ce15e196dfd,
+        type: 3}
       propertyPath: Col.r
       value: 1
       objectReference: {fileID: 0}
@@ -24163,7 +24156,7 @@ PrefabInstance:
         type: 3}
       propertyPath: visibleSprite
       value: 
-      objectReference: {fileID: 1428511780}
+      objectReference: {fileID: 1053432183}
     - target: {fileID: 6864398577340664256, guid: a894e743e0476c64a80c7ce15e196dfd,
         type: 3}
       propertyPath: hitScale
@@ -24179,6 +24172,23 @@ PrefabInstance:
       propertyPath: canScore
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6864398577340664256, guid: a894e743e0476c64a80c7ce15e196dfd,
+        type: 3}
+      propertyPath: isSphereBumper
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6864398577340664256, guid: a894e743e0476c64a80c7ce15e196dfd,
+        type: 3}
+      propertyPath: bumperSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 8cd721c67a474b14ebfd0962aca33ca3,
+        type: 3}
+    - target: {fileID: 6864398577340664256, guid: a894e743e0476c64a80c7ce15e196dfd,
+        type: 3}
+      propertyPath: bumperSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: e049fe188c8ba414183d439dd3648478,
+        type: 3}
     - target: {fileID: 6864398577340664257, guid: a894e743e0476c64a80c7ce15e196dfd,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -25297,12 +25307,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1428511780 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6864398578557021872, guid: a894e743e0476c64a80c7ce15e196dfd,
-    type: 3}
-  m_PrefabInstance: {fileID: 1297412795}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1438069298
 GameObject:
   m_ObjectHideFlags: 0
@@ -27470,6 +27474,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6864398577340664256, guid: a894e743e0476c64a80c7ce15e196dfd,
         type: 3}
+      propertyPath: bumperSprites.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6864398577340664256, guid: a894e743e0476c64a80c7ce15e196dfd,
+        type: 3}
       propertyPath: Col.r
       value: 1
       objectReference: {fileID: 0}
@@ -27504,7 +27513,7 @@ PrefabInstance:
         type: 3}
       propertyPath: visibleSprite
       value: 
-      objectReference: {fileID: 792040218}
+      objectReference: {fileID: 1053432183}
     - target: {fileID: 6864398577340664256, guid: a894e743e0476c64a80c7ce15e196dfd,
         type: 3}
       propertyPath: hitScale
@@ -27520,6 +27529,23 @@ PrefabInstance:
       propertyPath: canScore
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6864398577340664256, guid: a894e743e0476c64a80c7ce15e196dfd,
+        type: 3}
+      propertyPath: isSphereBumper
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6864398577340664256, guid: a894e743e0476c64a80c7ce15e196dfd,
+        type: 3}
+      propertyPath: bumperSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 8cd721c67a474b14ebfd0962aca33ca3,
+        type: 3}
+    - target: {fileID: 6864398577340664256, guid: a894e743e0476c64a80c7ce15e196dfd,
+        type: 3}
+      propertyPath: bumperSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: e049fe188c8ba414183d439dd3648478,
+        type: 3}
     - target: {fileID: 6864398577340664257, guid: a894e743e0476c64a80c7ce15e196dfd,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -28308,6 +28334,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6864398577340664256, guid: a894e743e0476c64a80c7ce15e196dfd,
         type: 3}
+      propertyPath: bumperSprites.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6864398577340664256, guid: a894e743e0476c64a80c7ce15e196dfd,
+        type: 3}
       propertyPath: Col.r
       value: 1
       objectReference: {fileID: 0}
@@ -28342,7 +28373,7 @@ PrefabInstance:
         type: 3}
       propertyPath: visibleSprite
       value: 
-      objectReference: {fileID: 948080924}
+      objectReference: {fileID: 1053432183}
     - target: {fileID: 6864398577340664256, guid: a894e743e0476c64a80c7ce15e196dfd,
         type: 3}
       propertyPath: hitScale
@@ -28358,6 +28389,23 @@ PrefabInstance:
       propertyPath: canScore
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6864398577340664256, guid: a894e743e0476c64a80c7ce15e196dfd,
+        type: 3}
+      propertyPath: isSphereBumper
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6864398577340664256, guid: a894e743e0476c64a80c7ce15e196dfd,
+        type: 3}
+      propertyPath: bumperSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 8cd721c67a474b14ebfd0962aca33ca3,
+        type: 3}
+    - target: {fileID: 6864398577340664256, guid: a894e743e0476c64a80c7ce15e196dfd,
+        type: 3}
+      propertyPath: bumperSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: e049fe188c8ba414183d439dd3648478,
+        type: 3}
     - target: {fileID: 6864398577340664257, guid: a894e743e0476c64a80c7ce15e196dfd,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -30501,6 +30549,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: e049fe188c8ba414183d439dd3648478,
         type: 3}
+    - target: {fileID: 6864398577340664256, guid: a894e743e0476c64a80c7ce15e196dfd,
+        type: 3}
+      propertyPath: visibleSprite
+      value: 
+      objectReference: {fileID: 2063812817}
     - target: {fileID: 6864398577340664257, guid: a894e743e0476c64a80c7ce15e196dfd,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -30510,12 +30563,22 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 96d4a1e5e49d5c44aaada5fcc9105861,
+      objectReference: {fileID: 21300000, guid: 8cd721c67a474b14ebfd0962aca33ca3,
         type: 3}
     - target: {fileID: 6864398577340664257, guid: a894e743e0476c64a80c7ce15e196dfd,
         type: 3}
       propertyPath: m_WasSpriteAssigned
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6864398577340664257, guid: a894e743e0476c64a80c7ce15e196dfd,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 6864398577340664257, guid: a894e743e0476c64a80c7ce15e196dfd,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.32
       objectReference: {fileID: 0}
     - target: {fileID: 6864398577340664258, guid: a894e743e0476c64a80c7ce15e196dfd,
         type: 3}
@@ -30650,6 +30713,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a894e743e0476c64a80c7ce15e196dfd, type: 3}
+--- !u!1 &2063812817 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6864398578557021872, guid: a894e743e0476c64a80c7ce15e196dfd,
+    type: 3}
+  m_PrefabInstance: {fileID: 2063812816}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2077660480
 GameObject:
   m_ObjectHideFlags: 0

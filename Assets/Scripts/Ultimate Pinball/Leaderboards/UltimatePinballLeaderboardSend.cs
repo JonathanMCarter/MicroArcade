@@ -5,6 +5,7 @@ using CarterGames.Arcade.Saving;
 using CarterGames.Arcade.Leaderboard;
 using CarterGames.Arcade.UserInput;
 using UnityEngine.UI;
+using CarterGames.Assets.LeaderboardManager;
 
 namespace CarterGames.UltimatePinball.Leaderboard
 {
@@ -42,55 +43,25 @@ namespace CarterGames.UltimatePinball.Leaderboard
         {
             base.Update();
 
-            switch (ControllerType)
+
+            if (MenuControls.Confirm())
             {
-                case SupportedControllers.ArcadeBoard:
+                ConfirmP1();
+            }
 
-                    if (ArcadeControls.ButtonPress(Joysticks.White, Buttons.B8)) { ConfirmP1(); }
-                    if (ArcadeControls.ButtonPress(Joysticks.Black, Buttons.B8)) { ConfirmP2(); }
+            if (MenuControls.Confirm(false))
+            {
+                ConfirmP2();
+            }
 
-                    if (ArcadeControls.ButtonPress(Joysticks.White, Buttons.B7)) { ReturnP1(); }
-                    if (ArcadeControls.ButtonPress(Joysticks.Black, Buttons.B7)) { ReturnP2(); }
+            if (MenuControls.Return())
+            {
+                ReturnP1();
+            }
 
-                    break;
-                case SupportedControllers.GamePadBoth:
-
-                    if (ControllerControls.ButtonPress(Players.P1, ControllerButtons.Confirm)) { ConfirmP1(); }
-                    if (ControllerControls.ButtonPress(Players.P2, ControllerButtons.Confirm)) { ConfirmP2(); }
-
-                    if (ControllerControls.ButtonPress(Players.P1, ControllerButtons.Return)) { ReturnP1(); }
-                    if (ControllerControls.ButtonPress(Players.P2, ControllerButtons.Return)) { ReturnP2(); }
-
-                    break;
-                case SupportedControllers.KeyboardBoth:
-
-                    if (KeyboardControls.ButtonPress(Players.P1, Buttons.B8)) { ConfirmP1(); }
-                    if (KeyboardControls.ButtonPress(Players.P2, Buttons.B8)) { ConfirmP2(); }
-
-                    if (KeyboardControls.ButtonPress(Players.P1, Buttons.B7)) { ReturnP1(); }
-                    if (KeyboardControls.ButtonPress(Players.P2, Buttons.B7)) { ReturnP2(); }
-
-                    break;
-                case SupportedControllers.KeyboardP1ControllerP2:
-
-                    if (KeyboardControls.ButtonPress(Players.P1, Buttons.B8)) { ConfirmP1(); }
-                    if (ControllerControls.ButtonPress(Players.P1, ControllerButtons.Confirm)) { ConfirmP2(); }
-
-                    if (KeyboardControls.ButtonPress(Players.P1, Buttons.B7)) { ReturnP1(); }
-                    if (ControllerControls.ButtonPress(Players.P2, ControllerButtons.Return)) { ReturnP2(); }
-
-                    break;
-                case SupportedControllers.KeyboardP2ControllerP1:
-
-                    if (KeyboardControls.ButtonPress(Players.P1, Buttons.B8)) { ConfirmP2(); }
-                    if (ControllerControls.ButtonPress(Players.P1, ControllerButtons.Confirm)) { ConfirmP1(); }
-
-                    if (KeyboardControls.ButtonPress(Players.P1, Buttons.B7)) { ReturnP2(); }
-                    if (ControllerControls.ButtonPress(Players.P2, ControllerButtons.Return)) { ReturnP1(); }
-
-                    break;
-                default:
-                    break;
+            if (MenuControls.Return(false))
+            {
+                ReturnP2();
             }
 
 

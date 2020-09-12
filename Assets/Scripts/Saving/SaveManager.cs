@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+
+// Carter Games Namespaces
 using CarterGames.Arcade.Leaderboard;
 using CarterGames.Arcade.UserInput;
 using CarterGames.UltimatePinball;
@@ -383,32 +385,6 @@ namespace CarterGames.Arcade.Saving
         /// 
         /// =========================================================================================================================
         /// =========================================================================================================================
-
-
-        /// <summary>
-        /// Saves a new entry into the local leaderboard file for ultimate pinball...
-        /// Uses APPEND to add entry
-        /// </summary>
-        /// <param name="_data">data to be added</param>
-        public static void SaveUltimatePinballToLocal(UltimatePinballLeaderboardData _data)
-        {
-            BinaryFormatter Formatter = new BinaryFormatter();
-            string SavePath = Application.persistentDataPath + "/Games/Ultimate Pinball/ultimatepinball.malf";
-
-            FileStream Stream;
-
-            if (File.Exists(SavePath))
-            {
-                Stream = new FileStream(SavePath, FileMode.Append);
-            }
-            else
-            {
-                Stream = new FileStream(SavePath, FileMode.Create);
-            }
-
-            Formatter.Serialize(Stream, _data);
-            Stream.Close();
-        }
 
 
         /// <summary>
