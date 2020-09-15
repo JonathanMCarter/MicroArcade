@@ -10,6 +10,13 @@ namespace CarterGames.UltimatePinball.BallCtrl
         public PolygonCollider2D catchBox;
         public CurveTriggerPoint triggerPoint;
 
+
+        private void OnDisable()
+        {
+            StopAllCoroutines();
+        }
+
+
         private void Update()
         {
             if (!catchBox.enabled)
@@ -17,6 +24,7 @@ namespace CarterGames.UltimatePinball.BallCtrl
                 StartCoroutine(WaitAndEnable());
             }
         }
+
 
         private IEnumerator WaitAndEnable()
         {

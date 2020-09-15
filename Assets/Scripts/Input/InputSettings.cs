@@ -52,8 +52,6 @@ namespace CarterGames.Arcade.UserInput
             {
                 StartCoroutine(ControlCheck());
             }
-
-            Debug.Log(ControllerType);
         }
 
 

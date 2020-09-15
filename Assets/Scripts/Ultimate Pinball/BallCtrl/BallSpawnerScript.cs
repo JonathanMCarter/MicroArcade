@@ -12,83 +12,84 @@ using CarterGames.Assets.AudioManager;
 
 namespace CarterGames.UltimatePinball.BallCtrl
 {
+    /// <summary>
+    /// CLASS | Ball Spawner, spawns the balls in the game, duh
+    /// </summary>
     public class BallSpawnerScript : MonoBehaviour
     {
-        public Joysticks ThisPlayer;
-
         // The prefab that will be spawned
         [Header("The Ball")]
-        public GameObject BallPrefab;
+        [SerializeField] private GameObject ballPrefab;
 
         // How long until the next ball spawns
         [Header("The delay for spawning balls")]
-        public float SpawnDelay, AutoSpawnDelay;
+        [SerializeField] private float spawnDelay, autoSpawnDelay;
 
         // The Object pool variables
         [Header("OBJ-POOL: Ball Prefabs")]
-        public List<GameObject> BallObjectPool;
+        [SerializeField] private List<GameObject> ballObjectPool;
         [Header("OBJ-POOL: How many are in the pool")]
-        public int BallObjectPoolAmount;
+        [SerializeField] private int ballObjectPoolAmount;
 
 
-        public GameObject SpawnPoint;
+        [SerializeField] private GameObject spawnPoint;
 
-        // bool for if something is spawning
-        public bool IsSpawning;
-        public bool IsSpawningAuto;
 
-        public bool CanSpawnAuto;
+        private bool isSpawningAuto;
+        private int numberSpawned;
+        private bool canSpawnAuto;
+        private AudioManager audioManager;
 
-        public AudioManager am;
 
-        int NumberSpawned;
+        internal bool isSpawning;
 
-        void Start()
+
+        private void OnDisable()
+        {
+            StopAllCoroutines();
+        }
+
+
+        private void Start()
         {
             // OBJ-POOL setup, spawns the amount of objects and disables then ready for use
-            for (int i = 0; i < BallObjectPoolAmount; i++)
+            for (int i = 0; i < ballObjectPoolAmount; i++)
             {
-                GameObject G = Instantiate(BallPrefab, Vector3.zero, transform.rotation);
+                GameObject G = Instantiate(ballPrefab, Vector3.zero, transform.rotation);
 
                 G.gameObject.name = "Ball(OBJ-POOL)";
 
                 G.SetActive(false);
-                BallObjectPool.Add(G);
+                ballObjectPool.Add(G);
             }
+
+            canSpawnAuto = true;
+
+            audioManager = FindObjectOfType<AudioManager>();
         }
 
 
-        void Update()
+        private void Update()
         {
-            if (KeyboardControls.ButtonPress((Players)ThisPlayer, Buttons.B3))
-            {
-                // if the script is not spawning a ball
-                if (!IsSpawning)
-                {
-                    // run the ball spawning corutine
-                    StartCoroutine(SpawnBall());
-                }
-            }
-
-            if ((!IsSpawningAuto) && (CanSpawnAuto))
+            if ((!isSpawningAuto) && (canSpawnAuto))
             {
                 StartCoroutine(SpawnBallAuto());
             }
 
 
-            switch (NumberSpawned)
+            switch (numberSpawned)
             {
                 case 1:
-                    AutoSpawnDelay = 7.5f;
+                    autoSpawnDelay = 7.5f;
                     break;
                 case 2:
-                    AutoSpawnDelay = 6f;
+                    autoSpawnDelay = 6f;
                     break;
                 case 4:
-                    AutoSpawnDelay = 5f;
+                    autoSpawnDelay = 5f;
                     break;
                 case 8:
-                    AutoSpawnDelay = 4f;
+                    autoSpawnDelay = 4f;
                     break;
                 default:
                     break;
@@ -97,122 +98,72 @@ namespace CarterGames.UltimatePinball.BallCtrl
         }
 
 
+
         /// <summary>
         /// Spawns a ball every set seconds by the script
         /// </summary>
-        IEnumerator SpawnBall()
+        private IEnumerator SpawnBallAuto()
         {
             // Sets the is spawning bool to true
-            IsSpawning = true;
+            isSpawningAuto = true;
 
             // goes through the OBJ-POOL and finds the next disabled object
-            for (int i = 0; i < BallObjectPoolAmount; i++)
+            for (int i = 0; i < ballObjectPoolAmount; i++)
             {
                 // Enables the first object it finds that is not enabled and enables / sets it up (also checks if it is the system (in a in/out etc...)
-                if (!BallObjectPool[i].activeInHierarchy)
+                if (!ballObjectPool[i].activeInHierarchy)
                 {
-                    if (!BallObjectPool[i].GetComponent<BallMoveScript>().IsIn)
+                    if (!ballObjectPool[i].GetComponent<BallMoveScript>().IsIn)
                     {
-                        BallObjectPool[i].transform.position = SpawnPoint.transform.position;
+                        ballObjectPool[i].transform.position = spawnPoint.transform.position;
 
-                        if (BallObjectPool[i].transform.position.y > 10.01f)
+                        if (ballObjectPool[i].transform.position.y > 10.01f)
                         {
-                            BallObjectPool[i].GetComponent<Rigidbody2D>().gravityScale = -1;
-                            Debug.LogError("----1");
+                            ballObjectPool[i].GetComponent<Rigidbody2D>().gravityScale = -1;
                         }
                         else
                         {
-                            BallObjectPool[i].GetComponent<Rigidbody2D>().gravityScale = 1;
-                            Debug.LogError("1");
+                            ballObjectPool[i].GetComponent<Rigidbody2D>().gravityScale = 1;
                         }
 
-                        BallObjectPool[i].SetActive(true);
-                        BallObjectPool[i].GetComponent<BallMoveScript>().BallInit();
-                        NumberSpawned++;
+                        ballObjectPool[i].SetActive(true);
+                        ballObjectPool[i].GetComponent<BallMoveScript>().BallInit();
+                        numberSpawned++;
                         break;
                     }
                 }
             }
 
-            am.Play("BallSpawn", .05f);
+            audioManager.Play("BallSpawn", .05f);
 
             // wait for the desired seconds
-            yield return new WaitForSeconds(SpawnDelay);
+            yield return new WaitForSeconds(autoSpawnDelay);
 
             // Sets the is spawning bool to false
-            IsSpawning = false;
-        }
-
-
-        /// <summary>
-        /// Spawns a ball every set seconds by the script
-        /// </summary>
-        IEnumerator SpawnBallAuto()
-        {
-            // Sets the is spawning bool to true
-            IsSpawningAuto = true;
-
-            // goes through the OBJ-POOL and finds the next disabled object
-            for (int i = 0; i < BallObjectPoolAmount; i++)
-            {
-                // Enables the first object it finds that is not enabled and enables / sets it up (also checks if it is the system (in a in/out etc...)
-                if (!BallObjectPool[i].activeInHierarchy)
-                {
-                    if (!BallObjectPool[i].GetComponent<BallMoveScript>().IsIn)
-                    {
-                        BallObjectPool[i].transform.position = SpawnPoint.transform.position;
-
-                        if (BallObjectPool[i].transform.position.y > 10.01f)
-                        {
-                            BallObjectPool[i].GetComponent<Rigidbody2D>().gravityScale = -1;
-                            //Debug.LogError("----1");
-                        }
-                        else
-                        {
-                            BallObjectPool[i].GetComponent<Rigidbody2D>().gravityScale = 1;
-                            //Debug.LogError("1");
-                        }
-
-                        BallObjectPool[i].SetActive(true);
-                        BallObjectPool[i].GetComponent<BallMoveScript>().BallInit();
-                        NumberSpawned++;
-                        break;
-                    }
-                }
-            }
-
-            am.Play("BallSpawn", .05f);
-
-            // wait for the desired seconds
-            yield return new WaitForSeconds(AutoSpawnDelay);
-
-            // Sets the is spawning bool to false
-            IsSpawningAuto = false;
+            isSpawningAuto = false;
         }
 
 
         public void SpawnBallCall(Vector3 pos, Joysticks Side)
         {
-            for (int i = 0; i < BallObjectPoolAmount; i++)
+            for (int i = 0; i < ballObjectPoolAmount; i++)
             {
-                if (!BallObjectPool[i].activeInHierarchy)
+                if (!ballObjectPool[i].activeInHierarchy)
                 {
                     switch (Side)
                     {
                         case Joysticks.White:
-                            BallObjectPool[i].GetComponent<Rigidbody2D>().gravityScale = 1;
-                            Debug.LogWarning("1");
+                            ballObjectPool[i].GetComponent<Rigidbody2D>().gravityScale = 1;
                             break;
                         case Joysticks.Black:
-                            BallObjectPool[i].GetComponent<Rigidbody2D>().gravityScale = -1;
-                            Debug.LogWarning("-----1");
+                            ballObjectPool[i].GetComponent<Rigidbody2D>().gravityScale = -1;
                             break;
                         default:
                             break;
                     }
 
-                    BallObjectPool[i].transform.position = pos;
-                    BallObjectPool[i].SetActive(true);
+                    ballObjectPool[i].transform.position = pos;
+                    ballObjectPool[i].SetActive(true);
                     break;
                 }
             }

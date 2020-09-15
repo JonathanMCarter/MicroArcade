@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -3094,7 +3094,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.008544922, y: 0}
+  m_AnchoredPosition: {x: -0.0078125, y: 0}
   m_SizeDelta: {x: -0.6999512, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &319571058
@@ -14107,6 +14107,21 @@ PrefabInstance:
       propertyPath: Input
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6803442116729837368, guid: 9cd72691ca3a4de429a93266da6d9043,
+        type: 3}
+      propertyPath: isPlayer1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6803442116729837368, guid: 9cd72691ca3a4de429a93266da6d9043,
+        type: 3}
+      propertyPath: thisFlipper
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6803442116729837368, guid: 9cd72691ca3a4de429a93266da6d9043,
+        type: 3}
+      propertyPath: spd
+      value: 5000
+      objectReference: {fileID: 0}
     - target: {fileID: 6803442116729837370, guid: 9cd72691ca3a4de429a93266da6d9043,
         type: 3}
       propertyPath: m_Name
@@ -14423,6 +14438,21 @@ PrefabInstance:
       propertyPath: ThisFlipper
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6803442118071757281, guid: 9cd72691ca3a4de429a93266da6d9043,
+        type: 3}
+      propertyPath: isPlayer1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6803442118071757281, guid: 9cd72691ca3a4de429a93266da6d9043,
+        type: 3}
+      propertyPath: spd
+      value: -5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6803442118071757281, guid: 9cd72691ca3a4de429a93266da6d9043,
+        type: 3}
+      propertyPath: thisFlipper
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6803442118071757283, guid: 9cd72691ca3a4de429a93266da6d9043,
         type: 3}
       propertyPath: m_Name
@@ -14488,7 +14518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95255e87df3cece4c8534d035bc8e490, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ThisPlayer: 1
+  isPlayer1: 0
   PlayerFlippers:
   - {fileID: 775041033}
   - {fileID: 775041034}
@@ -23913,18 +23943,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b13515ae9b599f24eb5c81864f448d21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ThisPlayer: 0
-  BallPrefab: {fileID: 443801930318241824, guid: 1dbdf3e397490b5488610e44b198262a,
+  ballPrefab: {fileID: 443801930318241824, guid: 1dbdf3e397490b5488610e44b198262a,
     type: 3}
-  SpawnDelay: 1
-  AutoSpawnDelay: 10
-  BallObjectPool: []
-  BallObjectPoolAmount: 10
-  SpawnPoint: {fileID: 1030642953}
-  IsSpawning: 0
-  IsSpawningAuto: 0
-  CanSpawnAuto: 1
-  am: {fileID: 917706877}
+  spawnDelay: 5
+  autoSpawnDelay: 1
+  ballObjectPool: []
+  ballObjectPoolAmount: 10
+  spawnPoint: {fileID: 1030642953}
 --- !u!212 &1282429249
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -24888,18 +24913,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b13515ae9b599f24eb5c81864f448d21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ThisPlayer: 1
-  BallPrefab: {fileID: 443801930318241824, guid: 1dbdf3e397490b5488610e44b198262a,
+  ballPrefab: {fileID: 443801930318241824, guid: 1dbdf3e397490b5488610e44b198262a,
     type: 3}
-  SpawnDelay: 1
-  AutoSpawnDelay: 10
-  BallObjectPool: []
-  BallObjectPoolAmount: 10
-  SpawnPoint: {fileID: 1695127362}
-  IsSpawning: 0
-  IsSpawningAuto: 0
-  CanSpawnAuto: 1
-  am: {fileID: 917706877}
+  spawnDelay: 5
+  autoSpawnDelay: 1
+  ballObjectPool: []
+  ballObjectPoolAmount: 10
+  spawnPoint: {fileID: 1695127362}
 --- !u!212 &1357649729
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -27974,7 +27994,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95255e87df3cece4c8534d035bc8e490, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ThisPlayer: 0
+  isPlayer1: 1
   PlayerFlippers:
   - {fileID: 1032421762}
   - {fileID: 2048721827}
@@ -29046,7 +29066,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1902098274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32600,6 +32620,16 @@ PrefabInstance:
       propertyPath: Spd
       value: 30000
       objectReference: {fileID: 0}
+    - target: {fileID: 6803442116729837368, guid: 9cd72691ca3a4de429a93266da6d9043,
+        type: 3}
+      propertyPath: spd
+      value: -5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6803442116729837368, guid: 9cd72691ca3a4de429a93266da6d9043,
+        type: 3}
+      propertyPath: thisFlipper
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6803442116729837374, guid: 9cd72691ca3a4de429a93266da6d9043,
         type: 3}
       propertyPath: m_Constraints
@@ -32880,6 +32910,11 @@ PrefabInstance:
         type: 3}
       propertyPath: Spd
       value: 30000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6803442118071757281, guid: 9cd72691ca3a4de429a93266da6d9043,
+        type: 3}
+      propertyPath: spd
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 6803442118071757287, guid: 9cd72691ca3a4de429a93266da6d9043,
         type: 3}

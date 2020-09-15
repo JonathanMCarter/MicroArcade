@@ -12,7 +12,7 @@ namespace CarterGames.Utilities
     {
         public void OpenCarterGamesWebsite()
         {
-            Application.OpenURL("http://carter.games/");
+            Application.OpenURL("https://carter.games");
         }
     }
 }

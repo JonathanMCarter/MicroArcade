@@ -51,5 +51,11 @@ namespace CarterGames.Utilities
             _newGradient.SetKeys(new GradientColorKey[] { new GradientColorKey(col, 0.0f), new GradientColorKey(col, 1.0f) }, new GradientAlphaKey[] { new GradientAlphaKey(1f, 0f), new GradientAlphaKey(0f, 1f) });
             return _newGradient;
         }
+
+
+        public static int BoolToInt(bool toConvert)
+        {
+            return System.Convert.ToInt32(toConvert);
+        }
     }
 }

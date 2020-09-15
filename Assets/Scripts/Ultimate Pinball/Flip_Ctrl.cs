@@ -1,163 +1,77 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using CarterGames.Arcade.UserInput;
 using CarterGames.UltimatePinball.BallCtrl;
 using CarterGames.Assets.AudioManager;
+using CarterGames.Utilities;
 
 namespace CarterGames.UltimatePinball
 {
-    public class Flip_Ctrl : InputSettings
+    /// <summary>
+    /// CLASS | The script that controls the flippers for both players and their physics.
+    /// </summary>
+    public class Flip_Ctrl : MonoBehaviour
     {
-        // Which joystick this script is using (White / Black)
-        [Header("Which Joystick is controlling this object")]
-        public Joysticks Input;
-
-        // How fast the flippers should move
-        [Header("How much force should the flipper use?")]
-        public float Spd;
-
         public enum FlipperSides
         {
             Left,
             Right,
         };
 
+        // Which joystick this script is using (White / Black)
+        [Header("Which Joystick is controlling this object")]
+        [SerializeField] private bool isPlayer1 = true;
+
+        // How fast the flippers should move
+        [Header("How much force should the flipper use?")]
+        [SerializeField] private float spd;
+
         // Which flipper is this flipper (Left / Right)
         [Header("Is this flipper the left or right flipper?")]
-        public FlipperSides ThisFlipper;
+        [SerializeField] private FlipperSides thisFlipper;
 
         // Private variables as these just reference the components on the object the script is attached to
-        HingeJoint2D HG;
-        JointMotor2D MT;
+        private HingeJoint2D hinge2D;
+        private JointMotor2D motor2D;
+        private AudioManager audioManager;
+        private bool playSound;
 
-        // am
-        AudioManager am;
-        bool PlaySound;
+
 
         private void Start()
         {
-            HG = GetComponent<HingeJoint2D>();
-            MT = HG.motor;
-            am = FindObjectOfType<AudioManager>();
+            hinge2D = GetComponent<HingeJoint2D>();
+            motor2D = hinge2D.motor;
+            audioManager = FindObjectOfType<AudioManager>();
         }
+
 
         private void FixedUpdate()
         {
-
             // Switches the flippers between left and right
-            switch (ThisFlipper)
+            switch (thisFlipper)
             {
                 case FlipperSides.Left:
 
-                    switch (ControllerType)
+                    if (Controls.Left(isPlayer1))
                     {
-                        case SupportedControllers.ArcadeBoard:
-
-                            if (ArcadeControls.JoystickLeft(Input)) { FlipLeftFlipper(); }
-                            else if (ArcadeControls.JoystickNone(Input)) { ResetLeftFlipper(); }
-
-                            break;
-                        case SupportedControllers.GamePadBoth:
-
-                            if (ControllerControls.ControllerLeft(ConvertToPlayers())) { FlipLeftFlipper(); }
-                            else if (ControllerControls.ControllerNone(ConvertToPlayers())) { ResetLeftFlipper(); }
-
-                            break;
-                        case SupportedControllers.KeyboardBoth:
-
-                            if (KeyboardControls.KeyboardLeft(ConvertToPlayers())) { FlipLeftFlipper(); }
-                            else if (KeyboardControls.KeyboardNone(ConvertToPlayers())) { ResetLeftFlipper(); }
-
-                            break;
-                        case SupportedControllers.KeyboardP1ControllerP2:
-
-                            if (ConvertToPlayers() == Players.P1)
-                            {
-                                if (KeyboardControls.KeyboardLeft(Players.P1)) { FlipLeftFlipper(); }
-                                else if (KeyboardControls.KeyboardNone(Players.P1)) { ResetLeftFlipper(); }
-                            }
-                            else
-                            {
-                                if (ControllerControls.ControllerLeft(Players.P1)) { FlipLeftFlipper(); }
-                                else if (ControllerControls.ControllerNone(Players.P1)) { ResetLeftFlipper(); }
-                            }
-
-                            break;
-                        case SupportedControllers.KeyboardP2ControllerP1:
-
-                            if (ConvertToPlayers() == Players.P2)
-                            {
-                                if (KeyboardControls.KeyboardLeft(Players.P1)) { FlipLeftFlipper(); }
-                                else if (KeyboardControls.KeyboardNone(Players.P1)) { ResetLeftFlipper(); }
-                            }
-                            else
-                            {
-                                if (ControllerControls.ControllerLeft(Players.P1)) { FlipLeftFlipper(); }
-                                else if (ControllerControls.ControllerNone(Players.P1)) { ResetLeftFlipper(); }
-                            }
-
-                            break;
-                        default:
-                            break;
+                        FlipLeftFlipper();
                     }
-
+                    else if (Controls.None(isPlayer1))
+                    {
+                        ResetLeftFlipper();
+                    }
 
                     break;
                 case FlipperSides.Right:
 
-                    switch (ControllerType)
+                    if (Controls.Right(isPlayer1))
                     {
-                        case SupportedControllers.ArcadeBoard:
-
-                            if (ArcadeControls.JoystickRight(Input)) { FlipRightFlipper(); }
-                            else if (ArcadeControls.JoystickNone(Input)) { ResetRightFlipper(); }
-
-                            break;
-                        case SupportedControllers.GamePadBoth:
-
-                            if (ControllerControls.ControllerRight(ConvertToPlayers())) { FlipRightFlipper(); }
-                            else if (ControllerControls.ControllerNone(ConvertToPlayers())) { ResetRightFlipper(); }
-
-                            break;
-                        case SupportedControllers.KeyboardBoth:
-
-                            if (KeyboardControls.KeyboardRight(ConvertToPlayers())) { FlipRightFlipper(); }
-                            else if (KeyboardControls.KeyboardNone(ConvertToPlayers())) { ResetRightFlipper(); }
-
-                            break;
-                        case SupportedControllers.KeyboardP1ControllerP2:
-
-                            if (ConvertToPlayers() == Players.P1)
-                            {
-                                if (KeyboardControls.KeyboardRight(Players.P1)) { FlipRightFlipper(); }
-                                else if (KeyboardControls.KeyboardNone(Players.P1)) { ResetRightFlipper(); }
-                            }
-                            else
-                            {
-                                if (ControllerControls.ControllerRight(Players.P1)) { FlipRightFlipper(); }
-                                else if (ControllerControls.ControllerNone(Players.P1)) { ResetRightFlipper(); }
-                            }
-
-                            break;
-                        case SupportedControllers.KeyboardP2ControllerP1:
-
-                            if (ConvertToPlayers() == Players.P2)
-                            {
-                                if (KeyboardControls.KeyboardRight(Players.P1)) { FlipRightFlipper(); }
-                                else if (KeyboardControls.KeyboardNone(Players.P1)) { ResetRightFlipper(); }
-                            }
-                            else
-                            {
-                                if (ControllerControls.ControllerRight(Players.P1)) { FlipRightFlipper(); }
-                                else if (ControllerControls.ControllerNone(Players.P1)) { ResetRightFlipper(); }
-                            }
-
-                            break;
-                        default:
-                            break;
+                        FlipLeftFlipper();
                     }
-
+                    else if (Controls.None(isPlayer1))
+                    {
+                        ResetLeftFlipper();
+                    }
 
                     break;
                 default:
@@ -171,14 +85,14 @@ namespace CarterGames.UltimatePinball
         /// </summary>
         public void FlipLeftFlipper()
         {
-            if (PlaySound)
+            if (playSound)
             {
-                am.Play("BumperHit", .2f, 1.5f);
-                PlaySound = false;
+                audioManager.Play("BumperHit", .2f, 1.5f);
+                playSound = false;
             }
 
-            MT.motorSpeed = -Spd;
-            HG.motor = MT;
+            motor2D.motorSpeed = -spd;
+            hinge2D.motor = motor2D;
         }
 
         /// <summary>
@@ -186,9 +100,9 @@ namespace CarterGames.UltimatePinball
         /// </summary>
         public void ResetLeftFlipper()
         {
-            PlaySound = true;
-            MT.motorSpeed = Spd;
-            HG.motor = MT;
+            playSound = true;
+            motor2D.motorSpeed = spd;
+            hinge2D.motor = motor2D;
         }
 
         /// <summary>
@@ -196,14 +110,14 @@ namespace CarterGames.UltimatePinball
         /// </summary>
         public void FlipRightFlipper()
         {
-            if (PlaySound)
+            if (playSound)
             {
-                am.Play("BumperHit", .2f, 1.5f);
-                PlaySound = false;
+                audioManager.Play("BumperHit", .2f, 1.5f);
+                playSound = false;
             }
 
-            MT.motorSpeed = Spd;
-            HG.motor = MT;
+            motor2D.motorSpeed = spd;
+            hinge2D.motor = motor2D;
         }
 
         /// <summary>
@@ -211,9 +125,9 @@ namespace CarterGames.UltimatePinball
         /// </summary>
         public void ResetRightFlipper()
         {
-            PlaySound = true;
-            MT.motorSpeed = -Spd;
-            HG.motor = MT;
+            playSound = true;
+            motor2D.motorSpeed = -spd;
+            hinge2D.motor = motor2D;
         }
 
 
@@ -222,21 +136,7 @@ namespace CarterGames.UltimatePinball
         {
             if (collision.gameObject.GetComponent<BallMoveScript>())
             {
-                collision.gameObject.GetComponent<BallMoveScript>().LastHit = Input;
-            }
-        }
-
-
-        Players ConvertToPlayers()
-        {
-            switch (Input)
-            {
-                case Joysticks.White:
-                    return Players.P1;
-                case Joysticks.Black:
-                    return Players.P2;
-                default:
-                    return Players.P1;
+                collision.gameObject.GetComponent<BallMoveScript>().LastHit = (Joysticks)Converters.BoolToInt(isPlayer1);
             }
         }
     }

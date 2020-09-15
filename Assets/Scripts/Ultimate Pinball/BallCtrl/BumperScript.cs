@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using CarterGames.Arcade.UserInput;
 using CarterGames.Assets.AudioManager;
