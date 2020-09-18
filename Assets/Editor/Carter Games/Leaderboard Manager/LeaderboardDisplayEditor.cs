@@ -32,9 +32,9 @@ namespace CarterGames.Assets.LeaderboardManager
             GUILayout.FlexibleSpace();
 
             // Shows either the Leaderboard Manager Logo or an alternative for if the icon is deleted when you import the package
-            if (Resources.Load<Texture2D>("Carter Games/LogoLBM"))
+            if (Resources.Load<Texture2D>("Carter Games/Leaderboard Manager/LogoLBM"))
             {
-                if (GUILayout.Button(Resources.Load<Texture2D>("Carter Games/LogoLBM"), GUIStyle.none, GUILayout.Width(50), GUILayout.Height(50)))
+                if (GUILayout.Button(Resources.Load<Texture2D>("Carter Games/Leaderboard Manager/LogoLBM"), GUIStyle.none, GUILayout.Width(50), GUILayout.Height(50)))
                 {
                     GUI.FocusControl(null);
                 }

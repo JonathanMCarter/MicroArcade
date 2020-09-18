@@ -36,7 +36,7 @@ namespace CarterGames.Assets.AudioManager
 
         private string _newPath = "";
 
-        private bool showDirectories;
+        private bool showDirectories = false;
         private bool showClips = true;
         private bool isSetup = false;
 
@@ -121,6 +121,7 @@ namespace CarterGames.Assets.AudioManager
                 if (audioManagerScript.soundPrefab)
                 {
                     audioManagerScript.audioManagerFile.soundPrefab = audioManagerScript.soundPrefab;
+                    serializedObject.FindProperty("shouldShowDir").boolValue = true;
                 }
 
                 EditorGUILayout.EndHorizontal();
@@ -136,7 +137,7 @@ namespace CarterGames.Assets.AudioManager
                         GUI.color = Color.cyan;
                         if (GUILayout.Button("Show Directories", GUILayout.Width(120)))
                         {
-                            serializedObject.FindProperty("shouldShowDir").boolValue = true;
+                            serializedObject.FindProperty("shouldShowDir").boolValue = !serializedObject.FindProperty("shouldShowDir").boolValue;
                         }
                     }
                     else
@@ -144,7 +145,7 @@ namespace CarterGames.Assets.AudioManager
                         GUI.color = Color.white;
                         if (GUILayout.Button("Hide Directories", GUILayout.Width(120)))
                         {
-                            serializedObject.FindProperty("shouldShowDir").boolValue = false;
+                            serializedObject.FindProperty("shouldShowDir").boolValue = !serializedObject.FindProperty("shouldShowDir").boolValue;
                         }
                     }
 
@@ -153,7 +154,7 @@ namespace CarterGames.Assets.AudioManager
                         GUI.color = Color.cyan;
                         if (GUILayout.Button("Show Clips", GUILayout.Width(95)))
                         {
-                            serializedObject.FindProperty("shouldShowClips").boolValue = true;
+                            serializedObject.FindProperty("shouldShowClips").boolValue = !serializedObject.FindProperty("shouldShowClips").boolValue;
                         }
                     }
                     else
@@ -161,7 +162,7 @@ namespace CarterGames.Assets.AudioManager
                         GUI.color = Color.white;
                         if (GUILayout.Button("Hide Clips", GUILayout.Width(95)))
                         {
-                            serializedObject.FindProperty("shouldShowClips").boolValue = false;
+                            serializedObject.FindProperty("shouldShowClips").boolValue = !serializedObject.FindProperty("shouldShowClips").boolValue;
                         }
                     }
                     GUI.color = Color.white;
@@ -264,6 +265,7 @@ namespace CarterGames.Assets.AudioManager
 
                             audioManagerScript.UpdateLibrary();
 
+
                             GUI.color = Color.white;
                         }
                         else
@@ -353,9 +355,9 @@ namespace CarterGames.Assets.AudioManager
 
 
             // Shows either the Carter Games Logo or an alternative for if the icon is deleted when you import the package
-            if (Resources.Load<Texture2D>("CarterGames/Logo"))
+            if (Resources.Load<Texture2D>("Carter Games/Audio Manager/LogoAM"))
             {
-                if (GUILayout.Button(Resources.Load<Texture2D>("CarterGames/Logo"), GUIStyle.none, GUILayout.Width(50), GUILayout.Height(50)))
+                if (GUILayout.Button(Resources.Load<Texture2D>("Carter Games/Audio Manager/LogoAM"), GUIStyle.none, GUILayout.Width(50), GUILayout.Height(50)))
                 {
                     GUI.FocusControl(null);
                 }
@@ -398,7 +400,7 @@ namespace CarterGames.Assets.AudioManager
             GUI.color = Color.cyan;
             if (GUILayout.Button("Discord", GUILayout.Width(65f)))
             {
-                Application.OpenURL("https://discord.gg/CNjbZzp");
+                Application.OpenURL("http://carter.games/discord");
             }
             GUI.color = Color.white;
             GUILayout.FlexibleSpace();
@@ -577,9 +579,9 @@ namespace CarterGames.Assets.AudioManager
                     // If there are no clips playing it will show "preview clip" buttons for all elements
                     if (!audioManagerScript.GetComponent<AudioSource>().isPlaying)
                     {
-                        if (Resources.Load<Texture2D>("CarterGames/Play"))
+                        if (Resources.Load<Texture2D>("Carter Games/Audio Manager/Play"))
                         {
-                            if (GUILayout.Button(Resources.Load<Texture2D>("CarterGames/Play"), GUIStyle.none, GUILayout.Width(20), GUILayout.Height(20)))
+                            if (GUILayout.Button(Resources.Load<Texture2D>("Carter Games/Audio Manager/Play"), GUIStyle.none, GUILayout.Width(20), GUILayout.Height(20)))
                             {
                                 audioManagerScript.GetComponent<AudioSource>().clip = audioManagerScript.audioManagerFile.audioClip[i];
                                 audioManagerScript.GetComponent<AudioSource>().PlayOneShot(audioManagerScript.GetComponent<AudioSource>().clip);
@@ -599,9 +601,9 @@ namespace CarterGames.Assets.AudioManager
                     {
                         GUI.color = redCol;
 
-                        if (Resources.Load<Texture2D>("CarterGames/Stop"))
+                        if (Resources.Load<Texture2D>("Carter Games/Audio Manager/Stop"))
                         {
-                            if (GUILayout.Button(Resources.Load<Texture2D>("CarterGames/Stop"), GUIStyle.none, GUILayout.Width(20), GUILayout.Height(20)))
+                            if (GUILayout.Button(Resources.Load<Texture2D>("Carter Games/Audio Manager/Stop"), GUIStyle.none, GUILayout.Width(20), GUILayout.Height(20)))
                             {
                                 audioManagerScript.GetComponent<AudioSource>().Stop();
                             }
@@ -617,9 +619,9 @@ namespace CarterGames.Assets.AudioManager
                     // This just ensures the rest of the elements keep a button next to them
                     else
                     {
-                        if (Resources.Load<Texture2D>("CarterGames/Play"))
+                        if (Resources.Load<Texture2D>("Carter Games/Audio Manager/Play"))
                         {
-                            if (GUILayout.Button(Resources.Load<Texture2D>("CarterGames/Play"), GUIStyle.none, GUILayout.Width(20), GUILayout.Height(20)))
+                            if (GUILayout.Button(Resources.Load<Texture2D>("Carter Games/Audio Manager/Play"), GUIStyle.none, GUILayout.Width(20), GUILayout.Height(20)))
                             {
                                 audioManagerScript.GetComponent<AudioSource>().clip = audioManagerScript.audioManagerFile.audioClip[i];
                                 audioManagerScript.GetComponent<AudioSource>().PlayOneShot(audioManagerScript.GetComponent<AudioSource>().clip);
