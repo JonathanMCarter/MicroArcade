@@ -60,20 +60,20 @@ namespace CarterGames.Arcade.Leaderboard
         /// </summary>
         /// <param name="_data">data to pass through</param>
         /// <returns></returns>
-        private static IEnumerator Send_To_CWIS(CWIS.LeaderboardData _data)
-        {
-            // Save to local leaderboard
+        //private static IEnumerator Send_To_CWIS(CWIS.LeaderboardData _data)
+        //{
+        //    // Save to local leaderboard
 
 
-            // Online Leaderboard
-            WWWForm Form = new WWWForm();
+        //    // Online Leaderboard
+        //    WWWForm Form = new WWWForm();
 
-            Form.AddField("Name", _data.name);
-            Form.AddField("Score", _data.score.ToString());
-            Form.AddField("Date", System.DateTime.Now.ToString());
+        //    Form.AddField("Name", _data.name);
+        //    Form.AddField("Score", _data.score.ToString());
+        //    Form.AddField("Date", System.DateTime.Now.ToString());
 
-            UnityWebRequest W = UnityWebRequest.Post(SaveManager.LoadOnlineBoardPath().onlineLeaderboardsBasePath + "addscorestandard.php?", Form);
-            yield return W.SendWebRequest();
-        }
+        //    UnityWebRequest W = UnityWebRequest.Post(SaveManager.LoadOnlineBoardPath().onlineLeaderboardsBasePath + "addscorestandard.php?", Form);
+        //    yield return W.SendWebRequest();
+        //}
     }
 }

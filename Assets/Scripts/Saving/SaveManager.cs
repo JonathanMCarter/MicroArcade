@@ -131,13 +131,13 @@ namespace CarterGames.Arcade.Saving
             }
 
             // /operationstarshine.masf
-            if (!File.Exists(baseSavePath + "/Games/Operation Starshine/operationstarshine.masf"))
-            {
-                _stream = new FileStream(baseSavePath + "/Games/Operation Starshine/operationstarshine.masf", FileMode.Create);
-                OperationStarshineData _operationStarshineData = new OperationStarshineData();
-                _formatter.Serialize(_stream, _operationStarshineData);
-                _stream.Close();
-            }
+            //if (!File.Exists(baseSavePath + "/Games/Operation Starshine/operationstarshine.masf"))
+            //{
+            //    _stream = new FileStream(baseSavePath + "/Games/Operation Starshine/operationstarshine.masf", FileMode.Create);
+            //    OperationStarshineData _operationStarshineData = new OperationStarshineData();
+            //    _formatter.Serialize(_stream, _operationStarshineData);
+            //    _stream.Close();
+            //}
 
             // /operationstarshine.malf
             if (!File.Exists(baseSavePath + "/Games/Operation Starshine/operationstarshine.malf"))
@@ -387,173 +387,173 @@ namespace CarterGames.Arcade.Saving
         /// =========================================================================================================================
 
 
-        /// <summary>
-        /// Saves the ultimate pinball gamemode, so the game knows what gameode to play when the level scene is loaded...
-        /// </summary>
-        /// <param name="Gamemode">gamemode as an int value</param>
-        /// <param name="Increment">how much the value should increment when in the menu</param>
-        /// <param name="LastValue">the last value for the gamemode</param>
-        public static void SaveUltimatePinballGamemode(int Gamemode = 0, int Increment = 0, int LastValue = 0)
-        {
-            BinaryFormatter Formatter = new BinaryFormatter();
-            string SavePath = Application.persistentDataPath + "/Games/Ultimate Pinball/ultimatepinball.masf";
-            FileStream Stream = new FileStream(SavePath, FileMode.OpenOrCreate);
+        ///// <summary>
+        ///// Saves the ultimate pinball gamemode, so the game knows what gameode to play when the level scene is loaded...
+        ///// </summary>
+        ///// <param name="Gamemode">gamemode as an int value</param>
+        ///// <param name="Increment">how much the value should increment when in the menu</param>
+        ///// <param name="LastValue">the last value for the gamemode</param>
+        //public static void SaveUltimatePinballGamemode(int Gamemode = 0, int Increment = 0, int LastValue = 0)
+        //{
+        //    BinaryFormatter Formatter = new BinaryFormatter();
+        //    string SavePath = Application.persistentDataPath + "/Games/Ultimate Pinball/ultimatepinball.masf";
+        //    FileStream Stream = new FileStream(SavePath, FileMode.OpenOrCreate);
 
-            UltimatePinballData Data = new UltimatePinballData();
+        //    UltimatePinballData Data = new UltimatePinballData();
 
-            Data.LastGameTypeSelected = Gamemode;
-            Data.LastGameTypeIncrement = Increment;
-            Data.LastGameTypeAmountSelected = LastValue;
+        //    Data.LastGameTypeSelected = Gamemode;
+        //    Data.LastGameTypeIncrement = Increment;
+        //    Data.LastGameTypeAmountSelected = LastValue;
 
-            Formatter.Serialize(Stream, Data);
-            Stream.Close();
-        }
-
-
-        /// <summary>
-        /// Saves the last pinball game results using values
-        /// </summary>
-        /// <param name="Player1Name">Player 1 Name</param>
-        /// <param name="Player1Score">Player 1 Final Score</param>
-        /// <param name="Player2Name">Player 2 Name</param>
-        /// <param name="Player2Score">Player 2 Final Score</param>
-        /// <param name="Player1Health">Player 1 Health</param>
-        /// <param name="Player2Health">Player 2 Health</param>
-        public static void SaveUltimatePinballSession(string Player1Name, int Player1Score, string Player2Name, int Player2Score, int Player1Health = 0, int Player2Health = 0)
-        {
-            BinaryFormatter Formatter = new BinaryFormatter();
-            string SavePath = Application.persistentDataPath + "/Games/Ultimate Pinball/ultimatepinballsession.masf";
-            FileStream Stream = new FileStream(SavePath, FileMode.OpenOrCreate);
-
-            UltimatePinballSessionData Data = new UltimatePinballSessionData();
-
-            Data.Player1Name = Player1Name;
-            Data.Player1Score = Player1Score;
-            Data.Player1Health = Player1Health;
-            Data.Player2Name = Player2Name;
-            Data.Player2Score = Player2Score;
-            Data.Player2Health = Player2Health;
-
-            Formatter.Serialize(Stream, Data);
-            Stream.Close();
-        }
+        //    Formatter.Serialize(Stream, Data);
+        //    Stream.Close();
+        //}
 
 
-        /// <summary>
-        /// Saves the last pinball game resutls using player stats 
-        /// </summary>
-        /// <param name="Player1Stats">Stats for Player 1</param>
-        /// <param name="Player2Stats">Stats for Player 2</param>
-        public static void SaveUltimatePinballSession(GameManager.BG_PlayerStats Player1Stats, GameManager.BG_PlayerStats Player2Stats)
-        {
-            BinaryFormatter Formatter = new BinaryFormatter();
-            string SavePath = Application.persistentDataPath + "/Games/Ultimate Pinball/ultimatepinballsession.masf";
-            FileStream Stream = new FileStream(SavePath, FileMode.OpenOrCreate);
+        ///// <summary>
+        ///// Saves the last pinball game results using values
+        ///// </summary>
+        ///// <param name="Player1Name">Player 1 Name</param>
+        ///// <param name="Player1Score">Player 1 Final Score</param>
+        ///// <param name="Player2Name">Player 2 Name</param>
+        ///// <param name="Player2Score">Player 2 Final Score</param>
+        ///// <param name="Player1Health">Player 1 Health</param>
+        ///// <param name="Player2Health">Player 2 Health</param>
+        //public static void SaveUltimatePinballSession(string Player1Name, int Player1Score, string Player2Name, int Player2Score, int Player1Health = 0, int Player2Health = 0)
+        //{
+        //    BinaryFormatter Formatter = new BinaryFormatter();
+        //    string SavePath = Application.persistentDataPath + "/Games/Ultimate Pinball/ultimatepinballsession.masf";
+        //    FileStream Stream = new FileStream(SavePath, FileMode.OpenOrCreate);
 
-            UltimatePinballSessionData Data = new UltimatePinballSessionData();
+        //    UltimatePinballSessionData Data = new UltimatePinballSessionData();
 
-            Data.Player1Name = Player1Stats.Name;
-            Data.Player1Score = Player1Stats.Score;
-            Data.Player1Health = Player1Stats.Health;
-            Data.Player2Name = Player2Stats.Name;
-            Data.Player2Score = Player2Stats.Score;
-            Data.Player2Health = Player2Stats.Health;
+        //    Data.Player1Name = Player1Name;
+        //    Data.Player1Score = Player1Score;
+        //    Data.Player1Health = Player1Health;
+        //    Data.Player2Name = Player2Name;
+        //    Data.Player2Score = Player2Score;
+        //    Data.Player2Health = Player2Health;
 
-            Formatter.Serialize(Stream, Data);
-            Stream.Close();
-        }
-
-
-        /// <summary>
-        /// Saves the last pinball game results using the correct data passed through...
-        /// </summary>
-        /// <param name="Input">data to send</param>
-        public static void SaveUltimatePinballSession(UltimatePinballSessionData Input)
-        {
-            BinaryFormatter Formatter = new BinaryFormatter();
-            string SavePath = Application.persistentDataPath + "/Games/Ultimate Pinball/ultimatepinballsession.masf";
-            FileStream Stream = new FileStream(SavePath, FileMode.OpenOrCreate);
-
-            UltimatePinballSessionData Data = new UltimatePinballSessionData();
-
-            Data = Input;
-
-            Formatter.Serialize(Stream, Data);
-            Stream.Close();
-        }
+        //    Formatter.Serialize(Stream, Data);
+        //    Stream.Close();
+        //}
 
 
-        /// <summary>
-        /// Saves the game data from the menu through to the game...
-        /// </summary>
-        /// <param name="Input">data to send</param>
-        public static void SaveUltimatePinball(UltimatePinballData Input)
-        {
-            BinaryFormatter Formatter = new BinaryFormatter();
-            string SavePath = Application.persistentDataPath + "/Games/Ultimate Pinball/ultimatepinball.masf";
-            FileStream Stream = new FileStream(SavePath, FileMode.OpenOrCreate);
+        ///// <summary>
+        ///// Saves the last pinball game resutls using player stats 
+        ///// </summary>
+        ///// <param name="Player1Stats">Stats for Player 1</param>
+        ///// <param name="Player2Stats">Stats for Player 2</param>
+        //public static void SaveUltimatePinballSession(GameManager.BG_PlayerStats Player1Stats, GameManager.BG_PlayerStats Player2Stats)
+        //{
+        //    BinaryFormatter Formatter = new BinaryFormatter();
+        //    string SavePath = Application.persistentDataPath + "/Games/Ultimate Pinball/ultimatepinballsession.masf";
+        //    FileStream Stream = new FileStream(SavePath, FileMode.OpenOrCreate);
 
-            UltimatePinballData Data = new UltimatePinballData();
+        //    UltimatePinballSessionData Data = new UltimatePinballSessionData();
 
-            Data = Input;
+        //    Data.Player1Name = Player1Stats.Name;
+        //    Data.Player1Score = Player1Stats.Score;
+        //    Data.Player1Health = Player1Stats.Health;
+        //    Data.Player2Name = Player2Stats.Name;
+        //    Data.Player2Score = Player2Stats.Score;
+        //    Data.Player2Health = Player2Stats.Health;
 
-            Formatter.Serialize(Stream, Data);
-            Stream.Close();
-        }
-
-
-        /// <summary>
-        /// Loads the ultimate pinball game data
-        /// </summary>
-        /// <returns>UltimatePinballData with the loaded data</returns>
-        public static UltimatePinballData LoadUltimatePinball()
-        {
-            string SavePath = Application.persistentDataPath + "/Games/Ultimate Pinball/ultimatepinball.masf";
-
-            if (File.Exists(SavePath))
-            {
-                BinaryFormatter Formatter = new BinaryFormatter();
-                FileStream Stream = new FileStream(SavePath, FileMode.Open);
-
-                UltimatePinballData Data = Formatter.Deserialize(Stream) as UltimatePinballData;
-
-                Stream.Close();
-
-                return Data;
-            }
-            else
-            {
-                Debug.LogError("Save file not found! (Ultimate Pinball - Load)");
-                return null;
-            }
-        }
+        //    Formatter.Serialize(Stream, Data);
+        //    Stream.Close();
+        //}
 
 
-        /// <summary>
-        /// Loads the last session played info for use in UI
-        /// </summary>
-        /// <returns>UltimatePinballData with the loaded data</returns>
-        public static UltimatePinballSessionData LoadLastUltimatePinballSession()
-        {
-            string SavePath = Application.persistentDataPath + "/Games/Ultimate Pinball/ultimatepinballsession.masf";
+        ///// <summary>
+        ///// Saves the last pinball game results using the correct data passed through...
+        ///// </summary>
+        ///// <param name="Input">data to send</param>
+        //public static void SaveUltimatePinballSession(UltimatePinballSessionData Input)
+        //{
+        //    BinaryFormatter Formatter = new BinaryFormatter();
+        //    string SavePath = Application.persistentDataPath + "/Games/Ultimate Pinball/ultimatepinballsession.masf";
+        //    FileStream Stream = new FileStream(SavePath, FileMode.OpenOrCreate);
 
-            if (File.Exists(SavePath))
-            {
-                BinaryFormatter Formatter = new BinaryFormatter();
-                FileStream Stream = new FileStream(SavePath, FileMode.Open);
+        //    UltimatePinballSessionData Data = new UltimatePinballSessionData();
 
-                UltimatePinballSessionData Data = Formatter.Deserialize(Stream) as UltimatePinballSessionData;
+        //    Data = Input;
 
-                Stream.Close();
+        //    Formatter.Serialize(Stream, Data);
+        //    Stream.Close();
+        //}
 
-                return Data;
-            }
-            else
-            {
-                Debug.LogError("Save file not found! (Ultimate Pinball Session - Load)");
-                return null;
-            }
-        }
+
+        ///// <summary>
+        ///// Saves the game data from the menu through to the game...
+        ///// </summary>
+        ///// <param name="Input">data to send</param>
+        //public static void SaveUltimatePinball(UltimatePinballData Input)
+        //{
+        //    BinaryFormatter Formatter = new BinaryFormatter();
+        //    string SavePath = Application.persistentDataPath + "/Games/Ultimate Pinball/ultimatepinball.masf";
+        //    FileStream Stream = new FileStream(SavePath, FileMode.OpenOrCreate);
+
+        //    UltimatePinballData Data = new UltimatePinballData();
+
+        //    Data = Input;
+
+        //    Formatter.Serialize(Stream, Data);
+        //    Stream.Close();
+        //}
+
+
+        ///// <summary>
+        ///// Loads the ultimate pinball game data
+        ///// </summary>
+        ///// <returns>UltimatePinballData with the loaded data</returns>
+        //public static UltimatePinballData LoadUltimatePinball()
+        //{
+        //    string SavePath = Application.persistentDataPath + "/Games/Ultimate Pinball/ultimatepinball.masf";
+
+        //    if (File.Exists(SavePath))
+        //    {
+        //        BinaryFormatter Formatter = new BinaryFormatter();
+        //        FileStream Stream = new FileStream(SavePath, FileMode.Open);
+
+        //        UltimatePinballData Data = Formatter.Deserialize(Stream) as UltimatePinballData;
+
+        //        Stream.Close();
+
+        //        return Data;
+        //    }
+        //    else
+        //    {
+        //        Debug.LogError("Save file not found! (Ultimate Pinball - Load)");
+        //        return null;
+        //    }
+        //}
+
+
+        ///// <summary>
+        ///// Loads the last session played info for use in UI
+        ///// </summary>
+        ///// <returns>UltimatePinballData with the loaded data</returns>
+        //public static UltimatePinballSessionData LoadLastUltimatePinballSession()
+        //{
+        //    string SavePath = Application.persistentDataPath + "/Games/Ultimate Pinball/ultimatepinballsession.masf";
+
+        //    if (File.Exists(SavePath))
+        //    {
+        //        BinaryFormatter Formatter = new BinaryFormatter();
+        //        FileStream Stream = new FileStream(SavePath, FileMode.Open);
+
+        //        UltimatePinballSessionData Data = Formatter.Deserialize(Stream) as UltimatePinballSessionData;
+
+        //        Stream.Close();
+
+        //        return Data;
+        //    }
+        //    else
+        //    {
+        //        Debug.LogError("Save file not found! (Ultimate Pinball Session - Load)");
+        //        return null;
+        //    }
+        //}
 
 
         /// =========================================================================================================================
@@ -565,10 +565,10 @@ namespace CarterGames.Arcade.Saving
         /// =========================================================================================================================
 
 
-        /// <summary>
-        /// Saves the last round to the local leaderboard save file for this game
-        /// </summary>
-        /// <param name="_leaderboardData">The StarshineLeaderboardData to save</param>
+        ///// <summary>
+        ///// Saves the last round to the local leaderboard save file for this game
+        ///// </summary>
+        ///// <param name="_leaderboardData">The StarshineLeaderboardData to save</param>
         public static void SaveOperationStarshineToLocal(StarshineLeaderboardData _leaderboardData)
         {
             BinaryFormatter Formatter = new BinaryFormatter();
@@ -581,72 +581,72 @@ namespace CarterGames.Arcade.Saving
         }
 
 
-        /// <summary>
-        /// Save the Starshine game to the save file
-        /// </summary>
-        /// <param name="data">OperationStarshineData to save</param>
-        public static void SaveOperationStarshine(OperationStarshineData data)
-        {
-            BinaryFormatter Formatter = new BinaryFormatter();
-            string SavePath = Application.persistentDataPath + "/Games/Operation Starshine/operationstarshine.masf";
-            FileStream Stream = new FileStream(SavePath, FileMode.OpenOrCreate);
+        ///// <summary>
+        ///// Save the Starshine game to the save file
+        ///// </summary>
+        ///// <param name="data">OperationStarshineData to save</param>
+        //public static void SaveOperationStarshine(OperationStarshineData data)
+        //{
+        //    BinaryFormatter Formatter = new BinaryFormatter();
+        //    string SavePath = Application.persistentDataPath + "/Games/Operation Starshine/operationstarshine.masf";
+        //    FileStream Stream = new FileStream(SavePath, FileMode.OpenOrCreate);
 
-            OperationStarshineData _data = data;
+        //    OperationStarshineData _data = data;
 
-            Formatter.Serialize(Stream, _data);
-            Stream.Close();
-        }
-
-
-        /// <summary>
-        /// Saves the player stats for each round played
-        /// </summary>
-        /// <param name="data">OperationStarshineData to save</param>
-        public static void SaveStarshinePlayerStats(OperationStarshineData data)
-        {
-            BinaryFormatter Formatter = new BinaryFormatter();
-            string SavePath = Application.persistentDataPath + "/Games/Operation Starshine/operationstarshine.masf";
-            FileStream Stream = new FileStream(SavePath, FileMode.OpenOrCreate);
-
-            OperationStarshineData _data = data;
-
-            Formatter.Serialize(Stream, _data);
-            Stream.Close();
-        }
+        //    Formatter.Serialize(Stream, _data);
+        //    Stream.Close();
+        //}
 
 
-        /// <summary>
-        /// Loads the data for operation starshine
-        /// </summary>
-        /// <returns>The Loaded OperationStarshineData</returns>
-        public static OperationStarshineData LoadOperationStarshine()
-        {
-            string SavePath = Application.persistentDataPath + "/Games/Operation Starshine/operationstarshine.masf";
+        ///// <summary>
+        ///// Saves the player stats for each round played
+        ///// </summary>
+        ///// <param name="data">OperationStarshineData to save</param>
+        //public static void SaveStarshinePlayerStats(OperationStarshineData data)
+        //{
+        //    BinaryFormatter Formatter = new BinaryFormatter();
+        //    string SavePath = Application.persistentDataPath + "/Games/Operation Starshine/operationstarshine.masf";
+        //    FileStream Stream = new FileStream(SavePath, FileMode.OpenOrCreate);
 
-            if (File.Exists(SavePath))
-            {
-                BinaryFormatter Formatter = new BinaryFormatter();
-                FileStream Stream = new FileStream(SavePath, FileMode.Open);
+        //    OperationStarshineData _data = data;
 
-                OperationStarshineData Data = Formatter.Deserialize(Stream) as OperationStarshineData;
-
-                Stream.Close();
-
-                return Data;
-            }
-            else
-            {
-                SaveOperationStarshine(new OperationStarshineData());
-                Debug.LogError("Save file not found! (OP:SS - Load)");
-                return null;
-            }
-        }
+        //    Formatter.Serialize(Stream, _data);
+        //    Stream.Close();
+        //}
 
 
-        /// <summary>
-        /// Loads the local leaderboard file for using in a local leaderboard
-        /// </summary>
-        /// <returns>The loaded StarshineLeaderboardData</returns>
+        ///// <summary>
+        ///// Loads the data for operation starshine
+        ///// </summary>
+        ///// <returns>The Loaded OperationStarshineData</returns>
+        //public static OperationStarshineData LoadOperationStarshine()
+        //{
+        //    string SavePath = Application.persistentDataPath + "/Games/Operation Starshine/operationstarshine.masf";
+
+        //    if (File.Exists(SavePath))
+        //    {
+        //        BinaryFormatter Formatter = new BinaryFormatter();
+        //        FileStream Stream = new FileStream(SavePath, FileMode.Open);
+
+        //        OperationStarshineData Data = Formatter.Deserialize(Stream) as OperationStarshineData;
+
+        //        Stream.Close();
+
+        //        return Data;
+        //    }
+        //    else
+        //    {
+        //        SaveOperationStarshine(new OperationStarshineData());
+        //        Debug.LogError("Save file not found! (OP:SS - Load)");
+        //        return null;
+        //    }
+        //}
+
+
+        ///// <summary>
+        ///// Loads the local leaderboard file for using in a local leaderboard
+        ///// </summary>
+        ///// <returns>The loaded StarshineLeaderboardData</returns>
         public static StarshineLeaderboardData LoadOperationStarshineLeaderboard()
         {
             string SavePath = Application.persistentDataPath + "/Games/Operation Starshine/operationstarshine.malf";
@@ -683,44 +683,44 @@ namespace CarterGames.Arcade.Saving
         /// Saves the Quacking Time game data
         /// </summary>
         /// <param name="data">QuackingTimeData to save</param>
-        public static void SaveQuackingTime(QuackingTimeData data)
-        {
-            BinaryFormatter Formatter = new BinaryFormatter();
-            string SavePath = Application.persistentDataPath + "/Games/Quacking Time/quackingtime.masf";
-            FileStream Stream = new FileStream(SavePath, FileMode.OpenOrCreate);
+        //public static void SaveQuackingTime(QuackingTimeData data)
+        //{
+        //    BinaryFormatter Formatter = new BinaryFormatter();
+        //    string SavePath = Application.persistentDataPath + "/Games/Quacking Time/quackingtime.masf";
+        //    FileStream Stream = new FileStream(SavePath, FileMode.OpenOrCreate);
 
-            QuackingTimeData _data = data;
+        //    QuackingTimeData _data = data;
 
-            Formatter.Serialize(Stream, _data);
-            Stream.Close();
-        }
+        //    Formatter.Serialize(Stream, _data);
+        //    Stream.Close();
+        //}
 
 
         /// <summary>
         /// Loads the Quacking Time game data
         /// </summary>
         /// <returns>The Loaded QuackingTimeData</returns>
-        public static QuackingTimeData LoadQuackingTime()
-        {
-            string SavePath = Application.persistentDataPath + "/Games/Quacking Time/quackingtime.masf";
+        //public static QuackingTimeData LoadQuackingTime()
+        //{
+        //    string SavePath = Application.persistentDataPath + "/Games/Quacking Time/quackingtime.masf";
 
-            if (File.Exists(SavePath))
-            {
-                BinaryFormatter Formatter = new BinaryFormatter();
-                FileStream Stream = new FileStream(SavePath, FileMode.Open);
+        //    if (File.Exists(SavePath))
+        //    {
+        //        BinaryFormatter Formatter = new BinaryFormatter();
+        //        FileStream Stream = new FileStream(SavePath, FileMode.Open);
 
-                QuackingTimeData _data = Formatter.Deserialize(Stream) as QuackingTimeData;
+        //        QuackingTimeData _data = Formatter.Deserialize(Stream) as QuackingTimeData;
 
-                Stream.Close();
+        //        Stream.Close();
 
-                return _data;
-            }
-            else
-            {
-                Debug.LogError("Save file not found! (Quacking Time - Load)");
-                return null;
-            }
-        }
+        //        return _data;
+        //    }
+        //    else
+        //    {
+        //        Debug.LogError("Save file not found! (Quacking Time - Load)");
+        //        return null;
+        //    }
+        //}
 
 
         /// =========================================================================================================================

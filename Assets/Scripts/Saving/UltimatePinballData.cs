@@ -20,15 +20,15 @@
         public int Player2Health = 0;
 
 
-        public UltimatePinballSessionData(UltimatePinball.GameManager.BG_PlayerStats Player1Stats, UltimatePinball.GameManager.BG_PlayerStats Player2Stats)
-        {
-            Player1Name = Player1Stats.Name;
-            Player1Score = Player1Stats.Score;
-            Player1Health = Player1Stats.Health;
-            Player2Name = Player2Stats.Name;
-            Player2Score = Player2Stats.Score;
-            Player2Health = Player2Stats.Health;
-        }
+        //public UltimatePinballSessionData(UltimatePinball.GameManager.BG_PlayerStats Player1Stats, UltimatePinball.GameManager.BG_PlayerStats Player2Stats)
+        //{
+        //    Player1Name = Player1Stats.Name;
+        //    Player1Score = Player1Stats.Score;
+        //    Player1Health = Player1Stats.Health;
+        //    Player2Name = Player2Stats.Name;
+        //    Player2Score = Player2Stats.Score;
+        //    Player2Health = Player2Stats.Health;
+        //}
 
         public UltimatePinballSessionData()
         {

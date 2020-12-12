@@ -247,7 +247,7 @@ namespace CarterGames.Arcade.Menu
                                     hasPopulated = true;
                                     break;
                                 case 3:
-                                    StartCoroutine(Call_CWIS(false));
+                                    //StartCoroutine(Call_CWIS(false));
                                     hasPopulated = true;
                                     break;
                                 default:
@@ -347,7 +347,7 @@ namespace CarterGames.Arcade.Menu
                 }
                 else if (activeData.gameTitlePos == 3)
                 {
-                    StartCoroutine(Call_CWIS(true));
+                    //StartCoroutine(Call_CWIS(true));
                 }
             }
             else
@@ -668,106 +668,106 @@ namespace CarterGames.Arcade.Menu
         /// Coroutine || Calls the CWIS leaderboard and sets up the leaderboard panel with the result, the amount of entries returned are based on the bool.
         /// </summary>
         /// <param name="getTopThree">should it only get the top three entries?</param>
-        private IEnumerator Call_CWIS(bool getTopThree)
-        {
-            List<CWIS.LeaderboardData> listData = new List<CWIS.LeaderboardData>();
+        //private IEnumerator Call_CWIS(bool getTopThree)
+        //{
+        //    List<CWIS.LeaderboardData> listData = new List<CWIS.LeaderboardData>();
 
-            List<string> ReceivedPlayerName = new List<string>();
-            List<string> ReceivedPlayerScore = new List<string>();
+        //    List<string> ReceivedPlayerName = new List<string>();
+        //    List<string> ReceivedPlayerScore = new List<string>();
 
-            UnityWebRequest Request = UnityWebRequest.Get(SaveManager.LoadOnlineBoardPath().onlineLeaderboardsBasePath + "/getcwis.php?");
+        //    UnityWebRequest Request = UnityWebRequest.Get(SaveManager.LoadOnlineBoardPath().onlineLeaderboardsBasePath + "/getcwis.php?");
 
-            yield return Request.SendWebRequest();
+        //    yield return Request.SendWebRequest();
 
-            if (getTopThree)
-            {
-                if (Request.error == null)
-                {
-                    string[] Values = Request.downloadHandler.text.Split("\r"[0]);
+        //    if (getTopThree)
+        //    {
+        //        if (Request.error == null)
+        //        {
+        //            string[] Values = Request.downloadHandler.text.Split("\r"[0]);
 
-                    for (int i = 0; i < 12; i++)
-                    {
-                        if (i % 2 == 0)
-                        {
-                            ReceivedPlayerName.Add(Values[i]);
-                        }
-                        else if (i % 2 == 1)
-                        {
-                            ReceivedPlayerScore.Add(Values[i]);
-                        }
-                        else
-                        {
-                            Debug.LogError("Value to added to any list!");
-                        }
-                    }
-
-
-                    for (int i = 0; i < 3; i++)
-                    {
-                        CWIS.LeaderboardData _data = new CWIS.LeaderboardData();
-
-                        _data.name = ReceivedPlayerName[i];
-                        _data.score = int.Parse(ReceivedPlayerScore[i]);
-
-                        listData.Add(_data);
-                    }
+        //            for (int i = 0; i < 12; i++)
+        //            {
+        //                if (i % 2 == 0)
+        //                {
+        //                    ReceivedPlayerName.Add(Values[i]);
+        //                }
+        //                else if (i % 2 == 1)
+        //                {
+        //                    ReceivedPlayerScore.Add(Values[i]);
+        //                }
+        //                else
+        //                {
+        //                    Debug.LogError("Value to added to any list!");
+        //                }
+        //            }
 
 
-                    for (int i = 0; i < 3; i++)
-                    {
-                        topThreeScores[i].GetComponentsInChildren<Text>()[1].text = listData[i].name;
-                        topThreeScores[i].GetComponentsInChildren<Text>()[2].text = listData[i].score.ToString();
-                    }
-                }
-            }
-            else
-            {
-                if (Request.error == null)
-                {
-                    string[] Values = Request.downloadHandler.text.Split("\r"[0]);
+        //            for (int i = 0; i < 3; i++)
+        //            {
+        //                CWIS.LeaderboardData _data = new CWIS.LeaderboardData();
 
-                    for (int i = 0; i < Values.Length - 1; i++)
-                    {
-                        if (i % 2 == 0)
-                        {
-                            ReceivedPlayerName.Add(Values[i]);
-                        }
-                        else if (i % 2 == 1)
-                        {
-                            ReceivedPlayerScore.Add(Values[i]);
-                        }
-                        else
-                        {
-                            Debug.LogError("Value to added to any list!");
-                        }
-                    }
+        //                _data.name = ReceivedPlayerName[i];
+        //                _data.score = int.Parse(ReceivedPlayerScore[i]);
+
+        //                listData.Add(_data);
+        //            }
 
 
-                    for (int i = 0; i < ReceivedPlayerName.Count; i++)
-                    {
-                        CWIS.LeaderboardData _data = new CWIS.LeaderboardData();
+        //            for (int i = 0; i < 3; i++)
+        //            {
+        //                topThreeScores[i].GetComponentsInChildren<Text>()[1].text = listData[i].name;
+        //                topThreeScores[i].GetComponentsInChildren<Text>()[2].text = listData[i].score.ToString();
+        //            }
+        //        }
+        //    }
+        //    else
+        //    {
+        //        if (Request.error == null)
+        //        {
+        //            string[] Values = Request.downloadHandler.text.Split("\r"[0]);
 
-                        _data.name = ReceivedPlayerName[i];
-                        _data.score = int.Parse(ReceivedPlayerScore[i]);
+        //            for (int i = 0; i < Values.Length - 1; i++)
+        //            {
+        //                if (i % 2 == 0)
+        //                {
+        //                    ReceivedPlayerName.Add(Values[i]);
+        //                }
+        //                else if (i % 2 == 1)
+        //                {
+        //                    ReceivedPlayerScore.Add(Values[i]);
+        //                }
+        //                else
+        //                {
+        //                    Debug.LogError("Value to added to any list!");
+        //                }
+        //            }
 
-                        listData.Add(_data);
-                    }
+
+        //            for (int i = 0; i < ReceivedPlayerName.Count; i++)
+        //            {
+        //                CWIS.LeaderboardData _data = new CWIS.LeaderboardData();
+
+        //                _data.name = ReceivedPlayerName[i];
+        //                _data.score = int.Parse(ReceivedPlayerScore[i]);
+
+        //                listData.Add(_data);
+        //            }
 
 
-                    LeaderboardPanel _lPanel = leaderboardPanels[activeData.infoPanelPos].GetComponentInChildren<LeaderboardPanel>();
-                    _lPanel.playerNames = new List<string>();
-                    _lPanel.playerScores = new List<string>();
+        //            LeaderboardPanel _lPanel = leaderboardPanels[activeData.infoPanelPos].GetComponentInChildren<LeaderboardPanel>();
+        //            _lPanel.playerNames = new List<string>();
+        //            _lPanel.playerScores = new List<string>();
 
-                    for (int i = 0; i < ReceivedPlayerName.Count; i++)
-                    {
-                        _lPanel.playerNames.Add(listData[i].name);
-                        _lPanel.playerScores.Add(listData[i].score.ToString());
-                    }
+        //            for (int i = 0; i < ReceivedPlayerName.Count; i++)
+        //            {
+        //                _lPanel.playerNames.Add(listData[i].name);
+        //                _lPanel.playerScores.Add(listData[i].score.ToString());
+        //            }
 
-                    _lPanel.PopulateLeaderboard();
-                }
-            }
-        }
+        //            _lPanel.PopulateLeaderboard();
+        //        }
+        //    }
+        //}
 
         /// <summary>
         /// Coroutine || Controls the delay between actions when you move around the menus
@@ -892,7 +892,7 @@ namespace CarterGames.Arcade.Menu
                         hasPopulated = true;
                         break;
                     case 3:
-                        StartCoroutine(Call_CWIS(false));
+                        //StartCoroutine(Call_CWIS(false));
                         hasPopulated = true;
                         break;
                     default:

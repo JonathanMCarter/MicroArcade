@@ -5,9 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Arcade/Arcade-Menu.unity
     guid: fab6fd8e3bb66c54fbed76b343884db3
@@ -23,45 +20,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Arcade/Arcade-Credits.unity
     guid: f131434c74ea1464cac259ae8016edd9
-  - enabled: 1
-    path: Assets/Scenes/Ultimate Pinball/Ultimate-Pinball-Level.unity
-    guid: cfebb361816661149907532101e850df
-  - enabled: 1
-    path: Assets/Scenes/Ultimate Pinball/Ultimate-Pinball-End.unity
-    guid: 7d62ca3e4bb5de349a4bb9c4603ce0f6
-  - enabled: 1
-    path: Assets/Scenes/Operation Starshine/Operation-Starshine-Level.unity
-    guid: 3ca77137432f720439ff932f5e3b492e
-  - enabled: 1
-    path: Assets/Scenes/Operation Starshine/Operation-Starshine-Lose.unity
-    guid: 0d0f3fa283479624cb47f9c45c807d71
-  - enabled: 1
-    path: Assets/Scenes/Operation Starshine/Operation-Starshine-Win.unity
-    guid: 610e154fa120bb7449b8cb5e3ec73452
-  - enabled: 1
-    path: Assets/Scenes/Quacking Time/QuackingTime-Menu.unity
-    guid: 954dfaf246dcb2b42970680e50377b41
-  - enabled: 1
-    path: Assets/Scenes/Quacking Time/QuackingTime-Level.unity
-    guid: 0cbc139b89984d04e91145be4beb6383
-  - enabled: 1
-    path: Assets/Scenes/Quacking Time/QuackingTime-End.unity
-    guid: 214d75b1823088843adb44c8a147032f
-  - enabled: 1
-    path: Assets/Scenes/CWIS/CWIS-Credits.unity
-    guid: f030c078ca20d9948aacf12cee01033f
-  - enabled: 1
-    path: Assets/Scenes/CWIS/CWIS-Game.unity
-    guid: f7f08488226a4204993382096bdcf42f
-  - enabled: 1
-    path: Assets/Scenes/CWIS/CWIS-Leaderboard.unity
-    guid: 51906b3b75f38714cbc7bd974868e677
-  - enabled: 1
-    path: Assets/Scenes/CWIS/CWIS-Menu.unity
-    guid: 113ac202222597841a79e81a2736001e
-  - enabled: 1
-    path: Assets/Scenes/CWIS/CWIS-Name.unity
-    guid: 4c48ffe9569a5c148953f780810d52e6
   - enabled: 1
     path: Assets/Scenes/Arcade/InputCheck.unity
     guid: 1bbeb142e26a7194a8fa3f874a36e30f

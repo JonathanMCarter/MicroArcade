@@ -65,9 +65,11 @@ namespace CarterGames.Arcade.Menu
 
         private void GoToGameMenu()
         {
-            SceneTransition.SetBool("ChangeScene", true);
-            PlayerPrefs.SetInt("GameSel", pos);
-            ChangeScene("Arcade-Game");
+            //SceneTransition.SetBool("ChangeScene", true);
+            //PlayerPrefs.SetInt("GameSel", pos);
+            //ChangeScene("Arcade-Game");
+
+            GameLauncher.Launch_CWIS();
         }
 
 
