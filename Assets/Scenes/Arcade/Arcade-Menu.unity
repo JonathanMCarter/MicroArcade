@@ -391,12 +391,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasScannedOnce: 1
-  shouldShowDir: 1
+  shouldShowDir: 0
   shouldShowClips: 0
   audioManagerFile: {fileID: 11400000, guid: f5e6423e55a048f4592a4d561c757c26, type: 2}
   lastAudioManagerFile: {fileID: 11400000, guid: f5e6423e55a048f4592a4d561c757c26,
     type: 2}
-  soundPrefab: {fileID: 977031777656076914, guid: c8aadc768be109f478c9aad2b841252d,
+  soundPrefab: {fileID: 977031777656076914, guid: c334a59351a9eb7479ddcdf99e1fd815,
     type: 3}
 --- !u!1 &76583743
 GameObject:

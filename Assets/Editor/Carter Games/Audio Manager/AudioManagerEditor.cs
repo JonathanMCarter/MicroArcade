@@ -5,28 +5,32 @@ using UnityEditor;
 using System.IO;
 using System.Linq;
 
-/*
+/************************************************************************************
  * 
- *							Audio Manager Editor Script
+ *							          Audio Manager
+ *							  
+ *				        Custom Audio Manager Inspector Editor Script
  *			
- *			Script written by: Jonathan Carter (https://jonathan.carter.games)
- *									Version: 2.3.3
- *							  Last Updated: 30/07/2020						
+ *			                        Script written by: 
+ *			        Jonathan Carter (https://jonathan.carter.games)
+ *			        
+ *									Version: 2.3.4
+ *						   Last Updated: 11/10/2020 (d/m/y)					
  * 
- * 
-*/
+*************************************************************************************/
 
 namespace CarterGames.Assets.AudioManager
 {
+    /// <summary>
+    /// Editor Class (*Not Static*) | The Audio Manager custom inspector editor script, should be placed in an /editor folder. 
+    /// </summary>
     [CustomEditor(typeof(AudioManager)), CanEditMultipleObjects]
     public class AudioManagerEditor : Editor
     {
         // Colours for the Editor Buttons
         private Color32 scanCol = new Color32(41, 176, 97, 255);
-        private Color32 scannedCol = new Color32(189, 191, 60, 255);
         private Color32 redCol = new Color32(190, 42, 42, 255);
 
-        private string scanButtonString;                // String for the value of the scan button text
         private bool shouldShowMessage;
 
         private List<AudioClip> audioList;              // List of Audioclips used to add the audio to the library in the Audio Manager Script
@@ -45,55 +49,34 @@ namespace CarterGames.Assets.AudioManager
         // Overrides the Inspector of the Audio Manager Script with this stuff...
         public override void OnInspectorGUI()
         {
-
             // References the Audio Manager Script
             audioManagerScript = (AudioManager)target;
 
-
+            // If the audio source is not attached
             if (!isSetup)
             {
-                // Adds an Audio Source to the gameobject this script is on if its not already there (used for previewing audio only) 
-                // * Hide flags hides it from the inspector so you don't notice it there *
-                if (audioManagerScript.gameObject.GetComponent<AudioSource>())
-                {
-                    audioManagerScript.gameObject.GetComponent<AudioSource>().hideFlags = HideFlags.HideInInspector;
-                    audioManagerScript.GetComponent<AudioSource>().playOnAwake = false;
-                }
-                else
-                {
-                    audioManagerScript.gameObject.AddComponent<AudioSource>();
-                    audioManagerScript.gameObject.GetComponent<AudioSource>().hideFlags = HideFlags.HideInInspector;
-                    audioManagerScript.GetComponent<AudioSource>().playOnAwake = false;
-                }
-
-                // Init Setup if needed (makes an audio folder and audio manager file for starts
+                // Init Setup if needed (makes an audio folder and audio manager file if not alreadt there and adds an audio source to the game object this is on so it can preview sounds)
                 FirstSetup();
+
+                // Sets the boolean values up to what they were set to last.
+                showDirectories = serializedObject.FindProperty("shouldShowDir").boolValue;
+                showClips = serializedObject.FindProperty("shouldShowClips").boolValue;
 
                 isSetup = true;
             }
 
 
-            // New in 2.3 - trying to fix erasing of data errors by making sure the script holds all the data
-            serializedObject.Update();
-
-            GUILayout.Space(10);
-
-
-            showDirectories = serializedObject.FindProperty("shouldShowDir").boolValue;
-            showClips = serializedObject.FindProperty("shouldShowClips").boolValue;
-
-
-            // Logo 'n' stuff - moved in 2.3.1 to clean up the method a bit
+            // Logo, Title & docs/discord links
             HeaderDisplay();
 
-            GUILayout.Space(10);
+            EditorGUILayout.BeginVertical("Box");
+            GUILayout.Space(5f);
 
-
+            // Audio Manager File (AMF) field
             EditorGUILayout.BeginHorizontal();
             SerializedProperty fileProp = serializedObject.FindProperty("audioManagerFile");
             EditorGUILayout.PropertyField(fileProp, new GUIContent("File In Use: "));
             EditorGUILayout.EndHorizontal();
-
 
 
             // if file exsists
@@ -108,26 +91,30 @@ namespace CarterGames.Assets.AudioManager
                 else if (audioManagerScript.lastAudioManagerFile != audioManagerScript.audioManagerFile)
                 {
                     audioManagerScript.lastAudioManagerFile = audioManagerScript.audioManagerFile;
-                    //audioManagerScript.UpdateLibrary();
                 }
 
-
                 EditorGUILayout.BeginHorizontal();
-
                 SerializedProperty prefabProp = serializedObject.FindProperty("soundPrefab");
                 EditorGUILayout.PropertyField(prefabProp, new GUIContent("Prefab: "));
 
-                // Saves the selection into the SO for future use... in theory
+                // Saves the selection into the SO for future use...
                 if (audioManagerScript.soundPrefab)
                 {
                     audioManagerScript.audioManagerFile.soundPrefab = audioManagerScript.soundPrefab;
-                    serializedObject.FindProperty("shouldShowDir").boolValue = true;
                 }
 
                 EditorGUILayout.EndHorizontal();
-                GUILayout.Space(15f);
+            }
 
 
+            GUILayout.Space(5f);
+            EditorGUILayout.EndVertical();
+
+            GUILayout.Space(10f);
+
+            if (audioManagerScript.audioManagerFile)
+            {
+                // Directories & Clips Buttons
                 if (audioManagerScript.audioManagerFile.soundPrefab != null)
                 {
                     EditorGUILayout.BeginHorizontal();
@@ -138,6 +125,7 @@ namespace CarterGames.Assets.AudioManager
                         if (GUILayout.Button("Show Directories", GUILayout.Width(120)))
                         {
                             serializedObject.FindProperty("shouldShowDir").boolValue = !serializedObject.FindProperty("shouldShowDir").boolValue;
+                            showDirectories = serializedObject.FindProperty("shouldShowDir").boolValue;
                         }
                     }
                     else
@@ -146,6 +134,7 @@ namespace CarterGames.Assets.AudioManager
                         if (GUILayout.Button("Hide Directories", GUILayout.Width(120)))
                         {
                             serializedObject.FindProperty("shouldShowDir").boolValue = !serializedObject.FindProperty("shouldShowDir").boolValue;
+                            showDirectories = serializedObject.FindProperty("shouldShowDir").boolValue;
                         }
                     }
 
@@ -155,6 +144,7 @@ namespace CarterGames.Assets.AudioManager
                         if (GUILayout.Button("Show Clips", GUILayout.Width(95)))
                         {
                             serializedObject.FindProperty("shouldShowClips").boolValue = !serializedObject.FindProperty("shouldShowClips").boolValue;
+                            showClips = serializedObject.FindProperty("shouldShowClips").boolValue;
                         }
                     }
                     else
@@ -163,6 +153,7 @@ namespace CarterGames.Assets.AudioManager
                         if (GUILayout.Button("Hide Clips", GUILayout.Width(95)))
                         {
                             serializedObject.FindProperty("shouldShowClips").boolValue = !serializedObject.FindProperty("shouldShowClips").boolValue;
+                            showClips = serializedObject.FindProperty("shouldShowClips").boolValue;
                         }
                     }
                     GUI.color = Color.white;
@@ -170,10 +161,12 @@ namespace CarterGames.Assets.AudioManager
                     EditorGUILayout.EndHorizontal();
 
 
-
+                    // Directories Display
                     if (showDirectories)
                     {
                         EditorGUILayout.Space();
+
+                        EditorGUILayout.BeginVertical("Box");
 
                         EditorGUILayout.BeginHorizontal();
                         GUILayout.FlexibleSpace();
@@ -205,12 +198,15 @@ namespace CarterGames.Assets.AudioManager
                                 audioManagerScript.audioManagerFile.directory = new List<string>();
                                 AddToDirectories(_newPath);
                                 audioManagerScript.audioManagerFile.hasDirectories = true;
+                                serializedObject.Update();
                             }
 
                             GUI.color = Color.white;
                             GUILayout.FlexibleSpace();
                             EditorGUILayout.EndHorizontal();
                         }
+
+                        EditorGUILayout.EndVertical();
                     }
                 }
 
@@ -224,34 +220,24 @@ namespace CarterGames.Assets.AudioManager
                 GUILayout.Space(10f);
 
 
+                // Clips Display
                 if (showClips)
                 {
+                    EditorGUILayout.BeginVertical("Box");
+
                     EditorGUILayout.BeginHorizontal();
                     GUILayout.FlexibleSpace();
                     EditorGUILayout.LabelField("Clips", EditorStyles.boldLabel, GUILayout.Width(45f));
                     GUILayout.FlexibleSpace();
                     EditorGUILayout.EndHorizontal();
-                }
 
-
-                EditorGUILayout.BeginHorizontal();
-                GUILayout.FlexibleSpace();
-
-
-                if (showClips)
-                {
-                    if (audioManagerScript.audioManagerFile.hasDirectories)
+                    if (CheckAmount() > 0)
                     {
-
-                      // Changes the text & colour of the first button based on if you've pressed it before or not
-                        if (serializedObject.FindProperty("hasScannedOnce").boolValue) { scanButtonString = "Re-Scan"; GUI.color = scannedCol; }
-                        else { scanButtonString = "Scan"; GUI.color = scanCol; }
-
-
-                        if (CheckAmount() > 0)
+                        if (audioManagerScript.audioManagerFile.hasDirectories && CheckAmount() > audioManagerScript.GetNumberOfClips())
                         {
                             serializedObject.FindProperty("hasScannedOnce").boolValue = true;  // Sets the has scanned once to true so the scan button turns into the re-scan button
-                                                                                               // Init Lists
+                            
+                            // Init Lists
                             audioList = new List<AudioClip>();
                             audioStrings = new List<string>();
 
@@ -264,36 +250,24 @@ namespace CarterGames.Assets.AudioManager
                             audioManagerScript.audioManagerFile.audioClip = audioList;
 
                             audioManagerScript.UpdateLibrary();
-
-
-                            GUI.color = Color.white;
+                            serializedObject.Update();
+                        }
+                        else if (audioManagerScript.audioManagerFile.hasDirectories && CheckAmount() == audioManagerScript.GetNumberOfClips())
+                        {
+                            DisplayNames();
                         }
                         else
                         {
-                            GUI.color = Color.white;
-                            EditorGUILayout.HelpBox("No clips found, please make sure there are clips in the directories specified", MessageType.Warning);
+                            // *** Labels ***
+                            HelpLabels();
                         }
-                    }
-                }
-
-                // Ends the grouping for the buttons
-                GUILayout.FlexibleSpace();
-                EditorGUILayout.EndHorizontal();
-
-
-                if (showClips)
-                {
-                    GUILayout.Space(10f);
-
-                    if (serializedObject.FindProperty("hasScannedOnce").boolValue)
-                    {
-                        DisplayNames();
                     }
                     else
                     {
-                        // *** Labels ***
-                        HelpLabels();
+                        EditorGUILayout.HelpBox("No audio clips found in your project.", MessageType.Warning);
                     }
+
+                    EditorGUILayout.EndVertical();
                 }
             }
             else
@@ -304,8 +278,8 @@ namespace CarterGames.Assets.AudioManager
                 EditorGUILayout.EndHorizontal();
                 EditorGUILayout.Space();
             }
-
-
+            
+            // applies and changes to SO's
             serializedObject.ApplyModifiedProperties();
         }
 
@@ -315,6 +289,20 @@ namespace CarterGames.Assets.AudioManager
         /// </summary>
         private void FirstSetup()
         {
+            // Adds an Audio Source to the gameobject this script is on if its not already there (used for previewing audio only) 
+            // * Hide flags hides it from the inspector so you don't notice it there *
+            if (audioManagerScript.gameObject.GetComponent<AudioSource>())
+            {
+                audioManagerScript.gameObject.GetComponent<AudioSource>().hideFlags = HideFlags.HideInInspector;
+                audioManagerScript.GetComponent<AudioSource>().playOnAwake = false;
+            }
+            else
+            {
+                audioManagerScript.gameObject.AddComponent<AudioSource>();
+                audioManagerScript.gameObject.GetComponent<AudioSource>().hideFlags = HideFlags.HideInInspector;
+                audioManagerScript.GetComponent<AudioSource>().playOnAwake = false;
+            }
+
             // Makes the audio directoy if it doesn't exist in your project
             // * This will not create a new folder if you already have an audio folder *
             // * As of V2 it will also create a new Audio Manager audioManagerFile if there isn't one in the audio folder *
@@ -346,15 +334,17 @@ namespace CarterGames.Assets.AudioManager
 
 
         /// <summary>
-        /// Shows the header info including logo, asset name and documentation button
+        /// Shows the header info including logo, asset name and documentation/discord buttons.
         /// </summary>
         private void HeaderDisplay()
         {
+            GUILayout.Space(10f);
             EditorGUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
 
 
-            // Shows either the Carter Games Logo or an alternative for if the icon is deleted when you import the package
+            // Shows either the Carter Games Logo or an alternative for if the icon is deleted/not included when you import the package
+            // Note: if you are using an older version of the asset, the directory/name of the logo may not match this and therefore will display the text title only
             if (Resources.Load<Texture2D>("Carter Games/Audio Manager/LogoAM"))
             {
                 if (GUILayout.Button(Resources.Load<Texture2D>("Carter Games/Audio Manager/LogoAM"), GUIStyle.none, GUILayout.Width(50), GUILayout.Height(50)))
@@ -362,21 +352,13 @@ namespace CarterGames.Assets.AudioManager
                     GUI.FocusControl(null);
                 }
             }
-            else
-            {
-                EditorGUILayout.BeginHorizontal();
-                GUILayout.FlexibleSpace();
-                EditorGUILayout.LabelField("Carter Games", EditorStyles.boldLabel, GUILayout.Width(100));
-                GUILayout.FlexibleSpace();
-                EditorGUILayout.EndHorizontal();
-            }
 
             GUILayout.FlexibleSpace();
             EditorGUILayout.EndHorizontal();
 
             GUILayout.Space(5f);
 
-            // Label that shows the name of the script / tool & the Version number for reference sake.
+            // Label that shows the name of the script / tool & the Version number for user reference sake.
             EditorGUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
             EditorGUILayout.LabelField("Audio Manager", EditorStyles.boldLabel, GUILayout.Width(102f));
@@ -385,33 +367,33 @@ namespace CarterGames.Assets.AudioManager
 
             EditorGUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
-            EditorGUILayout.LabelField("Version: 2.3.3", GUILayout.Width(85f));
+            EditorGUILayout.LabelField("Version: 2.3.4", GUILayout.Width(87.5f));
             GUILayout.FlexibleSpace();
             EditorGUILayout.EndHorizontal();
 
             GUILayout.Space(2.5f);
 
+            // Links to the docs and discord server for the user to access quickly if needed.
             EditorGUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
             if (GUILayout.Button("Documentation", GUILayout.Width(110f)))
             {
-                Application.OpenURL("http://carter.games/audiomanager/");
+                Application.OpenURL("https://carter.games/audiomanager");
             }
             GUI.color = Color.cyan;
             if (GUILayout.Button("Discord", GUILayout.Width(65f)))
             {
-                Application.OpenURL("http://carter.games/discord");
+                Application.OpenURL("https://carter.games/discord");
             }
             GUI.color = Color.white;
             GUILayout.FlexibleSpace();
             EditorGUILayout.EndHorizontal();
-
-            GUILayout.Space(5f);
+            GUILayout.Space(10f);
         }
 
 
         /// <summary>
-        /// Checks to see how many files are found from the sacn so it can be displayed
+        /// Checks to see how many files are found from the sacn so it can be displayed.
         /// </summary>
         /// <returns></returns>
         private int CheckAmount()
@@ -461,7 +443,7 @@ namespace CarterGames.Assets.AudioManager
 
 
         /// <summary>
-        /// Adds all strings for the found clips to the AMF
+        /// Adds all strings for the found clips to the AMF.
         /// </summary>
         private void AddStrings()
         {
@@ -496,7 +478,7 @@ namespace CarterGames.Assets.AudioManager
 
 
         /// <summary>
-        /// Adds all the audioclips to the AMF
+        /// Adds all the audioclips to the AMF.
         /// </summary>
         private void AddAudioClips()
         {
@@ -555,7 +537,7 @@ namespace CarterGames.Assets.AudioManager
 
 
         /// <summary>
-        /// Creates the display that is used to show all the clips with play/stop buttons next to them
+        /// Creates the display that is used to show all the clips with play/stop buttons next to them.
         /// </summary>
         private void DisplayNames()
         {
@@ -650,42 +632,6 @@ namespace CarterGames.Assets.AudioManager
         }
 
 
-
-        /// <summary>
-        /// Checks to see if all the directory strings match from the (asset file & script in use)
-        /// </summary>
-        /// <returns></returns>
-        private bool DoAllDirectoryStringsMatch()
-        {
-            int _check = 0;
-
-            if (audioManagerScript.audioManagerFile.directory.Count > 0)
-            {
-                for (int i = 0; i < audioManagerScript.audioManagerFile.directory.Count; i++)
-                {
-                    if (audioManagerScript.audioManagerFile.directory[i] == audioManagerScript.audioManagerFile.directory[i])
-                    {
-                        ++_check;
-                    }
-                }
-
-
-                if (_check == audioManagerScript.audioManagerFile.directory.Count)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-
         /// <summary>
         /// Checks to see if there are no directoires...
         /// </summary>
@@ -715,7 +661,7 @@ namespace CarterGames.Assets.AudioManager
 
 
         /// <summary>
-        /// Adds the value inputted to both directories
+        /// Adds the value inputted to both directories.
         /// </summary>
         /// <param name="value"></param>
         private void AddToDirectories(string value)
@@ -724,9 +670,8 @@ namespace CarterGames.Assets.AudioManager
         }
 
 
-
         /// <summary>
-        /// Displays the directories if there are more than one in the AMF
+        /// Displays the directories if there are more than one in the AMF.
         /// </summary>
         private void DirectoriesDisplay()
         {
@@ -768,7 +713,9 @@ namespace CarterGames.Assets.AudioManager
         }
 
 
-
+        /// <summary>
+        /// Shows a variety of help labels when stuff goes wrong, these just explain to the user what has happened and how they should go about fixing it.
+        /// </summary>
         private void HelpLabels()
         {
             if (audioManagerScript.audioManagerFile && audioManagerScript.audioManagerFile.directory.Count > 0)
@@ -779,17 +726,49 @@ namespace CarterGames.Assets.AudioManager
                     {
                         EditorGUILayout.Space();
                         EditorGUILayout.BeginHorizontal();
-                        EditorGUILayout.HelpBox("There are un-saved changes, press 're-scan' to update", MessageType.Info, true);
+
+                        string _errorString = null;
+
+                        if (audioManagerScript.audioManagerFile.directory.Count != 0)
+                        {
+                            _errorString = "No clips found in one of these directories, please check you have all directories spelt correctly:\n";
+
+                            for (int i = 0; i < audioManagerScript.audioManagerFile.directory.Count; i++)
+                            {
+                                _errorString = _errorString + "assets/audio/" + audioManagerScript.audioManagerFile.directory[i] + "\n";
+                            }
+                        }
+                        else
+                        {
+                            _errorString = "No clips found in: " + "assets/audio/";
+                        }
+
+                        EditorGUILayout.HelpBox(_errorString, MessageType.Info, true);
                         EditorGUILayout.EndHorizontal();
-                        EditorGUILayout.Space();
                     }
                     else if (audioManagerScript.audioManagerFile.audioClip.Count != CheckAmount())
                     {
                         EditorGUILayout.Space();
                         EditorGUILayout.BeginHorizontal();
-                        EditorGUILayout.HelpBox("There are un-saved changes, press 're-scan' to update.", MessageType.Info, true);
+
+                        string _errorString = null;
+
+                        if (audioManagerScript.audioManagerFile.directory.Count != 0)
+                        {
+                            _errorString = "No clips found in one of these directories, please check you have all directories spelt correctly:\n";
+
+                            for (int i = 0; i < audioManagerScript.audioManagerFile.directory.Count; i++)
+                            {
+                                _errorString = _errorString + "assets/audio/" + audioManagerScript.audioManagerFile.directory[i] + "\n";
+                            }
+                        }
+                        else
+                        {
+                            _errorString = "No clips found in: " + "assets/audio/";
+                        }
+
+                        EditorGUILayout.HelpBox(_errorString, MessageType.Info, true);
                         EditorGUILayout.EndHorizontal();
-                        EditorGUILayout.Space();
                     }
                     else if (CheckAmount() == 0)
                     {
@@ -819,14 +798,6 @@ namespace CarterGames.Assets.AudioManager
                     else
                     {
                     }
-                }
-                else if (!audioManagerScript.audioManagerFile.isPopulated && !shouldShowMessage)
-                {
-                    EditorGUILayout.Space();
-                    EditorGUILayout.BeginHorizontal();
-                    EditorGUILayout.HelpBox("Press Scan to Populate!", MessageType.Info, true);
-                    EditorGUILayout.EndHorizontal();
-                    EditorGUILayout.Space();
                 }
                 else if (shouldShowMessage)
                 {
