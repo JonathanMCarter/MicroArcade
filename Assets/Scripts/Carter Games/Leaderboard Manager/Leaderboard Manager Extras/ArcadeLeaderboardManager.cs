@@ -30,142 +30,142 @@ namespace CarterGames.Arcade.Leaderboard
         /// (STATIC) Get Ultimate Pinball Leaderboard Data
         /// </summary>
         /// <returns>UltimatePinballData</returns>
-        public static UltimatePinballLeaderboardData[] GetUltimatePinballLocal()
-        {
-            StringBuilder SavePath = new StringBuilder();
-            SavePath.Append(Application.persistentDataPath);
-            SavePath.Append("/Games/Ultimate Pinball/ultimatepinball.malf");
+        //public static UltimatePinballLeaderboardData[] GetUltimatePinballLocal()
+        //{
+        //    StringBuilder SavePath = new StringBuilder();
+        //    SavePath.Append(Application.persistentDataPath);
+        //    SavePath.Append("/Games/Ultimate Pinball/ultimatepinball.malf");
 
-            FileStream _stream = new FileStream(SavePath.ToString(), FileMode.Open);
+        //    FileStream _stream = new FileStream(SavePath.ToString(), FileMode.Open);
 
-            if (File.Exists(SavePath.ToString()) && _stream.Length > 0)
-            {
-                BinaryFormatter Formatter = new BinaryFormatter();
+        //    if (File.Exists(SavePath.ToString()) && _stream.Length > 0)
+        //    {
+        //        BinaryFormatter Formatter = new BinaryFormatter();
 
-                UltimatePinballLeaderboardData[] data = Formatter.Deserialize(_stream) as UltimatePinballLeaderboardData[];
+        //        UltimatePinballLeaderboardData[] data = Formatter.Deserialize(_stream) as UltimatePinballLeaderboardData[];
 
-                _stream.Close();
+        //        _stream.Close();
 
-                return data;
-            }
-            else
-            {
-                Debug.LogError("Leaderboard file not found! (Ultimate Pinball Leaderboard - Load)");
-                _stream.Close();
-                return null;
-            }
-        }
-
-
-        /// <summary>
-        /// (STATIC) Adds the inputted data to the local leaderboard.
-        /// </summary>
-        /// <param name="toAdd">Data to add</param>
-        public static void AddToUltimatePinballLocal(UltimatePinballLeaderboardData toAdd)
-        {
-
-            string SavePath = Application.persistentDataPath + "/Games/Ultimate Pinball/ultimatepinball.malf";
-
-            FileStream _stream = new FileStream(SavePath, FileMode.Open);
-
-            if (File.Exists(SavePath.ToString()) && _stream.Length > 0)
-            {
-                BinaryFormatter formatter = new BinaryFormatter();
-
-                List<UltimatePinballLeaderboardData> data = formatter.Deserialize(_stream) as List<UltimatePinballLeaderboardData>;
-
-                if (data.Count > 0)
-                {
-                    data.Add(toAdd);
-                }
-                else
-                {
-                    data = new List<UltimatePinballLeaderboardData>();
-                    data.Add(toAdd);
-                }
-
-                formatter.Serialize(_stream, data);
-
-                _stream.Close();
-            }
-            else
-            {
-                Debug.LogError("Leaderboard file not found! (Ultimate Pinball Leaderboard - Add To Local Board)");
-                _stream.Close();
-            }
-        }
+        //        return data;
+        //    }
+        //    else
+        //    {
+        //        Debug.LogError("Leaderboard file not found! (Ultimate Pinball Leaderboard - Load)");
+        //        _stream.Close();
+        //        return null;
+        //    }
+        //}
 
 
+        ///// <summary>
+        ///// (STATIC) Adds the inputted data to the local leaderboard.
+        ///// </summary>
+        ///// <param name="toAdd">Data to add</param>
+        //public static void AddToUltimatePinballLocal(UltimatePinballLeaderboardData toAdd)
+        //{
 
-        /// =========================================================================================================================
-        /// =========================================================================================================================
-        /// 
-        ///         Operation Starshine Methods
-        /// 
-        /// =========================================================================================================================
-        /// =========================================================================================================================
+        //    string SavePath = Application.persistentDataPath + "/Games/Ultimate Pinball/ultimatepinball.malf";
 
+        //    FileStream _stream = new FileStream(SavePath, FileMode.Open);
 
-        /// <summary>
-        /// (STATIC) Get Ultimate Pinball Leaderboard Data
-        /// </summary>
-        /// <returns>UltimatePinballData</returns>
-        public static StarshineLeaderboardData[] GetOperationStarshineLocal()
-        {
-            StringBuilder SavePath = new StringBuilder();
-            SavePath.Append(Application.persistentDataPath);
-            SavePath.Append("/Games/Operation Starshine/operationstarshine.malf");
+        //    if (File.Exists(SavePath.ToString()) && _stream.Length > 0)
+        //    {
+        //        BinaryFormatter formatter = new BinaryFormatter();
 
-            FileStream _stream = new FileStream(SavePath.ToString(), FileMode.Open);
+        //        List<UltimatePinballLeaderboardData> data = formatter.Deserialize(_stream) as List<UltimatePinballLeaderboardData>;
 
-            if (File.Exists(SavePath.ToString()) && _stream.Length > 0)
-            {
-                BinaryFormatter Formatter = new BinaryFormatter();
+        //        if (data.Count > 0)
+        //        {
+        //            data.Add(toAdd);
+        //        }
+        //        else
+        //        {
+        //            data = new List<UltimatePinballLeaderboardData>();
+        //            data.Add(toAdd);
+        //        }
 
-                StarshineLeaderboardData[] data = Formatter.Deserialize(_stream) as StarshineLeaderboardData[];
+        //        formatter.Serialize(_stream, data);
 
-                _stream.Close();
-
-                return data;
-            }
-            else
-            {
-                Debug.LogError("Leaderboard file not found! (Operation Starshine Leaderboard - Load)");
-                _stream.Close();
-                return null;
-            }
-        }
+        //        _stream.Close();
+        //    }
+        //    else
+        //    {
+        //        Debug.LogError("Leaderboard file not found! (Ultimate Pinball Leaderboard - Add To Local Board)");
+        //        _stream.Close();
+        //    }
+        //}
 
 
-        /// <summary>
-        /// (STATIC) Adds the inputted data to the local leaderboard.
-        /// </summary>
-        /// <param name="toAdd">Data to add</param>
-        public static void AddToOperationStarshineLocal(StarshineLeaderboardData toAdd)
-        {
-            StringBuilder SavePath = new StringBuilder();
-            SavePath.Append(Application.persistentDataPath);
-            SavePath.Append("/Games/Operation Starshine/operationstarshine.malf");
 
-            FileStream _stream = new FileStream(SavePath.ToString(), FileMode.Open);
+        ///// =========================================================================================================================
+        ///// =========================================================================================================================
+        ///// 
+        /////         Operation Starshine Methods
+        ///// 
+        ///// =========================================================================================================================
+        ///// =========================================================================================================================
 
-            if (File.Exists(SavePath.ToString()) && _stream.Length > 0)
-            {
-                BinaryFormatter Formatter = new BinaryFormatter();
 
-                List<StarshineLeaderboardData> data = Formatter.Deserialize(_stream) as List<StarshineLeaderboardData>;
+        ///// <summary>
+        ///// (STATIC) Get Ultimate Pinball Leaderboard Data
+        ///// </summary>
+        ///// <returns>UltimatePinballData</returns>
+        //public static StarshineLeaderboardData[] GetOperationStarshineLocal()
+        //{
+        //    StringBuilder SavePath = new StringBuilder();
+        //    SavePath.Append(Application.persistentDataPath);
+        //    SavePath.Append("/Games/Operation Starshine/operationstarshine.malf");
 
-                data.Add(toAdd);
+        //    FileStream _stream = new FileStream(SavePath.ToString(), FileMode.Open);
 
-                Formatter.Serialize(_stream, data);
+        //    if (File.Exists(SavePath.ToString()) && _stream.Length > 0)
+        //    {
+        //        BinaryFormatter Formatter = new BinaryFormatter();
 
-                _stream.Close();
-            }
-            else
-            {
-                Debug.LogError("Leaderboard file not found! (Operation Starshine - Add To Local Board)");
-                _stream.Close();
-            }
-        }
+        //        StarshineLeaderboardData[] data = Formatter.Deserialize(_stream) as StarshineLeaderboardData[];
+
+        //        _stream.Close();
+
+        //        return data;
+        //    }
+        //    else
+        //    {
+        //        Debug.LogError("Leaderboard file not found! (Operation Starshine Leaderboard - Load)");
+        //        _stream.Close();
+        //        return null;
+        //    }
+        //}
+
+
+        ///// <summary>
+        ///// (STATIC) Adds the inputted data to the local leaderboard.
+        ///// </summary>
+        ///// <param name="toAdd">Data to add</param>
+        //public static void AddToOperationStarshineLocal(StarshineLeaderboardData toAdd)
+        //{
+        //    StringBuilder SavePath = new StringBuilder();
+        //    SavePath.Append(Application.persistentDataPath);
+        //    SavePath.Append("/Games/Operation Starshine/operationstarshine.malf");
+
+        //    FileStream _stream = new FileStream(SavePath.ToString(), FileMode.Open);
+
+        //    if (File.Exists(SavePath.ToString()) && _stream.Length > 0)
+        //    {
+        //        BinaryFormatter Formatter = new BinaryFormatter();
+
+        //        List<StarshineLeaderboardData> data = Formatter.Deserialize(_stream) as List<StarshineLeaderboardData>;
+
+        //        data.Add(toAdd);
+
+        //        Formatter.Serialize(_stream, data);
+
+        //        _stream.Close();
+        //    }
+        //    else
+        //    {
+        //        Debug.LogError("Leaderboard file not found! (Operation Starshine - Add To Local Board)");
+        //        _stream.Close();
+        //    }
+        //}
     }
 }

@@ -7,7 +7,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 // Carter Games Namespaces
 using CarterGames.Arcade.Leaderboard;
 using CarterGames.Arcade.UserInput;
-using CarterGames.UltimatePinball;
+//using CarterGames.UltimatePinball;
 
 /*
 *  Copyright (c) Jonathan Carter
@@ -80,73 +80,73 @@ namespace CarterGames.Arcade.Saving
             /// =========================================================================================================================
             /// =========================================================================================================================
 
-            if (!Directory.Exists(baseSavePath + "/Games"))
-            {
-                Directory.CreateDirectory(baseSavePath + "/Games");
-            }
-
-            if (!Directory.Exists(baseSavePath + "/Games/Ultimate Pinball"))
-            {
-                Directory.CreateDirectory(baseSavePath + "/Games/Ultimate Pinball");
-            }
-
-            // /ultimatepinball.masf
-            if (!File.Exists(baseSavePath + "/Games/Ultimate Pinball/ultimatepinball.masf"))
-            {
-                _stream = new FileStream(baseSavePath + "/Games/Ultimate Pinball/ultimatepinball.masf", FileMode.Create);
-                UltimatePinballData _pinballData = new UltimatePinballData();
-                _formatter.Serialize(_stream, _pinballData);
-                _stream.Close();
-            }
-
-            // /ultimatepinballsession.masf
-            if (!File.Exists(baseSavePath + "/Games/Ultimate Pinball/ultimatepinballsession.masf"))
-            {
-                _stream = new FileStream(baseSavePath + "/Games/Ultimate Pinball/ultimatepinballsession.masf", FileMode.Create);
-                UltimatePinballSessionData _pinballSessionData = new UltimatePinballSessionData();
-                _formatter.Serialize(_stream, _pinballSessionData);
-                _stream.Close();
-            }
-
-            // /ultimatepinballsession.malf
-            if (!File.Exists(baseSavePath + "/Games/Ultimate Pinball/ultimatepinball.malf"))
-            {
-                _stream = new FileStream(baseSavePath + "/Games/Ultimate Pinball/ultimatepinball.malf", FileMode.Create);
-                _formatter.Serialize(_stream, null);
-                _stream.Close();
-            }
-
-
-            /// =========================================================================================================================
-            /// =========================================================================================================================
-            /// 
-            ///         Operation Starshine File Creation
-            /// 
-            /// =========================================================================================================================
-            /// =========================================================================================================================
-
-            if (!Directory.Exists(baseSavePath + "/Games/Operation Starshine"))
-            {
-                Directory.CreateDirectory(baseSavePath + "/Games/Operation Starshine");
-            }
-
-            // /operationstarshine.masf
-            //if (!File.Exists(baseSavePath + "/Games/Operation Starshine/operationstarshine.masf"))
+            //if (!Directory.Exists(baseSavePath + "/Games"))
             //{
-            //    _stream = new FileStream(baseSavePath + "/Games/Operation Starshine/operationstarshine.masf", FileMode.Create);
-            //    OperationStarshineData _operationStarshineData = new OperationStarshineData();
-            //    _formatter.Serialize(_stream, _operationStarshineData);
+            //    Directory.CreateDirectory(baseSavePath + "/Games");
+            //}
+
+            //if (!Directory.Exists(baseSavePath + "/Games/Ultimate Pinball"))
+            //{
+            //    Directory.CreateDirectory(baseSavePath + "/Games/Ultimate Pinball");
+            //}
+
+            //// /ultimatepinball.masf
+            //if (!File.Exists(baseSavePath + "/Games/Ultimate Pinball/ultimatepinball.masf"))
+            //{
+            //    _stream = new FileStream(baseSavePath + "/Games/Ultimate Pinball/ultimatepinball.masf", FileMode.Create);
+            //    UltimatePinballData _pinballData = new UltimatePinballData();
+            //    _formatter.Serialize(_stream, _pinballData);
             //    _stream.Close();
             //}
 
-            // /operationstarshine.malf
-            if (!File.Exists(baseSavePath + "/Games/Operation Starshine/operationstarshine.malf"))
-            {
-                _stream = new FileStream(baseSavePath + "/Games/Operation Starshine/operationstarshine.malf", FileMode.Create);
-                StarshineLeaderboardData _operationStarshineLeaderboardData = new StarshineLeaderboardData();
-                _formatter.Serialize(_stream, _operationStarshineLeaderboardData);
-                _stream.Close();
-            }
+            //// /ultimatepinballsession.masf
+            //if (!File.Exists(baseSavePath + "/Games/Ultimate Pinball/ultimatepinballsession.masf"))
+            //{
+            //    _stream = new FileStream(baseSavePath + "/Games/Ultimate Pinball/ultimatepinballsession.masf", FileMode.Create);
+            //    UltimatePinballSessionData _pinballSessionData = new UltimatePinballSessionData();
+            //    _formatter.Serialize(_stream, _pinballSessionData);
+            //    _stream.Close();
+            //}
+
+            //// /ultimatepinballsession.malf
+            //if (!File.Exists(baseSavePath + "/Games/Ultimate Pinball/ultimatepinball.malf"))
+            //{
+            //    _stream = new FileStream(baseSavePath + "/Games/Ultimate Pinball/ultimatepinball.malf", FileMode.Create);
+            //    _formatter.Serialize(_stream, null);
+            //    _stream.Close();
+            //}
+
+
+            ///// =========================================================================================================================
+            ///// =========================================================================================================================
+            ///// 
+            /////         Operation Starshine File Creation
+            ///// 
+            ///// =========================================================================================================================
+            ///// =========================================================================================================================
+
+            //if (!Directory.Exists(baseSavePath + "/Games/Operation Starshine"))
+            //{
+            //    Directory.CreateDirectory(baseSavePath + "/Games/Operation Starshine");
+            //}
+
+            //// /operationstarshine.masf
+            ////if (!File.Exists(baseSavePath + "/Games/Operation Starshine/operationstarshine.masf"))
+            ////{
+            ////    _stream = new FileStream(baseSavePath + "/Games/Operation Starshine/operationstarshine.masf", FileMode.Create);
+            ////    OperationStarshineData _operationStarshineData = new OperationStarshineData();
+            ////    _formatter.Serialize(_stream, _operationStarshineData);
+            ////    _stream.Close();
+            ////}
+
+            //// /operationstarshine.malf
+            //if (!File.Exists(baseSavePath + "/Games/Operation Starshine/operationstarshine.malf"))
+            //{
+            //    _stream = new FileStream(baseSavePath + "/Games/Operation Starshine/operationstarshine.malf", FileMode.Create);
+            //    StarshineLeaderboardData _operationStarshineLeaderboardData = new StarshineLeaderboardData();
+            //    _formatter.Serialize(_stream, _operationStarshineLeaderboardData);
+            //    _stream.Close();
+            //}
 
 
 
@@ -159,20 +159,20 @@ namespace CarterGames.Arcade.Saving
             /// =========================================================================================================================
 
 
-            if (!Directory.Exists(baseSavePath + "/Games/Quacking Time"))
-            {
-                Directory.CreateDirectory(baseSavePath + "/Games/Quacking Time");
-            }
+            //if (!Directory.Exists(baseSavePath + "/Games/Quacking Time"))
+            //{
+            //    Directory.CreateDirectory(baseSavePath + "/Games/Quacking Time");
+            //}
 
 
-            // /quackingtime.masf
-            if (!File.Exists(baseSavePath + "/Games/Quacking Time/quackingtime.masf"))
-            {
-                _stream = new FileStream(baseSavePath + "/Games/Quacking Time/quackingtime.masf", FileMode.Create);
-                QuackingTimeData _quackingTimeData = new QuackingTimeData();
-                _formatter.Serialize(_stream, _quackingTimeData);
-                _stream.Close();
-            }
+            //// /quackingtime.masf
+            //if (!File.Exists(baseSavePath + "/Games/Quacking Time/quackingtime.masf"))
+            //{
+            //    _stream = new FileStream(baseSavePath + "/Games/Quacking Time/quackingtime.masf", FileMode.Create);
+            //    QuackingTimeData _quackingTimeData = new QuackingTimeData();
+            //    _formatter.Serialize(_stream, _quackingTimeData);
+            //    _stream.Close();
+            //}
 
 
 
@@ -185,10 +185,10 @@ namespace CarterGames.Arcade.Saving
             /// =========================================================================================================================
 
 
-            if (!Directory.Exists(baseSavePath + "/Games/C.W.I.S"))
-            {
-                Directory.CreateDirectory(baseSavePath + "/Games/C.W.I.S");
-            }
+            //if (!Directory.Exists(baseSavePath + "/Games/C.W.I.S"))
+            //{
+            //    Directory.CreateDirectory(baseSavePath + "/Games/C.W.I.S");
+            //}
         }
 
 
@@ -250,17 +250,17 @@ namespace CarterGames.Arcade.Saving
         /// Saves Settings Data
         /// </summary>
         /// <param name="Settings">Settings Script With the data to save</param>
-        public static void SaveArcadeSettings(Menu.SettingsScript Settings)
-        {
-            BinaryFormatter Formatter = new BinaryFormatter();
-            string SavePath = Application.persistentDataPath + "/Arcade/settings.masf";
-            FileStream Stream = new FileStream(SavePath, FileMode.OpenOrCreate);
+        //public static void SaveArcadeSettings(Menu.SettingsScript Settings)
+        //{
+        //    BinaryFormatter Formatter = new BinaryFormatter();
+        //    string SavePath = Application.persistentDataPath + "/Arcade/settings.masf";
+        //    FileStream Stream = new FileStream(SavePath, FileMode.OpenOrCreate);
 
-            ArcadeData Data = new ArcadeData(Settings);
+        //    ArcadeData Data = new ArcadeData(Settings);
 
-            Formatter.Serialize(Stream, Data);
-            Stream.Close();
-        }
+        //    Formatter.Serialize(Stream, Data);
+        //    Stream.Close();
+        //}
 
 
         /// <summary>
@@ -569,16 +569,16 @@ namespace CarterGames.Arcade.Saving
         ///// Saves the last round to the local leaderboard save file for this game
         ///// </summary>
         ///// <param name="_leaderboardData">The StarshineLeaderboardData to save</param>
-        public static void SaveOperationStarshineToLocal(StarshineLeaderboardData _leaderboardData)
-        {
-            BinaryFormatter Formatter = new BinaryFormatter();
-            string SavePath = Application.persistentDataPath + "/Games/Operation Starshine/operationstarshine.malf";
+        //public static void SaveOperationStarshineToLocal(StarshineLeaderboardData _leaderboardData)
+        //{
+        //    BinaryFormatter Formatter = new BinaryFormatter();
+        //    string SavePath = Application.persistentDataPath + "/Games/Operation Starshine/operationstarshine.malf";
 
-            FileStream Stream = new FileStream(SavePath, FileMode.Append);
+        //    FileStream Stream = new FileStream(SavePath, FileMode.Append);
 
-            Formatter.Serialize(Stream, _leaderboardData);
-            Stream.Close();
-        }
+        //    Formatter.Serialize(Stream, _leaderboardData);
+        //    Stream.Close();
+        //}
 
 
         ///// <summary>
@@ -647,27 +647,27 @@ namespace CarterGames.Arcade.Saving
         ///// Loads the local leaderboard file for using in a local leaderboard
         ///// </summary>
         ///// <returns>The loaded StarshineLeaderboardData</returns>
-        public static StarshineLeaderboardData LoadOperationStarshineLeaderboard()
-        {
-            string SavePath = Application.persistentDataPath + "/Games/Operation Starshine/operationstarshine.malf";
+        //public static StarshineLeaderboardData LoadOperationStarshineLeaderboard()
+        //{
+        //    string SavePath = Application.persistentDataPath + "/Games/Operation Starshine/operationstarshine.malf";
 
-            if (File.Exists(SavePath))
-            {
-                BinaryFormatter Formatter = new BinaryFormatter();
-                FileStream Stream = new FileStream(SavePath, FileMode.Open);
+        //    if (File.Exists(SavePath))
+        //    {
+        //        BinaryFormatter Formatter = new BinaryFormatter();
+        //        FileStream Stream = new FileStream(SavePath, FileMode.Open);
 
-                StarshineLeaderboardData Data = Formatter.Deserialize(Stream) as StarshineLeaderboardData;
+        //        StarshineLeaderboardData Data = Formatter.Deserialize(Stream) as StarshineLeaderboardData;
 
-                Stream.Close();
+        //        Stream.Close();
 
-                return Data;
-            }
-            else
-            {
-                Debug.LogError("Save file not found! (OP:SS - Load)");
-                return null;
-            }
-        }
+        //        return Data;
+        //    }
+        //    else
+        //    {
+        //        Debug.LogError("Save file not found! (OP:SS - Load)");
+        //        return null;
+        //    }
+        //}
 
 
         /// =========================================================================================================================

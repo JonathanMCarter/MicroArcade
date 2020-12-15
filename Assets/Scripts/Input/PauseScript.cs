@@ -13,7 +13,7 @@ using CarterGames.Assets.AudioManager;
 
 namespace CarterGames.Arcade.UserInput
 {
-    public class PauseScript : MenuSystem
+    public class PauseScript : MonoBehaviour
     {
         [SerializeField] private GameObject[] menuObjects;
         [SerializeField] private AudioManager audioManager;
@@ -27,39 +27,14 @@ namespace CarterGames.Arcade.UserInput
         public Animator Trans;
         public Animator threeTwoOne;
 
-        private new void Start()
+        private void Start()
         {
             pauseAnim = GetComponent<Animator>();
-            MenuSystemStart();
-            maxPos = menuObjects.Length - 1;
-            am = audioManager;
         }
 
 
-        private new void Update()
+        private void Update()
         {
-            Control();
-
-            if (gamePaused)
-            {
-                MoveUD();
-                UpdateHoveringOption();
-
-                if (Confirm())
-                {
-                    switch (pos)
-                    {
-                        case 0:
-                            ResumeGame();
-                            break;
-                        case 1:
-                            ReturnToMenu();
-                            break;
-                        default:
-                            break;
-                    }
-                }
-            }
 
             if (timesPressed >= 3 && !gamePaused)
             {
@@ -79,73 +54,6 @@ namespace CarterGames.Arcade.UserInput
                 }
             }
         }
-
-
-        private void UpdateHoveringOption()
-        {
-            for (int i = 0; i < menuObjects.Length; i++)
-            {
-                if (pos == i && !menuObjects[i].GetComponent<Animator>().GetBool("isHover"))
-                {
-                    menuObjects[i].GetComponent<Animator>().SetBool("isHover", true);
-                }
-                else if (pos != i && menuObjects[i].GetComponent<Animator>().GetBool("isHover"))
-                {
-                    menuObjects[i].GetComponent<Animator>().SetBool("isHover", false);
-                }
-            }
-        }
-
-
-        private void Control()
-        {
-            switch (ControllerType)
-            {
-                case SupportedControllers.ArcadeBoard:
-
-                    if (ArcadeControls.ButtonPress(Joysticks.White, Buttons.B7))
-                    {
-                        ++timesPressed;
-                    }
-
-                    break;
-                case SupportedControllers.GamePadBoth:
-
-                    if (ControllerControls.ButtonPress(Players.P1, ControllerButtons.Return))
-                    {
-                        ++timesPressed;
-                    }
-
-                    break;
-                case SupportedControllers.KeyboardBoth:
-
-                    if (KeyboardControls.ButtonPress(Players.P1, Buttons.B7))
-                    {
-                        ++timesPressed;
-                    }
-
-                    break;
-                case SupportedControllers.KeyboardP1ControllerP2:
-
-                    if (KeyboardControls.ButtonPress(Players.P1, Buttons.B7))
-                    {
-                        ++timesPressed;
-                    }
-
-                    break;
-                case SupportedControllers.KeyboardP2ControllerP1:
-
-                    if (ControllerControls.ButtonPress(Players.P1, ControllerButtons.Return))
-                    {
-                        ++timesPressed;
-                    }
-
-                    break;
-                default:
-                    break;
-            }
-        }
-
 
         private void PauseGame()
         {

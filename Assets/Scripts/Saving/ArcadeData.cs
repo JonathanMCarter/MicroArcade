@@ -35,11 +35,11 @@ namespace CarterGames.Arcade.Saving
         }
 
 
-        public ArcadeData (Menu.SettingsScript Settings)
-        {
-            CabinetMusicVolume = Settings.MusicVolume;
-            CabinetSFXVolume = Settings.SFXVolume;
-        }
+        //public ArcadeData (Menu.SettingsScript Settings)
+        //{
+        //    CabinetMusicVolume = Settings.MusicVolume;
+        //    CabinetSFXVolume = Settings.SFXVolume;
+        //}
 
 
         public ArcadeData (SupportedControllers ControlScheme)
