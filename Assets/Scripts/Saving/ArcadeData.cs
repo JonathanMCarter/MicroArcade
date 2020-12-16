@@ -25,7 +25,7 @@ namespace CarterGames.Arcade.Saving
         public int QualityLevel;
 
 
-        public SupportedControllers SetMixedInputConfig;
+        //public SupportedControllers SetMixedInputConfig;
 
 
         public ArcadeData()
@@ -42,9 +42,9 @@ namespace CarterGames.Arcade.Saving
         //}
 
 
-        public ArcadeData (SupportedControllers ControlScheme)
-        {
-            SetMixedInputConfig = ControlScheme;
-        }
+        //public ArcadeData (SupportedControllers ControlScheme)
+        //{
+        //    SetMixedInputConfig = ControlScheme;
+        //}
     }
 }

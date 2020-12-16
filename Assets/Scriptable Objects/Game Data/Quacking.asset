@@ -9,16 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 874657b13d76e33448148dd764001d4e, type: 3}
+  m_Script: {fileID: 11500000, guid: ea30e1fbadc44fe4092166a06fe3e629, type: 3}
   m_Name: Quacking
   m_EditorClassIdentifier: 
-  gameTitlePos: 2
-  gameDesc: Play against eachother in this improved version of the game jam title
-    under the same title. Collect as many points as you can before the round ends!
-  gameBackground: {fileID: 21300000, guid: 398561655889c4447a7b2e9e29452b4a, type: 3}
-  supportedControls: 01010101
-  hasLeaderboard: 0
-  hasPlayPanel: 1
-  hasInfoPanel: 1
-  panels: 090000000a0000000b000000
-  infoPanelPos: 2
+  gameName: Quacking Time
+  gameDesc: 
+  gameBanner: {fileID: 21300000, guid: ccfe3d5f35acda84cb4ed1ca51559ebe, type: 3}
+  gameAuthor: Jonathan Carter
+  supportArcade: 1
+  supportController: 1
+  supportContKey: 1
+  supportKeyboard: 1

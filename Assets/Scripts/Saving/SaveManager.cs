@@ -267,17 +267,17 @@ namespace CarterGames.Arcade.Saving
         /// Saves Control Scheme
         /// </summary>
         /// <param name="Scheme">The supported controller setting to save</param>
-        public static void SaveArcadeControlScheme(SupportedControllers Scheme)
-        {
-            BinaryFormatter Formatter = new BinaryFormatter();
-            string SavePath = Application.persistentDataPath + "/Arcade/controlconfig.masf";
-            FileStream Stream = new FileStream(SavePath, FileMode.OpenOrCreate);
+        //public static void SaveArcadeControlScheme(SupportedControllers Scheme)
+        //{
+        //    BinaryFormatter Formatter = new BinaryFormatter();
+        //    string SavePath = Application.persistentDataPath + "/Arcade/controlconfig.masf";
+        //    FileStream Stream = new FileStream(SavePath, FileMode.OpenOrCreate);
 
-            ArcadeData Data = new ArcadeData(Scheme);
+        //    ArcadeData Data = new ArcadeData(Scheme);
 
-            Formatter.Serialize(Stream, Data);
-            Stream.Close();
-        }
+        //    Formatter.Serialize(Stream, Data);
+        //    Stream.Close();
+        //}
 
 
         /// <summary>

@@ -9,17 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 874657b13d76e33448148dd764001d4e, type: 3}
+  m_Script: {fileID: 11500000, guid: ea30e1fbadc44fe4092166a06fe3e629, type: 3}
   m_Name: Starshine
   m_EditorClassIdentifier: 
-  gameTitlePos: 1
-  gameDesc: Play together in this two player mini-campaign to free a star from captivity.
-    With 5 ships to choose from each with their own stats and abilities, defeat waves
-    of drones and AI enemies, ultimately defeating the final boss!
-  gameBackground: {fileID: 21300000, guid: ccdfa4fb428faa44ba1216a40dc8baee, type: 3}
-  supportedControls: 01010101
-  hasLeaderboard: 1
-  hasPlayPanel: 1
-  hasInfoPanel: 1
-  panels: 050000000600000007000000
-  infoPanelPos: 1
+  gameName: 'Operation: Starshine'
+  gameDesc: 
+  gameBanner: {fileID: 21300000, guid: 47cb041d39c803b43aab3e030fd3646e, type: 3}
+  gameAuthor: Jonathan Carter
+  supportArcade: 1
+  supportController: 1
+  supportContKey: 1
+  supportKeyboard: 1
