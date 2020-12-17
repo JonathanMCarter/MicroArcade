@@ -4,30 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - WorldSpaceCanvas
-  - HealthBarFill
-  - WhitePlayer
-  - BlackPlayer
-  - MainPoint
-  - AltPoint
-  - Shield
-  - MenuItem
-  - Waterie
-  - Gimme
-  - Lockie
-  - Speedie
-  - Deadie
   - SettingPanel
   - SettingOption
-  - MenuFade
   - AudioManager
-  - OP:SS:Harmful
-  - MusicPlayer
-  - PinballMusicPlayer
-  - StarshineMusicPlayer
-  - StarshineEnemyWeapons
-  - Explodie
-  - Paintie
   layers:
   - Default
   - TransparentFX
@@ -37,16 +16,16 @@ TagManager:
   - UI
   - 
   - 
-  - OP:SS:Bullet
-  - OP:SS:EM:Bullet
-  - OP:SS:Player
-  - OP:SS:EM
-  - OP:SS:Explosive
-  - OP:SS:EM:Explosive
-  - OP:SS:EM:Detection
-  - OP:SS:ReviveMe
-  - Post
-  - Quacking:Ground
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 
