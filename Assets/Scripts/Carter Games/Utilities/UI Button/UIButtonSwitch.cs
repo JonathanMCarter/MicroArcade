@@ -2,39 +2,109 @@
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using System.Collections;
-using CarterGames.Arcade;
 
-/*
-*  Copyright (c) Jonathan Carter
-*  E: jonathan@carter.games
-*  W: https://jonathan.carter.games/
-*/
+/****************************************************************************************************************************
+ * 
+ *  --{   Carter Games Utilities Script   }--
+ *							  
+ *  UI Button Switch
+ *	    A base class that make controller input on UI elements easier.
+ *	    
+ *	Requirements:
+ *	    - New Unity Input System
+ *	    - InputActions class called "Actions" (Edit Lines: 80, 110, 113, 131, 160, 164, 171, 175, 188, 192, 199, 203, 216, 220, 225, 229, if not)
+ *	    - Input Map called "Movement" of type Vector2 for controllers. (Edit Lines: 160, 164, 171, 175, 188, 192, 199, 203, 216, 220, 225, 229, if not)
+ *			
+ *  Written by:
+ *      Jonathan Carter
+ *      E: jonathan@carter.games
+ *      W: https://jonathan.carter.games
+ *			        
+ *	Last Updated: 18/12/2020 (d/m/y)				
+ * 
+****************************************************************************************************************************/
 
 namespace CarterGames.Utilities
 {
+    /// <summary>
+    /// Class | the base class for the UI Button Switch scripts. Handles the main funcionaility of the system.
+    /// </summary>
     public class UIButtonSwitch : MonoBehaviour
     {
+        /// <summary>
+        /// GameObject Array | A grouping of all the buttons in the menu to effect.
+        /// </summary>
         [Header("UI Buttons")]
+        [Tooltip("The buttons to effect, these should have UIBS Button Actions on them.")]
         [SerializeField] internal GameObject[] buttons;
         [Space(5f)]
+
+        /// <summary>
+        /// Bool | Defines whether or not the menu navigates up/down.
+        /// </summary>
+        [Tooltip("If the menu navigates Up/Down the set this to true, for Left/Right leave it false.")]
         [SerializeField] private bool isUD;
+
+        /// <summary>
+        /// Bool | Defines if the position should be reset when enabled.
+        /// </summary>
+        [Tooltip("Defines whether or not the position is reset when this manager is enabled.")]
         [SerializeField] private bool resetPos;
         [Space(5f)]
+
+        /// <summary>
+        /// Bool | Defines whether or not to use a grid format for the movement.
+        /// </summary>
+        [Tooltip("Defines whether or not to use all directions (grid format).")]
         [SerializeField] private bool useGrid;
+
+        /// <summary>
+        /// Int | Defines how many columns are in the grid format, not needed if grid format is not in use.
+        /// </summary>
         [SerializeField] private int maxColumns;
         [Space(5f)]
+
+        /// <summary>
+        /// UnityEvent | All effects to run on the active option.
+        /// </summary>
         [SerializeField] private UnityEvent effects;
 
-        [SerializeField] internal bool isCoR;
+        /// <summary>
+        /// Bool | Defines if the coroutine running? 
+        /// </summary>
+        internal bool isCoR;
 
+        /// <summary>
+        /// Actions | The input actions to check against (Edit if called something else).
+        /// </summary>
         internal Actions action;
+
+        /// <summary>
+        /// Bool | is the player using a controller?
+        /// </summary>
         internal bool isUsingController;
+
+        /// <summary>
+        /// Int | The position the user is at in the menu.
+        /// </summary>
         internal int pos;
+
+        /// <summary>
+        /// Int | The max position the user can be at.
+        /// </summary>
         internal int maxPos;
 
+        /// <summary>
+        /// InputDevice | The variable to check if a controller is active.
+        /// </summary>
         public InputDevice currentActiveDevice;
 
 
+        /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Unity OnEnable | Enables the input and position.
+        /// </summary>
+        /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         private void OnEnable()
         {
             action = new Actions();
@@ -50,6 +120,11 @@ namespace CarterGames.Utilities
         }
 
 
+        /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Unity OnDisable | Stops the input and all.
+        /// </summary>
+        /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         private void OnDisable()
         {
             StopAllCoroutines();
@@ -58,6 +133,11 @@ namespace CarterGames.Utilities
         }
 
 
+        /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Unity Start | Does basic setup for the position & runs the effects for the position 0 button.
+        /// </summary>
+        /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         private void Start()
         {
             pos = 0;
@@ -71,10 +151,17 @@ namespace CarterGames.Utilities
         }
 
 
+        /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Unity Update | Handles the movement around the menu & what controller is active if there is one.
+        /// </summary>
+        /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         private void Update()
         {
+            // Active Controller if enabled.
             isUsingController = IsControllerActive();
 
+            // The menu movement (Non grid).
             if (isUsingController)
             {
                 if (!isCoR)
@@ -133,6 +220,7 @@ namespace CarterGames.Utilities
             }
 
 
+            // The menu movement (Grid)
             if (!isCoR)
             {
                 if (useGrid)
@@ -158,6 +246,7 @@ namespace CarterGames.Utilities
             }
 
 
+            // Confirm Button.
             if (!isCoR)
             {
                 if (action.Menu.Accept.phase.Equals(InputActionPhase.Performed))
@@ -169,6 +258,11 @@ namespace CarterGames.Utilities
         }
 
 
+        /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Fixed Update | Used to set whether or not a controller is active.
+        /// </summary>
+        /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         private void FixedUpdate()
         {
             InputSystem.onActionChange += (obj, change) =>
@@ -183,10 +277,12 @@ namespace CarterGames.Utilities
         }
 
 
+        /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         /// <summary>
-        /// Updates the position in the menu.
+        /// Method | Updates the position in the menu.
         /// </summary>
         /// <param name="value">value to change to.</param>
+        /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         private void UpdatePos(int value, bool useGrid = false)
         {
             pos += value;
@@ -223,11 +319,12 @@ namespace CarterGames.Utilities
         }
 
 
-
+        /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         /// <summary>
-        /// Checks to see if a controller (either XB or PS is plugged in).
+        /// Method | Checks to see if a controller (either XB or PS is plugged in).
         /// </summary>
         /// <returns>True if there is a supported controller plugged in, false if not.</returns>
+        /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         private bool IsControllerActive()
         {
             if (currentActiveDevice != null)
@@ -240,9 +337,11 @@ namespace CarterGames.Utilities
         }
 
 
+        /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         /// <summary>
-        /// Runs a short button delay on the menu buttons.
+        /// Coroutine | Runs a short button delay on the menu buttons.
         /// </summary>
+        /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         internal IEnumerator ButtonDelay()
         {
             isCoR = true;
@@ -251,7 +350,11 @@ namespace CarterGames.Utilities
         }
 
 
-
+        /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Method | Forces the button delay to run.
+        /// </summary>
+        /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         private void ForceButtonDelay()
         {
             StartCoroutine(ButtonDelay());

@@ -1,71 +1,65 @@
 ﻿using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 /****************************************************************************************************************************
  * 
  *  --{   Carter Games Utilities Script   }--
  *							  
- *  UI Button Switch Back Option
- *	    Provides the option to have an event run on back option.
+ *	Dark Mode UI Image
+ *	    Adds options for light/dark mode for UI Text in the game, 
  *	    
- *	Requirements:
- *	    - an instance of the UI Button Switch class attached to the same GameObject.
- *	    - InputActions class "Actions"
- *	    - Input Map called "Back" configured to be a button for controllers.
+ *	Inherits From:
+ *	    Dark Mode UI
  *			
  *  Written by:
  *      Jonathan Carter
  *      E: jonathan@carter.games
  *      W: https://jonathan.carter.games
  *			        
- *	Last Updated: 18/12/2020 (d/m/y)				
+ *	Last Updated: 18/12/2020 (d/m/y)						
  * 
 ****************************************************************************************************************************/
 
 namespace CarterGames.Utilities
 {
     /// <summary>
-    /// Class | Controls the back action on a menu item.
+    /// Inheriting Class | Handles Dark Mode on UI Image elements.
     /// </summary>
-    public class UIBSBackOption : MonoBehaviour
+    public class DarkModeUIImage : DarkModeUI
     {
         /// <summary>
-        /// The events that should run on the "back" press.
+        /// Image | The image to edit.
         /// </summary>
-        [SerializeField] private UnityEvent backAction;
-
-        /// <summary>
-        /// UI Button Switch | Reference to the UI button switch script.
-        /// </summary>
-        private UIButtonSwitch uibs;
+        private Image img;
 
 
         /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         /// <summary>
-        /// Unity Awake | Only refers to the UIBS class.
+        /// Unity Awake | Runs the base class awake method as well as the needed code to reference the image itself.
         /// </summary>
         /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-        private void Awake()
+        private new void Awake()
         {
-            uibs = GetComponent<UIButtonSwitch>();
+            // reference to image
+            img = GetComponent<Image>();
+
+            // sets alpha if it is not set already xD.
+            base.Awake();
         }
 
 
         /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         /// <summary>
-        /// Unity Update | Runs the event when called.
+        /// Method | Sets the colour based on whether dark mode is on or off.
         /// </summary>
+        /// <param name="isDarkMode">Determines whether or not to use. Default is false.</param>
         /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-        private void Update()
+        public override void SetColour(bool isDarkMode = false)
         {
-            if (uibs.enabled && uibs.action != null && !uibs.isCoR)
-            {
-                if (uibs.action.Menu.Cancel.phase.Equals(InputActionPhase.Performed))
-                {
-                    backAction.Invoke();
-                }
-            }
+            if (isDarkMode && !img.color.Equals(base.darkModeColour))
+                img.color = base.darkModeColour;
+            else if (!isDarkMode && !img.color.Equals(base.lightModeColour))
+                img.color = base.lightModeColour;
         }
     }
 }

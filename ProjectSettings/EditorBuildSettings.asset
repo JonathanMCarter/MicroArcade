@@ -6,22 +6,22 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Arcade/Arcade-Menu.unity
+    path: Assets/Scenes/Arcade-Menu.unity
     guid: fab6fd8e3bb66c54fbed76b343884db3
   - enabled: 1
-    path: Assets/Scenes/Arcade/Arcade-Play.unity
+    path: Assets/Scenes/Arcade-Play.unity
     guid: 9e819e7cd38199f4d8952b494d21711c
   - enabled: 1
-    path: Assets/Scenes/Arcade/Arcade-Game.unity
+    path: Assets/Scenes/Arcade-Game.unity
     guid: 025ca1ca98df4644f8e1783f9174caa8
   - enabled: 1
-    path: Assets/Scenes/Arcade/Arcade-Settings.unity
+    path: Assets/Scenes/Arcade-Settings.unity
     guid: 834492c3d8ddbfd4a807d4a167cb7da7
   - enabled: 1
-    path: Assets/Scenes/Arcade/Arcade-Credits.unity
+    path: Assets/Scenes/Arcade-Credits.unity
     guid: f131434c74ea1464cac259ae8016edd9
   - enabled: 1
-    path: Assets/Scenes/Arcade/InputCheck.unity
+    path: Assets/Scenes/InputCheck.unity
     guid: 1bbeb142e26a7194a8fa3f874a36e30f
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: dcba5fcce19ba074f8ac3c7bb34eaa8d,

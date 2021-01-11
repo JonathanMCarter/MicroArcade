@@ -1,95 +1,92 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 /****************************************************************************************************************************
  * 
  *  --{   Carter Games Utilities Script   }--
  *							  
- *  UI Button Switch Enable / Disable
- *	    Enables or disables the elements in the defined array.
- *	    
- *	Requirements:
- *	    - an instance of the UI Button Switch class attached to the same GameObject.
+ *  Despawner
+ *	    Automatically despawns an object after a set time either via disable or destory.
  *			
  *  Written by:
  *      Jonathan Carter
  *      E: jonathan@carter.games
  *      W: https://jonathan.carter.games
  *			        
- *	Last Updated: 18/12/2020 (d/m/y)				
+ *	Last Updated: 18/12/2020 (d/m/y)						
  * 
 ****************************************************************************************************************************/
 
 namespace CarterGames.Utilities
 {
     /// <summary>
-    /// Class | UI Button Switch Scaling Effect, runs an enable/disable on the objects based on their current status.
+    /// Class | Despawns the object it is attached to.
     /// </summary>
-    public class UIBSEnableDisable : MonoBehaviour
+    public class Despawner : MonoBehaviour
     {
         /// <summary>
-        /// Bool | Defines if the effect should happen or not.
+        /// Enum | The choices for the despawner to use.
         /// </summary>
-        [Header("Enable/Disable Settings")]
-        [Tooltip("Controls if the effect should happen.")]
-        [SerializeField] private bool shouldEnableDisable;
+        private enum DespawnerChoices { Disable, Destroy };
 
         /// <summary>
-        /// GameObject Array | all elements to effect.
+        /// Float | defines how long the object has before it is removed.
         /// </summary>
-        [Tooltip("Defines what objects are toggled by this effect.")]
-        [SerializeField] private GameObject[] toEnableDisable;
+        [Header("Despawn Delay")]
+        [Tooltip("Set this to define how long the object will wait before despawning. Default Value = 1")]
+        [SerializeField] private float despawnTime = 1f;
 
         /// <summary>
-        /// UI Button Switch | Reference to the UI button switch script.
+        /// DespawnerChoice | the option to run when the timer runs out.
         /// </summary>
-        private UIButtonSwitch uibs;
+        [Header("Despawn Choice")]
+        [Tooltip("Pick an option for what happens when the despawn timer runer out.")]
+        [SerializeField] private DespawnerChoices choices;
 
 
         /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         /// <summary>
-        /// Unity Awake | Only refers to the UIBS class.
+        /// Unity OnEnable | When the object is enabled, start the corutine that will despawn the object.
         /// </summary>
         /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-        private void Awake()
+        private void OnEnable()
         {
-            uibs = GetComponent<UIButtonSwitch>();
+            StartCoroutine(DespawnCo());
         }
 
 
         /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         /// <summary>
-        /// Method | Runs the enable / disable effect.
+        /// Unity OnDisable | When the object is disabled, stop all corutines so it doesn't run more than it needs to.
         /// </summary>
         /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-        public void EnableDisable()
+        private void OnDisable()
         {
-            if (shouldEnableDisable)
-            {
-                for (int i = 0; i < toEnableDisable.Length; i++)
-                {
-                    if (!i.Equals(uibs.pos))
-                    {
-                        toEnableDisable[i].SetActive(false);
-                    }
-                    else
-                    {
-                        toEnableDisable[i].SetActive(true);
-                    }
-                }
-            }
+            StopAllCoroutines();
         }
 
 
         /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         /// <summary>
-        /// Method | Reverts the effect.
+        /// Coroutine | Despawns the object this is attached to as and when it is enabled.
         /// </summary>
         /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-        public void RevertEffect()
+        private IEnumerator DespawnCo()
         {
-            for (int i = 0; i < toEnableDisable.Length; i++)
+            // waits for the defined time.
+            yield return new WaitForSeconds(despawnTime);
+
+            // removes the object based on the user choice.
+            switch (choices)
             {
-                toEnableDisable[i].SetActive(true);
+                case DespawnerChoices.Disable:
+                    gameObject.SetActive(false);
+                    break;
+                case DespawnerChoices.Destroy:
+                    Destroy(gameObject);
+                    break;
+                default:
+                    break;
             }
         }
     }

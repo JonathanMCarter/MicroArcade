@@ -4,92 +4,87 @@
  * 
  *  --{   Carter Games Utilities Script   }--
  *							  
- *  UI Button Switch Enable / Disable
- *	    Enables or disables the elements in the defined array.
- *	    
- *	Requirements:
- *	    - an instance of the UI Button Switch class attached to the same GameObject.
+ *  Lock Rotation
+ *	    Forces a rotation to stay the same constantly.
  *			
  *  Written by:
  *      Jonathan Carter
  *      E: jonathan@carter.games
  *      W: https://jonathan.carter.games
  *			        
- *	Last Updated: 18/12/2020 (d/m/y)				
+ *	Last Updated: 18/12/2020 (d/m/y)						
  * 
 ****************************************************************************************************************************/
 
 namespace CarterGames.Utilities
 {
     /// <summary>
-    /// Class | UI Button Switch Scaling Effect, runs an enable/disable on the objects based on their current status.
+    /// Class | Locks the rotation of an object via code.
     /// </summary>
-    public class UIBSEnableDisable : MonoBehaviour
+    public class LockRotation : MonoBehaviour
     {
         /// <summary>
-        /// Bool | Defines if the effect should happen or not.
+        /// Bool | should the script use local rotation?
         /// </summary>
-        [Header("Enable/Disable Settings")]
-        [Tooltip("Controls if the effect should happen.")]
-        [SerializeField] private bool shouldEnableDisable;
+        [Header("Local or World Space?")]
+        [SerializeField] private bool useLocalRot;
 
         /// <summary>
-        /// GameObject Array | all elements to effect.
+        /// Bool | should the script use late update?
         /// </summary>
-        [Tooltip("Defines what objects are toggled by this effect.")]
-        [SerializeField] private GameObject[] toEnableDisable;
+        [Header("Late or standard Update Method?")]
+        [SerializeField] private bool useLateUpdate;
 
         /// <summary>
-        /// UI Button Switch | Reference to the UI button switch script.
+        /// Quaternion | the start rotation, set in start method.
         /// </summary>
-        private UIButtonSwitch uibs;
+        private Quaternion startRot;
 
 
         /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         /// <summary>
-        /// Unity Awake | Only refers to the UIBS class.
+        /// Unity Start | Sets the start rotation based on whther the local rotation or standard rotation should be used.
         /// </summary>
         /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-        private void Awake()
+        private void Start()
         {
-            uibs = GetComponent<UIButtonSwitch>();
+            if (!useLocalRot)
+                startRot = transform.rotation;
+            else
+                startRot = transform.localRotation;
         }
 
 
         /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         /// <summary>
-        /// Method | Runs the enable / disable effect.
+        /// Unity Update | Sets to rotation to the start rotation if it is not currently the start rotation. Only runs if it is set to not use Late Update.
         /// </summary>
         /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-        public void EnableDisable()
+        private void Update()
         {
-            if (shouldEnableDisable)
+            if (!useLateUpdate)
             {
-                for (int i = 0; i < toEnableDisable.Length; i++)
-                {
-                    if (!i.Equals(uibs.pos))
-                    {
-                        toEnableDisable[i].SetActive(false);
-                    }
-                    else
-                    {
-                        toEnableDisable[i].SetActive(true);
-                    }
-                }
+                if (!useLocalRot && !transform.rotation.Equals(startRot))
+                    transform.rotation = startRot;
+                else if (!transform.localRotation.Equals(startRot))
+                    transform.localRotation = startRot;
             }
         }
 
 
         /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         /// <summary>
-        /// Method | Reverts the effect.
+        /// Unity Late Update | Sets to rotation to the start rotation if it is not currently the start rotation. Only runs if it is set to not use Update.
         /// </summary>
         /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-        public void RevertEffect()
+        private void LateUpdate()
         {
-            for (int i = 0; i < toEnableDisable.Length; i++)
+            if (useLateUpdate)
             {
-                toEnableDisable[i].SetActive(true);
+                if (!useLocalRot && !transform.rotation.Equals(startRot))
+                    transform.rotation = startRot;
+                else if (!transform.localRotation.Equals(startRot))
+                    transform.localRotation = startRot;
             }
         }
     }
