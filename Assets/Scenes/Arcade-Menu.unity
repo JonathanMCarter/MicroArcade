@@ -154,7 +154,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 203549415}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 2}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -383,10 +383,10 @@ RectTransform:
   - {fileID: 1170956158}
   - {fileID: 76583744}
   - {fileID: 1640949404}
-  - {fileID: 1205580895}
   - {fileID: 593311088}
   - {fileID: 75351081}
   - {fileID: 2037675105}
+  - {fileID: 1205580895}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -913,7 +913,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 203549415}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 2.5}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1546,7 +1546,7 @@ RectTransform:
   - {fileID: 1621899218}
   - {fileID: 1643189087}
   m_Father: {fileID: 203549415}
-  m_RootOrder: 4
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2974,7 +2974,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 203549415}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -2}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3226,7 +3226,7 @@ PrefabInstance:
     - target: {fileID: 7144834606897778821, guid: 18f7de4359675e441af5c50a00a9506e,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 3.4001465
+      value: 3.3999023
       objectReference: {fileID: 0}
     - target: {fileID: 7210337654486658897, guid: 18f7de4359675e441af5c50a00a9506e,
         type: 3}
@@ -3333,20 +3333,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7210337654486658898, guid: 18f7de4359675e441af5c50a00a9506e,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7210337654486658909, guid: 18f7de4359675e441af5c50a00a9506e,
         type: 3}
       propertyPath: m_Name
       value: Canvas (Overlay) - Fade (White)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7210337654486658909, guid: 18f7de4359675e441af5c50a00a9506e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18f7de4359675e441af5c50a00a9506e, type: 3}

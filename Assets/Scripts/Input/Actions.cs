@@ -355,6 +355,261 @@ namespace CarterGames.Arcade
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Controls"",
+            ""id"": ""37c412bf-2d08-45c9-8c97-fbd0349c6770"",
+            ""actions"": [
+                {
+                    ""name"": ""Joystick"",
+                    ""type"": ""Value"",
+                    ""id"": ""da28a17f-0b34-4ce9-b7e6-55d3f0e0114a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Button 1"",
+                    ""type"": ""Value"",
+                    ""id"": ""c083af74-5972-45ae-9f10-6fcef34a6c06"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""Arcade"",
+                    ""id"": ""eb2ae834-c3c2-474c-8672-c80bec16076f"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Joystick"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""28603495-6f23-4d3d-a95d-52e562749d2f"",
+                    ""path"": ""<HID::DragonRise Inc.   Generic   USB  Joystick  >/stick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Arcade"",
+                    ""action"": ""Joystick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""33725d5d-0e71-4ed9-8e3c-771e9d01ac5a"",
+                    ""path"": ""<HID::DragonRise Inc.   Generic   USB  Joystick  >/stick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Arcade"",
+                    ""action"": ""Joystick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""a425154f-1861-4f9b-8cdc-51a263f6eee1"",
+                    ""path"": ""<HID::DragonRise Inc.   Generic   USB  Joystick  >/stick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Arcade"",
+                    ""action"": ""Joystick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""aeb9843b-f138-4e48-88c0-f62d5ee758ed"",
+                    ""path"": ""<HID::DragonRise Inc.   Generic   USB  Joystick  >/stick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Arcade"",
+                    ""action"": ""Joystick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Controller/Joystick"",
+                    ""id"": ""ad5507de-09d2-4f6b-9222-6c11315dba10"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Joystick"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""037fd8a7-7a46-4f3b-a047-45adac754a58"",
+                    ""path"": ""<Gamepad>/leftStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Joystick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""6d99d15c-2732-4581-b8f8-6faf539ab9f6"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Joystick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""515b8a4b-b9f7-4052-bcdc-a3e623c299db"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Joystick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""e56a8944-29a8-4b23-9301-c9b8f52ecc71"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Joystick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Keyboard-WASD"",
+                    ""id"": ""d2ec5bd7-fd0c-46e6-b1b0-47acab7b60d6"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Joystick"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""f0e41720-2e40-478d-b109-b013d67f0e61"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Joystick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""f7ab713a-69cb-4687-bb08-a8c5fe85e67d"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Joystick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""0195d94d-a643-40c7-8e8f-721515d2f0ff"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Joystick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""e19ea545-8464-4f3d-a1be-50250ac1be75"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Joystick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Keyboard-ArrowKeys"",
+                    ""id"": ""39f7e1c0-68db-4cad-abae-901069dbc67c"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Joystick"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""b163dc2c-ddb0-418e-b5f2-4f8b9a92db33"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Joystick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""b83e55d8-1bc7-4eea-8416-e6e2224a6fe7"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Joystick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""eb9d39a5-ca8b-44aa-936d-ae4d2a0a360d"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Joystick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""42f902fd-9eb8-45b1-bee1-39be05d2db79"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Joystick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""337c733f-e7bc-4e3a-b049-33997cacfcfb"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Button 1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -403,6 +658,10 @@ namespace CarterGames.Arcade
             m_Menu_Movement = m_Menu.FindAction("Movement", throwIfNotFound: true);
             m_Menu_Accept = m_Menu.FindAction("Accept", throwIfNotFound: true);
             m_Menu_Cancel = m_Menu.FindAction("Cancel", throwIfNotFound: true);
+            // Controls
+            m_Controls = asset.FindActionMap("Controls", throwIfNotFound: true);
+            m_Controls_Joystick = m_Controls.FindAction("Joystick", throwIfNotFound: true);
+            m_Controls_Button1 = m_Controls.FindAction("Button 1", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -497,6 +756,47 @@ namespace CarterGames.Arcade
             }
         }
         public MenuActions @Menu => new MenuActions(this);
+
+        // Controls
+        private readonly InputActionMap m_Controls;
+        private IControlsActions m_ControlsActionsCallbackInterface;
+        private readonly InputAction m_Controls_Joystick;
+        private readonly InputAction m_Controls_Button1;
+        public struct ControlsActions
+        {
+            private @Actions m_Wrapper;
+            public ControlsActions(@Actions wrapper) { m_Wrapper = wrapper; }
+            public InputAction @Joystick => m_Wrapper.m_Controls_Joystick;
+            public InputAction @Button1 => m_Wrapper.m_Controls_Button1;
+            public InputActionMap Get() { return m_Wrapper.m_Controls; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(ControlsActions set) { return set.Get(); }
+            public void SetCallbacks(IControlsActions instance)
+            {
+                if (m_Wrapper.m_ControlsActionsCallbackInterface != null)
+                {
+                    @Joystick.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnJoystick;
+                    @Joystick.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnJoystick;
+                    @Joystick.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnJoystick;
+                    @Button1.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnButton1;
+                    @Button1.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnButton1;
+                    @Button1.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnButton1;
+                }
+                m_Wrapper.m_ControlsActionsCallbackInterface = instance;
+                if (instance != null)
+                {
+                    @Joystick.started += instance.OnJoystick;
+                    @Joystick.performed += instance.OnJoystick;
+                    @Joystick.canceled += instance.OnJoystick;
+                    @Button1.started += instance.OnButton1;
+                    @Button1.performed += instance.OnButton1;
+                    @Button1.canceled += instance.OnButton1;
+                }
+            }
+        }
+        public ControlsActions @Controls => new ControlsActions(this);
         private int m_ControllerSchemeIndex = -1;
         public InputControlScheme ControllerScheme
         {
@@ -529,6 +829,11 @@ namespace CarterGames.Arcade
             void OnMovement(InputAction.CallbackContext context);
             void OnAccept(InputAction.CallbackContext context);
             void OnCancel(InputAction.CallbackContext context);
+        }
+        public interface IControlsActions
+        {
+            void OnJoystick(InputAction.CallbackContext context);
+            void OnButton1(InputAction.CallbackContext context);
         }
     }
 }

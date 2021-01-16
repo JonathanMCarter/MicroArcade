@@ -24,18 +24,14 @@ namespace CarterGames.Arcade
         private void Start()
         {
             if (gameInfo)
-            {
                 UpdateValues();
-            }
-            else
-            {
-                _gameTitle.text = "-----";
-            }
         }
 
 
         private void UpdateValues()
         {
+            Debug.Log("Updating Values");
+
             // Set values
             _gameTitle.text = gameInfo.gameName;
             _gameAuthor.text = gameInfo.gameAuthor;
@@ -67,13 +63,15 @@ namespace CarterGames.Arcade
 
 
         /// <summary>
-        /// Sets the game data to the input so the popup is correct xD.
+        /// Method | Sets the game data to the input so the popup is correct xD.
         /// </summary>
-        /// <param name="_newData">GameData to set to.</param>
-        public void SetGameData(GameData _newData)
+        public void SetGameData()
         {
-            gameInfo = _newData;
-            UpdateValues();
+            if (GetComponent<GamePanel>() && GetComponent<GamePanel>().gameInfo != null)
+            {
+                gameInfo = GetComponent<GamePanel>().gameInfo;
+                UpdateValues();
+            }
         }
     }
 }

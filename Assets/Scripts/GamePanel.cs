@@ -31,9 +31,7 @@ namespace CarterGames.Arcade
                 _gameBanner.sprite = gameInfo.gameBanner;
             }
             else
-            {
-                _gameTitle.text = "-----";
-            }
+                _gameTitle.text = string.Empty;
         }
     }
 }
