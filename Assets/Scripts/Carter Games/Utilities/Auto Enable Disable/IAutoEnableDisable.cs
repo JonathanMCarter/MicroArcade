@@ -1,3 +1,5 @@
+using System.Collections;
+
 /****************************************************************************************************************************
  * 
  *  --{   Carter Games Utilities Script   }--
@@ -23,6 +25,8 @@ namespace CarterGames.Utilities
 
     public interface IAutoEnableDisable
     {
-        void Awake();
+        void OnEnable();
+        void OnDisable();
+        IEnumerator DelayCo();
     }
 }

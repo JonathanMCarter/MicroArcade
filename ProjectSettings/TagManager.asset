@@ -7,6 +7,9 @@ TagManager:
   - SettingPanel
   - SettingOption
   - AudioManager
+  - MenuFade
+  - Enemy
+  - Bullet
   layers:
   - Default
   - TransparentFX

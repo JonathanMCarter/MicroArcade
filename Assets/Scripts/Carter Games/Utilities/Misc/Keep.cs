@@ -15,7 +15,7 @@
  *      E: jonathan@carter.games
  *      W: https://jonathan.carter.games
  *			        
- *	Last Updated: 09/01/2021 (d/m/y)						
+ *	Last Updated: 17/01/2021 (d/m/y)						
  * 
 ****************************************************************************************************************************/
 
@@ -48,6 +48,39 @@ namespace CarterGames.Utilities
                     return max;
                 else
                     return 0;
+            }
+        }
+
+
+        /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Method | Keeps a Vector2 within the defined vector2's provided.
+        ///   Added In: Micro Arcade.
+        /// </summary>
+        /// <param name="vectorToEdit">The vector2 to edit.</param>
+        /// <param name="minVec">Min Vector2.</param>
+        /// <param name="maxVec">Max Vector2.</param>
+        /// <returns>Vector2 | The vector2 kept within its bounds.</returns>
+        /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        public static Vector2 WithinBounds(Vector2 vectorToEdit, Vector2 minVec, Vector2 maxVec)
+        {
+            if (vectorToEdit.x > minVec.x && vectorToEdit.x < maxVec.x && vectorToEdit.y > minVec.y && vectorToEdit.y < maxVec.y)
+                return vectorToEdit;
+            else
+            {
+                if (vectorToEdit.x < minVec.x)
+                    vectorToEdit.x = minVec.x;
+
+                if (vectorToEdit.x > maxVec.x)
+                    vectorToEdit.x = maxVec.x;
+
+                if (vectorToEdit.y < minVec.y)
+                    vectorToEdit.y = minVec.y;
+
+                if (vectorToEdit.y > maxVec.y)
+                    vectorToEdit.y = maxVec.y;
+
+                return vectorToEdit;
             }
         }
     }

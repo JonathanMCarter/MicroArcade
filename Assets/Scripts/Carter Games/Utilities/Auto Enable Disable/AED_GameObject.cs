@@ -22,12 +22,11 @@ using System.Collections;
 
 namespace CarterGames.Utilities
 {
-    public class AED_Canvas : MonoBehaviour, IAutoEnableDisable
+    public class AED_GameObject : MonoBehaviour, IAutoEnableDisable
     {
-        private Canvas canvas;
-        private WaitForSeconds wait;
         public AED_Options options;
         public float delay;
+        private WaitForSeconds wait;
 
 
         public void OnDisable()
@@ -36,16 +35,10 @@ namespace CarterGames.Utilities
         }
 
 
-        private void Start()
-        {
-            canvas = GetComponent<Canvas>();
-        }
-
-
         public void OnEnable()
         {
-            StartCoroutine(DelayCo());
             wait = new WaitForSeconds(delay);
+            StartCoroutine(DelayCo());
         }
 
 
@@ -56,10 +49,10 @@ namespace CarterGames.Utilities
             switch (options)
             {
                 case AED_Options.Enable:
-                    canvas.enabled = true;
+                    this.gameObject.SetActive(true);
                     break;
                 case AED_Options.Disable:
-                    canvas.enabled = false;
+                    this.gameObject.SetActive(false);
                     break;
                 case AED_Options.None:
                     break;

@@ -370,7 +370,7 @@ namespace CarterGames.Arcade
                 },
                 {
                     ""name"": ""Button 1"",
-                    ""type"": ""Value"",
+                    ""type"": ""Button"",
                     ""id"": ""c083af74-5972-45ae-9f10-6fcef34a6c06"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -604,7 +604,7 @@ namespace CarterGames.Arcade
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard"",
                     ""action"": ""Button 1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false

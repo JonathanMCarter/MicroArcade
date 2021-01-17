@@ -13,6 +13,7 @@ namespace CarterGames.Arcade.Credits
     /// <summary>
     /// Class | Controls the player functionality in the credits game.
     /// </summary>
+    [RequireComponent(typeof(SpriteRenderer), typeof(Rigidbody2D))]
     public class Player : MonoBehaviour
     {
         [Header("Player Variables")]
@@ -61,8 +62,9 @@ namespace CarterGames.Arcade.Credits
         /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         private void Awake()
         {
+            sr = GetComponent<SpriteRenderer>();
             rb = GetComponent<Rigidbody2D>();
-            wait = new WaitForSeconds(.15f);
+            wait = new WaitForSeconds(.05f);
         }
 
 
@@ -74,6 +76,7 @@ namespace CarterGames.Arcade.Credits
         private void Start()
         {
             BulletPoolSetup();
+            canShoot = true;
         }
 
 
@@ -96,7 +99,18 @@ namespace CarterGames.Arcade.Credits
         /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         private void FixedUpdate()
         {
-            rb.velocity = actions.Controls.Joystick.ReadValue<Vector2>();
+            rb.velocity = actions.Controls.Joystick.ReadValue<Vector2>() * moveSpd * Time.deltaTime;
+        }
+
+
+        /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Unity LateUpdate Method | Keeps the player ship in the bounds of the level.
+        /// </summary>
+        /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        private void LateUpdate()
+        {
+            transform.position = Keep.WithinBounds(transform.position, new Vector2(-8f, -3f), new Vector2(0f, 3f));
         }
 
 
@@ -129,8 +143,11 @@ namespace CarterGames.Arcade.Credits
             {
                 if (!bulletPool[i].activeSelf)
                 {
-                    bulletPool[i].transform.position = transform.position;
-                    bulletPool[i].GetComponent<Rigidbody2D>().velocity = Vector2.right * bulletMoveSpd * Time.deltaTime;
+                    if ((i % 6) <= 2)
+                        bulletPool[i].transform.position = transform.GetChild(0).position;
+                    else
+                        bulletPool[i].transform.position = transform.GetChild(1).position;
+
                     bulletPool[i].SetActive(true);
                     StartCoroutine(BulletCo());
                     break;
