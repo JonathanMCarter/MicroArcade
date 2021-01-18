@@ -102,7 +102,7 @@ namespace CarterGames.Utilities
             }
             else if (shouldCameraShake && is2D)
             {
-                mainCamera.transform.localPosition += new Vector3(Random.insideUnitSphere.x * shakeAmount, Random.insideUnitSphere.y * shakeAmount, mainCamera.transform.position.z);
+                mainCamera.transform.localPosition += new Vector3(Random.insideUnitSphere.x * shakeAmount, mainCamera.transform.position.y, Random.insideUnitSphere.z * shakeAmount);
             }
 
             if ((shouldCameraShake) && (!isCoRunning))

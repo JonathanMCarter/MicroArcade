@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using CarterGames.Utilities;
 
 /*
 *  Copyright (c) Jonathan Carter
@@ -9,14 +10,22 @@ using UnityEngine.UI;
 
 namespace CarterGames.Arcade.Credits
 {
+    [RequireComponent(typeof(Rigidbody2D))]
     public class Enemy : MonoBehaviour
     {
         [SerializeField] private Slider healthBar;
+        private CameraShakeScript camshake;
+        private Rigidbody2D rb;
         public int health;
+        public float moveSpd;
+
 
         private void Start()
         {
             healthBar.maxValue = health;
+            camshake = FindObjectOfType<CameraShakeScript>();
+            rb = GetComponent<Rigidbody2D>();
+            rb.velocity = Vector2.left * moveSpd;
         }
 
 
@@ -36,6 +45,7 @@ namespace CarterGames.Arcade.Credits
             {
                 collision.gameObject.SetActive(false);
                 --health;
+                camshake.ShakeCamera(true, 0.05f, 0.05f);
             }
         }
     }
