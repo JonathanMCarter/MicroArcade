@@ -24,11 +24,18 @@ namespace CarterGames.Arcade.Credits
         [SerializeField] private GameObject bulletPrefab;
         [SerializeField] private float bulletMoveSpd = default;
 
+        [Header("Missile Variables")]
+        [SerializeField] private GameObject missilePrefab;
+        [SerializeField] private float missileMoveSpd = default;
+
         private GameObject[] bulletPool;
+        private GameObject[] missilePool;
         private Rigidbody2D rb;
         private Actions actions;
-        private bool canShoot = false;
+        private bool canShootBullet = false;
+        private bool canShootMissile = false;
         private WaitForSeconds wait;
+        private WaitForSeconds missileWait;
 
 
         /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -65,6 +72,7 @@ namespace CarterGames.Arcade.Credits
             sr = GetComponent<SpriteRenderer>();
             rb = GetComponent<Rigidbody2D>();
             wait = new WaitForSeconds(.05f);
+            missileWait = new WaitForSeconds(3f);
         }
 
 
@@ -76,7 +84,9 @@ namespace CarterGames.Arcade.Credits
         private void Start()
         {
             BulletPoolSetup();
-            canShoot = true;
+            MissilePoolSetup();
+            canShootBullet = true;
+            canShootMissile = true;
         }
 
 
@@ -87,8 +97,11 @@ namespace CarterGames.Arcade.Credits
         /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         private void Update()
         {
-            if (NewInputSystemHelper.ButtonPressed(actions.Controls.Button1) && canShoot)
+            if (NewInputSystemHelper.ButtonPressed(actions.Controls.Button1) && canShootBullet)
                 SpawnBullet();
+
+            if (NewInputSystemHelper.ButtonPressed(actions.Controls.Button2) && canShootMissile)
+                SpawnMissile();
         }
 
 
@@ -134,6 +147,25 @@ namespace CarterGames.Arcade.Credits
 
         /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         /// <summary>
+        /// Method | Sets up the missile object pool for use.
+        /// </summary>
+        /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        private void MissilePoolSetup()
+        {
+            missilePool = new GameObject[10];
+
+            for (int i = 0; i < missilePool.Length; i++)
+            {
+                missilePool[i] = Instantiate(missilePrefab);
+                missilePool[i].SetActive(false);
+                missilePool[i].name = "* Missile (OBJ-Pool)";
+            }
+        }
+
+
+
+        /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
         /// Method | Spawns a bullet and start the coroutine to recharge for the next shot.
         /// </summary>
         /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -163,9 +195,46 @@ namespace CarterGames.Arcade.Credits
         /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         private IEnumerator BulletCo()
         {
-            canShoot = false;
+            canShootBullet = false;
             yield return wait;
-            canShoot = true;
+            canShootBullet = true;
+        }
+
+
+        /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Method | Spawns a bullet and start the coroutine to recharge for the next shot.
+        /// </summary>
+        /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        private void SpawnMissile()
+        {
+            for (int i = 0; i < missilePool.Length; i++)
+            {
+                if (!missilePool[i].activeSelf)
+                {
+                    if ((i % 6) <= 2)
+                        missilePool[i].transform.position = transform.GetChild(0).position;
+                    else
+                        missilePool[i].transform.position = transform.GetChild(1).position;
+
+                    missilePool[i].SetActive(true);
+                    StartCoroutine(MissileCo());
+                    break;
+                }
+            }
+        }
+
+
+        /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Coroutine | Toggles the canShoot bool so that the player can shoot all their bullets at once.
+        /// </summary>
+        /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        private IEnumerator MissileCo()
+        {
+            canShootMissile = false;
+            yield return missileWait;
+            canShootMissile = true;
         }
     }
 }

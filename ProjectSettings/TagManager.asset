@@ -10,6 +10,7 @@ TagManager:
   - MenuFade
   - Enemy
   - Bullet
+  - Settings
   layers:
   - Default
   - TransparentFX

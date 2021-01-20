@@ -375,6 +375,14 @@ namespace CarterGames.Arcade
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Button 2"",
+                    ""type"": ""Button"",
+                    ""id"": ""a63094aa-8595-484f-a637-d12d0609864b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -608,6 +616,17 @@ namespace CarterGames.Arcade
                     ""action"": ""Button 1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""398f777d-4fb6-4ff2-9264-ece23b246f80"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Button 2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -662,6 +681,7 @@ namespace CarterGames.Arcade
             m_Controls = asset.FindActionMap("Controls", throwIfNotFound: true);
             m_Controls_Joystick = m_Controls.FindAction("Joystick", throwIfNotFound: true);
             m_Controls_Button1 = m_Controls.FindAction("Button 1", throwIfNotFound: true);
+            m_Controls_Button2 = m_Controls.FindAction("Button 2", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -762,12 +782,14 @@ namespace CarterGames.Arcade
         private IControlsActions m_ControlsActionsCallbackInterface;
         private readonly InputAction m_Controls_Joystick;
         private readonly InputAction m_Controls_Button1;
+        private readonly InputAction m_Controls_Button2;
         public struct ControlsActions
         {
             private @Actions m_Wrapper;
             public ControlsActions(@Actions wrapper) { m_Wrapper = wrapper; }
             public InputAction @Joystick => m_Wrapper.m_Controls_Joystick;
             public InputAction @Button1 => m_Wrapper.m_Controls_Button1;
+            public InputAction @Button2 => m_Wrapper.m_Controls_Button2;
             public InputActionMap Get() { return m_Wrapper.m_Controls; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -783,6 +805,9 @@ namespace CarterGames.Arcade
                     @Button1.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnButton1;
                     @Button1.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnButton1;
                     @Button1.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnButton1;
+                    @Button2.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnButton2;
+                    @Button2.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnButton2;
+                    @Button2.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnButton2;
                 }
                 m_Wrapper.m_ControlsActionsCallbackInterface = instance;
                 if (instance != null)
@@ -793,6 +818,9 @@ namespace CarterGames.Arcade
                     @Button1.started += instance.OnButton1;
                     @Button1.performed += instance.OnButton1;
                     @Button1.canceled += instance.OnButton1;
+                    @Button2.started += instance.OnButton2;
+                    @Button2.performed += instance.OnButton2;
+                    @Button2.canceled += instance.OnButton2;
                 }
             }
         }
@@ -834,6 +862,7 @@ namespace CarterGames.Arcade
         {
             void OnJoystick(InputAction.CallbackContext context);
             void OnButton1(InputAction.CallbackContext context);
+            void OnButton2(InputAction.CallbackContext context);
         }
     }
 }

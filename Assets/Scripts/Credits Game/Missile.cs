@@ -13,9 +13,11 @@ namespace CarterGames.Arcade.Credits
     public class Missile : MonoBehaviour
     {
         [SerializeField] private float missileSpd;
+        [SerializeField] private float rotSpd;
         [SerializeField] private float delayBeforeMovement;
         private Rigidbody2D rB;
         private WaitForSeconds wait;
+        private GameObject[] enemy;
 
 
         private void OnDisable()
@@ -32,6 +34,7 @@ namespace CarterGames.Arcade.Credits
         private void OnEnable()
         {
             wait = new WaitForSeconds(delayBeforeMovement);
+            enemy = GameObject.FindGameObjectsWithTag("Enemy");
 
             if (rB)
             {
@@ -44,6 +47,18 @@ namespace CarterGames.Arcade.Credits
                 StartCoroutine(MissileFire());
             }
         }
+
+
+
+        private void FixedUpdate()
+        {
+            //Vector2 _dir = (Vector2)enemy.transform.position - rB.position;
+            //_dir.Normalize();
+            //float RotateAmount = Vector3.Cross(_dir, transform.up * missileSpd).z;
+            //rB.angularVelocity = -RotateAmount * rotSpd;
+            //rB.velocity = transform.forward * missileSpd;
+        }
+
 
 
         private IEnumerator MissileFire()
@@ -60,5 +75,11 @@ namespace CarterGames.Arcade.Credits
             rB.velocity = Vector2.right * missileSpd;
 
         }
+
+
+        //private GameObject FindClosestEnemy()
+        //{
+
+        //}
     }
 }

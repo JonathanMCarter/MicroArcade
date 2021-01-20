@@ -324,6 +324,18 @@ namespace CarterGames.Arcade.Saving
         }
 
 
+
+        public static void SaveArcadeSettings(ArcadeData data)
+        {
+            BinaryFormatter _formatter = new BinaryFormatter();
+            string _savePath = Application.persistentDataPath + "/Arcade/settings.masf";
+            FileStream _stream = new FileStream(_savePath, FileMode.OpenOrCreate);
+            ArcadeData _data = data;
+            _formatter.Serialize(_stream, _data);
+            _stream.Close();
+        }
+
+
         /// <summary>
         /// Loads the Arcade control scheme
         /// </summary>

@@ -12,39 +12,25 @@ namespace CarterGames.Arcade.Saving
     [Serializable]
     public class ArcadeData
     {
+        // Accessability Settings
+        public bool arcade_Access_IsHighContrast;
+        public bool arcade_Access_IsColourBlind;
+        public bool arcade_Access_IsLargeText;
+
+        // Gameplay Settings
+        public bool arcade_Gameplay_InputRebind;
+
+        // Visual Settings
+        public int[] arcade_Visuals_Resolution;
+        public int arcade_Visuals_QualityLevel;
+
         // Audio Settings
-        public float CabinetMusicVolume;
-        public float CabinetSFXVolume;
+        public float arcade_Audio_MasterVolume;
+        public float arcade_Audio_SFXVolume;
+        public float arcade_Audio_MusicVolume;
+        public float arcade_Audio_VoiceVolume;
 
         // Online Settings
-        public bool UseOnlineFunctionality;
-
-        // Display Settings
-        public int[] DisplayResolution;
-        public bool UseFullScreen;
-        public int QualityLevel;
-
-
-        //public SupportedControllers SetMixedInputConfig;
-
-
-        public ArcadeData()
-        {
-            CabinetMusicVolume = -6f;
-            CabinetSFXVolume = -2f;
-        }
-
-
-        //public ArcadeData (Menu.SettingsScript Settings)
-        //{
-        //    CabinetMusicVolume = Settings.MusicVolume;
-        //    CabinetSFXVolume = Settings.SFXVolume;
-        //}
-
-
-        //public ArcadeData (SupportedControllers ControlScheme)
-        //{
-        //    SetMixedInputConfig = ControlScheme;
-        //}
+        public bool arcade_Online_UseOnlineFunctionality;
     }
 }

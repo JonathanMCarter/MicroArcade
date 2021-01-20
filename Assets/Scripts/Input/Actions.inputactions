@@ -360,6 +360,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Press"
+                },
+                {
+                    "name": "Button 2",
+                    "type": "Button",
+                    "id": "a63094aa-8595-484f-a637-d12d0609864b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
                 }
             ],
             "bindings": [
@@ -591,6 +599,17 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Button 1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "398f777d-4fb6-4ff2-9264-ece23b246f80",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Button 2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

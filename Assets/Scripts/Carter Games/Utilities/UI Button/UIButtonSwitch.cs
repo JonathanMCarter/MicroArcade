@@ -170,11 +170,11 @@ namespace CarterGames.Utilities
                     {
                         if (action.Menu.Movement.ReadValue<Vector2>().y > .1f)
                         {
-                            UpdatePos(1);
+                            UpdatePos(-1);
                         }
                         else if (action.Menu.Movement.ReadValue<Vector2>().y < -.1f)
                         {
-                            UpdatePos(-1);
+                            UpdatePos(1);
                         }
                     }
                     else
@@ -198,11 +198,11 @@ namespace CarterGames.Utilities
                     {
                         if (action.Menu.Movement.ReadValue<Vector2>().y > .1f)
                         {
-                            UpdatePos(1);
+                            UpdatePos(-1);
                         }
                         else if (action.Menu.Movement.ReadValue<Vector2>().y < -.1f)
                         {
-                            UpdatePos(-1);
+                            UpdatePos(1);
                         }
                     }
                     else

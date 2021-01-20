@@ -9,24 +9,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6510f5ad8e276e49beeaba43bc5ad76, type: 3}
+  m_Script: {fileID: 11500000, guid: 9d1a550171c18a144be85aee12017d69, type: 3}
   m_Name: MenuAMF
   m_EditorClassIdentifier: 
-  clipName:
-  - Confirm
-  - Confirm2
-  - Menu-Confirm
-  - Menu_Click
-  - Menu_Select
-  audioClip:
-  - {fileID: 8300000, guid: ee5198778dffcf14583ee18b69717ed0, type: 3}
-  - {fileID: 8300000, guid: b7a219a91f6687143a6774610e9cef80, type: 3}
-  - {fileID: 8300000, guid: cab3696059ed0c4438d9b638e3333e9a, type: 3}
-  - {fileID: 8300000, guid: 176cc15af7976b5429a480aba63c8b6a, type: 3}
-  - {fileID: 8300000, guid: 92c0e6def1ff9934fbd0c976f4c10bc8, type: 3}
-  soundPrefab: {fileID: 977031777656076914, guid: c8aadc768be109f478c9aad2b841252d,
+  audioMixer:
+  - {fileID: -1921588300162462862, guid: 116de77a600d67643b46de76e34fe755, type: 2}
+  soundPrefab: {fileID: 977031777656076914, guid: c40912f5a7dede148af5b68dd313394f,
     type: 3}
   isPopulated: 1
   hasDirectories: 1
   directory:
   - Menu
+  library:
+  - key: Confirm
+    value: {fileID: 8300000, guid: ee5198778dffcf14583ee18b69717ed0, type: 3}
+  - key: Confirm2
+    value: {fileID: 8300000, guid: b7a219a91f6687143a6774610e9cef80, type: 3}
+  - key: Menu-Confirm
+    value: {fileID: 8300000, guid: cab3696059ed0c4438d9b638e3333e9a, type: 3}
+  - key: Menu_Click
+    value: {fileID: 8300000, guid: 176cc15af7976b5429a480aba63c8b6a, type: 3}
+  - key: Menu_Select
+    value: {fileID: 8300000, guid: 92c0e6def1ff9934fbd0c976f4c10bc8, type: 3}

@@ -947,75 +947,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 229612750}
   m_CullTransparentMesh: 0
---- !u!1001 &234308594
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 900350889326953623, guid: 3a201a43a0b683947b3c89319c8397b0,
-        type: 3}
-      propertyPath: m_Name
-      value: Missile
-      objectReference: {fileID: 0}
-    - target: {fileID: 900350889326953627, guid: 3a201a43a0b683947b3c89319c8397b0,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 900350889326953627, guid: 3a201a43a0b683947b3c89319c8397b0,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.027
-      objectReference: {fileID: 0}
-    - target: {fileID: 900350889326953627, guid: 3a201a43a0b683947b3c89319c8397b0,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.046
-      objectReference: {fileID: 0}
-    - target: {fileID: 900350889326953627, guid: 3a201a43a0b683947b3c89319c8397b0,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 900350889326953627, guid: 3a201a43a0b683947b3c89319c8397b0,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 900350889326953627, guid: 3a201a43a0b683947b3c89319c8397b0,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 900350889326953627, guid: 3a201a43a0b683947b3c89319c8397b0,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 900350889326953627, guid: 3a201a43a0b683947b3c89319c8397b0,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 900350889326953627, guid: 3a201a43a0b683947b3c89319c8397b0,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 900350889326953627, guid: 3a201a43a0b683947b3c89319c8397b0,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 900350889326953627, guid: 3a201a43a0b683947b3c89319c8397b0,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -90
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 3a201a43a0b683947b3c89319c8397b0, type: 3}
 --- !u!1 &238203349
 GameObject:
   m_ObjectHideFlags: 0
@@ -1590,26 +1521,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 389248188}
   m_CullTransparentMesh: 0
---- !u!1 &393868602 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 900350889326953623, guid: 3a201a43a0b683947b3c89319c8397b0,
-    type: 3}
-  m_PrefabInstance: {fileID: 234308594}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &393868603
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 393868602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d7d56c94b829cf4ba9ac111a6118f64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  missileSpd: 2
-  delayBeforeMovement: 0.25
 --- !u!1 &399285952
 GameObject:
   m_ObjectHideFlags: 0
@@ -1624,7 +1535,7 @@ GameObject:
   - component: {fileID: 399285953}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1646,6 +1557,9 @@ MonoBehaviour:
   bulletPrefab: {fileID: 8357069440004514819, guid: a0ea76296c463204fb23b80fc773feae,
     type: 3}
   bulletMoveSpd: 1000
+  missilePrefab: {fileID: 2116139904535977263, guid: 22664f6d05dbcbd41885513536a916b9,
+    type: 3}
+  missileMoveSpd: 2
 --- !u!50 &399285954
 Rigidbody2D:
   serializedVersion: 4
