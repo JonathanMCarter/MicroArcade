@@ -34,7 +34,7 @@ namespace CarterGames.Utilities
         /// <param name="valueToEdit">the value to edit</param>
         /// <param name="min">the min bound</param>
         /// <param name="max">the max bound</param>
-        /// <returns>the int kept within its bounds.</returns>
+        /// <returns>Int | the int kept within its bounds.</returns>
         /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         public static int WithinBounds(int valueToEdit, int min, int max)
         {
@@ -48,6 +48,32 @@ namespace CarterGames.Utilities
                     return max;
                 else
                     return 0;
+            }
+        }
+
+
+        ///------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Method | Keeps the float within the defined bounds.
+        ///   Added In: Micro Arcade.
+        /// </summary>
+        /// <param name="valueToEdit">the value to edit</param>
+        /// <param name="min">the min bound</param>
+        /// <param name="max">the max bound</param>
+        /// <returns>Float | the float value kept within its bounds.</returns>
+        /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        public static float WithinBounds(float valueToEdit, float min, float max)
+        {
+            if (valueToEdit >= min && valueToEdit <= max)
+                return valueToEdit;
+            else
+            {
+                if (valueToEdit < min)
+                    return min;
+                else if (valueToEdit > max)
+                    return max;
+                else
+                    return 0f;
             }
         }
 
