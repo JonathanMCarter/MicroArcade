@@ -14,11 +14,7 @@ namespace CarterGames.Arcade
         public string gameName;
         [TextArea]
         public string gameDesc;
-        public Sprite gameBanner;
         public string gameAuthor;
-        public bool supportArcade;
-        public bool supportController;
-        public bool supportContKey;
-        public bool supportKeyboard;
+        public Sprite[] gameScreenshots;
     }
 }

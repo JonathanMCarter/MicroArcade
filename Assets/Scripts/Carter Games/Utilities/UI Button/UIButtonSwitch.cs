@@ -2,6 +2,7 @@
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using System.Collections;
+using CarterGames.Arcade;
 
 /****************************************************************************************************************************
  * 
@@ -251,7 +252,8 @@ namespace CarterGames.Utilities
             {
                 if (action.Menu.Accept.phase.Equals(InputActionPhase.Performed))
                 {
-                    buttons[pos].GetComponent<UIBSButtonActions>().action.Invoke();
+                    Debug.Log("actions called");
+                    buttons[pos].GetComponent<UIBSButtonActions>().CallActions();
                     StartCoroutine(ButtonDelay());
                 }
             }
@@ -358,6 +360,19 @@ namespace CarterGames.Utilities
         private void ForceButtonDelay()
         {
             StartCoroutine(ButtonDelay());
+        }
+
+
+        /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Method | Disables this UIBS and enables another one.
+        /// </summary>
+        /// <param name="other">UIButtonSwitch | The other UIBS to enable when this is disabled.</param>
+        /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        public void DisableUIBSEnableAnother(UIButtonSwitch other)
+        {
+            other.enabled = true;
+            this.enabled = false;
         }
     }
 }

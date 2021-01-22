@@ -30,5 +30,11 @@ namespace CarterGames.Utilities
         [Header("Actions to perform.")]
         [Tooltip("A grouping of events to run on confirm.")]
         public UnityEvent action;
+
+
+        public void CallActions()
+        {
+            action.Invoke();
+        }
     }
 }

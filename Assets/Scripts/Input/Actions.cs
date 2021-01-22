@@ -30,11 +30,11 @@ namespace CarterGames.Arcade
                 },
                 {
                     ""name"": ""Accept"",
-                    ""type"": ""Value"",
+                    ""type"": ""Button"",
                     ""id"": ""a8792439-b060-45f5-955d-b4953c079641"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press""
+                    ""interactions"": ""Press(behavior=2)""
                 },
                 {
                     ""name"": ""Cancel"",

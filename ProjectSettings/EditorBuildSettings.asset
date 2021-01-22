@@ -17,9 +17,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Arcade-Credits.unity
     guid: f131434c74ea1464cac259ae8016edd9
-  - enabled: 1
-    path: Assets/Scenes/InputCheck.unity
-    guid: 1bbeb142e26a7194a8fa3f874a36e30f
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: dcba5fcce19ba074f8ac3c7bb34eaa8d,
       type: 2}

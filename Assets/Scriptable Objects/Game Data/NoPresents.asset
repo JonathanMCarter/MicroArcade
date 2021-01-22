@@ -15,9 +15,5 @@ MonoBehaviour:
   gameName: No Presents For You
   gameDesc: A single player game where you try to escape levels, stealing presents
     as lives and avoid enemies.
-  gameBanner: {fileID: 21300000, guid: 27f0707157b98f94d80540020481f38b, type: 3}
   gameAuthor: Carter Games
-  supportArcade: 1
-  supportController: 1
-  supportContKey: 0
-  supportKeyboard: 1
+  gameScreenshots: []
