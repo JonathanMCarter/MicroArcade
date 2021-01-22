@@ -39,12 +39,18 @@ namespace CarterGames.Arcade.Credits
         }
 
 
+        public void TakeDamage(int dmg)
+        {
+            health -= dmg;
+        }
+
+
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.CompareTag("Bullet"))
             {
                 collision.gameObject.SetActive(false);
-                --health;
+                TakeDamage(1);
                 camshake.ShakeCamera(true, 0.05f, 0.05f);
             }
         }

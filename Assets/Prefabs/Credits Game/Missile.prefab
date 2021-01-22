@@ -162,3 +162,5 @@ MonoBehaviour:
   missileSpd: 8
   rotSpd: 10
   delayBeforeMovement: 0.15
+  hitParticles: {fileID: 7526169471915092137, guid: 37bcaff701359c64fb1d3d573c9792d0,
+    type: 3}

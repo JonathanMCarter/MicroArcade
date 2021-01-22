@@ -15,6 +15,9 @@ namespace CarterGames.Arcade.Credits
         [SerializeField] private float missileSpd;
         [SerializeField] private float rotSpd;
         [SerializeField] private float delayBeforeMovement;
+
+        [SerializeField] private GameObject hitParticles;
+
         private Rigidbody2D rB;
         private WaitForSeconds wait;
         private GameObject[] enemy;
@@ -81,5 +84,16 @@ namespace CarterGames.Arcade.Credits
         //{
 
         //}
+
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.CompareTag("Enemy"))
+            {
+                GameObject _go = Instantiate(hitParticles);
+                _go.transform.position = transform.position;
+                collision.gameObject.GetComponent<Enemy>().TakeDamage(10);
+            }
+        }
     }
 }
