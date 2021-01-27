@@ -25,11 +25,11 @@ namespace CarterGames.Arcade.Credits
         private void OnEnable()
         {
             if (rB)
-                rB.velocity = Vector2.right * bulletSpd;
+                rB.velocity = Vector2.up * bulletSpd;
             else
             {
                 rB = GetComponent<Rigidbody2D>();
-                rB.velocity = Vector2.right * bulletSpd;
+                rB.velocity = Vector2.up * bulletSpd;
             }
         }
     }

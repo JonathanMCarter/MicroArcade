@@ -13,19 +13,26 @@ namespace CarterGames.Arcade.Credits
     [RequireComponent(typeof(Rigidbody2D))]
     public class Enemy : MonoBehaviour
     {
-        [SerializeField] private Slider healthBar;
         private CameraShakeScript camshake;
         private Rigidbody2D rb;
         public int health;
         public float moveSpd;
+        public Slider healthBar;
+
+
+        private void OnEnable()
+        {
+            health = GetRandom.Int(20, 40);
+        }
 
 
         private void Start()
         {
+            health = GetRandom.Int(20, 40);
             healthBar.maxValue = health;
             camshake = FindObjectOfType<CameraShakeScript>();
             rb = GetComponent<Rigidbody2D>();
-            rb.velocity = Vector2.left * moveSpd;
+            rb.velocity = Vector2.down * moveSpd;
         }
 
 
@@ -35,7 +42,10 @@ namespace CarterGames.Arcade.Credits
                 healthBar.value = health;
 
             if (health <= 0)
+            {
+                healthBar.gameObject.SetActive(false);
                 gameObject.SetActive(false);
+            }
         }
 
 

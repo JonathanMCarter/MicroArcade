@@ -66,12 +66,12 @@ namespace CarterGames.Arcade.Credits
 
         private IEnumerator MissileFire()
         {
-            int dir = GetRandom.Int(0, 1);
+            //int dir = GetRandom.Int(0, 1);
 
-            if (dir.Equals(0))
-                rB.velocity = Vector2.down * missileSpd;
-            else
-                rB.velocity = Vector2.up * missileSpd;
+            //if (dir.Equals(0))
+            //    rB.velocity = Vector2.down * missileSpd;
+            //else
+            //    rB.velocity = Vector2.up * missileSpd;
 
             yield return wait;
 
