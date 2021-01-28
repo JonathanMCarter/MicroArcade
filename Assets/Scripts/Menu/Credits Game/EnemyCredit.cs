@@ -13,12 +13,24 @@ namespace CarterGames.Arcade.Credits
     {
         public string title;
         public string desc;
+        private Text text;
 
 
         private void Awake()
         {
             // Set name and title
-            GetComponentInChildren<Text>().text = string.Format("{0}\n{1}", title, desc);
+            text = GetComponentInChildren<Text>();
+        }
+
+
+        public override void Update()
+        {
+            if (text.text.Equals(""))
+            {
+                text.text = string.Format("{0}\n{1}", title, desc);
+            }
+
+            base.Update();
         }
     }
 }

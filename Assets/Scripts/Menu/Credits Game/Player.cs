@@ -16,6 +16,9 @@ namespace CarterGames.Arcade.Credits
     [RequireComponent(typeof(SpriteRenderer), typeof(Rigidbody2D))]
     public class Player : MonoBehaviour
     {
+        [SerializeField] private GameObject[] hearts;
+        [SerializeField] private int health = 3;
+
         [Header("Player Variables")]
         [SerializeField] private SpriteRenderer sr = default;
         [SerializeField] private float moveSpd = default;
@@ -24,15 +27,16 @@ namespace CarterGames.Arcade.Credits
         [SerializeField] private GameObject bulletPrefab;
         [SerializeField] private float bulletMoveSpd = default;
 
+        [SerializeField] private Canvas NameInput;
+
         private GameObject[] bulletPool;
-        private GameObject[] missilePool;
         private Rigidbody2D rb;
         private Actions actions;
         private bool canShootBullet = false;
         private WaitForSeconds wait;
+        private WaitForSeconds flickerWait;
         private int numberShot;
-
-        public int health = 3;
+        private CameraShakeScript shake;
 
 
 
@@ -70,6 +74,8 @@ namespace CarterGames.Arcade.Credits
             sr = GetComponent<SpriteRenderer>();
             rb = GetComponent<Rigidbody2D>();
             wait = new WaitForSeconds(.05f);
+            flickerWait = new WaitForSeconds(.2f);
+            shake = FindObjectOfType<CameraShakeScript>();
         }
 
 
@@ -94,6 +100,15 @@ namespace CarterGames.Arcade.Credits
         {
             if (NewInputSystemHelper.ButtonPressed(actions.Controls.Button1) && canShootBullet)
                 SpawnBullet();
+
+
+            if (health <= 0)
+            {
+                Time.timeScale = 0;
+                NameInput.enabled = true;
+                NameInput.GetComponentInChildren<OnScreenKeyboard.OnScreenKeyboard>().enabled = true;
+                gameObject.SetActive(false);
+            }
         }
 
 
@@ -117,6 +132,48 @@ namespace CarterGames.Arcade.Credits
         {
             transform.position = Keep.WithinBounds(transform.position, new Vector2(-8f, -4f), new Vector2(8f, -4f));
         }
+
+
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.CompareTag("Enemy"))
+            {
+                for (int i = 0; i < hearts.Length; i++)
+                {
+                    if (hearts[i].activeSelf)
+                    {
+                        hearts[i].SetActive(false);
+                        break;
+                    }
+                }
+
+                collision.gameObject.SetActive(false);
+                shake.ShakeCamera(true);
+                health--;
+                FlickerShip();
+            }
+        }
+
+
+
+        private void FlickerShip()
+        {
+            StartCoroutine(FlickerCoroutine());
+        }
+
+
+        private IEnumerator FlickerCoroutine()
+        {
+            sr.color = Color.red;
+            yield return flickerWait;
+            sr.color = Color.white;
+            yield return flickerWait;
+            sr.color = Color.red;
+            yield return flickerWait;
+            sr.color = Color.white;
+        }
+
 
 
         /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

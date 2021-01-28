@@ -17,8 +17,8 @@ using System.Collections.Generic;
  *      E: jonathan@carter.games
  *      W: https://jonathan.carter.games
  *		
- *  Version: 2.4.0
- *	Last Updated: 18/01/2021 (d/m/y)						
+ *  Version: 2.4.0 (Patch 1)
+ *	Last Updated: 25/01/2021 (d/m/y)							
  * 
 ****************************************************************************************************************************/
 
@@ -90,9 +90,6 @@ namespace CarterGames.Assets.AudioManager
 
             GUILayout.Space(5f);
             EditorGUILayout.EndVertical();
-
-
-            base.OnInspectorGUI();
         }
 
 

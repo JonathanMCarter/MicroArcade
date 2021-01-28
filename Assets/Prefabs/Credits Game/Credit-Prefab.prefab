@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5367905993636553498}
   - component: {fileID: 5367905993636553496}
   - component: {fileID: 5367905993636553497}
+  - component: {fileID: 4630709273631161715}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -34,8 +35,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0028076172, y: 0.00021362305}
-  m_SizeDelta: {x: 1824.7817, y: 515.9734}
+  m_AnchoredPosition: {x: 0.00020605, y: 0.00021362305}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5367905993636553496
 CanvasRenderer:
@@ -66,7 +67,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 72b36d45d1102f748ae92cbab5e17127, type: 3}
     m_FontSize: 200
     m_FontStyle: 0
     m_BestFit: 0
@@ -78,9 +79,21 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '
-
-'
+  m_Text: 
+--- !u!114 &4630709273631161715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5367905993636553499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 2
+  m_VerticalFit: 2
 --- !u!1 &5367905995172058608
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,7 +293,7 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
@@ -365,6 +378,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6715866643447468528, guid: 9ba98e8907f5b2a4186d08e37ec2e155,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6715866643447468528, guid: 9ba98e8907f5b2a4186d08e37ec2e155,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6715866643447468528, guid: 9ba98e8907f5b2a4186d08e37ec2e155,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -428,7 +451,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: HealthBar
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8001731840388357800, guid: 9ba98e8907f5b2a4186d08e37ec2e155, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9ba98e8907f5b2a4186d08e37ec2e155, type: 3}
 --- !u!224 &5367905994869163560 stripped
 RectTransform:

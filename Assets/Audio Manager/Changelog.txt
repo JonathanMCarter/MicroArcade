@@ -1,5 +1,12 @@
 Audio Manager Change Log:
 
+2.4.0 (Patch 1)
+
+* Asset Changes *
+~ Fixed an issue where multiple directiroes would not work.
+~ Fixed an issue where the default Music Player script would appear under the custom inspector. 
+
+
 2.4.0
 
 * Store Listing Changes *

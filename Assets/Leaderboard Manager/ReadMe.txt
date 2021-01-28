@@ -5,7 +5,23 @@ Asset Developed By:
 ******************************************************
 Asset Published By Carter Games
 ******************************************************
-Version 1.0.2 Change Log:
+Version 1.0.3 Change Log:
+
++ Added Get Position method that was requested by a user on our discord server to support.
+
+******************************************************
+Any editing of the asset or any of its scripts is done at the users risk. 
+******************************************************
+Like the asset, please leave us a review so others can enjoy the asset as well. 
+******************************************************
+******************************************************
+Version History:
+
+1.0.2 | Patch 1
+
+~ Updated documentation links.
+
+1.0.2
 
 * Store Listing Changes *
 - Updated the asset title to remove the "(CG)" characters after the asset name. This has been replaced with "| CG" instead to look a little neater.
@@ -21,14 +37,6 @@ Version 1.0.2 Change Log:
 + Updated the example script with all method calls in the example scene coming from the script to help new users understand what method is called per button.
 + Updated the example scene to add a new clear file button that resets the leaderbaord file.
 + Added a new method to clear the leaderboard file when called.
-
-******************************************************
-Any editing of the asset or any of its scripts is done at the users risk. 
-******************************************************
-Like the asset, please leave us a review so others can enjoy the asset as well. 
-******************************************************
-******************************************************
-Version History:
 
 1.0.1
 

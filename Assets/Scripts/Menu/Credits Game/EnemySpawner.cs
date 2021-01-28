@@ -16,49 +16,42 @@ namespace CarterGames.Arcade.Credits
         [SerializeField] private GameObject[] prefab;
         [SerializeField] private Transform parent;
         [SerializeField] private int[] amount;
-        [SerializeField] private GameObject healthBar;
-        [SerializeField] private GameObject[] healthBars;
 
-        private GameObject[] pool;
-        private int numberSpawned;
+        private GameObject[] credits;
+        private int lastCreditSpawned;
 
-        private float _timer;
-        private float _timeLimit;
+        private GameObject[] asteroids;
+
+        [SerializeField] private float _timer;
+        [SerializeField] private float _timeLimit;
         
 
         private void Start()
         {
-            pool = new GameObject[amount[0] + amount[1] + amount[2] + amount[3]];
-            healthBars = new GameObject[amount[1] + amount[2] + amount[3]];
+            credits = new GameObject[amount[0]];
+            asteroids = new GameObject[amount[1] + amount[2] + amount[3]];
 
-            for (int j = 0; j < amount.Length; j++)
+            for (int i = 0; i < amount[0]; i++)
             {
-                for (int i = 0; i < amount[j]; i++)
-                {
-                    if (prefab[j].name.Contains("Prefab"))
-                    {
-                        GameObject _go = Instantiate(prefab[j], parent);
-                        _go.SetActive(false);
-                        pool[i] = _go;
-                    }
-                    else
-                    {
-                        GameObject _go = Instantiate(prefab[j]);
-                        _go.SetActive(false);
-                        pool[i] = _go;
-                    }
-                }
+                GameObject _go = Instantiate(prefab[0], parent);
+                _go.GetComponentInChildren<EnemyCredit>().title = so.roles[i];
+                _go.GetComponentInChildren<EnemyCredit>().desc = so.names[i];
+                _go.SetActive(false);
+                credits[i] = _go;
             }
 
-            for (int i = 0; i < healthBars.Length; i++)
+
+            for (int i = 0; i < asteroids.Length; i++)
             {
-                GameObject _hB = Instantiate(healthBar, parent);
-                _hB.SetActive(false);
-                healthBars[i] = _hB;
+                GameObject _go = Instantiate(prefab[GetRandom.Int(1, 3)]);
+                _go.SetActive(false);
+                asteroids[i] = _go;
             }
 
             _timer = 0f;
-            _timeLimit = GetRandom.Float(0.5f, 3f);
+            _timeLimit = GetRandom.Float(0.5f, 4f);
+
+            lastCreditSpawned = -1;
         }
 
 
@@ -70,12 +63,12 @@ namespace CarterGames.Arcade.Credits
             {
                 int _choice = GetRandom.Int(0, 3);
 
-                if (_choice.Equals(0))
+                if (_choice <= 0)
                     SpawnCreditEnemy();
                 else
                     SpawnEnemy();
 
-                _timeLimit = GetRandom.Float(0.5f, 3f);
+                _timeLimit = GetRandom.Float(0.5f, 4f);
                 _timer = 0f;
             }
         }
@@ -83,15 +76,25 @@ namespace CarterGames.Arcade.Credits
 
         public void SpawnCreditEnemy()
         {
-            for (int i = 0; i < amount[0]; i++)
+            Vector2 spawnLocation = GetRandom.Vector2(-67f, 67f, 67f, 100f);
+
+            while (Physics.OverlapSphere(new Vector3(spawnLocation.x, spawnLocation.y, 0), 5f).Length > 0)
             {
-                if (!pool[i].activeSelf && pool[i].GetComponent<EnemyCredit>())
+                spawnLocation = GetRandom.Vector2(-67f, 67f, 67f, 100f);
+            }
+
+            for (int i = 0; i < credits.Length; i++)
+            {
+                if (lastCreditSpawned.Equals(credits.Length - 1))
                 {
-                    pool[i].transform.localPosition = GetRandom.Vector2(115, 125, -32.5f, 32.5f);
-                    pool[i].GetComponentInChildren<EnemyCredit>().title = so.roles[numberSpawned];
-                    pool[i].GetComponentInChildren<EnemyCredit>().desc = so.names[numberSpawned];
-                    pool[i].SetActive(true);
-                    ++numberSpawned;
+                    lastCreditSpawned = -1;
+                }
+
+                if (!credits[i].activeInHierarchy && i > lastCreditSpawned)
+                {
+                    credits[i].transform.localPosition = spawnLocation;
+                    credits[i].SetActive(true);
+                    lastCreditSpawned = i;
                     break;
                 }
             }
@@ -102,32 +105,18 @@ namespace CarterGames.Arcade.Credits
         {
             Vector2 spawnLocation = GetRandom.Vector2(-8f, 3f, 8f, 5f);
 
-            while (Physics.OverlapSphere(new Vector3(spawnLocation.x, spawnLocation.y, 0), 1f).Length > 0)
+            while (Physics.OverlapSphere(new Vector3(spawnLocation.x, spawnLocation.y, 0), 2f).Length > 0)
             {
                 spawnLocation = GetRandom.Vector2(-8f, 3f, 8f, 5f);
             }
 
-            for (int i = 0; i < (amount[1] + amount[2] + amount[3]); i++)
+            for (int i = 0; i < asteroids.Length; i++)
             {
-                if (!pool[i].activeSelf)
+                if (!asteroids[i].activeInHierarchy)
                 {
-                    pool[i].transform.localPosition = spawnLocation;
-                    pool[i].transform.rotation = Quaternion.Euler(0, 0, GetRandom.Float(0, 360));
-
-
-                    for (int j = 0; j < healthBars.Length; j++)
-                    {
-                        if (!healthBars[j].activeSelf)
-                        {
-                            healthBars[j].GetComponent<Follow>().toFollow = pool[i].transform;
-                            pool[i].GetComponent<Enemy>().healthBar = healthBars[j].GetComponent<Slider>();
-                            healthBars[j].SetActive(true);
-                            break;
-                        }
-                    }
-                    pool[i].SetActive(true);
-
-                    ++numberSpawned;
+                    asteroids[i].transform.localPosition = spawnLocation;
+                    asteroids[i].transform.rotation = Quaternion.Euler(0, 0, GetRandom.Float(0, 360));
+                    asteroids[i].SetActive(true);
                     break;
                 }
             }

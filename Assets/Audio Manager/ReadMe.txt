@@ -25,7 +25,7 @@ Scripts/Carter Games/Audio Manager/
 
 What does the rest do?
 
-Gizmos/Carter Games/Audio Manager/
+Gizmos/Carter Games/Assets/Audio Manager/
 - AudioManagerFile Icon.png is a visual change that makes Audio Manager Files have a custom icon, purely cosmetic.
 
 Resources/Carter Games/Audio Manager/

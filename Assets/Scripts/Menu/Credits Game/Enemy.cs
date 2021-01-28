@@ -23,27 +23,42 @@ namespace CarterGames.Arcade.Credits
         private void OnEnable()
         {
             health = GetRandom.Int(20, 40);
+            moveSpd = GetRandom.Float(.75f, 1.5f);
+
+
+            if (rb)
+                rb.velocity = Vector2.down * moveSpd;
+
+            if (healthBar)
+            {
+                healthBar.maxValue = health;
+                healthBar.value = health;
+            }
+            
         }
 
 
         private void Start()
         {
             health = GetRandom.Int(20, 40);
-            healthBar.maxValue = health;
+
+            if (healthBar)
+                healthBar.maxValue = health;
+
             camshake = FindObjectOfType<CameraShakeScript>();
             rb = GetComponent<Rigidbody2D>();
             rb.velocity = Vector2.down * moveSpd;
         }
 
 
-        private void Update()
+        public virtual void Update()
         {
-            if (!healthBar.value.Equals(health))
-                healthBar.value = health;
+            if (healthBar)
+                if (!healthBar.value.Equals(health))
+                    healthBar.value = health;
 
             if (health <= 0)
             {
-                healthBar.gameObject.SetActive(false);
                 gameObject.SetActive(false);
             }
         }
@@ -59,8 +74,7 @@ namespace CarterGames.Arcade.Credits
         {
             if (collision.CompareTag("Bullet"))
             {
-                collision.gameObject.SetActive(false);
-                TakeDamage(1);
+                TakeDamage(GetRandom.Int(1, 2));
                 camshake.ShakeCamera(true, 0.05f, 0.05f);
             }
         }

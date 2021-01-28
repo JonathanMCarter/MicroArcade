@@ -19,8 +19,8 @@ using System.Linq;
  *      E: jonathan@carter.games
  *      W: https://jonathan.carter.games
  *		
- *  Version: 2.4.0
- *	Last Updated: 18/01/2021 (d/m/y)						
+ *  Version: 2.4.0 (Patch 1)
+ *	Last Updated: 25/01/2021 (d/m/y)						
  * 
 ****************************************************************************************************************************/
 
@@ -281,11 +281,7 @@ namespace CarterGames.Assets.AudioManager
                             AddAudioClips();
                             AddStrings();
 
-                            // Updates the lists
-                            if (audioManagerScript.audioManagerFile.library == null)
-                            {
-                                audioManagerScript.audioManagerFile.library = new List<DataStore>();
-                            }
+                            audioManagerScript.audioManagerFile.library = new List<DataStore>();
 
                             for (int i = 0; i < audioList.Count; i++)
                                 audioManagerScript.audioManagerFile.library.Add(new DataStore(audioStrings[i], audioList[i]));

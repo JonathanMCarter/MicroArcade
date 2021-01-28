@@ -14,6 +14,7 @@ namespace CarterGames.Arcade.Credits
     public class Bullet : MonoBehaviour
     {
         [SerializeField] private float bulletSpd;
+        [SerializeField] private ParticleSystem hitParticles;
         private Rigidbody2D rB;
 
 
@@ -30,6 +31,24 @@ namespace CarterGames.Arcade.Credits
             {
                 rB = GetComponent<Rigidbody2D>();
                 rB.velocity = Vector2.up * bulletSpd;
+            }
+
+            if (!hitParticles)
+                hitParticles = GetComponentInChildren<ParticleSystem>();
+
+            GetComponentInChildren<BoxCollider2D>().enabled = true;
+            GetComponentInChildren<SpriteRenderer>().enabled = true;
+        }
+
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.CompareTag("Enemy"))
+            {
+                rB.velocity = Vector2.zero;
+                GetComponentInChildren<BoxCollider2D>().enabled = false;
+                GetComponentInChildren<SpriteRenderer>().enabled = false;
+                hitParticles.Play();
             }
         }
     }
