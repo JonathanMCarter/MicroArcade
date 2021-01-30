@@ -15,6 +15,7 @@ namespace CarterGames.Arcade.Credits
     {
         private CameraShakeScript camshake;
         private Rigidbody2D rb;
+        internal Scoring score;
         public int health;
         public float moveSpd;
         public Slider healthBar;
@@ -22,8 +23,8 @@ namespace CarterGames.Arcade.Credits
 
         private void OnEnable()
         {
-            health = GetRandom.Int(20, 40);
-            moveSpd = GetRandom.Float(.75f, 1.5f);
+            health = Rand.Int(20, 40);
+            moveSpd = Rand.Float(.75f, 1.5f);
 
 
             if (rb)
@@ -34,21 +35,22 @@ namespace CarterGames.Arcade.Credits
                 healthBar.maxValue = health;
                 healthBar.value = health;
             }
-            
         }
 
 
         private void Start()
         {
-            health = GetRandom.Int(20, 40);
+            health = Rand.Int(20, 40);
 
             if (healthBar)
                 healthBar.maxValue = health;
 
             camshake = FindObjectOfType<CameraShakeScript>();
             rb = GetComponent<Rigidbody2D>();
+            score = FindObjectOfType<Scoring>();
             rb.velocity = Vector2.down * moveSpd;
         }
+
 
 
         public virtual void Update()
@@ -60,6 +62,7 @@ namespace CarterGames.Arcade.Credits
             if (health <= 0)
             {
                 gameObject.SetActive(false);
+                score.IncrementScore(50);
             }
         }
 
@@ -74,7 +77,7 @@ namespace CarterGames.Arcade.Credits
         {
             if (collision.CompareTag("Bullet"))
             {
-                TakeDamage(GetRandom.Int(1, 2));
+                TakeDamage(Rand.Int(1, 4));
                 camshake.ShakeCamera(true, 0.05f, 0.05f);
             }
         }

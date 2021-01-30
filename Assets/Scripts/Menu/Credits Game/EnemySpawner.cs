@@ -24,7 +24,10 @@ namespace CarterGames.Arcade.Credits
 
         [SerializeField] private float _timer;
         [SerializeField] private float _timeLimit;
-        
+        [SerializeField] private float _maxDelay;
+        [SerializeField] private AnimationCurve curve;
+        [SerializeField] private float curvePos = 0f;
+
 
         private void Start()
         {
@@ -40,16 +43,16 @@ namespace CarterGames.Arcade.Credits
                 credits[i] = _go;
             }
 
-
             for (int i = 0; i < asteroids.Length; i++)
             {
-                GameObject _go = Instantiate(prefab[GetRandom.Int(1, 3)]);
+                GameObject _go = Instantiate(prefab[Rand.Int(1, 3)]);
                 _go.SetActive(false);
                 asteroids[i] = _go;
             }
 
             _timer = 0f;
-            _timeLimit = GetRandom.Float(0.5f, 4f);
+            _timeLimit = Rand.Float(0.5f, _maxDelay - (curve.Evaluate(curvePos) * _maxDelay));
+            curvePos = 0;
 
             lastCreditSpawned = -1;
         }
@@ -61,26 +64,30 @@ namespace CarterGames.Arcade.Credits
 
             if (_timer > _timeLimit)
             {
-                int _choice = GetRandom.Int(0, 3);
+                int _choice = Rand.Int(0, 6);
 
                 if (_choice <= 0)
+                {
                     SpawnCreditEnemy();
+                    curvePos += .01f;
+                }
                 else
                     SpawnEnemy();
 
-                _timeLimit = GetRandom.Float(0.5f, 4f);
+                _timeLimit = Rand.Float(0.5f, _maxDelay - (curve.Evaluate(curvePos) * _maxDelay));
                 _timer = 0f;
+                Debug.Log(_maxDelay - (curve.Evaluate(curvePos) * _maxDelay));
             }
         }
 
 
         public void SpawnCreditEnemy()
         {
-            Vector2 spawnLocation = GetRandom.Vector2(-67f, 67f, 67f, 100f);
+            Vector2 spawnLocation = Rand.Vector2(-67f, 67f, 67f, 100f);
 
             while (Physics.OverlapSphere(new Vector3(spawnLocation.x, spawnLocation.y, 0), 5f).Length > 0)
             {
-                spawnLocation = GetRandom.Vector2(-67f, 67f, 67f, 100f);
+                spawnLocation = Rand.Vector2(-67f, 67f, 67f, 100f);
             }
 
             for (int i = 0; i < credits.Length; i++)
@@ -103,11 +110,11 @@ namespace CarterGames.Arcade.Credits
 
         public void SpawnEnemy()
         {
-            Vector2 spawnLocation = GetRandom.Vector2(-8f, 3f, 8f, 5f);
+            Vector2 spawnLocation = Rand.Vector2(-8f, 3f, 8f, 5f);
 
             while (Physics.OverlapSphere(new Vector3(spawnLocation.x, spawnLocation.y, 0), 2f).Length > 0)
             {
-                spawnLocation = GetRandom.Vector2(-8f, 3f, 8f, 5f);
+                spawnLocation = Rand.Vector2(-8f, 3f, 8f, 5f);
             }
 
             for (int i = 0; i < asteroids.Length; i++)
@@ -115,7 +122,7 @@ namespace CarterGames.Arcade.Credits
                 if (!asteroids[i].activeInHierarchy)
                 {
                     asteroids[i].transform.localPosition = spawnLocation;
-                    asteroids[i].transform.rotation = Quaternion.Euler(0, 0, GetRandom.Float(0, 360));
+                    asteroids[i].transform.rotation = Quaternion.Euler(0, 0, Rand.Float(0, 360));
                     asteroids[i].SetActive(true);
                     break;
                 }

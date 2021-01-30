@@ -37,6 +37,7 @@ namespace CarterGames.Arcade.Credits
         private WaitForSeconds flickerWait;
         private int numberShot;
         private CameraShakeScript shake;
+        private Scoring score;
 
 
 
@@ -76,6 +77,7 @@ namespace CarterGames.Arcade.Credits
             wait = new WaitForSeconds(.05f);
             flickerWait = new WaitForSeconds(.2f);
             shake = FindObjectOfType<CameraShakeScript>();
+            score = FindObjectOfType<Scoring>();
         }
 
 
@@ -144,6 +146,7 @@ namespace CarterGames.Arcade.Credits
                     if (hearts[i].activeSelf)
                     {
                         hearts[i].SetActive(false);
+                        score.DecrementScore(500);
                         break;
                     }
                 }
@@ -206,9 +209,9 @@ namespace CarterGames.Arcade.Credits
                 if (!bulletPool[i].activeSelf)
                 {
                     if ((numberShot % 6) <= 2)
-                        bulletPool[i].transform.position = transform.GetChild(0).position;
+                        bulletPool[i].transform.position = Rand.Vector3(transform.GetChild(0).position, .15f, .15f, 0f, 0f, 1f, 1f);
                     else
-                        bulletPool[i].transform.position = transform.GetChild(1).position;
+                        bulletPool[i].transform.position = Rand.Vector3(transform.GetChild(1).position, .15f, .15f, 0f, 0f, 1f, 1f);
 
                     numberShot++;
 

@@ -30,6 +30,9 @@ namespace CarterGames.Arcade.Credits
                 text.text = string.Format("{0}\n{1}", title, desc);
             }
 
+            if (base.health <= 0)
+                base.score.IncrementScore(50);
+
             base.Update();
         }
     }

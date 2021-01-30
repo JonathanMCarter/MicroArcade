@@ -4,7 +4,7 @@
  * 
  *  --{   Carter Games Utilities Script   }--
  *							  
- *  Get Random
+ *  Rand
  *	    A variety of options to provide random values, instead of using Random.Range.
  *			
  *	Purpose:
@@ -26,7 +26,7 @@ namespace CarterGames.Utilities
     /// <summary>
     /// Static Class | Get a random.... choose a property/method to get a random value for it...
     /// </summary>
-    public static class GetRandom
+    public static class Rand
     {
         /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         /// <summary>
@@ -165,6 +165,66 @@ namespace CarterGames.Utilities
         public static Vector3 Vector3(float min, float max)
         {
             return new Vector3(Random.Range(min, max), Random.Range(min, max), Random.Range(min, max));
+        }
+
+
+        /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Method | Random Vector3 (user defined min/max)
+        /// </summary>
+        /// <param name="min">The min value a coord can be</param>
+        /// <param name="max">The max value a coord can be</param>
+        /// <returns>A random Vector3 within the min/max defined</returns>
+        /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        public static Vector3 Vector3MatchXYZ(float min, float max)
+        {
+            float _result = Random.Range(min, max);
+            return new Vector3(_result, _result, _result);
+        }
+
+
+        /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Method | Random Vector3 (user defined min/max)
+        /// </summary>
+        /// <param name="min">The min value a coord can be</param>
+        /// <param name="max">The max value a coord can be</param>
+        /// <returns>A random Vector3 within the min/max defined</returns>
+        /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        public static Vector3 Vector3MatchXY(float min, float max)
+        {
+            float _result = Random.Range(min, max);
+            return new Vector3(_result, _result, Random.Range(min, max));
+        }
+
+
+        /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Method | Random Vector3 (user defined min/max)
+        /// </summary>
+        /// <param name="min">The min value a coord can be</param>
+        /// <param name="max">The max value a coord can be</param>
+        /// <returns>A random Vector3 within the min/max defined</returns>
+        /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        public static Vector3 Vector3MatchXZ(float min, float max)
+        {
+            float _result = Random.Range(min, max);
+            return new Vector3(_result, Random.Range(min, max), _result);
+        }
+
+
+        /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Method | Random Vector3 (user defined min/max)
+        /// </summary>
+        /// <param name="min">The min value a coord can be</param>
+        /// <param name="max">The max value a coord can be</param>
+        /// <returns>A random Vector3 within the min/max defined</returns>
+        /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        public static Vector3 Vector3MatchYZ(float min, float max)
+        {
+            float _result = Random.Range(min, max);
+            return new Vector3(Random.Range(min, max),_result, _result);
         }
 
 

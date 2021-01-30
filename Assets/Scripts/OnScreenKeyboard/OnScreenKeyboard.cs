@@ -75,19 +75,21 @@ namespace CarterGames.Arcade.OnScreenKeyboard
                 MoveUD(-1);
 
 
-            if (NewInputSystemHelper.ButtonPressed(actions.Controls.Button1))
+            if (NewInputSystemHelper.ButtonPressed(actions.Controls.Button1) && !isCoR)
             {
                 if (inputtedValue.Length < maxLetters)
                 {
                     inputtedValue += GetChar();
                     UpdateInputtedText();
+                    StartCoroutine(Cooldown());
                 }
             }
 
-            if (NewInputSystemHelper.ButtonPressed(actions.Controls.Button2))
+            if (NewInputSystemHelper.ButtonPressed(actions.Controls.Button2) && !isCoR)
             {
                 inputtedValue = RemoveLastChar();
                 UpdateInputtedText();
+                StartCoroutine(Cooldown());
             }
         }
 
