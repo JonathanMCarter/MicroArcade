@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8508929858515371850}
   - component: {fileID: 5013267337412422943}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: BulletHeavy
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55,7 +55,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 69a7abfab9b59a04ea67f2da6cd714aa, type: 2}
+  - {fileID: 2100000, guid: ecbb0852a6180264096aabc89289181b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -161,9 +161,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d66b47a9c43ff814bae278a04aa40a0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpd: 9.5
+  bulletSpd: 12.5
   hitParticles: {fileID: 0}
-  dmg: 1
+  dmg: 3
 --- !u!1001 &2862802245866025351
 PrefabInstance:
   m_ObjectHideFlags: 0

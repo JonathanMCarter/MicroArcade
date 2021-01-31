@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Prefabs
+  m_EditorClassIdentifier: 
+  m_GroupName: Prefabs
+  m_Data:
+    m_SerializedData: []
+  m_GUID: d2b3b3e7c7cd7414ebde87c807aaa2bc
+  m_SerializeEntries:
+  - m_GUID: 4f48a405f93fc954c91764f47ba0c8d2
+    m_Address: Credits/Asteroid-1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - credits
+    m_MainAsset: {fileID: 2888477278413036922, guid: 4f48a405f93fc954c91764f47ba0c8d2,
+      type: 3}
+    m_TargetAsset: {fileID: 2888477278413036922, guid: 4f48a405f93fc954c91764f47ba0c8d2,
+      type: 3}
+  - m_GUID: d8344ff93ae76774a8cc5e8ef3f915c4
+    m_Address: Credits/Asteroid-2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - credits
+    m_MainAsset: {fileID: 6526595096171383760, guid: d8344ff93ae76774a8cc5e8ef3f915c4,
+      type: 3}
+    m_TargetAsset: {fileID: 6526595096171383760, guid: d8344ff93ae76774a8cc5e8ef3f915c4,
+      type: 3}
+  - m_GUID: 6fcf9246d092d3a4eb66cfd23fcd0f38
+    m_Address: Credits/Asteroid-3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - credits
+    m_MainAsset: {fileID: 8163660507972526422, guid: 6fcf9246d092d3a4eb66cfd23fcd0f38,
+      type: 3}
+    m_TargetAsset: {fileID: 8163660507972526422, guid: 6fcf9246d092d3a4eb66cfd23fcd0f38,
+      type: 3}
+  - m_GUID: d05fee8fa37499c4a8c72bb3a9bc4a4d
+    m_Address: Credits/CreditEnemy
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - credits
+    m_MainAsset: {fileID: 5367905995267175620, guid: d05fee8fa37499c4a8c72bb3a9bc4a4d,
+      type: 3}
+    m_TargetAsset: {fileID: 5367905995267175620, guid: d05fee8fa37499c4a8c72bb3a9bc4a4d,
+      type: 3}
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 01882e2857022a4449ef98a2cdab3705, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 4d84d3b3201cf2d46bdbbb233eaa81ff, type: 2}
+    - {fileID: 11400000, guid: ed688de104ee0454a8b301462d7e8803, type: 2}

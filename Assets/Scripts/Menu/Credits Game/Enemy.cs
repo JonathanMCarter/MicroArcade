@@ -77,8 +77,7 @@ namespace CarterGames.Arcade.Credits
         {
             if (collision.CompareTag("Bullet"))
             {
-                TakeDamage(Rand.Int(1, 4));
-                camshake.ShakeCamera(true, 0.05f, 0.05f);
+                camshake.ShakeCamera(true, 0.01f, 0.025f);
             }
         }
     }

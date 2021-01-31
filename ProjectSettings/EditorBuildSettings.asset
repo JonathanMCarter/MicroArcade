@@ -18,5 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Arcade-Credits.unity
     guid: f131434c74ea1464cac259ae8016edd9
   m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: 1837778c497244e408202f12fa11ec58,
+      type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: dcba5fcce19ba074f8ac3c7bb34eaa8d,
       type: 2}

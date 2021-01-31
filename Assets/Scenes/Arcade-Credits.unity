@@ -5895,12 +5895,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   so: {fileID: 11400000, guid: 0df217b327815ca498c393b1e4d47876, type: 2}
   prefab:
-  - {fileID: 5367905995267175620, guid: d05fee8fa37499c4a8c72bb3a9bc4a4d, type: 3}
-  - {fileID: 2888477278413036922, guid: 4f48a405f93fc954c91764f47ba0c8d2, type: 3}
-  - {fileID: 6526595096171383760, guid: d8344ff93ae76774a8cc5e8ef3f915c4, type: 3}
-  - {fileID: 8163660507972526422, guid: 6fcf9246d092d3a4eb66cfd23fcd0f38, type: 3}
+  - m_AssetGUID: d05fee8fa37499c4a8c72bb3a9bc4a4d
+    m_SubObjectName: 
+    m_SubObjectType: 
+  - m_AssetGUID: 4f48a405f93fc954c91764f47ba0c8d2
+    m_SubObjectName: 
+    m_SubObjectType: 
+  - m_AssetGUID: d8344ff93ae76774a8cc5e8ef3f915c4
+    m_SubObjectName: 
+    m_SubObjectType: 
+  - m_AssetGUID: 6fcf9246d092d3a4eb66cfd23fcd0f38
+    m_SubObjectName: 
+    m_SubObjectType: 
   parent: {fileID: 1715455485}
-  amount: 06000000060000000600000006000000
+  amount: 0600000012000000
   _timer: 0
   _timeLimit: 0
   _maxDelay: 4

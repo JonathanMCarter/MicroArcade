@@ -1,5 +1,14 @@
 Audio Manager Change Log:
 
+2.4.1
+
+Patch to fix issues reported to us by "Hyzau" on our community discord server.
+
+* Asset Changes *
+~ Fixed an issue where having only 1 clip in a directory would break the inspector.
+~ Fixed an issue where having a blank directory not be first in the order would break the scanning functionality.
+
+
 2.4.0 (Patch 1)
 
 * Asset Changes *

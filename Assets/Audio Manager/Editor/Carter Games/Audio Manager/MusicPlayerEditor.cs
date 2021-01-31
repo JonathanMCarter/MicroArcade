@@ -17,8 +17,8 @@ using System.Collections.Generic;
  *      E: jonathan@carter.games
  *      W: https://jonathan.carter.games
  *		
- *  Version: 2.4.0 (Patch 1)
- *	Last Updated: 25/01/2021 (d/m/y)							
+ *  Version: 2.4.1
+ *	Last Updated: 31/01/2021 (d/m/y)							
  * 
 ****************************************************************************************************************************/
 
@@ -70,11 +70,6 @@ namespace CarterGames.Assets.AudioManager
             EditorGUILayout.EndHorizontal();
 
             GUILayout.Space(5f);
-            EditorGUILayout.EndVertical();
-
-
-            EditorGUILayout.BeginVertical("Box");
-            GUILayout.Space(5f);
 
             EditorGUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
@@ -86,6 +81,13 @@ namespace CarterGames.Assets.AudioManager
 
             EditorGUILayout.BeginHorizontal();
             player.mixer = (AudioMixerGroup)EditorGUILayout.ObjectField(player.mixer, typeof(AudioMixerGroup), false);
+            EditorGUILayout.EndHorizontal();
+
+            GUILayout.Space(5f);
+
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField("Should Loop Track?", EditorStyles.boldLabel, GUILayout.MaxWidth(130f));
+            player.shouldLoop = EditorGUILayout.Toggle(player.shouldLoop);
             EditorGUILayout.EndHorizontal();
 
             GUILayout.Space(5f);
@@ -128,7 +130,7 @@ namespace CarterGames.Assets.AudioManager
 
             EditorGUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
-            EditorGUILayout.LabelField("Version: 2.4.0", GUILayout.Width(87.5f));
+            EditorGUILayout.LabelField("Version: 2.4.1", GUILayout.Width(87.5f));
             GUILayout.FlexibleSpace();
             EditorGUILayout.EndHorizontal();
 

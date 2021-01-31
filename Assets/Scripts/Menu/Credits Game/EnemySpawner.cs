@@ -1,6 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 using CarterGames.Utilities;
+using UnityEngine.AddressableAssets;
+using System.Collections.Generic;
+using System.Collections;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 /*
 *  Copyright (c) Jonathan Carter
@@ -13,14 +17,15 @@ namespace CarterGames.Arcade.Credits
     public class EnemySpawner : MonoBehaviour
     {
         [SerializeField] private CreditsSO so;
-        [SerializeField] private GameObject[] prefab;
+        //[SerializeField] private GameObject[] prefab;
+        [SerializeField] private AssetReference[] prefab;
         [SerializeField] private Transform parent;
         [SerializeField] private int[] amount;
 
-        private GameObject[] credits;
+        [SerializeField] private List<GameObject> credits = new List<GameObject>();
         private int lastCreditSpawned;
 
-        private GameObject[] asteroids;
+        [SerializeField] private List<GameObject> asteroids;
 
         [SerializeField] private float _timer;
         [SerializeField] private float _timeLimit;
@@ -28,27 +33,12 @@ namespace CarterGames.Arcade.Credits
         [SerializeField] private AnimationCurve curve;
         [SerializeField] private float curvePos = 0f;
 
+        private AsyncOperationHandle<GameObject> asyncOperation;
+
 
         private void Start()
         {
-            credits = new GameObject[amount[0]];
-            asteroids = new GameObject[amount[1] + amount[2] + amount[3]];
-
-            for (int i = 0; i < amount[0]; i++)
-            {
-                GameObject _go = Instantiate(prefab[0], parent);
-                _go.GetComponentInChildren<EnemyCredit>().title = so.roles[i];
-                _go.GetComponentInChildren<EnemyCredit>().desc = so.names[i];
-                _go.SetActive(false);
-                credits[i] = _go;
-            }
-
-            for (int i = 0; i < asteroids.Length; i++)
-            {
-                GameObject _go = Instantiate(prefab[Rand.Int(1, 3)]);
-                _go.SetActive(false);
-                asteroids[i] = _go;
-            }
+            ObjectPoolSetup();
 
             _timer = 0f;
             _timeLimit = Rand.Float(0.5f, _maxDelay - (curve.Evaluate(curvePos) * _maxDelay));
@@ -69,7 +59,7 @@ namespace CarterGames.Arcade.Credits
                 if (_choice <= 0)
                 {
                     SpawnCreditEnemy();
-                    curvePos += .01f;
+                    curvePos += .015f;
                 }
                 else
                     SpawnEnemy();
@@ -78,6 +68,42 @@ namespace CarterGames.Arcade.Credits
                 _timer = 0f;
                 Debug.Log(_maxDelay - (curve.Evaluate(curvePos) * _maxDelay));
             }
+        }
+
+
+        private void ObjectPoolSetup()
+        {
+            asteroids = new List<GameObject>();
+            credits = new List<GameObject>();
+
+            asyncOperation = prefab[0].LoadAssetAsync<GameObject>();
+            asyncOperation.Completed += handle =>
+            {
+                var _prefab = handle.Result;
+
+                for (int i = 0; i < amount[0]; i++)
+                {
+                    GameObject newGO = Instantiate(_prefab, parent);
+                    newGO.GetComponentInChildren<EnemyCredit>().title = so.roles[i];
+                    newGO.GetComponentInChildren<EnemyCredit>().desc = so.names[i];
+                    newGO.SetActive(false);
+                    credits.Add(newGO);
+                }
+            };
+
+
+            asyncOperation = prefab[Rand.Int(1,3)].LoadAssetAsync<GameObject>();
+            asyncOperation.Completed += handle =>
+            {
+                var _prefab = handle.Result;
+
+                for (int i = 0; i < amount[1]; i++)
+                {
+                    GameObject newGO = Instantiate(_prefab);
+                    newGO.SetActive(false);
+                    asteroids.Add(newGO);
+                }
+            };
         }
 
 
@@ -90,9 +116,9 @@ namespace CarterGames.Arcade.Credits
                 spawnLocation = Rand.Vector2(-67f, 67f, 67f, 100f);
             }
 
-            for (int i = 0; i < credits.Length; i++)
+            for (int i = 0; i < credits.Count; i++)
             {
-                if (lastCreditSpawned.Equals(credits.Length - 1))
+                if (lastCreditSpawned.Equals(credits.Count - 1))
                 {
                     lastCreditSpawned = -1;
                 }
@@ -117,7 +143,7 @@ namespace CarterGames.Arcade.Credits
                 spawnLocation = Rand.Vector2(-8f, 3f, 8f, 5f);
             }
 
-            for (int i = 0; i < asteroids.Length; i++)
+            for (int i = 0; i < asteroids.Count; i++)
             {
                 if (!asteroids[i].activeInHierarchy)
                 {

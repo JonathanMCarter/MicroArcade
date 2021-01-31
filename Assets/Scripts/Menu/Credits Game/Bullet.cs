@@ -15,6 +15,7 @@ namespace CarterGames.Arcade.Credits
     {
         [SerializeField] private float bulletSpd;
         [SerializeField] private ParticleSystem hitParticles;
+        [SerializeField] private int dmg;
         private Rigidbody2D rB;
 
 
@@ -49,6 +50,7 @@ namespace CarterGames.Arcade.Credits
                 GetComponentInChildren<BoxCollider2D>().enabled = false;
                 GetComponentInChildren<SpriteRenderer>().enabled = false;
                 hitParticles.Play();
+                collision.GetComponent<Enemy>().TakeDamage(dmg);
             }
         }
     }

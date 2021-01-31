@@ -19,8 +19,8 @@ using System.Linq;
  *      E: jonathan@carter.games
  *      W: https://jonathan.carter.games
  *		
- *  Version: 2.4.0 (Patch 1)
- *	Last Updated: 25/01/2021 (d/m/y)						
+ *  Version: 2.4.1
+ *	Last Updated: 31/01/2021 (d/m/y)						
  * 
 ****************************************************************************************************************************/
 
@@ -415,7 +415,7 @@ namespace CarterGames.Assets.AudioManager
 
             EditorGUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
-            EditorGUILayout.LabelField("Version: 2.4.0", GUILayout.Width(87.5f));
+            EditorGUILayout.LabelField("Version: 2.4.1", GUILayout.Width(87.5f));
             GUILayout.FlexibleSpace();
             EditorGUILayout.EndHorizontal();
 
@@ -462,8 +462,10 @@ namespace CarterGames.Assets.AudioManager
                 for (int i = 0; i < audioManagerScript.audioManagerFile.directory.Count; i++)
                 {
                     if (Directory.Exists(Application.dataPath + "/audio/" + audioManagerScript.audioManagerFile.directory[i]))
+                    {
                         // 2.3.1 - adds a range so it adds each directory to the asset 1 by 1
                         _allFiles.AddRange(new List<string>(Directory.GetFiles(Application.dataPath + "/audio/" + audioManagerScript.audioManagerFile.directory[i])));
+                    }
                     else
                     {
                         // !Warning Message - shown in the console should there not be a directory named what the user entered
@@ -535,18 +537,16 @@ namespace CarterGames.Assets.AudioManager
             for (int i = 0; i < audioManagerScript.audioManagerFile.directory.Count; i++)
             {
                 if (audioManagerScript.audioManagerFile.directory[i] != null && audioManagerScript.audioManagerFile.directory[i].Equals(""))
-                    _allFiles = new List<string>(Directory.GetFiles(Application.dataPath + "/audio"));
+                    // 2.4.1 - fixed an issue where the directory order would break the asset finding files.
+                    _allFiles.AddRange(new List<string>(Directory.GetFiles(Application.dataPath + "/audio")));
+                else if (Directory.Exists(Application.dataPath + "/audio/" + audioManagerScript.audioManagerFile.directory[i]))
+                    // 2.3.1 - adds a range so it adds each directory to the asset 1 by 1.
+                    _allFiles.AddRange(new List<string>(Directory.GetFiles(Application.dataPath + "/audio/" + audioManagerScript.audioManagerFile.directory[i])));
                 else
                 {
-                    if (Directory.Exists(Application.dataPath + "/audio/" + audioManagerScript.audioManagerFile.directory[i]))
-                        // 2.3.1 - adds a range so it adds each directory to the asset 1 by 1
-                        _allFiles.AddRange(new List<string>(Directory.GetFiles(Application.dataPath + "/audio/" + audioManagerScript.audioManagerFile.directory[i])));
-                    else
-                    {
-                        // !Warning Message - shown in the console should there not be a directory named what the user entered
-                        Debug.LogWarning("(*Audio Manager*): Path does not exist! please make sure you spelt your path correctly: " + Application.dataPath + "/audio/" + audioManagerScript.audioManagerFile.directory[i]);
-                        shouldShowMessage = true;
-                    }
+                    // !Warning Message - shown in the console should there not be a directory named what the user entered
+                    Debug.LogWarning("(*Audio Manager*): Path does not exist! please make sure you spelt your path correctly: " + Application.dataPath + "/audio/" + audioManagerScript.audioManagerFile.directory[i]);
+                    shouldShowMessage = true;
                 }
             }
            
@@ -871,10 +871,15 @@ namespace CarterGames.Assets.AudioManager
         /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         public int GetNumberOfClips()
         {
-            if (audioManagerScript.audioManagerFile.library != null && audioManagerScript.audioManagerFile.library.Count > 1)
+            // 2.4.1 - fixed an issue where this if statement didn't fire where there was only 1 file, sinple mistake xD, previous ">" now ">=".
+            if (audioManagerScript.audioManagerFile.library != null && audioManagerScript.audioManagerFile.library.Count >= 1)
+            {
                 return audioManagerScript.audioManagerFile.library.Count;
+            }
             else
+            {
                 return 0;
+            }
 
         }
 

@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d1a550171c18a144be85aee12017d69, type: 3}
+  m_Name: test
+  m_EditorClassIdentifier: 
+  audioMixer:
+  - {fileID: 0}
+  soundPrefab: {fileID: 977031777656076914, guid: c40912f5a7dede148af5b68dd313394f,
+    type: 3}
+  isPopulated: 1
+  hasDirectories: 1
+  directory:
+  - Music
+  library:
+  - key: 10b
+    value: {fileID: 8300000, guid: 30358018deb4b7e4ba1d01585b254418, type: 3}
+  - key: ES_Talking Drums STEMS BASS
+    value: {fileID: 8300000, guid: d2bc878d4a7cdc544b406ab51a0f6085, type: 3}
+  - key: ES_Talking Drums STEMS DRUMS
+    value: {fileID: 8300000, guid: 8539efe94de33af44bcf8a86390d0fd8, type: 3}
+  - key: ES_Talking Drums STEMS INSTRUMENTS
+    value: {fileID: 8300000, guid: e8eb40ed9f439284f8319166025abccd, type: 3}
+  - key: ES_Talking Drums
+    value: {fileID: 8300000, guid: 049deaa47d7cedb4ab7e886eec06ed94, type: 3}
+  - key: Galactic Funk
+    value: {fileID: 8300000, guid: 1ede22216ac603e4788bab2d7f914e91, type: 3}
+  - key: Spy
+    value: {fileID: 8300000, guid: f6163999527040e4bb46efbbf0e96e8f, type: 3}
