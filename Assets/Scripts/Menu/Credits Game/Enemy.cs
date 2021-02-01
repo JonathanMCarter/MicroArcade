@@ -73,7 +73,7 @@ namespace CarterGames.Arcade.Credits
         }
 
 
-        private void OnTriggerEnter2D(Collider2D collision)
+        public virtual void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.CompareTag("Bullet"))
             {

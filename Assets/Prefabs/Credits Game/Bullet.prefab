@@ -163,7 +163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpd: 9.5
   hitParticles: {fileID: 0}
-  dmg: 1
+  dmg: 2
 --- !u!1001 &2862802245866025351
 PrefabInstance:
   m_ObjectHideFlags: 0

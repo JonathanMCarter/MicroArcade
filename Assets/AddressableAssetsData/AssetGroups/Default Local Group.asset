@@ -16,7 +16,19 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 93d2f3cc7a583884eb33497529065b46
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: deb4a0ca75f4495439ec42c2d4e28fe7
+    m_Address: Credits/HeavyBulletPowerup
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: abffd7170fa0a65448a1de21261ef803
+    m_Address: Credits/HealPowerup
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 01882e2857022a4449ef98a2cdab3705, type: 2}
   m_SchemaSet:

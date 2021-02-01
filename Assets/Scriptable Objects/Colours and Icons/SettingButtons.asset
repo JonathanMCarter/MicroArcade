@@ -16,5 +16,5 @@ MonoBehaviour:
   - {r: 0.7176471, g: 0.42352945, b: 0.42352945, a: 1}
   - {r: 0.31764707, g: 0.5647059, b: 0.3019608, a: 1}
   icons:
-  - {fileID: 21300000, guid: ce2f9d8f5edfed2459387b8bcf254f50, type: 3}
-  - {fileID: 21300000, guid: a0ce7c358fcacb3418ab60f19bfa03c5, type: 3}
+  - {fileID: -7921052967969465774, guid: aec62653b9e939242928db183e9dfc5c, type: 3}
+  - {fileID: 2788568348960109317, guid: aec62653b9e939242928db183e9dfc5c, type: 3}

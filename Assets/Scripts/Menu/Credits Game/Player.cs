@@ -25,11 +25,12 @@ namespace CarterGames.Arcade.Credits
 
         [Header("Bullet Variables")]
         [SerializeField] private GameObject bulletPrefab;
-        [SerializeField] private float bulletMoveSpd = default;
-
+        [SerializeField] private GameObject heavyBulletPrefab;
         [SerializeField] private Canvas NameInput;
 
+        private bool shootHeavy = false;
         private GameObject[] bulletPool;
+        private GameObject[] heavyBulletPool;
         private Rigidbody2D rb;
         private Actions actions;
         private bool canShootBullet = false;
@@ -38,7 +39,6 @@ namespace CarterGames.Arcade.Credits
         private int numberShot;
         private CameraShakeScript shake;
         private Scoring score;
-
 
 
         /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -101,7 +101,10 @@ namespace CarterGames.Arcade.Credits
         private void Update()
         {
             if (NewInputSystemHelper.ButtonPressed(actions.Controls.Button1) && canShootBullet)
-                SpawnBullet();
+                if (!shootHeavy)
+                    SpawnBullet();
+                else
+                    SpawnHeavyBullet();
 
 
             if (health <= 0)
@@ -156,6 +159,12 @@ namespace CarterGames.Arcade.Credits
                 health--;
                 FlickerShip();
             }
+
+            if (collision.CompareTag("Powerup"))
+            {
+                if (collision.gameObject.GetComponent<Powerups>().powerup.Equals(Powerups.Powerup.HeavyBullet))
+                    StartCoroutine(HeavyBulletPowerUpCoolDown());
+            }
         }
 
 
@@ -187,12 +196,17 @@ namespace CarterGames.Arcade.Credits
         private void BulletPoolSetup()
         {
             bulletPool = new GameObject[75];
+            heavyBulletPool = new GameObject[75];
 
             for (int i = 0; i < bulletPool.Length; i++)
             {
                 bulletPool[i] = Instantiate(bulletPrefab);
                 bulletPool[i].SetActive(false);
                 bulletPool[i].name = "* Bullet (OBJ-Pool)";
+
+                heavyBulletPool[i] = Instantiate(heavyBulletPrefab);
+                heavyBulletPool[i].SetActive(false);
+                heavyBulletPool[i].name = "* Heavy Bullet (OBJ-Pool)";
             }
         }
 
@@ -228,6 +242,35 @@ namespace CarterGames.Arcade.Credits
 
         /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         /// <summary>
+        /// Method | Spawns a bullet and start the coroutine to recharge for the next shot.
+        /// </summary>
+        /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        private void SpawnHeavyBullet()
+        {
+            for (int i = 0; i < heavyBulletPool.Length; i++)
+            {
+                if (!heavyBulletPool[i].activeSelf)
+                {
+                    if ((numberShot % 6) <= 2)
+                        heavyBulletPool[i].transform.position = Rand.Vector3(transform.GetChild(0).position, .15f, .15f, 0f, 0f, 1f, 1f);
+                    else
+                        heavyBulletPool[i].transform.position = Rand.Vector3(transform.GetChild(1).position, .15f, .15f, 0f, 0f, 1f, 1f);
+
+                    numberShot++;
+
+                    if (numberShot > 5)
+                        numberShot = 0;
+
+                    heavyBulletPool[i].SetActive(true);
+                    StartCoroutine(BulletCo());
+                    break;
+                }
+            }
+        }
+
+
+        /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
         /// Coroutine | Toggles the canShoot bool so that the player can shoot all their bullets at once.
         /// </summary>
         /// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -236,6 +279,36 @@ namespace CarterGames.Arcade.Credits
             canShootBullet = false;
             yield return wait;
             canShootBullet = true;
+        }
+
+
+        private IEnumerator HeavyBulletPowerUpCoolDown()
+        {
+            shootHeavy = true;
+            yield return new WaitForSeconds(8f);
+            shootHeavy = false;
+        }
+
+
+        public void EnableHeavyBullets()
+        {
+            if (!shootHeavy)
+                StartCoroutine(HeavyBulletPowerUpCoolDown());
+            else
+            {
+                StopCoroutine(HeavyBulletPowerUpCoolDown());
+                StartCoroutine(HeavyBulletPowerUpCoolDown());
+            }
+        }
+
+
+        public void AddToHealth(int value)
+        {
+            if (health < 3)
+            {
+                health += value;
+                hearts[health - 1].SetActive(true);
+            }
         }
     }
 }

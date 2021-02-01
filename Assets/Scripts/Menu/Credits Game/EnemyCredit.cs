@@ -11,15 +11,20 @@ namespace CarterGames.Arcade.Credits
 {
     public class EnemyCredit : Enemy
     {
+
         public string title;
         public string desc;
         private Text text;
+
+        private bool handleRunning;
+        private PowerupSpawner powerupSpawner;
 
 
         private void Awake()
         {
             // Set name and title
             text = GetComponentInChildren<Text>();
+            powerupSpawner = FindObjectOfType<PowerupSpawner>();
         }
 
 
@@ -30,10 +35,20 @@ namespace CarterGames.Arcade.Credits
                 text.text = string.Format("{0}\n{1}", title, desc);
             }
 
-            if (base.health <= 0)
-                base.score.IncrementScore(50);
+            if (healthBar)
+                if (!healthBar.value.Equals(health))
+                    healthBar.value = health;
 
-            base.Update();
+            if (base.health <= 0)
+            {
+                if (!handleRunning)
+                {
+                    handleRunning = true;
+                    base.score.IncrementScore(75);
+                    powerupSpawner.SpawnPowerup(this.transform);
+                    gameObject.SetActive(false);
+                }   
+            }
         }
     }
 }

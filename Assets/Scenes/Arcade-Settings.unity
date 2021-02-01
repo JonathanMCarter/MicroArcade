@@ -360,6 +360,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7144834606897778821, guid: 18f7de4359675e441af5c50a00a9506e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 3.4001465
+      objectReference: {fileID: 0}
     - target: {fileID: 7210337654486658897, guid: 18f7de4359675e441af5c50a00a9506e,
         type: 3}
       propertyPath: m_Pivot.x
@@ -2006,7 +2011,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a4bc323f17597f14088c27d2cacfa750, type: 3}
+  m_Sprite: {fileID: 8367830406354533065, guid: aec62653b9e939242928db183e9dfc5c,
+    type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6720,7 +6726,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -1506.8, y: 1467.8964}
+  m_AnchoredPosition: {x: -1506.8, y: 1467.8967}
   m_SizeDelta: {x: 3014, y: 2905.7783}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1357423809
@@ -7731,8 +7737,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2134973057}
   m_HandleRect: {fileID: 2134973056}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 0.4939917
+  m_Value: -0.00000024948014
+  m_Size: 0.49275437
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

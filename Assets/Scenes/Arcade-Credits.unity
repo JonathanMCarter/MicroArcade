@@ -801,7 +801,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
-  prewarm: 0
+  prewarm: 1
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
@@ -5909,6 +5909,8 @@ MonoBehaviour:
     m_SubObjectType: 
   parent: {fileID: 1715455485}
   amount: 0600000012000000
+  credits: []
+  asteroids: []
   _timer: 0
   _timeLimit: 0
   _maxDelay: 4
@@ -8709,6 +8711,57 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 794923309}
   m_CullTransparentMesh: 0
+--- !u!1 &824466960
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 824466961}
+  - component: {fileID: 824466962}
+  m_Layer: 0
+  m_Name: PowerUpSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &824466961
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 824466960}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &824466962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 824466960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faf26e5ca5cc16c46aabde457a20c473, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerUp:
+  - m_AssetGUID: deb4a0ca75f4495439ec42c2d4e28fe7
+    m_SubObjectName: 
+    m_SubObjectType: 
+  - m_AssetGUID: abffd7170fa0a65448a1de21261ef803
+    m_SubObjectName: 
+    m_SubObjectType: 
+  spawnedObjects: []
 --- !u!1 &838846203
 GameObject:
   m_ObjectHideFlags: 0
@@ -12117,6 +12170,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -1.2998047
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144834606897778821, guid: 18f7de4359675e441af5c50a00a9506e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 3.4001465
       objectReference: {fileID: 0}
     - target: {fileID: 7210337654486658897, guid: 18f7de4359675e441af5c50a00a9506e,
         type: 3}
@@ -15915,6 +15973,12 @@ PrefabInstance:
       propertyPath: NameInput
       value: 
       objectReference: {fileID: 1965040730}
+    - target: {fileID: 4829000221088335799, guid: 20c1dacdaf0d21649a3879ed83079fa9,
+        type: 3}
+      propertyPath: heavyBulletPrefab
+      value: 
+      objectReference: {fileID: 8357069440004514819, guid: f23f124730a9be94e8e99c1b5f3905ab,
+        type: 3}
     - target: {fileID: 4829000221088335799, guid: 20c1dacdaf0d21649a3879ed83079fa9,
         type: 3}
       propertyPath: hearts.Array.data[0]
