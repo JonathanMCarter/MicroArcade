@@ -15,11 +15,5 @@ namespace CarterGames.Arcade.Menu
             string path = Application.dataPath + "/../Builds/Ultimate Pinball/Ultimate Pinball.exe";
             Process.Start(path);
         }
-
-        public static void Launch_CWIS()
-        {
-            string path = Application.dataPath + "/../Builds/C.W.I.S/Cwis.exe";
-            Process.Start(path);
-        }
     }
 }

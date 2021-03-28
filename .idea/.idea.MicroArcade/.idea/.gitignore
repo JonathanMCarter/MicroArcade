@@ -1,0 +1,13 @@
+﻿# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/projectSettingsUpdater.xml
+/modules.xml
+/.idea.MicroArcade.iml
+/contentModel.xml
+# Datasource local storage ignored files
+/../../../../../../../../:\Carter Games\1. Carter Games Game Projects\8. Micro Arcade Cont\MicroArcade\.idea\.idea.MicroArcade\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
